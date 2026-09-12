@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="An interactive historical reference for an HO-scale American diesel locomotive collection.">
+    <title>American Diesel Roster</title>
+    <link rel="stylesheet" href="src/style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="eyebrow">HO-scale collection · historical reference</p>
+      <h1>American Diesel Roster</h1>
+      <p class="lede">Tracing the development of American diesel locomotives through one focused collection.</p>
+      <ul class="legend" aria-label="Collection status legend">
+        <li><span class="legend-mark status-owned"></span>Owned</li>
+        <li><span class="legend-mark status-ordered"></span>Ordered</li>
+        <li><span class="legend-mark status-wanted"></span>Wanted</li>
+        <li><span class="legend-mark status-historical_only"></span>Historical context</li>
+      </ul>
+    </header>
+    <main>
+      <p id="loading" role="status">Loading roster data…</p>
+      <section class="tree-section" aria-labelledby="tree-heading">
+        <div class="section-heading"><p class="eyebrow">Primary navigation</p><h2 id="tree-heading">EMD evolution tree</h2><p>Choose a prototype to follow its lineage and place in the collection.</p></div>
+        <div id="evolution-tree" class="tree-viewport" aria-label="Locomotive evolution tree"></div>
+      </section>
+      <section class="detail-section" aria-labelledby="detail-heading">
+        <div class="section-heading"><p class="eyebrow">Selected prototype</p><h2 id="detail-heading">Locomotive detail</h2></div>
+        <article id="locomotive-details" class="detail-card"></article>
+      </section>
+      <section class="roster-section" aria-labelledby="roster-heading">
+        <div class="section-heading"><p class="eyebrow">Physical models and incoming orders</p><h2 id="roster-heading">Collection roster</h2></div>
+        <div id="collection-roster" class="roster-grid"></div>
+      </section>
+    </main>
+    <footer>Facts marked unknown await owner confirmation or verified historical research.</footer>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
