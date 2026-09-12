@@ -1,0 +1,10 @@
+{
+  "railroads": [
+    { "id": "great-northern", "name": "Great Northern", "reportingMarks": "GN", "predecessors": [], "successors": ["burlington-northern"] },
+    { "id": "northern-pacific", "name": "Northern Pacific", "reportingMarks": "NP", "predecessors": [], "successors": ["burlington-northern"] },
+    { "id": "chicago-burlington-quincy", "name": "Chicago, Burlington & Quincy", "reportingMarks": "CB&Q", "predecessors": [], "successors": ["burlington-northern"] },
+    { "id": "spokane-portland-seattle", "name": "Spokane, Portland & Seattle", "reportingMarks": "SP&S", "predecessors": [], "successors": ["burlington-northern"] },
+    { "id": "burlington-northern", "name": "Burlington Northern", "reportingMarks": "BN", "predecessors": ["great-northern", "northern-pacific", "chicago-burlington-quincy", "spokane-portland-seattle"], "successors": ["bnsf"] },
+    { "id": "bnsf", "name": "BNSF", "reportingMarks": "BNSF", "predecessors": ["burlington-northern"], "successors": [] }
+  ]
+}
