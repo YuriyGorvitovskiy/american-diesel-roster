@@ -33,16 +33,23 @@ corporate-lineage visualization.
 
 SP&S representation is a confirmed collection gap.
 
-## Prototype and collection-item distinction
+## Prototype, historical locomotive, and collection-item distinction
 
 A Prototype describes a real locomotive class: builder, model, dates,
 horsepower, axle configuration, traction, production, history, operators,
 images, and predecessor/successor relationships.
 
+A Historical Locomotive describes one real locomotive identity, such as CB&Q
+9245: its prototype class, railroad identities and road numbers, build record,
+serial and order numbers, renumberings, retirement, photographs, and individual
+biography. Road-number-specific history must never be placed on the generic
+Prototype because it does not apply to every member of the class.
+
 A Collection Item describes one physical HO model: prototype reference,
 railroad, road number, model manufacturer, SKU, purchasing information, notes,
-and photographs. Multiple items may reference the same prototype. These concepts
-must never be collapsed.
+and photographs. When it represents a known real locomotive, it references both
+the Prototype and Historical Locomotive. Multiple items may reference the same
+prototype or historical identity. These concepts must never be collapsed.
 
 Orders are separate records because an ordered model is not yet a physical
 collection item. The UI may join both record types for display but must preserve
@@ -98,6 +105,15 @@ Prototype images and photographs of collection items remain separate. Store
 local paths with caption, source, and credit metadata. Do not hotlink or download
 unverified images.
 
+## Research provenance
+
+Reusable source metadata belongs in `data/sources.json`. Domain records cite it
+with stable `sourceIds`; narrative prose should not contain raw source URLs.
+Source metadata may be recorded even when copyright or licensing prevents a
+referenced image from being stored locally. Conflicting sources must remain
+visible in provenance, while the catalog stores only the best-supported value
+and documents material uncertainty.
+
 ## Future goals
 
 - Verified technical specifications and long-form histories
@@ -120,3 +136,5 @@ unverified images.
 8. Changes to collection status must be based on owner confirmation.
 9. Keep historical narrative separate from HO-model purchasing data.
 10. Prefer historically significant mass-production representatives when suggesting collection gaps.
+11. Keep road-number-specific biography on a Historical Locomotive, never on its generic Prototype.
+12. Preserve source provenance through stable IDs and never substitute a similar locomotive image for the exact subject.
