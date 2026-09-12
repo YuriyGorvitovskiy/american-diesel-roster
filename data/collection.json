@@ -31,7 +31,17 @@
       "notes": null,
       "sourceIds": ["walthers-bli-nw2-9245", "pwrs-bli-nw2-2014"],
       "images": [
-        { "path": "images/collection/cbq-9245-owner.png", "kind": "model", "caption": "Owner’s Broadway Limited Imports HO model of CB&Q 9245", "credit": "Owner photograph; background cleaned with GPT", "sourceIds": ["walthers-bli-nw2-9245", "pwrs-bli-nw2-2014"] }
+        {
+          "type": "collection-model",
+          "localPath": "images/collection/cbq-9245-bli-side.png",
+          "sourcePage": null,
+          "remoteImageUrl": null,
+          "caption": "Owner’s cleaned Broadway Limited Imports HO model of CB&Q 9245",
+          "credit": "Owner photograph",
+          "date": null,
+          "storage": "local-owner",
+          "sourceIds": ["walthers-bli-nw2-9245", "pwrs-bli-nw2-2014"]
+        }
       ]
     }
   ]

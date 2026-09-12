@@ -109,9 +109,19 @@ adequate for v0.1. When editing becomes cumbersome, consider one Markdown file
 per prototype, but do not add Markdown processing until there is a concrete
 need.
 
-Prototype images and photographs of collection items remain separate. Store
-local paths with caption, source, and credit metadata. Do not hotlink or download
-unverified images.
+Prototype images and photographs of collection items remain separate. Owner
+photographs may be stored locally in the repository. Historical and reference
+photographs may be displayed remotely when appropriate, with their source page,
+credit, and date retained in project data. A remote image must link to its
+original source page. Do not copy third-party historical photographs into the
+repository without an appropriate reason, permission, or license, and never
+substitute a photograph of a different road number merely because it depicts the
+same locomotive class.
+
+Dead remote image links are normal maintenance and should be replaced when
+necessary without discarding the provenance record. Personal WebArchive copies
+may be kept outside Git for archival reference, but they are not repository
+assets and local filesystem paths to them do not belong in project data.
 
 ## Research provenance
 

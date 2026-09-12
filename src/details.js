@@ -63,10 +63,36 @@ export function createNarrativeSections(prototype) {
   return (prototype.narrative ?? []).filter(Boolean);
 }
 
+function formatImageDate(date) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date ?? "")) return null;
+  const [year, month, day] = date.split("-").map(Number);
+  return new Intl.DateTimeFormat("en-US", {
+    day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
+  }).format(new Date(Date.UTC(year, month - 1, day)));
+}
+
 export function buildImageItems(images = []) {
-  return images.flatMap(({ path, kind, caption, credit = null }) => {
-    return path && caption ? [{ src: path, kind, caption, credit }] : [];
+  return images.flatMap(({ type, localPath, sourcePage, remoteImageUrl, caption, credit, date = null, storage }) => {
+    const isLocalOwner = storage === "local-owner" && localPath && !sourcePage && !remoteImageUrl;
+    const isRemote = storage === "remote" && !localPath && sourcePage && remoteImageUrl;
+    if ((!isLocalOwner && !isRemote) || !caption || !credit) return [];
+    const formattedDate = formatImageDate(date);
+    return [{
+      type,
+      src: isRemote ? remoteImageUrl : localPath,
+      sourcePage: sourcePage ?? null,
+      caption,
+      credit,
+      date,
+      attribution: [credit, formattedDate].filter(Boolean).join(" · "),
+      storage,
+    }];
   });
+}
+
+export function showImageFallback(visual, fallback) {
+  visual.hidden = true;
+  fallback.hidden = false;
 }
 
 function relationshipGroup(label, records, onSelect) {
@@ -109,19 +135,42 @@ function renderImageGallery(container, images) {
   const items = buildImageItems(images);
   if (!items.length) return;
   const gallery = document.createElement("div"); gallery.className = "detail-gallery";
-  for (const { src, kind, caption, credit } of items) {
+  for (const { src, type, sourcePage, caption, attribution, storage } of items) {
     const figure = document.createElement("figure"); figure.className = "detail-image";
     const image = document.createElement("img");
     image.src = src; image.alt = caption; image.loading = "lazy";
+    let visual = image;
+    if (sourcePage) {
+      const imageLink = document.createElement("a");
+      imageLink.className = "detail-image-link";
+      imageLink.href = sourcePage; imageLink.target = "_blank"; imageLink.rel = "noopener noreferrer";
+      imageLink.append(image); visual = imageLink;
+    }
     const figcaption = document.createElement("figcaption");
     const label = document.createElement("span"); label.className = "image-kind";
-    label.textContent = kind === "model" ? "Collection model" : "Historical prototype";
+    label.textContent = type === "collection-model" ? "Collection model" : "Historical photograph";
     const text = document.createElement("span"); text.textContent = caption;
     figcaption.append(label, text);
-    if (credit) {
-      const creditText = document.createElement("small"); creditText.textContent = credit; figcaption.append(creditText);
+    const creditText = document.createElement("small"); creditText.textContent = attribution; figcaption.append(creditText);
+    if (sourcePage) {
+      const sourceLink = document.createElement("a");
+      sourceLink.className = "image-source-link";
+      sourceLink.href = sourcePage; sourceLink.target = "_blank"; sourceLink.rel = "noopener noreferrer";
+      sourceLink.textContent = "View original"; figcaption.append(sourceLink);
     }
-    figure.append(image, figcaption); gallery.append(figure);
+    figure.append(visual, figcaption);
+    if (storage === "remote") {
+      const fallback = document.createElement("div"); fallback.className = "image-fallback"; fallback.hidden = true;
+      const fallbackLabel = document.createElement("strong"); fallbackLabel.textContent = "Historical photograph";
+      const fallbackCredit = document.createElement("span"); fallbackCredit.textContent = attribution;
+      const fallbackLink = document.createElement("a");
+      fallbackLink.href = sourcePage; fallbackLink.target = "_blank"; fallbackLink.rel = "noopener noreferrer";
+      fallbackLink.textContent = "View original photograph →";
+      fallback.append(fallbackLabel, fallbackCredit, fallbackLink);
+      image.addEventListener("error", () => showImageFallback(visual, fallback));
+      figure.append(fallback);
+    }
+    gallery.append(figure);
   }
   container.append(gallery);
 }

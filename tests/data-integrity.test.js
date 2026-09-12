@@ -85,12 +85,24 @@ test("historical timelines reject invalid calendar months", async () => {
   assert.ok(validateData(broken).some((error) => error.includes("invalid timeline date")));
 });
 
-test("stored images require a supported kind and descriptive metadata", async () => {
+test("images require valid provenance for their storage strategy", async () => {
   const data = await loadDataFiles(new URL("..", import.meta.url));
   const broken = structuredClone(data);
-  broken.items[1].images = [{ path: "images/collection/model.png", kind: "catalog", caption: "", credit: null }];
+  broken.items[1].images = [{
+    type: "collection-model", localPath: null, sourcePage: null,
+    remoteImageUrl: "https://example.com/wrong.jpg", caption: "", credit: null,
+    date: null, storage: "local-owner",
+  }];
+  broken.historicalLocomotives[0].images = [{
+    type: "historical-prototype", localPath: null, sourcePage: null,
+    remoteImageUrl: "https://example.com/9245.jpg", caption: "Historical photograph",
+    credit: "Chuck Zeiler", date: "1964-10", storage: "remote",
+  }];
   const errors = validateData(broken);
-  assert.ok(errors.some((error) => error.includes("invalid image kind")));
+  assert.ok(errors.some((error) => error.includes("local-owner image requires a localPath")));
+  assert.ok(errors.some((error) => error.includes("local-owner image cannot use a remoteImageUrl")));
   assert.ok(errors.some((error) => error.includes("image caption")));
   assert.ok(errors.some((error) => error.includes("image credit")));
+  assert.ok(errors.some((error) => error.includes("remote image requires a sourcePage")));
+  assert.ok(errors.some((error) => error.includes("invalid image date")));
 });

@@ -9,6 +9,7 @@ import {
   buildTimelineItems,
   createNarrativeSections,
   displayValue,
+  showImageFallback,
 } from "../src/details.js";
 
 test("detail fields omit unknown facts and retain known zero values", () => {
@@ -66,14 +67,23 @@ test("collection fields show model facts and hide unknown ownership details", ()
   assert.ok(fields.every(({ value }) => value !== "Unknown"));
 });
 
-test("image items expose only displayable, captioned visual records", () => {
+test("image items preserve local owner and remote reference provenance", () => {
   assert.deepEqual(buildImageItems([
-    { path: null, previewUrl: "https://example.com/9245.jpg", kind: "prototype", caption: "CB&Q 9245 in service", credit: "Photo: Example" },
-    { path: "/images/model.jpg", kind: "model", caption: "BLI model", credit: null },
-    { path: null, kind: "prototype", caption: "Missing image" },
+    { type: "collection-model", localPath: "images/model.jpg", sourcePage: null, remoteImageUrl: null, caption: "BLI model", credit: "Owner photograph", date: null, storage: "local-owner" },
+    { type: "historical-prototype", localPath: null, sourcePage: "https://example.com/source", remoteImageUrl: "https://example.com/9245.jpg", caption: "CB&Q 9245 in service", credit: "Chuck Zeiler", date: "1964-10-11", storage: "remote" },
+    { type: "historical-prototype", localPath: null, sourcePage: null, remoteImageUrl: "https://example.com/orphan.jpg", caption: "Missing source", credit: "Unknown", date: "1964-10-11", storage: "remote" },
   ]), [
-    { src: "/images/model.jpg", kind: "model", caption: "BLI model", credit: null },
+    { type: "collection-model", src: "images/model.jpg", sourcePage: null, caption: "BLI model", credit: "Owner photograph", date: null, attribution: "Owner photograph", storage: "local-owner" },
+    { type: "historical-prototype", src: "https://example.com/9245.jpg", sourcePage: "https://example.com/source", caption: "CB&Q 9245 in service", credit: "Chuck Zeiler", date: "1964-10-11", attribution: "Chuck Zeiler · October 11, 1964", storage: "remote" },
   ]);
+});
+
+test("failed remote images reveal their source-preserving fallback", () => {
+  const visual = { hidden: false };
+  const fallback = { hidden: true };
+  showImageFallback(visual, fallback);
+  assert.equal(visual.hidden, true);
+  assert.equal(fallback.hidden, false);
 });
 
 test("historical timeline presents complete events in year-month format", () => {

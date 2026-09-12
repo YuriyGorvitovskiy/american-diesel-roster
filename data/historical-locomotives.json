@@ -25,7 +25,17 @@
       ],
       "sourceIds": ["rrpicturearchives-cbq-9245", "trainpix-bn-nw2"],
       "images": [
-        { "path": null, "kind": "prototype", "caption": "CB&Q 9245 at Eola, Illinois, October 11, 1964", "credit": "Chuck Zeiler / RR Picture Archives", "sourceIds": ["rrpicturearchives-cbq-9245"] }
+        {
+          "type": "historical-prototype",
+          "localPath": null,
+          "sourcePage": "https://www.rrpicturearchives.net/Locopicture.aspx?id=71202",
+          "remoteImageUrl": "https://www.rrpicturearchives.net/picturefiles/51569/cbq9245m.jpg",
+          "caption": "CB&Q 9245 at Eola, Illinois, carrying the ‘Way of the Zephyrs’ slogan",
+          "credit": "Chuck Zeiler",
+          "date": "1964-10-11",
+          "storage": "remote",
+          "sourceIds": ["rrpicturearchives-cbq-9245"]
+        }
       ]
     }
   ]

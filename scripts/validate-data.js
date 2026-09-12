@@ -49,14 +49,24 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
       if (!sourceIds.has(id)) errors.push(`${kind} "${record.id}" references unknown source "${id}".`);
     }
     for (const image of record.images ?? []) {
-      if (!["prototype", "model"].includes(image.kind)) {
-        errors.push(`${kind} "${record.id}" has invalid image kind "${image.kind}".`);
+      if (!["collection-model", "historical-prototype"].includes(image.type)) {
+        errors.push(`${kind} "${record.id}" has invalid image type "${image.type}".`);
       }
-      if (image.path != null && !image.caption?.trim()) {
-        errors.push(`${kind} "${record.id}" stored image requires an image caption.`);
+      if (!["local-owner", "remote"].includes(image.storage)) {
+        errors.push(`${kind} "${record.id}" has invalid image storage "${image.storage}".`);
       }
-      if (image.path != null && !image.credit?.trim()) {
-        errors.push(`${kind} "${record.id}" stored image requires an image credit.`);
+      if (!image.caption?.trim()) errors.push(`${kind} "${record.id}" image requires an image caption.`);
+      if (!image.credit?.trim()) errors.push(`${kind} "${record.id}" image requires an image credit.`);
+      if (image.storage === "local-owner") {
+        if (!image.localPath?.trim()) errors.push(`${kind} "${record.id}" local-owner image requires a localPath.`);
+        if (image.remoteImageUrl != null) errors.push(`${kind} "${record.id}" local-owner image cannot use a remoteImageUrl.`);
+        if (image.sourcePage != null) errors.push(`${kind} "${record.id}" local-owner image cannot use a sourcePage.`);
+      }
+      if (image.storage === "remote") {
+        if (image.localPath != null) errors.push(`${kind} "${record.id}" remote image cannot use a localPath.`);
+        if (!image.sourcePage?.trim()) errors.push(`${kind} "${record.id}" remote image requires a sourcePage.`);
+        if (!image.remoteImageUrl?.trim()) errors.push(`${kind} "${record.id}" remote image requires a remoteImageUrl.`);
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(image.date ?? "")) errors.push(`${kind} "${record.id}" has invalid image date "${image.date}".`);
       }
       for (const id of image.sourceIds ?? []) {
         if (!sourceIds.has(id)) errors.push(`${kind} "${record.id}" image references unknown source "${id}".`);
