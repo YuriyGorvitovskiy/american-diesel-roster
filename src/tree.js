@@ -1,7 +1,7 @@
 const LANES = [
-  ["switcher", "NW Units", "N = Nine hundred horsepower\nW = Welded frame"],
-  ["freight-cab", "F Units", "Fourteen Hundred Horsepower"],
-  ["passenger-cab", "E Units", "Eighteen Hundred Horsepower"],
+  ["switcher", "NW", "N = Nine hundred horsepower\nW = Welded frame"],
+  ["freight-cab", "F", "Fourteen Hundred Horsepower"],
+  ["passenger-cab", "E", "Eighteen Hundred Horsepower"],
   ["gp", "GP", "General Purpose"],
   ["sd", "SD", "Special Duty"],
 ];
