@@ -1,4 +1,4 @@
-import { buildRosterRows, derivePrototypeStatus, getRelatedPrototypes, indexById } from "./model.js";
+import { buildPrototypeDetail, buildRosterRows, derivePrototypeStatus, indexById } from "./model.js";
 import { renderDetails } from "./details.js";
 import { renderRoster } from "./roster.js";
 import { renderTree, updateTreeSelection } from "./tree.js";
@@ -8,6 +8,8 @@ const paths = {
   items: "./data/collection.json",
   orders: "./data/orders.json",
   railroads: "./data/railroads.json",
+  historicalLocomotives: "./data/historical-locomotives.json",
+  sources: "./data/sources.json",
 };
 
 async function loadData() {
@@ -46,12 +48,7 @@ async function start() {
       if (!prototype) return;
       selectedId = id;
       updateTreeSelection(tree, id);
-      renderDetails(details, {
-        prototype,
-        status: statusFor(id),
-        related: getRelatedPrototypes(prototype, prototypeById),
-        onSelect: select,
-      });
+      renderDetails(details, { ...buildPrototypeDetail(id, data), onSelect: select });
     };
     renderTree(tree, { prototypes: data.prototypes, selectedId, getStatus: statusFor, onSelect: select });
     renderRoster(document.querySelector("#collection-roster"), buildRosterRows(data));

@@ -16,8 +16,8 @@ types. Experimental and very small-production types normally need not be owned,
 although transitional or unsuccessful designs can provide important context in
 the historical tree without becoming purchase targets.
 
-Four-axle GP and six-axle SD development are both important. Passenger cab units
-and freight/road-switcher development are separate branches. Technological
+Four-axle GP and six-axle SD development are both important. EMD product-family
+lineages remain separate branches. Technological
 transitions, including DC to AC traction, should eventually be visible.
 Historically authentic repaint schemes are acceptable; a model need not show its
 prototype's as-built paint. The goal is to tell diesel history through the
@@ -33,16 +33,23 @@ corporate-lineage visualization.
 
 SP&S representation is a confirmed collection gap.
 
-## Prototype and collection-item distinction
+## Prototype, historical locomotive, and collection-item distinction
 
 A Prototype describes a real locomotive class: builder, model, dates,
 horsepower, axle configuration, traction, production, history, operators,
 images, and predecessor/successor relationships.
 
+A Historical Locomotive describes one real locomotive identity, such as CB&Q
+9245: its prototype class, railroad identities and road numbers, build record,
+serial and order numbers, renumberings, retirement, photographs, and individual
+biography. Road-number-specific history must never be placed on the generic
+Prototype because it does not apply to every member of the class.
+
 A Collection Item describes one physical HO model: prototype reference,
 railroad, road number, model manufacturer, SKU, purchasing information, notes,
-and photographs. Multiple items may reference the same prototype. These concepts
-must never be collapsed.
+and photographs. When it represents a known real locomotive, it references both
+the Prototype and Historical Locomotive. Multiple items may reference the same
+prototype or historical identity. These concepts must never be collapsed.
 
 Orders are separate records because an ordered model is not yet a physical
 collection item. The UI may join both record types for display but must preserve
@@ -87,6 +94,14 @@ arrays and must permit branching. The initial fixed-lane layout is a legible
 v0.1 compromise, not a permanent graph engine. Transitional prototypes may
 appear even when they are not collection targets.
 
+EMD tree lanes represent historical product lineages, not permanent operating
+roles. Family-name expansions describe the origin of the designation: F and E
+reflect early horsepower-based EMC/EMD naming, GP means General Purpose, and SD
+means Special Duty. As the families evolved, these initials became lineage names
+whose literal original meanings did not fully describe every later locomotive.
+Do not reintroduce freight-only, passenger-only, road-switcher, or special-duty
+claims as permanent classifications for every member of a lane.
+
 ## Narrative and images
 
 Narrative history may eventually span several paragraphs. JSON arrays are
@@ -94,9 +109,28 @@ adequate for v0.1. When editing becomes cumbersome, consider one Markdown file
 per prototype, but do not add Markdown processing until there is a concrete
 need.
 
-Prototype images and photographs of collection items remain separate. Store
-local paths with caption, source, and credit metadata. Do not hotlink or download
-unverified images.
+Prototype images and photographs of collection items remain separate. Owner
+photographs may be stored locally in the repository. Historical and reference
+photographs may be displayed remotely when appropriate, with their source page,
+credit, and date retained in project data. A remote image must link to its
+original source page. Do not copy third-party historical photographs into the
+repository without an appropriate reason, permission, or license, and never
+substitute a photograph of a different road number merely because it depicts the
+same locomotive class.
+
+Dead remote image links are normal maintenance and should be replaced when
+necessary without discarding the provenance record. Personal WebArchive copies
+may be kept outside Git for archival reference, but they are not repository
+assets and local filesystem paths to them do not belong in project data.
+
+## Research provenance
+
+Reusable source metadata belongs in `data/sources.json`. Domain records cite it
+with stable `sourceIds`; narrative prose should not contain raw source URLs.
+Source metadata may be recorded even when copyright or licensing prevents a
+referenced image from being stored locally. Conflicting sources must remain
+visible in provenance, while the catalog stores only the best-supported value
+and documents material uncertainty.
 
 ## Future goals
 
@@ -120,3 +154,5 @@ unverified images.
 8. Changes to collection status must be based on owner confirmation.
 9. Keep historical narrative separate from HO-model purchasing data.
 10. Prefer historically significant mass-production representatives when suggesting collection gaps.
+11. Keep road-number-specific biography on a Historical Locomotive, never on its generic Prototype.
+12. Preserve source provenance through stable IDs and never substitute a similar locomotive image for the exact subject.

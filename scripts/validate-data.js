@@ -6,6 +6,8 @@ const FILES = {
   items: "data/collection.json",
   orders: "data/orders.json",
   railroads: "data/railroads.json",
+  historicalLocomotives: "data/historical-locomotives.json",
+  sources: "data/sources.json",
 };
 
 export async function loadDataFiles(rootPath) {
@@ -17,7 +19,7 @@ export async function loadDataFiles(rootPath) {
   return Object.fromEntries(entries);
 }
 
-export function validateData({ prototypes = [], items = [], orders = [], railroads = [] }) {
+export function validateData({ prototypes = [], items = [], orders = [], railroads = [], historicalLocomotives = [], sources = [] }) {
   const errors = [];
   const checkDuplicates = (records, label) => {
     const seen = new Set();
@@ -30,12 +32,45 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
   checkDuplicates(items, "collection item");
   checkDuplicates(orders, "order");
   checkDuplicates(railroads, "railroad");
+  checkDuplicates(historicalLocomotives, "historical locomotive");
+  checkDuplicates(sources, "source");
 
   const prototypeIds = new Set(prototypes.map(({ id }) => id));
   const railroadIds = new Set(railroads.map(({ id }) => id));
+  const historicalLocomotiveIds = new Set(historicalLocomotives.map(({ id }) => id));
+  const sourceIds = new Set(sources.map(({ id }) => id));
   const checkReference = (record, kind, field, ids, target) => {
     if (record[field] != null && !ids.has(record[field])) {
       errors.push(`${kind} "${record.id}" references unknown ${target} "${record[field]}".`);
+    }
+  };
+  const checkSources = (record, kind) => {
+    for (const id of record.sourceIds ?? []) {
+      if (!sourceIds.has(id)) errors.push(`${kind} "${record.id}" references unknown source "${id}".`);
+    }
+    for (const image of record.images ?? []) {
+      if (!["collection-model", "historical-prototype"].includes(image.type)) {
+        errors.push(`${kind} "${record.id}" has invalid image type "${image.type}".`);
+      }
+      if (!["local-owner", "remote"].includes(image.storage)) {
+        errors.push(`${kind} "${record.id}" has invalid image storage "${image.storage}".`);
+      }
+      if (!image.caption?.trim()) errors.push(`${kind} "${record.id}" image requires an image caption.`);
+      if (!image.credit?.trim()) errors.push(`${kind} "${record.id}" image requires an image credit.`);
+      if (image.storage === "local-owner") {
+        if (!image.localPath?.trim()) errors.push(`${kind} "${record.id}" local-owner image requires a localPath.`);
+        if (image.remoteImageUrl != null) errors.push(`${kind} "${record.id}" local-owner image cannot use a remoteImageUrl.`);
+        if (image.sourcePage != null) errors.push(`${kind} "${record.id}" local-owner image cannot use a sourcePage.`);
+      }
+      if (image.storage === "remote") {
+        if (image.localPath != null) errors.push(`${kind} "${record.id}" remote image cannot use a localPath.`);
+        if (!image.sourcePage?.trim()) errors.push(`${kind} "${record.id}" remote image requires a sourcePage.`);
+        if (!image.remoteImageUrl?.trim()) errors.push(`${kind} "${record.id}" remote image requires a remoteImageUrl.`);
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(image.date ?? "")) errors.push(`${kind} "${record.id}" has invalid image date "${image.date}".`);
+      }
+      for (const id of image.sourceIds ?? []) {
+        if (!sourceIds.has(id)) errors.push(`${kind} "${record.id}" image references unknown source "${id}".`);
+      }
     }
   };
   for (const prototype of prototypes) {
@@ -48,10 +83,30 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
     for (const id of prototype.operatorIds ?? []) {
       if (!railroadIds.has(id)) errors.push(`Prototype "${prototype.id}" references unknown railroad "${id}".`);
     }
+    checkSources(prototype, "Prototype");
   }
   for (const item of items) {
     checkReference(item, "Collection item", "prototypeId", prototypeIds, "prototype");
     checkReference(item, "Collection item", "railroadId", railroadIds, "railroad");
+    checkReference(item, "Collection item", "historicalLocomotiveId", historicalLocomotiveIds, "historical locomotive");
+    checkSources(item, "Collection item");
+  }
+  for (const locomotive of historicalLocomotives) {
+    checkReference(locomotive, "Historical locomotive", "prototypeId", prototypeIds, "prototype");
+    checkReference(locomotive, "Historical locomotive", "railroadId", railroadIds, "railroad");
+    for (const identity of locomotive.laterIdentities ?? []) {
+      if (!railroadIds.has(identity.railroadId)) errors.push(`Historical locomotive "${locomotive.id}" references unknown railroad "${identity.railroadId}".`);
+    }
+    let previousDate = "";
+    for (const event of locomotive.timeline ?? []) {
+      const match = /^(\d{4})-(\d{2})$/.exec(event.date ?? "");
+      const validDate = match && Number(match[2]) >= 1 && Number(match[2]) <= 12;
+      if (!validDate) errors.push(`Historical locomotive "${locomotive.id}" has invalid timeline date "${event.date}".`);
+      if (!event.event?.trim()) errors.push(`Historical locomotive "${locomotive.id}" has an empty timeline event.`);
+      if (validDate && previousDate && event.date < previousDate) errors.push(`Historical locomotive "${locomotive.id}" timeline is not chronological.`);
+      if (validDate) previousDate = event.date;
+    }
+    checkSources(locomotive, "Historical locomotive");
   }
   for (const order of orders) {
     checkReference(order, "Order", "prototypeId", prototypeIds, "prototype");
@@ -72,6 +127,6 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     console.error(errors.join("\n"));
     process.exitCode = 1;
   } else {
-    console.log(`Data validation passed: ${data.prototypes.length} prototypes, ${data.items.length} collection item, ${data.orders.length} orders, ${data.railroads.length} railroads.`);
+    console.log(`Data validation passed: ${data.prototypes.length} prototypes, ${data.items.length} collection items, ${data.orders.length} orders, ${data.railroads.length} railroads, ${data.historicalLocomotives.length} historical locomotive, ${data.sources.length} sources.`);
   }
 }

@@ -11,6 +11,36 @@
       "purchasePrice": null,
       "notes": "Railroad, road number, and HO manufacturer require owner confirmation.",
       "images": []
+    },
+    {
+      "id": "collection-cbq-9245-bli",
+      "prototypeId": "emd-nw2",
+      "historicalLocomotiveId": "cbq-9245",
+      "railroadId": "chicago-burlington-quincy",
+      "roadNumber": "9245",
+      "manufacturer": "Broadway Limited Imports",
+      "scale": "HO",
+      "manufacturerProductNumber": "2947",
+      "livery": "Black/gray with ‘Way of the Zephyrs’ slogan",
+      "soundControl": "Paragon2 Sound & DCC",
+      "purchaseDate": null,
+      "purchasePrice": null,
+      "retailer": null,
+      "decoderAddress": null,
+      "notes": null,
+      "sourceIds": ["pwrs-bli-nw2-2014"],
+      "images": [
+        {
+          "type": "collection-model",
+          "localPath": "images/collection/cbq-9245-bli-side.png",
+          "sourcePage": null,
+          "remoteImageUrl": null,
+          "caption": "Owner’s cleaned Broadway Limited Imports HO model of CB&Q 9245",
+          "credit": "Owner photograph",
+          "date": null,
+          "storage": "local-owner"
+        }
+      ]
     }
   ]
 }

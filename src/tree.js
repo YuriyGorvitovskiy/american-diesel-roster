@@ -1,8 +1,9 @@
 const LANES = [
-  ["freight-cab", "Freight cab units"],
-  ["passenger-cab", "Passenger cab units"],
-  ["gp", "GP road-switchers"],
-  ["sd", "SD road-switchers"],
+  ["switcher", "Switchers", null],
+  ["freight-cab", "F Units", "Fourteen Hundred Horsepower"],
+  ["passenger-cab", "E Units", "Eighteen Hundred Horsepower"],
+  ["gp", "GP", "General Purpose"],
+  ["sd", "SD", "Special Duty"],
 ];
 const LEFT = 170;
 const TOP = 70;
@@ -45,11 +46,18 @@ export function renderTree(container, { prototypes, selectedId, getStatus, onSel
   }
   canvas.append(svg);
 
-  for (const [laneIndex, [, label]] of LANES.entries()) {
+  for (const [laneIndex, [, label, subtitle]] of LANES.entries()) {
     const heading = document.createElement("span");
     heading.className = "tree-lane-label";
     heading.style.top = `${TOP + laneIndex * Y_GAP + 17}px`;
-    heading.textContent = label;
+    const title = document.createElement("strong");
+    title.textContent = label;
+    heading.append(title);
+    if (subtitle) {
+      const expansion = document.createElement("small");
+      expansion.textContent = subtitle;
+      heading.append(expansion);
+    }
     canvas.append(heading);
   }
   for (const node of layout.nodes) {

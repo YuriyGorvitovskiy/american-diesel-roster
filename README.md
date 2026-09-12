@@ -36,6 +36,12 @@ A **collection item** is one particular HO model. Its railroad, road number,
 manufacturer, SKU, purchase information, and model photographs belong in
 `data/collection.json`. Multiple collection items may reference one prototype.
 
+A **historical locomotive** is one real engine, such as CB&Q 9245. Its build
+record, serial number, railroad identities, renumberings, retirement, individual
+narrative, and prototype photographs belong in
+`data/historical-locomotives.json`. A collection item may reference both its
+generic prototype and this specific identity.
+
 Incoming models remain separate in `data/orders.json`, even though the interface
 shows owned and ordered records together. Railroad identity and lineage live in
 `data/railroads.json`. All cross-file relationships use stable IDs.
@@ -44,6 +50,9 @@ Physical and order records are authoritative: `owned` is derived only from
 `data/collection.json`, and `ordered` only from active records in
 `data/orders.json`. Prototype-level collection intent is restricted to `wanted`
 and `historical_only`, preventing duplicated status from drifting.
+
+Research references are normalized in `data/sources.json` and linked from
+domain records by stable `sourceIds`.
 
 ## Repository structure
 
@@ -56,6 +65,8 @@ src/details.js             Prototype detail rendering
 src/roster.js              Owned/ordered roster rendering
 src/style.css              Visual system and responsive layout
 data/                      Source-controlled catalog data
+data/historical-locomotives.json  Individual real-locomotive identities
+data/sources.json           Reusable research provenance
 images/prototype/           Future prototype photographs
 images/collection/          Future photographs of physical HO models
 scripts/validate-data.js    ID and reference validation
