@@ -50,16 +50,18 @@ their origin and meaning.
 
 ## Status semantics
 
-- `owned`: at least one physical collection item is owner-confirmed.
-- `ordered`: a model is incoming under an active order.
+- `owned`: derived only from an owner-confirmed record in `data/collection.json`.
+- `ordered`: derived only from an active record in `data/orders.json`.
 - `wanted`: the prototype is a confirmed collection target or gap, without a
   physical item or active order.
 - `historical_only`: the prototype explains history but is not currently a
   collection target.
 
-When multiple signals exist, the displayed prototype status uses owned, ordered,
-wanted, then historical-only precedence. Historical-only is a prototype's
-relationship to the collection, not a pretend physical object.
+Prototype-level collection intent is limited to `wanted` and `historical_only`.
+It never stores `owned` or `ordered`, because those states have authoritative
+records elsewhere. The displayed status uses physical collection item, active
+order, wanted intent, then historical-only intent precedence. Historical-only is
+a prototype's relationship to the collection, not a pretend physical object.
 
 ## Data quality
 

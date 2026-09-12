@@ -40,6 +40,11 @@ Incoming models remain separate in `data/orders.json`, even though the interface
 shows owned and ordered records together. Railroad identity and lineage live in
 `data/railroads.json`. All cross-file relationships use stable IDs.
 
+Physical and order records are authoritative: `owned` is derived only from
+`data/collection.json`, and `ordered` only from active records in
+`data/orders.json`. Prototype-level collection intent is restricted to `wanted`
+and `historical_only`, preventing duplicated status from drifting.
+
 ## Repository structure
 
 ```text

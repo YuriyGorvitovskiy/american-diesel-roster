@@ -39,6 +39,9 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
     }
   };
   for (const prototype of prototypes) {
+    if (!["wanted", "historical_only"].includes(prototype.collectionRelevance)) {
+      errors.push(`Prototype "${prototype.id}" has invalid collection intent "${prototype.collectionRelevance}".`);
+    }
     for (const id of [...(prototype.predecessors ?? []), ...(prototype.successors ?? [])]) {
       if (!prototypeIds.has(id)) errors.push(`Prototype "${prototype.id}" references unknown prototype "${id}".`);
     }

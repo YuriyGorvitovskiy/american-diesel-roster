@@ -29,3 +29,13 @@ test("orders cannot reference an unknown railroad", () => {
   });
   assert.ok(errors.includes('Order "bad-order" references unknown railroad "missing".'));
 });
+
+test("prototype intent excludes physical and order states", () => {
+  const errors = validateData({
+    prototypes: [{ id: "emd-f3", collectionRelevance: "owned", predecessors: [], successors: [], operatorIds: [] }],
+    items: [],
+    orders: [],
+    railroads: [],
+  });
+  assert.ok(errors.includes('Prototype "emd-f3" has invalid collection intent "owned".'));
+});

@@ -9,7 +9,8 @@ export function formatPrototypeName(prototype) {
 export function derivePrototypeStatus(prototypeId, data) {
   if (data.items.some((item) => item.prototypeId === prototypeId)) return "owned";
   if (data.orders.some((order) => order.prototypeId === prototypeId && order.status === "ordered")) return "ordered";
-  return data.prototypes.find(({ id }) => id === prototypeId)?.collectionRelevance ?? "historical_only";
+  const intent = data.prototypes.find(({ id }) => id === prototypeId)?.collectionRelevance;
+  return intent === "wanted" ? "wanted" : "historical_only";
 }
 
 export function buildRosterRows(data) {

@@ -20,6 +20,22 @@ test("prototype status reflects physical and planning records", () => {
   assert.equal(derivePrototypeStatus("emd-ft", data), "historical_only");
 });
 
+test("owned status comes solely from a physical collection item", () => {
+  const withoutCollectionItems = { ...data, items: [] };
+  assert.equal(derivePrototypeStatus("emd-f3", withoutCollectionItems), "historical_only");
+});
+
+test("ordered status comes solely from active orders", () => {
+  const withoutOrders = { ...data, orders: [] };
+  assert.equal(derivePrototypeStatus("emd-e7", withoutOrders), "historical_only");
+  assert.equal(derivePrototypeStatus("emd-gp35", withoutOrders), "historical_only");
+});
+
+test("prototype intent cannot synthesize physical status", () => {
+  const prototype = { id: "test", collectionRelevance: "owned" };
+  assert.equal(derivePrototypeStatus("test", { prototypes: [prototype], items: [], orders: [] }), "historical_only");
+});
+
 test("roster joins owned items and orders without combining records", () => {
   const rows = buildRosterRows(data);
   assert.equal(rows.length, 3);
