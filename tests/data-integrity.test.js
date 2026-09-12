@@ -77,3 +77,20 @@ test("entities cannot reference an unknown source", () => {
   });
   assert.ok(errors.includes('Prototype "emd-nw2" references unknown source "missing".'));
 });
+
+test("historical timelines reject invalid calendar months", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const broken = structuredClone(data);
+  broken.historicalLocomotives[0].timeline = [{ date: "1946-13", event: "Impossible month." }];
+  assert.ok(validateData(broken).some((error) => error.includes("invalid timeline date")));
+});
+
+test("stored images require a supported kind and descriptive metadata", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const broken = structuredClone(data);
+  broken.items[1].images = [{ path: "images/collection/model.png", kind: "catalog", caption: "", credit: null }];
+  const errors = validateData(broken);
+  assert.ok(errors.some((error) => error.includes("invalid image kind")));
+  assert.ok(errors.some((error) => error.includes("image caption")));
+  assert.ok(errors.some((error) => error.includes("image credit")));
+});

@@ -49,6 +49,15 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
       if (!sourceIds.has(id)) errors.push(`${kind} "${record.id}" references unknown source "${id}".`);
     }
     for (const image of record.images ?? []) {
+      if (!["prototype", "model"].includes(image.kind)) {
+        errors.push(`${kind} "${record.id}" has invalid image kind "${image.kind}".`);
+      }
+      if (image.path != null && !image.caption?.trim()) {
+        errors.push(`${kind} "${record.id}" stored image requires an image caption.`);
+      }
+      if (image.path != null && !image.credit?.trim()) {
+        errors.push(`${kind} "${record.id}" stored image requires an image credit.`);
+      }
       for (const id of image.sourceIds ?? []) {
         if (!sourceIds.has(id)) errors.push(`${kind} "${record.id}" image references unknown source "${id}".`);
       }
@@ -77,6 +86,15 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
     checkReference(locomotive, "Historical locomotive", "railroadId", railroadIds, "railroad");
     for (const identity of locomotive.laterIdentities ?? []) {
       if (!railroadIds.has(identity.railroadId)) errors.push(`Historical locomotive "${locomotive.id}" references unknown railroad "${identity.railroadId}".`);
+    }
+    let previousDate = "";
+    for (const event of locomotive.timeline ?? []) {
+      const match = /^(\d{4})-(\d{2})$/.exec(event.date ?? "");
+      const validDate = match && Number(match[2]) >= 1 && Number(match[2]) <= 12;
+      if (!validDate) errors.push(`Historical locomotive "${locomotive.id}" has invalid timeline date "${event.date}".`);
+      if (!event.event?.trim()) errors.push(`Historical locomotive "${locomotive.id}" has an empty timeline event.`);
+      if (validDate && previousDate && event.date < previousDate) errors.push(`Historical locomotive "${locomotive.id}" timeline is not chronological.`);
+      if (validDate) previousDate = event.date;
     }
     checkSources(locomotive, "Historical locomotive");
   }

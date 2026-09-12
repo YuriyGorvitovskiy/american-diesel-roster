@@ -5,6 +5,8 @@ import {
   buildCollectionFields,
   buildDetailFields,
   buildHistoricalFields,
+  buildImageItems,
+  buildTimelineItems,
   createNarrativeSections,
   displayValue,
 } from "../src/details.js";
@@ -62,4 +64,25 @@ test("collection fields show model facts and hide unknown ownership details", ()
     "Livery", "Walthers part number", "Sound / control",
   ]);
   assert.ok(fields.every(({ value }) => value !== "Unknown"));
+});
+
+test("image items expose only displayable, captioned visual records", () => {
+  assert.deepEqual(buildImageItems([
+    { path: null, previewUrl: "https://example.com/9245.jpg", kind: "prototype", caption: "CB&Q 9245 in service", credit: "Photo: Example" },
+    { path: "/images/model.jpg", kind: "model", caption: "BLI model", credit: null },
+    { path: null, kind: "prototype", caption: "Missing image" },
+  ]), [
+    { src: "/images/model.jpg", kind: "model", caption: "BLI model", credit: null },
+  ]);
+});
+
+test("historical timeline presents complete events in year-month format", () => {
+  assert.deepEqual(buildTimelineItems([
+    { date: "1946-08", event: "Built as CB&Q 9245." },
+    { date: "1964-10", event: "Prototype photographed." },
+    { date: null, event: "Undated event." },
+  ]), [
+    { date: "1946-08", label: "1946, August", event: "Built as CB&Q 9245." },
+    { date: "1964-10", label: "1964, October", event: "Prototype photographed." },
+  ]);
 });

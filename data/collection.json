@@ -31,7 +31,7 @@
       "notes": null,
       "sourceIds": ["walthers-bli-nw2-9245", "pwrs-bli-nw2-2014"],
       "images": [
-        { "path": null, "kind": "model", "caption": "Catalog reference for the exact BLI CB&Q 9245 model", "credit": null, "sourceIds": ["walthers-bli-nw2-9245", "pwrs-bli-nw2-2014"] }
+        { "path": "images/collection/cbq-9245-owner.png", "kind": "model", "caption": "Owner’s Broadway Limited Imports HO model of CB&Q 9245", "credit": "Owner photograph; background cleaned with GPT", "sourceIds": ["walthers-bli-nw2-9245", "pwrs-bli-nw2-2014"] }
       ]
     }
   ]

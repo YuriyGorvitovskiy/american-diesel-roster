@@ -23,6 +23,16 @@ function formatMonth(value) {
   return new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(year, month - 1)));
 }
 
+export function buildTimelineItems(events = []) {
+  return events.flatMap(({ date, event }) => {
+    if (!/^\d{4}-\d{2}$/.test(date ?? "") || !event) return [];
+    const [year, month] = date.split("-").map(Number);
+    const monthName = new Intl.DateTimeFormat("en-US", { month: "long", timeZone: "UTC" })
+      .format(new Date(Date.UTC(year, month - 1)));
+    return [{ date, label: `${year}, ${monthName}`, event }];
+  });
+}
+
 function fields(entries) {
   return entries.filter(([, value]) => value != null && value !== "").map(([label, value]) => ({ label, value: String(value) }));
 }
@@ -53,6 +63,12 @@ export function createNarrativeSections(prototype) {
   return (prototype.narrative ?? []).filter(Boolean);
 }
 
+export function buildImageItems(images = []) {
+  return images.flatMap(({ path, kind, caption, credit = null }) => {
+    return path && caption ? [{ src: path, kind, caption, credit }] : [];
+  });
+}
+
 function relationshipGroup(label, records, onSelect) {
   const group = document.createElement("div");
   group.className = "relationship-group";
@@ -81,17 +97,53 @@ function renderFacts(container, factList) {
   const list = document.createElement("dl");
   list.className = "fact-grid";
   for (const { label, value } of factList) {
+    const row = document.createElement("div"); row.className = "fact-row";
     const term = document.createElement("dt"); term.textContent = label;
     const description = document.createElement("dd"); description.textContent = value;
-    list.append(term, description);
+    row.append(term, description); list.append(row);
   }
   container.append(list);
+}
+
+function renderImageGallery(container, images) {
+  const items = buildImageItems(images);
+  if (!items.length) return;
+  const gallery = document.createElement("div"); gallery.className = "detail-gallery";
+  for (const { src, kind, caption, credit } of items) {
+    const figure = document.createElement("figure"); figure.className = "detail-image";
+    const image = document.createElement("img");
+    image.src = src; image.alt = caption; image.loading = "lazy";
+    const figcaption = document.createElement("figcaption");
+    const label = document.createElement("span"); label.className = "image-kind";
+    label.textContent = kind === "model" ? "Collection model" : "Historical prototype";
+    const text = document.createElement("span"); text.textContent = caption;
+    figcaption.append(label, text);
+    if (credit) {
+      const creditText = document.createElement("small"); creditText.textContent = credit; figcaption.append(creditText);
+    }
+    figure.append(image, figcaption); gallery.append(figure);
+  }
+  container.append(gallery);
 }
 
 function renderNarrative(container, paragraphs) {
   for (const paragraph of paragraphs ?? []) {
     const element = document.createElement("p"); element.textContent = paragraph; container.append(element);
   }
+}
+
+function renderTimeline(container, events) {
+  const timelineItems = buildTimelineItems(events);
+  if (!timelineItems.length) return false;
+  const list = document.createElement("ol"); list.className = "historical-timeline";
+  for (const { date, label, event } of timelineItems) {
+    const item = document.createElement("li");
+    const time = document.createElement("time"); time.dateTime = date; time.textContent = label;
+    const description = document.createElement("span"); description.textContent = event;
+    item.append(time, description); list.append(item);
+  }
+  container.append(list);
+  return true;
 }
 
 function detailSection(titleText) {
@@ -112,6 +164,11 @@ export function renderDetails(container, { prototype, status, related, historica
   badge.textContent = status.replace("_", " ");
   container.append(eyebrow, title, badge);
 
+  renderImageGallery(container, [
+    ...historicalLocomotives.flatMap(({ images = [] }) => images),
+    ...collectionItems.flatMap(({ images = [] }) => images),
+  ]);
+
   const fields = buildDetailFields(prototype);
   if (fields.length) {
     renderFacts(container, fields);
@@ -126,7 +183,7 @@ export function renderDetails(container, { prototype, status, related, historica
   for (const locomotive of historicalLocomotives) {
     const section = detailSection("Historical locomotive");
     renderFacts(section, buildHistoricalFields(locomotive));
-    renderNarrative(section, locomotive.narrative);
+    if (!renderTimeline(section, locomotive.timeline)) renderNarrative(section, locomotive.narrative);
     container.append(section);
   }
   for (const item of collectionItems) {
