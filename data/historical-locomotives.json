@@ -1,6 +1,41 @@
 {
   "historicalLocomotives": [
     {
+      "id": "cbq-9201",
+      "prototypeId": "emc-nw1",
+      "railroadId": "chicago-burlington-quincy",
+      "roadNumber": "9201",
+      "builtDate": "1937-12",
+      "serialNumber": "776",
+      "orderNumber": "E185",
+      "frameNumber": null,
+      "builtAs": "CB&Q 9201",
+      "laterIdentities": [],
+      "retiredDate": null,
+      "timeline": [
+        { "date": "1937-12", "event": "Built as CB&Q 9201 under EMC order E185, serial 776." },
+        { "date": "1965-06", "event": "Photographed at Clyde, Illinois, by Chuck Zeiler on June 27, 1965." },
+        { "date": "1965-07", "event": "Traded to EMD for an SW1200." }
+      ],
+      "narrative": [
+        "CB&Q 9201 was one of two NW1 switchers owned by the Burlington. Built in December 1937 under EMC order E185, serial 776, it remained with the railroad until being traded to EMD in July 1965."
+      ],
+      "sourceIds": ["american-rails-early-emc-switchers", "flickr-chuck-zeiler-cbq-9201"],
+      "images": [
+        {
+          "type": "historical-prototype",
+          "localPath": null,
+          "sourcePage": "https://www.flickr.com/photos/chuckzeiler/20306607394",
+          "remoteImageUrl": "https://live.staticflickr.com/5656/20306607394_48dde5c31f.jpg",
+          "caption": "CB&Q NW1 9201 with GP30 964 at Clyde, Illinois",
+          "credit": "Chuck Zeiler",
+          "date": "1965-06-27",
+          "storage": "remote",
+          "sourceIds": ["flickr-chuck-zeiler-cbq-9201"]
+        }
+      ]
+    },
+    {
       "id": "cbq-9245",
       "prototypeId": "emd-nw2",
       "railroadId": "chicago-burlington-quincy",

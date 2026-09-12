@@ -8,7 +8,7 @@ const data = await loadDataFiles(new URL("..", import.meta.url));
 
 test("layout gives every prototype a node in ordered branch lanes", () => {
   const layout = layoutTree(data.prototypes);
-  assert.equal(layout.nodes.length, 24);
+  assert.equal(layout.nodes.length, 25);
   const laneY = Object.fromEntries(layout.nodes.map(({ branch, y }) => [branch, y]));
   assert.ok(laneY.switcher < laneY["freight-cab"]);
   assert.ok(laneY["freight-cab"] < laneY["passenger-cab"]);

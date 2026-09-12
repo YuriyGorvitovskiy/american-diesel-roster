@@ -94,11 +94,12 @@ arrays and must permit branching. The initial fixed-lane layout is a legible
 v0.1 compromise, not a permanent graph engine. Transitional prototypes may
 appear even when they are not collection targets.
 
-EMD tree lanes represent historical product lineages, not permanent operating
-roles. Family-name expansions describe the origin of the designation: F and E
-reflect early horsepower-based EMC/EMD naming, GP means General Purpose, and SD
-means Special Duty. As the families evolved, these initials became lineage names
-whose literal original meanings did not fully describe every later locomotive.
+Tree lanes represent manufacturer product lineages/series, not permanent
+operating roles. Family-name expansions describe the origin of the designation:
+F and E reflect early horsepower-based EMC/EMD naming, GP means General
+Purpose, and SD means Special Duty. As the families evolved, these initials
+became lineage names whose literal original meanings did not fully describe every
+later locomotive.
 Do not reintroduce freight-only, passenger-only, road-switcher, or special-duty
 claims as permanent classifications for every member of a lane.
 

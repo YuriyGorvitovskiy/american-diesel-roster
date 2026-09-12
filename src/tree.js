@@ -1,7 +1,7 @@
 const LANES = [
-  ["switcher", "Switchers", null],
-  ["freight-cab", "F Units", "Fourteen Hundred Horsepower"],
-  ["passenger-cab", "E Units", "Eighteen Hundred Horsepower"],
+  ["switcher", "NW", "N = Nine hundred horsepower\nW = Welded frame"],
+  ["freight-cab", "F", "Fourteen Hundred Horsepower"],
+  ["passenger-cab", "E", "Eighteen Hundred Horsepower"],
   ["gp", "GP", "General Purpose"],
   ["sd", "SD", "Special Duty"],
 ];
@@ -72,7 +72,7 @@ export function renderTree(container, { prototypes, selectedId, getStatus, onSel
     const model = document.createElement("strong");
     model.textContent = node.model;
     const statusText = document.createElement("small");
-    statusText.textContent = status.replace("_", " ");
+    statusText.textContent = status === "historical_only" ? "historical" : status.replace("_", " ");
     button.append(model, statusText);
     button.addEventListener("click", () => onSelect(node.id));
     canvas.append(button);

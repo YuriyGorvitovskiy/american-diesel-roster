@@ -6,14 +6,30 @@ import { loadDataFiles, validateData } from "../scripts/validate-data.js";
 test("seed data has valid identifiers and references", async () => {
   const data = await loadDataFiles(new URL("..", import.meta.url));
   assert.deepEqual(validateData(data), []);
-  assert.equal(data.prototypes.length, 24);
+  assert.equal(data.prototypes.length, 25);
   assert.equal(data.items.length, 2);
   assert.equal(data.orders.length, 2);
   assert.equal(data.railroads.length, 6);
-  assert.equal(data.historicalLocomotives.length, 1);
-  assert.equal(data.sources.length, 5);
+  assert.equal(data.historicalLocomotives.length, 2);
+  assert.equal(data.sources.length, 8);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
+});
+
+test("NW1 provides historical context for the owned NW2 without a collection item", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const nw1 = data.prototypes.find(({ id }) => id === "emc-nw1");
+  const nw2 = data.prototypes.find(({ id }) => id === "emd-nw2");
+  const locomotive = data.historicalLocomotives.find(({ id }) => id === "cbq-9201");
+
+  assert.equal(nw1.horsepower, 900);
+  assert.equal(nw1.axleConfiguration, "B-B");
+  assert.equal(nw1.productionCount, 27);
+  assert.deepEqual(nw1.successors, ["emd-nw2"]);
+  assert.ok(nw2.predecessors.includes("emc-nw1"));
+  assert.equal(locomotive.prototypeId, "emc-nw1");
+  assert.equal(data.items.some(({ prototypeId }) => prototypeId === "emc-nw1"), false);
+  assert.equal(data.orders.some(({ prototypeId }) => prototypeId === "emc-nw1"), false);
 });
 
 test("NW2 class, historical locomotive, and HO model remain distinct", async () => {
