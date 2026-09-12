@@ -3,6 +3,7 @@ import test from "node:test";
 
 import { loadDataFiles } from "../scripts/validate-data.js";
 import {
+  buildPrototypeDetail,
   buildRosterRows,
   derivePrototypeStatus,
   formatPrototypeName,
@@ -53,4 +54,30 @@ test("prototype naming and relationship lookup use stable IDs", () => {
   const related = getRelatedPrototypes(prototypeById.get("emd-sd9"), prototypeById);
   assert.deepEqual(related.predecessors.map(({ id }) => id), ["emd-sd7"]);
   assert.deepEqual(related.successors.map(({ id }) => id), ["emd-sd18", "emd-sd24"]);
+});
+
+test("NW2 ownership is derived only from its physical model", () => {
+  assert.equal(derivePrototypeStatus("emd-nw2", data), "owned");
+  const withoutNW2Model = {
+    ...data,
+    items: data.items.filter(({ id }) => id !== "collection-cbq-9245-bli"),
+  };
+  assert.equal(derivePrototypeStatus("emd-nw2", withoutNW2Model), "historical_only");
+});
+
+test("prototype detail joins class, historical identity, model, and sources", () => {
+  const originalSources = structuredClone(data.sources);
+  const detail = buildPrototypeDetail("emd-nw2", data);
+  assert.equal(detail.prototype.id, "emd-nw2");
+  assert.deepEqual(detail.historicalLocomotives.map(({ id }) => id), ["cbq-9245"]);
+  assert.deepEqual(detail.collectionItems.map(({ id }) => id), ["collection-cbq-9245-bli"]);
+  assert.deepEqual(detail.sources.map(({ id }) => id), [
+    "wikipedia-emd-nw2",
+    "american-rails-emd-nw2",
+    "rrpicturearchives-cbq-9245",
+    "trainpix-bn-nw2",
+    "walthers-bli-nw2-9245",
+    "pwrs-bli-nw2-2014",
+  ]);
+  assert.deepEqual(data.sources, originalSources);
 });

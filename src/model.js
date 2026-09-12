@@ -44,3 +44,38 @@ export function getRelatedPrototypes(prototype, prototypeById) {
     successors: resolve(prototype.successors ?? []),
   };
 }
+
+export function buildPrototypeDetail(prototypeId, data) {
+  const prototypeById = indexById(data.prototypes);
+  const railroadById = indexById(data.railroads);
+  const prototype = prototypeById.get(prototypeId);
+  if (!prototype) return null;
+
+  const historicalLocomotives = (data.historicalLocomotives ?? [])
+    .filter((locomotive) => locomotive.prototypeId === prototypeId)
+    .map((locomotive) => ({
+      ...locomotive,
+      railroadName: railroadById.get(locomotive.railroadId)?.name ?? null,
+      laterIdentities: (locomotive.laterIdentities ?? []).map((identity) => ({
+        ...identity,
+        railroadName: railroadById.get(identity.railroadId)?.name ?? null,
+      })),
+    }));
+  const collectionItems = data.items
+    .filter((item) => item.prototypeId === prototypeId)
+    .map((item) => ({ ...item, railroadName: railroadById.get(item.railroadId)?.name ?? null }));
+  const citedIds = new Set([
+    ...(prototype.sourceIds ?? []),
+    ...historicalLocomotives.flatMap(({ sourceIds = [] }) => sourceIds),
+    ...collectionItems.flatMap(({ sourceIds = [] }) => sourceIds),
+  ]);
+
+  return {
+    prototype,
+    status: derivePrototypeStatus(prototypeId, data),
+    related: getRelatedPrototypes(prototype, prototypeById),
+    historicalLocomotives,
+    collectionItems,
+    sources: (data.sources ?? []).filter(({ id }) => citedIds.has(id)),
+  };
+}
