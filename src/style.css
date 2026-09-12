@@ -6,12 +6,12 @@
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, sans-serif; }
 h1, h2, h3 { font-family: Georgia, serif; line-height: 1.08; margin: 0 0 .65rem; }
-h1 { font-size: clamp(2.5rem, 7vw, 5.8rem); max-width: 900px; }
+h1 { font-size: clamp(2.5rem, 6vw, 5.8rem); white-space: nowrap; }
 h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); }
 .site-header, main, footer { width: min(1440px, calc(100% - 32px)); margin-inline: auto; }
 .site-header { padding: 72px 0 42px; border-bottom: 1px solid var(--line); }
 .eyebrow { color: var(--muted); font-size: .75rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; margin: 0 0 .6rem; }
-.lede { max-width: 680px; font-family: Georgia, serif; font-size: 1.2rem; }
+.lede { font-family: Georgia, serif; font-size: 1.2rem; white-space: nowrap; }
 .legend { display: flex; flex-wrap: wrap; gap: 18px; list-style: none; padding: 20px 0 0; margin: 0; }
 .legend li { display: flex; align-items: center; gap: 7px; font-size: .83rem; font-weight: 700; }
 .legend-mark { width: 14px; height: 14px; border: 2px solid currentColor; border-radius: 3px; }
@@ -29,7 +29,7 @@ main > section { padding: 48px 0; border-bottom: 1px solid var(--line); }
 .tree-lane-label { position: absolute; left: 20px; width: 130px; color: var(--muted); font: 700 .72rem/1.2 system-ui; text-transform: uppercase; letter-spacing: .07em; }
 .tree-lane-label strong, .tree-lane-label small { display: block; }
 .tree-lane-label strong { color: var(--ink); font-size: .78rem; }
-.tree-lane-label small { margin-top: 3px; font-size: .58rem; line-height: 1.25; letter-spacing: .045em; }
+.tree-lane-label small { margin-top: 3px; white-space: pre-line; font-size: .58rem; line-height: 1.25; letter-spacing: .045em; }
 .tree-node { position: absolute; width: 88px; min-height: 56px; padding: 7px; border: 2px solid var(--status); border-radius: 7px; background: var(--surface); color: var(--ink); cursor: pointer; box-shadow: 0 3px 10px rgb(0 0 0 / 7%); }
 .tree-node strong, .tree-node small { display: block; }
 .tree-node small { color: var(--status); font-size: .62rem; text-transform: uppercase; }
@@ -82,4 +82,6 @@ footer { padding: 30px 0 60px; color: var(--muted); font-size: .85rem; }
   td { display: grid; grid-template-columns: 125px 1fr; border: 0; padding: 4px 0; }
   td::before { content: attr(data-label); color: var(--muted); font-size: .7rem; font-weight: 800; text-transform: uppercase; }
 }
+@media (max-width: 620px) { h1 { white-space: normal; } }
+@media (max-width: 800px) { .lede { white-space: normal; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }

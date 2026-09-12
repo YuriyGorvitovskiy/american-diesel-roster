@@ -1,5 +1,8 @@
 {
   "sources": [
+    { "id": "wikipedia-emc-winton-switchers", "title": "EMC Winton-engined switchers", "publisher": "Wikipedia", "url": "https://en.wikipedia.org/wiki/EMC_Winton-engined_switchers", "type": "prototype-reference", "accessedDate": "2026-09-11" },
+    { "id": "american-rails-early-emc-switchers", "title": "Early Electro-Motive Switcher Locomotives", "publisher": "American-Rails.com", "url": "https://www.american-rails.com/designs.html", "type": "prototype-and-historical-roster-reference", "accessedDate": "2026-09-11" },
+    { "id": "flickr-chuck-zeiler-cbq-9201", "title": "CB&Q NW1 9201", "publisher": "Flickr", "url": "https://www.flickr.com/photos/chuckzeiler/20306607394", "type": "historical-photograph-and-caption", "accessedDate": "2026-09-11" },
     { "id": "wikipedia-emd-nw2", "title": "EMD NW2", "publisher": "Wikipedia", "url": "https://en.wikipedia.org/wiki/EMD_NW2", "type": "prototype-reference", "accessedDate": "2026-09-11" },
     { "id": "american-rails-emd-nw2", "title": "EMD ‘NW2’ Switchers: Data, Specs, Roster", "publisher": "American-Rails.com", "url": "https://www.american-rails.com/d139.html", "type": "prototype-reference", "accessedDate": "2026-09-11" },
     { "id": "rrpicturearchives-cbq-9245", "title": "Chicago Burlington & Quincy 9245 — Locomotive Photos", "publisher": "RR Picture Archives", "url": "https://www.rrpicturearchives.net/Locopicture.aspx?id=71202", "type": "historical-roster-and-photographs", "accessedDate": "2026-09-11" },
