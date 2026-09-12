@@ -8,12 +8,13 @@ const data = await loadDataFiles(new URL("..", import.meta.url));
 
 test("layout gives every prototype a node in ordered branch lanes", () => {
   const layout = layoutTree(data.prototypes);
-  assert.equal(layout.nodes.length, 23);
+  assert.equal(layout.nodes.length, 24);
   const laneY = Object.fromEntries(layout.nodes.map(({ branch, y }) => [branch, y]));
+  assert.ok(laneY.switcher < laneY["freight-cab"]);
   assert.ok(laneY["freight-cab"] < laneY["passenger-cab"]);
   assert.ok(laneY["passenger-cab"] < laneY.gp);
   assert.ok(laneY.gp < laneY.sd);
-  for (const branch of ["freight-cab", "passenger-cab", "gp", "sd"]) {
+  for (const branch of ["switcher", "freight-cab", "passenger-cab", "gp", "sd"]) {
     const positions = layout.nodes.filter((node) => node.branch === branch).map(({ x }) => x);
     assert.deepEqual(positions, positions.toSorted((a, b) => a - b));
   }

@@ -1,4 +1,5 @@
 const LANES = [
+  ["switcher", "Switchers"],
   ["freight-cab", "Freight cab units"],
   ["passenger-cab", "Passenger cab units"],
   ["gp", "GP road-switchers"],

@@ -33,6 +33,8 @@ main > section { padding: 48px 0; border-bottom: 1px solid var(--line); }
 .tree-node[aria-pressed="true"] { outline: 4px solid var(--selected); outline-offset: 3px; transform: translateY(-2px); }
 button:focus-visible, a:focus-visible { outline: 3px solid var(--selected); outline-offset: 3px; }
 .detail-card { background: var(--surface); border-left: 5px solid var(--selected); padding: 28px; box-shadow: var(--shadow); }
+.entity-section { margin-top: 32px; padding-top: 26px; border-top: 1px solid var(--line); }
+.entity-section h3 { font-size: 1.35rem; }
 .status-badge { display: inline-block; border: 1px solid var(--status); border-radius: 999px; padding: 3px 9px; font-size: .72rem; font-weight: 800; text-transform: uppercase; }
 dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin: 26px 0; }
 dt { color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: uppercase; } dd { margin: 0; font-family: Georgia, serif; font-size: 1.2rem; }
@@ -41,6 +43,9 @@ dt { color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: u
 .relationship-group { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 8px; }
 .relationship-group h3 { flex-basis: 100%; font-size: 1rem; }
 .text-button { border: 1px solid var(--line); border-radius: 4px; background: transparent; padding: 7px 10px; cursor: pointer; }
+.source-list { margin: 0; padding-left: 1.25rem; }
+.source-list li + li { margin-top: .45rem; }
+.source-list a { color: var(--wanted); text-underline-offset: 3px; }
 .roster-grid { display: grid; gap: 32px; }
 table { width: 100%; border-collapse: collapse; background: var(--surface); box-shadow: var(--shadow); }
 th, td { padding: 13px 16px; text-align: left; border-bottom: 1px solid var(--line); }

@@ -6,12 +6,47 @@ export function displayValue(value) {
 
 export function buildDetailFields(prototype) {
   return [
+    ["Role", prototype.role],
     ["Years", prototype.years],
     ["Horsepower", prototype.horsepower],
     ["Axles", prototype.axleConfiguration],
     ["Traction", prototype.tractionType],
+    ["Prime mover", prototype.primeMover],
+    ["Engine", prototype.engineConfiguration],
     ["Production", prototype.productionCount],
   ].filter(([, value]) => value != null).map(([label, value]) => ({ label, value: displayValue(value) }));
+}
+
+function formatMonth(value) {
+  if (!/^\d{4}-\d{2}$/.test(value ?? "")) return value;
+  const [year, month] = value.split("-").map(Number);
+  return new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(year, month - 1)));
+}
+
+function fields(entries) {
+  return entries.filter(([, value]) => value != null && value !== "").map(([label, value]) => ({ label, value: String(value) }));
+}
+
+export function buildHistoricalFields(locomotive) {
+  const laterIdentity = (locomotive.laterIdentities ?? [])
+    .map(({ railroadName, roadNumber }) => [railroadName, roadNumber].filter(Boolean).join(" "))
+    .filter(Boolean).join(", ");
+  return fields([
+    ["Railroad", locomotive.railroadName], ["Road number", locomotive.roadNumber],
+    ["Built", formatMonth(locomotive.builtDate)], ["Serial number", locomotive.serialNumber],
+    ["EMD order", locomotive.orderNumber], ["Frame number", locomotive.frameNumber],
+    ["Built as", locomotive.builtAs], ["Later identity", laterIdentity],
+    ["Retired", formatMonth(locomotive.retiredDate)],
+  ]);
+}
+
+export function buildCollectionFields(item) {
+  return fields([
+    ["Manufacturer", item.manufacturer], ["Product number", item.manufacturerProductNumber],
+    ["Scale", item.scale], ["Railroad", item.railroadName], ["Road number", item.roadNumber],
+    ["Livery", item.livery], ["Walthers part number", item.walthersPartNumber],
+    ["Sound / control", item.soundControl],
+  ]);
 }
 
 export function createNarrativeSections(prototype) {
@@ -41,7 +76,31 @@ function relationshipGroup(label, records, onSelect) {
   return group;
 }
 
-export function renderDetails(container, { prototype, status, related, onSelect }) {
+function renderFacts(container, factList) {
+  if (!factList.length) return;
+  const list = document.createElement("dl");
+  list.className = "fact-grid";
+  for (const { label, value } of factList) {
+    const term = document.createElement("dt"); term.textContent = label;
+    const description = document.createElement("dd"); description.textContent = value;
+    list.append(term, description);
+  }
+  container.append(list);
+}
+
+function renderNarrative(container, paragraphs) {
+  for (const paragraph of paragraphs ?? []) {
+    const element = document.createElement("p"); element.textContent = paragraph; container.append(element);
+  }
+}
+
+function detailSection(titleText) {
+  const section = document.createElement("section"); section.className = "entity-section";
+  const title = document.createElement("h3"); title.textContent = titleText; section.append(title);
+  return section;
+}
+
+export function renderDetails(container, { prototype, status, related, historicalLocomotives = [], collectionItems = [], sources = [], onSelect }) {
   container.replaceChildren();
   const eyebrow = document.createElement("p");
   eyebrow.className = "eyebrow";
@@ -55,25 +114,38 @@ export function renderDetails(container, { prototype, status, related, onSelect 
 
   const fields = buildDetailFields(prototype);
   if (fields.length) {
-    const list = document.createElement("dl");
-    for (const { label, value } of fields) {
-      const term = document.createElement("dt");
-      term.textContent = label;
-      const description = document.createElement("dd");
-      description.textContent = value;
-      list.append(term, description);
-    }
-    container.append(list);
+    renderFacts(container, fields);
   } else {
     const note = document.createElement("p");
     note.className = "muted";
     note.textContent = "Technical facts await verified research.";
     container.append(note);
   }
-  for (const paragraph of createNarrativeSections(prototype)) {
-    const element = document.createElement("p");
-    element.textContent = paragraph;
-    container.append(element);
+  renderNarrative(container, createNarrativeSections(prototype));
+
+  for (const locomotive of historicalLocomotives) {
+    const section = detailSection("Historical locomotive");
+    renderFacts(section, buildHistoricalFields(locomotive));
+    renderNarrative(section, locomotive.narrative);
+    container.append(section);
+  }
+  for (const item of collectionItems) {
+    const section = detailSection("Collection model");
+    const owned = document.createElement("span");
+    owned.className = "status-badge status-owned"; owned.textContent = "owned";
+    section.append(owned);
+    renderFacts(section, buildCollectionFields(item));
+    container.append(section);
+  }
+  if (sources.length) {
+    const section = detailSection("Sources");
+    const list = document.createElement("ul"); list.className = "source-list";
+    for (const source of sources) {
+      const item = document.createElement("li"); const link = document.createElement("a");
+      link.href = source.url; link.target = "_blank"; link.rel = "noreferrer";
+      link.textContent = `${source.title} — ${source.publisher}`; item.append(link); list.append(item);
+    }
+    section.append(list); container.append(section);
   }
   const relationships = document.createElement("div");
   relationships.className = "relationships";
