@@ -1,0 +1,10 @@
+{
+  "sources": [
+    { "id": "wikipedia-emd-nw2", "title": "EMD NW2", "publisher": "Wikipedia", "url": "https://en.wikipedia.org/wiki/EMD_NW2", "type": "prototype-reference", "accessedDate": "2026-09-11" },
+    { "id": "american-rails-emd-nw2", "title": "EMD ‘NW2’ Switchers: Data, Specs, Roster", "publisher": "American-Rails.com", "url": "https://www.american-rails.com/d139.html", "type": "prototype-reference", "accessedDate": "2026-09-11" },
+    { "id": "rrpicturearchives-cbq-9245", "title": "Chicago Burlington & Quincy 9245 — Locomotive Photos", "publisher": "RR Picture Archives", "url": "https://www.rrpicturearchives.net/Locopicture.aspx?id=71202", "type": "historical-roster-and-photographs", "accessedDate": "2026-09-11" },
+    { "id": "trainpix-bn-nw2", "title": "BN Photo Archives — EMD NW2", "publisher": "TrainPix", "url": "https://archive.trainpix.com/bn/EMDORIG/NW2/INDEX.HTM", "type": "historical-roster", "accessedDate": "2026-09-11" },
+    { "id": "walthers-bli-nw2-9245", "title": "BLI EMD NW2 — CB&Q 9245", "publisher": "Walthers", "url": "https://www.walthers.com/emd-nw2-w-sound-dcc-paragon2-tm-chicago-burlington-quincy-9245-black-gray-way-of-the-zephyrs-slogan", "type": "product-reference", "accessedDate": "2026-09-11" },
+    { "id": "pwrs-bli-nw2-2014", "title": "Broadway Limited Imports Paragon2 NW2 Announcement", "publisher": "Pacific Western Rail Systems", "url": "https://www.pwrs.ca/announcements/view.php?ID=8853", "type": "product-reference", "accessedDate": "2026-09-11" }
+  ]
+}
