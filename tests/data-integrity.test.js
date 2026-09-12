@@ -11,7 +11,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.orders.length, 2);
   assert.equal(data.railroads.length, 6);
   assert.equal(data.historicalLocomotives.length, 1);
-  assert.equal(data.sources.length, 6);
+  assert.equal(data.sources.length, 5);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
 });
@@ -33,6 +33,10 @@ test("NW2 class, historical locomotive, and HO model remain distinct", async () 
   assert.equal(item.prototypeId, "emd-nw2");
   assert.equal(item.historicalLocomotiveId, "cbq-9245");
   assert.equal(item.manufacturerProductNumber, "2947");
+  assert.equal(item.retailer, null);
+  assert.equal("walthersPartNumber" in item, false);
+  assert.deepEqual(item.sourceIds, ["pwrs-bli-nw2-2014"]);
+  assert.deepEqual(item.images[0].sourceIds, ["pwrs-bli-nw2-2014"]);
 });
 
 test("duplicate prototype identifiers are rejected", () => {

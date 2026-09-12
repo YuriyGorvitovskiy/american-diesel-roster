@@ -57,12 +57,12 @@ test("collection fields show model facts and hide unknown ownership details", ()
   const fields = buildCollectionFields({
     manufacturer: "Broadway Limited Imports", manufacturerProductNumber: "2947",
     scale: "HO", railroadName: "Chicago, Burlington & Quincy", roadNumber: "9245",
-    livery: "Black/gray", walthersPartNumber: "187-2947",
-    soundControl: "Paragon2 Sound & DCC", purchaseDate: null, purchasePrice: null,
+    livery: "Black/gray", soundControl: "Paragon2 Sound & DCC",
+    purchaseDate: null, purchasePrice: null,
   });
   assert.deepEqual(fields.map(({ label }) => label), [
     "Manufacturer", "Product number", "Scale", "Railroad", "Road number",
-    "Livery", "Walthers part number", "Sound / control",
+    "Livery", "Sound / control",
   ]);
   assert.ok(fields.every(({ value }) => value !== "Unknown"));
 });

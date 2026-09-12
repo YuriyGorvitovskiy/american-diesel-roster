@@ -21,7 +21,6 @@
       "manufacturer": "Broadway Limited Imports",
       "scale": "HO",
       "manufacturerProductNumber": "2947",
-      "walthersPartNumber": "187-2947",
       "livery": "Black/gray with ‘Way of the Zephyrs’ slogan",
       "soundControl": "Paragon2 Sound & DCC",
       "purchaseDate": null,
@@ -29,7 +28,7 @@
       "retailer": null,
       "decoderAddress": null,
       "notes": null,
-      "sourceIds": ["walthers-bli-nw2-9245", "pwrs-bli-nw2-2014"],
+      "sourceIds": ["pwrs-bli-nw2-2014"],
       "images": [
         {
           "type": "collection-model",
@@ -40,7 +39,7 @@
           "credit": "Owner photograph",
           "date": null,
           "storage": "local-owner",
-          "sourceIds": ["walthers-bli-nw2-9245", "pwrs-bli-nw2-2014"]
+          "sourceIds": ["pwrs-bli-nw2-2014"]
         }
       ]
     }

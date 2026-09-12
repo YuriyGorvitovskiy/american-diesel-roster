@@ -54,8 +54,7 @@ export function buildCollectionFields(item) {
   return fields([
     ["Manufacturer", item.manufacturer], ["Product number", item.manufacturerProductNumber],
     ["Scale", item.scale], ["Railroad", item.railroadName], ["Road number", item.roadNumber],
-    ["Livery", item.livery], ["Walthers part number", item.walthersPartNumber],
-    ["Sound / control", item.soundControl],
+    ["Livery", item.livery], ["Sound / control", item.soundControl],
   ]);
 }
 

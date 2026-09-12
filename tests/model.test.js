@@ -76,7 +76,6 @@ test("prototype detail joins class, historical identity, model, and sources", ()
     "american-rails-emd-nw2",
     "rrpicturearchives-cbq-9245",
     "trainpix-bn-nw2",
-    "walthers-bli-nw2-9245",
     "pwrs-bli-nw2-2014",
   ]);
   assert.deepEqual(data.sources, originalSources);
