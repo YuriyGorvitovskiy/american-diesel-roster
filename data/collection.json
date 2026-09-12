@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "id": "collection-emd-f3-unknown",
+      "prototypeId": "emd-f3",
+      "railroadId": null,
+      "roadNumber": null,
+      "manufacturer": null,
+      "manufacturerSku": null,
+      "livery": null,
+      "purchasePrice": null,
+      "notes": "Railroad, road number, and HO manufacturer require owner confirmation.",
+      "images": []
+    }
+  ]
+}

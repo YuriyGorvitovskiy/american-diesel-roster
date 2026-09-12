@@ -1,0 +1,36 @@
+{
+  "orders": [
+    {
+      "id": "order-gn-gp35-unknown",
+      "prototypeId": "emd-gp35",
+      "railroadId": "great-northern",
+      "roadNumber": null,
+      "manufacturer": null,
+      "manufacturerSku": null,
+      "livery": "Orange and green",
+      "retailer": null,
+      "orderDate": null,
+      "expectedDate": null,
+      "price": null,
+      "deposit": null,
+      "notes": null,
+      "status": "ordered"
+    },
+    {
+      "id": "order-cbq-e7a-9931b",
+      "prototypeId": "emd-e7",
+      "railroadId": "chicago-burlington-quincy",
+      "roadNumber": "9931B",
+      "manufacturer": "Rapido",
+      "manufacturerSku": null,
+      "livery": "Silver / Zephyr",
+      "retailer": "TrainWorld",
+      "orderDate": null,
+      "expectedDate": null,
+      "price": null,
+      "deposit": { "amount": 0, "currency": "USD" },
+      "notes": "Ordered model is an E7A variant.",
+      "status": "ordered"
+    }
+  ]
+}
