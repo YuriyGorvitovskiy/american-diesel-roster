@@ -36,7 +36,7 @@ test("NW2 class, historical locomotive, and HO model remain distinct", async () 
   assert.equal(item.retailer, null);
   assert.equal("walthersPartNumber" in item, false);
   assert.deepEqual(item.sourceIds, ["pwrs-bli-nw2-2014"]);
-  assert.deepEqual(item.images[0].sourceIds, ["pwrs-bli-nw2-2014"]);
+  assert.equal("sourceIds" in item.images[0], false);
 });
 
 test("duplicate prototype identifiers are rejected", () => {
