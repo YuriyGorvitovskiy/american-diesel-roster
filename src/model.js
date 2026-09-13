@@ -6,6 +6,20 @@ export function formatPrototypeName(prototype) {
   return [prototype.builder, prototype.model, prototype.variant].filter(Boolean).join(" ");
 }
 
+const builderNames = {
+  EMC: "Electro-Motive Corporation",
+  EMD: "Electro-Motive Division",
+  ALCO: "American Locomotive Company",
+  GE: "General Electric",
+};
+
+export function prototypePageHeading(prototype) {
+  return {
+    builderName: builderNames[prototype.builder] ?? prototype.builder,
+    modelName: [prototype.model, prototype.variant].filter(Boolean).join(" "),
+  };
+}
+
 export function derivePrototypeStatus(prototypeId, data) {
   if (data.items.some((item) => item.prototypeId === prototypeId)) return "owned";
   if (data.orders.some((order) => order.prototypeId === prototypeId && order.status === "ordered")) return "ordered";

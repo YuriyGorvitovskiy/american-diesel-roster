@@ -8,10 +8,16 @@ import {
   buildImageItems,
   buildTimelineItems,
   createNarrativeSections,
+  detailSectionHeadingTag,
   displayValue,
   relationshipView,
   showImageFallback,
 } from "../src/details.js";
+
+test("standalone detail sections continue below the page H1 at heading level two", () => {
+  assert.equal(detailSectionHeadingTag(false), "h2");
+  assert.equal(detailSectionHeadingTag(true), "h3");
+});
 
 test("detail fields omit unknown facts and retain known zero values", () => {
   const fields = buildDetailFields({ builder: "EMD", model: "Test", years: null, horsepower: 0, axleConfiguration: null, tractionType: "AC", productionCount: null });
