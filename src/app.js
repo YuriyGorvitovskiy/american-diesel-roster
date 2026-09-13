@@ -1,6 +1,6 @@
 import { loadData, findDanglingReferences } from "./data.js";
 import { buildRosterRows, derivePrototypeStatus } from "./model.js";
-import { normalizeView, renderNavigation } from "./navigation.js";
+import { normalizeView, prototypesForManufacturer, renderNavigation } from "./navigation.js";
 import { renderRoster } from "./roster.js";
 import { renderTree } from "./tree.js";
 
@@ -39,7 +39,7 @@ function renderManufacturer(main, view, data) {
   }
   section.append(heading("Manufacturer evolution", "EMD evolution tree", "Choose a prototype to open its dedicated historical record."));
   const tree = document.createElement("div"); tree.className = "tree-viewport"; tree.setAttribute("aria-label", "Locomotive evolution tree");
-  renderTree(tree, { prototypes: data.prototypes, getStatus: (id) => derivePrototypeStatus(id, data) });
+  renderTree(tree, { prototypes: prototypesForManufacturer(data.prototypes, view), getStatus: (id) => derivePrototypeStatus(id, data) });
   section.append(tree); main.append(section);
 }
 

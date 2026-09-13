@@ -15,7 +15,7 @@ h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); }
 .lede { font-family: Georgia, serif; font-size: 1.2rem; white-space: nowrap; }
 .legend { display: flex; flex-wrap: wrap; gap: 18px; list-style: none; padding: 20px 0 0; margin: 0; }
 .legend li { display: flex; align-items: center; gap: 7px; font-size: .83rem; font-weight: 700; }
-.legend-mark { width: 20px; height: 15px; border: 3px solid currentColor; border-radius: 4px; background: var(--status-tint); }
+.legend-mark { width: 20px; height: 15px; border: 4px solid currentColor; border-radius: 4px; background: var(--status-tint); }
 .status-owned { --status: var(--owned); color: var(--owned); }
 .status-ordered { --status: var(--ordered); color: var(--ordered); }
 .status-wanted { --status: var(--wanted); color: var(--wanted); }
@@ -77,6 +77,7 @@ dt { color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: u
 .text-button { border: 1px solid var(--line); border-radius: 4px; background: transparent; padding: 7px 10px; color: var(--ink); cursor: pointer; text-decoration: none; }
 .back-link { margin: 0 0 18px; border: 0; background: transparent; color: var(--wanted); font-weight: 800; cursor: pointer; }
 .roster-link { color: var(--wanted); font-weight: 800; text-underline-offset: 3px; }
+.roster-thumbnail { display: block; width: 96px; aspect-ratio: 16 / 9; margin-bottom: 8px; border: 1px solid var(--line); border-radius: 4px; object-fit: contain; background: var(--paper); }
 .external-table-link { color: var(--wanted); text-underline-offset: 3px; }
 .external-table-link::after { content: " ↗"; font-size: .72em; }
 .empty-state { min-height: 34vh; display: grid; align-content: center; }

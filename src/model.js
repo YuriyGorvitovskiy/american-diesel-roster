@@ -29,6 +29,7 @@ export function buildRosterRows(data) {
     livery: record.livery ?? null,
     retailer: record.retailer ?? null,
     retailerUrl: record.retailerUrl ?? null,
+    image: (record.images ?? []).find(({ type, storage, localPath }) => type === "collection-model" && storage === "local-owner" && localPath) ?? null,
   });
   return [
     ...data.items.map((item) => toRow(item, "collection", "owned")),

@@ -25,5 +25,18 @@ test("Collection rows expose internal prototype and external commerce links", ()
     prototypeHref: "./locomotive.html?id=emd-e7",
     manufacturerHref: "https://rapidotrains.com/",
     retailerHref: "https://www.trainworld.com/",
+    image: null,
+  });
+});
+
+test("Collection rows preserve an available owner model image", () => {
+  assert.deepEqual(rosterRowView({
+    prototypeId: "emd-nw2",
+    image: { localPath: "images/collection/nw2.png", caption: "Owner model photograph" },
+  }), {
+    prototypeHref: "./locomotive.html?id=emd-nw2",
+    manufacturerHref: null,
+    retailerHref: null,
+    image: { src: "images/collection/nw2.png", alt: "Owner model photograph" },
   });
 });

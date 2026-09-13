@@ -19,6 +19,7 @@ export function rosterRowView(row) {
     prototypeHref: locomotiveUrl(row.prototypeId),
     manufacturerHref: row.manufacturerUrl ?? null,
     retailerHref: row.retailerUrl ?? null,
+    image: row.image ? { src: row.image.localPath, alt: row.image.caption } : null,
   };
 }
 
@@ -53,6 +54,11 @@ function rosterTable(rows, label) {
       const cell = document.createElement("td");
       cell.dataset.label = columnLabel;
       if (key === "prototypeName") {
+        if (view.image) {
+          const image = document.createElement("img"); image.className = "roster-thumbnail";
+          image.src = view.image.src; image.alt = view.image.alt; image.loading = "lazy";
+          cell.append(image);
+        }
         const link = document.createElement("a");
         link.className = "roster-link"; link.href = view.prototypeHref; link.textContent = row[key];
         cell.append(link);

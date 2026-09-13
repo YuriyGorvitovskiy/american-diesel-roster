@@ -23,6 +23,18 @@ export function parsePrototypeId(search) {
   return new URLSearchParams(search).get("id");
 }
 
+export function manufacturerViewForPrototype(prototype) {
+  const builder = prototype?.builder?.toUpperCase();
+  if (["EMC", "EMD"].includes(builder)) return "emd";
+  if (builder === "ALCO") return "alco";
+  if (builder === "GE") return "ge";
+  return null;
+}
+
+export function prototypesForManufacturer(prototypes, view) {
+  return prototypes.filter((prototype) => manufacturerViewForPrototype(prototype) === view);
+}
+
 export function renderNavigation(container, activeView) {
   const brand = document.createElement("a");
   brand.className = "site-brand";

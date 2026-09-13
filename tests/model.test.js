@@ -49,6 +49,16 @@ test("roster joins owned items and orders without combining records", () => {
   assert.equal(rows[2].manufacturerUrl, "https://rapidotrains.com/");
   assert.equal(rows[2].retailerUrl, "https://www.trainworld.com/");
   assert.ok(rows.every(({ status }) => status !== "historical_only"));
+  assert.deepEqual(rows[1].image, {
+    type: "collection-model",
+    localPath: "images/collection/cbq-9245-bli-side.png",
+    sourcePage: null,
+    remoteImageUrl: null,
+    caption: "Owner’s cleaned Broadway Limited Imports HO model of CB&Q 9245",
+    credit: "Owner photograph",
+    date: null,
+    storage: "local-owner",
+  });
 });
 
 test("prototype naming and relationship lookup use stable IDs", () => {
