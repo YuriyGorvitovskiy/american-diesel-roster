@@ -6,6 +6,20 @@ export function formatPrototypeName(prototype) {
   return [prototype.builder, prototype.model, prototype.variant].filter(Boolean).join(" ");
 }
 
+const builderNames = {
+  EMC: "Electro-Motive Corporation",
+  EMD: "Electro-Motive Division",
+  ALCO: "American Locomotive Company",
+  GE: "General Electric",
+};
+
+export function prototypePageHeading(prototype) {
+  return {
+    builderName: builderNames[prototype.builder] ?? prototype.builder,
+    modelName: [prototype.model, prototype.variant].filter(Boolean).join(" "),
+  };
+}
+
 export function derivePrototypeStatus(prototypeId, data) {
   if (data.items.some((item) => item.prototypeId === prototypeId)) return "owned";
   if (data.orders.some((order) => order.prototypeId === prototypeId && order.status === "ordered")) return "ordered";
@@ -25,8 +39,11 @@ export function buildRosterRows(data) {
     railroadName: railroads.get(record.railroadId)?.name ?? null,
     roadNumber: record.roadNumber ?? null,
     manufacturer: record.manufacturer ?? null,
+    manufacturerUrl: record.manufacturerUrl ?? null,
     livery: record.livery ?? null,
     retailer: record.retailer ?? null,
+    retailerUrl: record.retailerUrl ?? null,
+    image: (record.images ?? []).find(({ type, storage, localPath }) => type === "collection-model" && storage === "local-owner" && localPath) ?? null,
   });
   return [
     ...data.items.map((item) => toRow(item, "collection", "owned")),

@@ -1,4 +1,5 @@
 import { formatPrototypeName } from "./model.js";
+import { locomotiveUrl } from "./navigation.js";
 
 export function displayValue(value) {
   return value == null || value === "" ? "Unknown" : String(value);
@@ -94,10 +95,14 @@ export function showImageFallback(visual, fallback) {
   fallback.hidden = false;
 }
 
-function relationshipGroup(label, records, onSelect) {
+export function relationshipView(prototype) {
+  return { label: formatPrototypeName(prototype), href: locomotiveUrl(prototype.id) };
+}
+
+function relationshipGroup(label, records, headingTag = "h3") {
   const group = document.createElement("div");
   group.className = "relationship-group";
-  const heading = document.createElement("h3");
+  const heading = document.createElement(headingTag);
   heading.textContent = label;
   group.append(heading);
   if (!records.length) {
@@ -107,11 +112,11 @@ function relationshipGroup(label, records, onSelect) {
     group.append(empty);
   }
   for (const prototype of records) {
-    const button = document.createElement("button");
-    button.type = "button";
+    const view = relationshipView(prototype);
+    const button = document.createElement("a");
     button.className = "text-button";
-    button.textContent = formatPrototypeName(prototype);
-    button.addEventListener("click", () => onSelect(prototype.id));
+    button.href = view.href;
+    button.textContent = view.label;
     group.append(button);
   }
   return group;
@@ -194,23 +199,30 @@ function renderTimeline(container, events) {
   return true;
 }
 
-function detailSection(titleText) {
+export function detailSectionHeadingTag(showHeader) {
+  return showHeader ? "h3" : "h2";
+}
+
+function detailSection(titleText, headingTag) {
   const section = document.createElement("section"); section.className = "entity-section";
-  const title = document.createElement("h3"); title.textContent = titleText; section.append(title);
+  const title = document.createElement(headingTag); title.textContent = titleText; section.append(title);
   return section;
 }
 
-export function renderDetails(container, { prototype, status, related, historicalLocomotives = [], collectionItems = [], sources = [], onSelect }) {
+export function renderDetails(container, { prototype, status, related, historicalLocomotives = [], collectionItems = [], sources = [], showHeader = true }) {
   container.replaceChildren();
-  const eyebrow = document.createElement("p");
-  eyebrow.className = "eyebrow";
-  eyebrow.textContent = `${prototype.builder} prototype`;
-  const title = document.createElement("h2");
-  title.textContent = formatPrototypeName(prototype);
-  const badge = document.createElement("span");
-  badge.className = `status-badge status-${status}`;
-  badge.textContent = status.replace("_", " ");
-  container.append(eyebrow, title, badge);
+  const sectionHeadingTag = detailSectionHeadingTag(showHeader);
+  if (showHeader) {
+    const eyebrow = document.createElement("p");
+    eyebrow.className = "eyebrow";
+    eyebrow.textContent = `${prototype.builder} prototype`;
+    const title = document.createElement("h2");
+    title.textContent = formatPrototypeName(prototype);
+    const badge = document.createElement("span");
+    badge.className = `status-badge status-${status}`;
+    badge.textContent = status.replace("_", " ");
+    container.append(eyebrow, title, badge);
+  }
 
   renderImageGallery(container, [
     ...historicalLocomotives.flatMap(({ images = [] }) => images),
@@ -229,13 +241,13 @@ export function renderDetails(container, { prototype, status, related, historica
   renderNarrative(container, createNarrativeSections(prototype));
 
   for (const locomotive of historicalLocomotives) {
-    const section = detailSection("Historical locomotive");
+    const section = detailSection("Historical locomotive", sectionHeadingTag);
     renderFacts(section, buildHistoricalFields(locomotive));
     if (!renderTimeline(section, locomotive.timeline)) renderNarrative(section, locomotive.narrative);
     container.append(section);
   }
   for (const item of collectionItems) {
-    const section = detailSection("Collection model");
+    const section = detailSection("Collection model", sectionHeadingTag);
     const owned = document.createElement("span");
     owned.className = "status-badge status-owned"; owned.textContent = "owned";
     section.append(owned);
@@ -243,7 +255,7 @@ export function renderDetails(container, { prototype, status, related, historica
     container.append(section);
   }
   if (sources.length) {
-    const section = detailSection("Sources");
+    const section = detailSection("Sources", sectionHeadingTag);
     const list = document.createElement("ul"); list.className = "source-list";
     for (const source of sources) {
       const item = document.createElement("li"); const link = document.createElement("a");
@@ -255,8 +267,8 @@ export function renderDetails(container, { prototype, status, related, historica
   const relationships = document.createElement("div");
   relationships.className = "relationships";
   relationships.append(
-    relationshipGroup("Predecessors", related.predecessors, onSelect),
-    relationshipGroup("Successors", related.successors, onSelect),
+    relationshipGroup("Predecessors", related.predecessors, sectionHeadingTag),
+    relationshipGroup("Successors", related.successors, sectionHeadingTag),
   );
   container.append(relationships);
 }

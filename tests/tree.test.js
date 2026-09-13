@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { loadDataFiles } from "../scripts/validate-data.js";
-import { layoutTree } from "../src/tree.js";
+import { formatProductionCount, layoutTree, treeNodeView } from "../src/tree.js";
 
 const data = await loadDataFiles(new URL("..", import.meta.url));
 
@@ -30,4 +30,25 @@ test("layout edges exactly represent declared successor relationships", () => {
 test("layout skips dangling successor relationships", () => {
   const layout = layoutTree([{ id: "source", model: "Source", branch: "gp", successors: ["missing"] }]);
   assert.deepEqual(layout.edges, []);
+});
+
+test("tree nodes expose production instead of visible status text", () => {
+  assert.deepEqual(treeNodeView({ id: "emc-nw1", model: "NW1", productionCount: 27 }, "historical_only"), {
+    href: "./locomotive.html?id=emc-nw1",
+    model: "NW1",
+    production: "27",
+    status: "historical_only",
+    accessibleLabel: "NW1, 27 produced, historical context",
+  });
+  assert.equal(formatProductionCount(1145), "1,145");
+});
+
+test("unknown tree production renders a dash without inventing a total", () => {
+  assert.deepEqual(treeNodeView({ id: "emd-ft", model: "FT", productionCount: null }, "historical_only"), {
+    href: "./locomotive.html?id=emd-ft",
+    model: "FT",
+    production: "—",
+    status: "historical_only",
+    accessibleLabel: "FT, production unknown, historical context",
+  });
 });

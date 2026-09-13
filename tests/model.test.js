@@ -9,6 +9,7 @@ import {
   formatPrototypeName,
   getRelatedPrototypes,
   indexById,
+  prototypePageHeading,
 } from "../src/model.js";
 
 const data = await loadDataFiles(new URL("..", import.meta.url));
@@ -46,6 +47,19 @@ test("roster joins owned items and orders without combining records", () => {
   assert.equal(rows[0].railroadName, null);
   assert.equal(rows[1].railroadName, "Chicago, Burlington & Quincy");
   assert.equal(rows[2].railroadName, "Chicago, Burlington & Quincy");
+  assert.equal(rows[2].manufacturerUrl, "https://rapidotrains.com/");
+  assert.equal(rows[2].retailerUrl, "https://www.trainworld.com/");
+  assert.ok(rows.every(({ status }) => status !== "historical_only"));
+  assert.deepEqual(rows[1].image, {
+    type: "collection-model",
+    localPath: "images/collection/cbq-9245-bli-side.png",
+    sourcePage: null,
+    remoteImageUrl: null,
+    caption: "Owner’s cleaned Broadway Limited Imports HO model of CB&Q 9245",
+    credit: "Owner photograph",
+    date: null,
+    storage: "local-owner",
+  });
 });
 
 test("prototype naming and relationship lookup use stable IDs", () => {
@@ -54,6 +68,19 @@ test("prototype naming and relationship lookup use stable IDs", () => {
   const related = getRelatedPrototypes(prototypeById.get("emd-sd9"), prototypeById);
   assert.deepEqual(related.predecessors.map(({ id }) => id), ["emd-sd7"]);
   assert.deepEqual(related.successors.map(({ id }) => id), ["emd-sd18", "emd-sd24"]);
+});
+
+test("prototype page headings expand the builder and avoid repeating it in the model title", () => {
+  assert.deepEqual(prototypePageHeading({ builder: "EMD", model: "NW2", variant: null }), {
+    builderName: "Electro-Motive Division",
+    modelName: "NW2",
+  });
+  assert.deepEqual(prototypePageHeading({ builder: "EMC", model: "SW1", variant: "Phase II" }), {
+    builderName: "Electro-Motive Corporation",
+    modelName: "SW1 Phase II",
+  });
+  assert.equal(prototypePageHeading({ builder: "ALCO", model: "RS-3" }).builderName, "American Locomotive Company");
+  assert.equal(prototypePageHeading({ builder: "GE", model: "U25B" }).builderName, "General Electric");
 });
 
 test("NW2 ownership is derived only from its physical model", () => {

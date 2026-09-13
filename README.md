@@ -19,6 +19,10 @@ python3 -m http.server 8000
 
 Then open [http://localhost:8000/](http://localhost:8000/).
 
+The root page introduces the collection. Top-level reference views use query
+URLs such as `/?view=collection` and `/?view=emd`. Locomotive records use
+bookmarkable URLs such as `/locomotive.html?id=emc-nw1`.
+
 Run automated checks with:
 
 ```bash
@@ -57,10 +61,14 @@ domain records by stable `sourceIds`.
 ## Repository structure
 
 ```text
-index.html                 Page structure
-src/app.js                 Data loading and selection coordination
+index.html                 Home and top-level-view entry point
+locomotive.html            Bookmarkable locomotive-detail entry point
+src/app.js                 Top-level view coordination
+src/locomotive-page.js     Direct locomotive-detail coordination
+src/data.js                Shared JSON loading and reference diagnostics
+src/navigation.js          URL contract and persistent navigation
 src/model.js               Pure joins and status derivation
-src/tree.js                Evolution-tree layout and rendering
+src/tree.js                Linked evolution-tree layout and rendering
 src/details.js             Prototype detail rendering
 src/roster.js              Owned/ordered roster rendering
 src/style.css              Visual system and responsive layout

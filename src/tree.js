@@ -10,6 +10,22 @@ const TOP = 70;
 const X_GAP = 126;
 const Y_GAP = 142;
 
+import { locomotiveUrl } from "./navigation.js";
+
+export function formatProductionCount(value) {
+  return value == null ? "—" : new Intl.NumberFormat("en-US").format(value);
+}
+
+export function treeNodeView(prototype, status) {
+  const production = formatProductionCount(prototype.productionCount);
+  const spokenProduction = prototype.productionCount == null ? "production unknown" : `${production} produced`;
+  const spokenStatus = status === "historical_only" ? "historical context" : status;
+  return {
+    href: locomotiveUrl(prototype.id), model: prototype.model, production, status,
+    accessibleLabel: `${prototype.model}, ${spokenProduction}, ${spokenStatus}`,
+  };
+}
+
 export function layoutTree(prototypes) {
   const nodes = [];
   for (const [laneIndex, [branch]] of LANES.entries()) {
@@ -26,7 +42,7 @@ export function layoutTree(prototypes) {
   return { nodes, edges, width: LEFT + longestLane * X_GAP + 40, height: TOP + LANES.length * Y_GAP - 50 };
 }
 
-export function renderTree(container, { prototypes, selectedId, getStatus, onSelect }) {
+export function renderTree(container, { prototypes, getStatus }) {
   const layout = layoutTree(prototypes);
   container.replaceChildren();
   const canvas = document.createElement("div");
@@ -61,28 +77,22 @@ export function renderTree(container, { prototypes, selectedId, getStatus, onSel
     canvas.append(heading);
   }
   for (const node of layout.nodes) {
-    const status = getStatus(node.id);
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = `tree-node status-${status}`;
-    button.dataset.prototypeId = node.id;
+    const view = treeNodeView(node, getStatus(node.id));
+    const button = document.createElement("a");
+    button.className = `tree-node status-${view.status}`;
+    button.href = view.href;
     button.style.left = `${node.x}px`;
     button.style.top = `${node.y}px`;
-    button.setAttribute("aria-pressed", String(node.id === selectedId));
+    button.setAttribute("aria-label", view.accessibleLabel);
     const model = document.createElement("strong");
-    model.textContent = node.model;
+    model.textContent = view.model;
     const statusText = document.createElement("small");
-    statusText.textContent = status === "historical_only" ? "historical" : status.replace("_", " ");
+    statusText.textContent = view.production;
     button.append(model, statusText);
-    button.addEventListener("click", () => onSelect(node.id));
     canvas.append(button);
   }
-  container.append(canvas);
-}
-
-export function updateTreeSelection(container, selectedId) {
-  for (const button of container.querySelectorAll("[data-prototype-id]")) {
-    button.setAttribute("aria-pressed", String(button.dataset.prototypeId === selectedId));
-  }
-  container.querySelector(`[data-prototype-id="${selectedId}"]`)?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  const note = document.createElement("p");
+  note.className = "tree-note";
+  note.textContent = "Number in each node = total prototype production.";
+  container.append(canvas, note);
 }

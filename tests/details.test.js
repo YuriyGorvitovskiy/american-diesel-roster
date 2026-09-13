@@ -8,13 +8,27 @@ import {
   buildImageItems,
   buildTimelineItems,
   createNarrativeSections,
+  detailSectionHeadingTag,
   displayValue,
+  relationshipView,
   showImageFallback,
 } from "../src/details.js";
+
+test("standalone detail sections continue below the page H1 at heading level two", () => {
+  assert.equal(detailSectionHeadingTag(false), "h2");
+  assert.equal(detailSectionHeadingTag(true), "h3");
+});
 
 test("detail fields omit unknown facts and retain known zero values", () => {
   const fields = buildDetailFields({ builder: "EMD", model: "Test", years: null, horsepower: 0, axleConfiguration: null, tractionType: "AC", productionCount: null });
   assert.deepEqual(fields, [{ label: "Horsepower", value: "0" }, { label: "Traction", value: "AC" }]);
+});
+
+test("lineage relationships link to bookmarkable detail URLs", () => {
+  assert.deepEqual(relationshipView({ id: "emd-nw2", builder: "EMD", model: "NW2" }), {
+    label: "EMD NW2",
+    href: "./locomotive.html?id=emd-nw2",
+  });
 });
 
 test("narrative sections preserve separate paragraphs", () => {
