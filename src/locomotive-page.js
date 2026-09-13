@@ -1,7 +1,7 @@
-import { loadData, findDanglingReferences } from "./data.js";
-import { buildPrototypeDetail, formatPrototypeName, prototypePageHeading } from "./model.js";
+import { loadData, findDanglingReferences } from "./data.js?v=timeline-5";
+import { buildPrototypeDetail, formatPrototypeName, prototypePageHeading } from "./model.js?v=timeline-1";
 import { manufacturerViewForPrototype, parsePrototypeId, renderNavigation } from "./navigation.js";
-import { renderDetails } from "./details.js";
+import { renderDetails } from "./details.js?v=timeline-5";
 
 function renderError(main) {
   const section = document.createElement("section"); section.className = "empty-state";
@@ -36,7 +36,11 @@ async function start() {
     const badge = document.createElement("span"); badge.className = `status-badge status-${detail.status}`; badge.textContent = detail.status.replace("_", " ");
     heading.append(eyebrow, title, badge);
     const card = document.createElement("article"); card.className = "detail-card"; renderDetails(card, { ...detail, showHeader: false });
-    section.append(heading, card); main.replaceChildren(section);
+    const timeline = card.querySelector(".service-timeline-prototype");
+    if (timeline) timeline.classList.add("timeline-between-header-card");
+    const hero = document.createElement("div"); hero.className = "locomotive-hero";
+    hero.append(...[heading, timeline].filter(Boolean));
+    section.append(hero, card); main.replaceChildren(section);
   } catch (error) {
     console.error(error); renderLoadError(main);
   }

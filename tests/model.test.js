@@ -104,6 +104,27 @@ test("prototype detail joins class, historical identity, model, and sources", ()
     "rrpicturearchives-cbq-9245",
     "trainpix-bn-nw2",
     "pwrs-bli-nw2-2014",
+    "great-northern-empire-nw2-roster",
+    "american-rails-great-northern-roster",
+    "diesel-shop-cbq-roster",
+    "brhs-diesel-roster",
+    "diesel-shop-northern-pacific-roster",
+    "atsf-nw2-master-roster",
   ]);
   assert.deepEqual(data.sources, originalSources);
+});
+
+test("prototype detail includes sources cited only by service timelines", () => {
+  const detail = buildPrototypeDetail("emd-nw2", {
+    prototypes: [{
+      id: "emd-nw2", collectionRelevance: "historical_only", predecessors: [], successors: [], sourceIds: [],
+      timeline: { manufacturing: { start: 1939, end: 1949, sourceIds: ["manufacturing-source"] }, lineageService: [{ railroadId: "cbq", start: 1940, end: 1970, sourceIds: ["service-source"] }] },
+    }],
+    historicalLocomotives: [{ id: "cbq-9245", prototypeId: "emd-nw2", railroadId: "cbq", sourceIds: [], serviceTimeline: [{ railroadId: "cbq", start: 1946, end: 1970, sourceIds: ["identity-source"] }] }],
+    items: [], orders: [], railroads: [{ id: "cbq", name: "CB&Q" }],
+    sources: [
+      { id: "manufacturing-source" }, { id: "service-source" }, { id: "identity-source" },
+    ],
+  });
+  assert.deepEqual(detail.sources.map(({ id }) => id), ["manufacturing-source", "service-source", "identity-source"]);
 });

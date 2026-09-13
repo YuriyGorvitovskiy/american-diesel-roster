@@ -68,6 +68,9 @@ src/locomotive-page.js     Direct locomotive-detail coordination
 src/data.js                Shared JSON loading and reference diagnostics
 src/navigation.js          URL contract and persistent navigation
 src/model.js               Pure joins and status derivation
+src/timeline.js            Pure chronological timeline view model
+src/timeline-palette.js    Permanent manufacturing and railroad identities
+src/service-timeline.js    Accessible SVG timeline rendering
 src/tree.js                Linked evolution-tree layout and rendering
 src/details.js             Prototype detail rendering
 src/roster.js              Owned/ordered roster rendering
