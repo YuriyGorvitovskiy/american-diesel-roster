@@ -1,5 +1,5 @@
 const paths = {
-  prototypes: "./data/locomotives.json?v=count-1",
+  prototypes: "./data/locomotives.json?v=ge-tree-3",
   items: "./data/collection.json",
   orders: "./data/orders.json",
   railroads: "./data/railroads.json?v=timeline-1",

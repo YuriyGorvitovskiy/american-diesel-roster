@@ -1,8 +1,8 @@
-import { loadData, findDanglingReferences } from "./data.js";
-import { buildRosterRows, derivePrototypeStatus } from "./model.js";
+import { loadData, findDanglingReferences } from "./data.js?v=ge-tree-2";
+import { buildRosterRows, derivePrototypeStatus } from "./model.js?v=order-thumbnails-1";
 import { normalizeView, prototypesForManufacturer, renderNavigation } from "./navigation.js";
-import { renderRoster } from "./roster.js";
-import { renderTree } from "./tree.js";
+import { renderRoster } from "./roster.js?v=order-thumbnails-1";
+import { renderTree } from "./tree.js?v=ge-tree-11";
 
 function heading(eyebrow, title, copy) {
   const wrapper = document.createElement("div"); wrapper.className = "section-heading";
@@ -33,13 +33,14 @@ function renderCollection(main, data) {
 
 function renderManufacturer(main, view, data) {
   const section = document.createElement("section");
-  if (view !== "emd") {
+  if (!["emd", "ge"].includes(view)) {
     section.className = "empty-state";
     section.append(heading("Manufacturer evolution", view.toUpperCase(), "Not yet populated.")); main.append(section); return;
   }
-  section.append(heading("Manufacturer evolution", "EMD evolution tree", "Choose a prototype to open its dedicated historical record."));
+  const manufacturerName = view.toUpperCase();
+  section.append(heading("Manufacturer evolution", `${manufacturerName} evolution tree`, "Choose a prototype to open its dedicated historical record."));
   const tree = document.createElement("div"); tree.className = "tree-viewport"; tree.setAttribute("aria-label", "Locomotive evolution tree");
-  renderTree(tree, { prototypes: prototypesForManufacturer(data.prototypes, view), getStatus: (id) => derivePrototypeStatus(id, data) });
+  renderTree(tree, { prototypes: prototypesForManufacturer(data.prototypes, view), getStatus: (id) => derivePrototypeStatus(id, data), manufacturer: view });
   section.append(tree); main.append(section);
 }
 

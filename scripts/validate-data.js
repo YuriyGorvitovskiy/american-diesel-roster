@@ -49,7 +49,7 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
       if (!sourceIds.has(id)) errors.push(`${kind} "${record.id}" references unknown source "${id}".`);
     }
     for (const image of record.images ?? []) {
-      if (!["collection-model", "historical-prototype"].includes(image.type)) {
+      if (!["collection-model", "manufacturer-product", "historical-prototype"].includes(image.type)) {
         errors.push(`${kind} "${record.id}" has invalid image type "${image.type}".`);
       }
       if (!["local-owner", "remote"].includes(image.storage)) {
@@ -66,7 +66,7 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
         if (image.localPath != null) errors.push(`${kind} "${record.id}" remote image cannot use a localPath.`);
         if (!image.sourcePage?.trim()) errors.push(`${kind} "${record.id}" remote image requires a sourcePage.`);
         if (!image.remoteImageUrl?.trim()) errors.push(`${kind} "${record.id}" remote image requires a remoteImageUrl.`);
-        if (!/^\d{4}-\d{2}-\d{2}$/.test(image.date ?? "")) errors.push(`${kind} "${record.id}" has invalid image date "${image.date}".`);
+        if (image.type === "historical-prototype" && !/^\d{4}-\d{2}-\d{2}$/.test(image.date ?? "")) errors.push(`${kind} "${record.id}" has invalid image date "${image.date}".`);
       }
       for (const id of image.sourceIds ?? []) {
         if (!sourceIds.has(id)) errors.push(`${kind} "${record.id}" image references unknown source "${id}".`);
@@ -129,6 +129,7 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
   for (const order of orders) {
     checkReference(order, "Order", "prototypeId", prototypeIds, "prototype");
     checkReference(order, "Order", "railroadId", railroadIds, "railroad");
+    checkSources(order, "Order");
   }
   for (const railroad of railroads) {
     for (const id of [...(railroad.predecessors ?? []), ...(railroad.successors ?? [])]) {
