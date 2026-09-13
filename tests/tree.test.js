@@ -31,7 +31,7 @@ test("layout edges exactly represent declared successor relationships", () => {
   assert.deepEqual(actual, expected);
 });
 
-test("GE Universal rows branch U23 locomotives below U28", () => {
+test("GE Universal rows place U23 branches below the main progression", () => {
   const layout = layoutTree(data.prototypes, "ge");
   for (const [mainModel, branchModel] of [["U28B", "U23B"], ["U28C", "U23C"]]) {
     const main = layout.nodes.find(({ model }) => model === mainModel);
