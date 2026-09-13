@@ -14,7 +14,7 @@
 
 - Preserve all existing historical facts, collection ownership, orders, IDs, and source provenance.
 - Keep vanilla HTML/CSS/JavaScript and JSON; add no backend, framework, database, dependency, or build step.
-- Top-level navigation order is Collection, EMD, ALCO, GE, BNSF; `/` defaults to Collection.
+- Top-level navigation order is Collection, EMD, ALCO, GE, BNSF; `/` is the introductory home page.
 - EMD lanes remain product series/lineages NW, F, E, GP, SD with the existing designation explanations.
 - Do not populate ALCO or GE, and do not implement the BNSF genealogy or timeline.
 - Tree nodes show model and locale-formatted total production; unknown values use a subtle dash.
@@ -200,8 +200,8 @@ export function renderNavigation(container, activeView) {
 
 - [ ] **Step 4: Replace the long `index.html` body with shared mounts**
 
-Keep the existing header copy and footer, move the legend below the navigation,
-and use:
+Use the compact linked wordmark followed by navigation at the top, keep the
+legend in the footer, and use:
 
 ```html
 <nav id="site-navigation" class="site-nav" aria-label="Primary"></nav>
@@ -211,8 +211,8 @@ and use:
 <script type="module" src="src/app.js"></script>
 ```
 
-Create `locomotive.html` with the same header, navigation, legend, footer, and
-main mount, but load `src/locomotive-page.js`.
+Create `locomotive.html` with the same compact navigation and footer legend plus
+the main mount, but load `src/locomotive-page.js`.
 
 - [ ] **Step 5: Add accepted persistent-navigation and matching legend CSS**
 
@@ -386,7 +386,7 @@ switch (view) {
 }
 ```
 
-The EMD view contains only its heading, designation-preserving tree, legend/note,
+The EMD view contains only its heading, designation-preserving tree and note,
 and no detail card or Collection roster. Empty-state copy must say “Not yet
 populated.” BNSF copy must mention predecessor genealogy, railroad timeline, and
 predecessor-road locomotive purchases.

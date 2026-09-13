@@ -25,8 +25,10 @@ export function buildRosterRows(data) {
     railroadName: railroads.get(record.railroadId)?.name ?? null,
     roadNumber: record.roadNumber ?? null,
     manufacturer: record.manufacturer ?? null,
+    manufacturerUrl: record.manufacturerUrl ?? null,
     livery: record.livery ?? null,
     retailer: record.retailer ?? null,
+    retailerUrl: record.retailerUrl ?? null,
   });
   return [
     ...data.items.map((item) => toRow(item, "collection", "owned")),

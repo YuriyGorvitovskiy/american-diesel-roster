@@ -5,13 +5,30 @@ export function groupRosterRows(rows) {
   };
 }
 
-const COLUMNS = [
+export const rosterColumns = [
   ["prototypeName", "Prototype"],
   ["railroadName", "Railroad"],
+  ["livery", "Livery"],
   ["roadNumber", "Road number"],
   ["manufacturer", "HO manufacturer"],
-  ["livery", "Livery"],
+  ["retailer", "Store"],
 ];
+
+export function rosterRowView(row) {
+  return {
+    prototypeHref: locomotiveUrl(row.prototypeId),
+    manufacturerHref: row.manufacturerUrl ?? null,
+    retailerHref: row.retailerUrl ?? null,
+  };
+}
+
+function externalLink(label, href) {
+  const link = document.createElement("a");
+  link.className = "external-table-link";
+  link.href = href; link.target = "_blank"; link.rel = "noopener noreferrer";
+  link.textContent = label;
+  return link;
+}
 
 function rosterTable(rows, label) {
   const section = document.createElement("section");
@@ -21,7 +38,7 @@ function rosterTable(rows, label) {
   const table = document.createElement("table");
   const head = document.createElement("thead");
   const headRow = document.createElement("tr");
-  for (const [, columnLabel] of COLUMNS) {
+  for (const [, columnLabel] of rosterColumns) {
     const cell = document.createElement("th");
     cell.scope = "col";
     cell.textContent = columnLabel;
@@ -31,10 +48,19 @@ function rosterTable(rows, label) {
   const body = document.createElement("tbody");
   for (const row of rows) {
     const tr = document.createElement("tr");
-    for (const [key, columnLabel] of COLUMNS) {
+    const view = rosterRowView(row);
+    for (const [key, columnLabel] of rosterColumns) {
       const cell = document.createElement("td");
       cell.dataset.label = columnLabel;
-      cell.textContent = row[key] ?? "Unknown";
+      if (key === "prototypeName") {
+        const link = document.createElement("a");
+        link.className = "roster-link"; link.href = view.prototypeHref; link.textContent = row[key];
+        cell.append(link);
+      } else if (key === "manufacturer" && view.manufacturerHref) {
+        cell.append(externalLink(row[key], view.manufacturerHref));
+      } else if (key === "retailer" && view.retailerHref) {
+        cell.append(externalLink(row[key], view.retailerHref));
+      } else cell.textContent = row[key] ?? "Unknown";
       tr.append(cell);
     }
     body.append(tr);
@@ -49,3 +75,4 @@ export function renderRoster(container, rows) {
   const groups = groupRosterRows(rows);
   container.append(rosterTable(groups.owned, "Owned"), rosterTable(groups.ordered, "Ordered / incoming"));
 }
+import { locomotiveUrl } from "./navigation.js";

@@ -103,6 +103,28 @@ later locomotive.
 Do not reintroduce freight-only, passenger-only, road-switcher, or special-duty
 claims as permanent classifications for every member of a lane.
 
+## Navigation and page structure
+
+The root URL is a concise introduction to the purpose of the collection. Its
+wordmark links back home from every view. Persistent top-level navigation is
+Collection, EMD, ALCO, GE, and BNSF; the compact wordmark sits at the left of
+the navigation rather than occupying a separate hero header.
+
+Manufacturer trees remain grouped by product series/lineage. Tree nodes show
+the prototype model and locale-formatted total production count. Collection
+status is communicated primarily through a strong restrained border, light
+background tint, and the matching footer legend rather than repeated visible
+status text. Accessible node labels retain the status meaning.
+
+Locomotive details belong on bookmarkable `locomotive.html?id=<prototype-id>`
+URLs rather than below the tree. Links and native browser history provide normal
+Back/Forward behavior. BNSF genealogy and its railroad timeline belong in a
+separate top-level historical view.
+
+Collection displays only physical models and active orders. Known manufacturer
+and retailer websites may be linked from their names and must open in a new
+browser tab; unknown URLs remain unlinked.
+
 ## Narrative and images
 
 Narrative history may eventually span several paragraphs. JSON arrays are

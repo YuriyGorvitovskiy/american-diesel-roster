@@ -1,4 +1,5 @@
 import { formatPrototypeName } from "./model.js";
+import { locomotiveUrl } from "./navigation.js";
 
 export function displayValue(value) {
   return value == null || value === "" ? "Unknown" : String(value);
@@ -94,7 +95,11 @@ export function showImageFallback(visual, fallback) {
   fallback.hidden = false;
 }
 
-function relationshipGroup(label, records, onSelect) {
+export function relationshipView(prototype) {
+  return { label: formatPrototypeName(prototype), href: locomotiveUrl(prototype.id) };
+}
+
+function relationshipGroup(label, records) {
   const group = document.createElement("div");
   group.className = "relationship-group";
   const heading = document.createElement("h3");
@@ -107,11 +112,11 @@ function relationshipGroup(label, records, onSelect) {
     group.append(empty);
   }
   for (const prototype of records) {
-    const button = document.createElement("button");
-    button.type = "button";
+    const view = relationshipView(prototype);
+    const button = document.createElement("a");
     button.className = "text-button";
-    button.textContent = formatPrototypeName(prototype);
-    button.addEventListener("click", () => onSelect(prototype.id));
+    button.href = view.href;
+    button.textContent = view.label;
     group.append(button);
   }
   return group;
@@ -200,7 +205,7 @@ function detailSection(titleText) {
   return section;
 }
 
-export function renderDetails(container, { prototype, status, related, historicalLocomotives = [], collectionItems = [], sources = [], onSelect }) {
+export function renderDetails(container, { prototype, status, related, historicalLocomotives = [], collectionItems = [], sources = [] }) {
   container.replaceChildren();
   const eyebrow = document.createElement("p");
   eyebrow.className = "eyebrow";
@@ -255,8 +260,8 @@ export function renderDetails(container, { prototype, status, related, historica
   const relationships = document.createElement("div");
   relationships.className = "relationships";
   relationships.append(
-    relationshipGroup("Predecessors", related.predecessors, onSelect),
-    relationshipGroup("Successors", related.successors, onSelect),
+    relationshipGroup("Predecessors", related.predecessors),
+    relationshipGroup("Successors", related.successors),
   );
   container.append(relationships);
 }

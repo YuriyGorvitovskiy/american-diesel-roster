@@ -46,6 +46,9 @@ test("roster joins owned items and orders without combining records", () => {
   assert.equal(rows[0].railroadName, null);
   assert.equal(rows[1].railroadName, "Chicago, Burlington & Quincy");
   assert.equal(rows[2].railroadName, "Chicago, Burlington & Quincy");
+  assert.equal(rows[2].manufacturerUrl, "https://rapidotrains.com/");
+  assert.equal(rows[2].retailerUrl, "https://www.trainworld.com/");
+  assert.ok(rows.every(({ status }) => status !== "historical_only"));
 });
 
 test("prototype naming and relationship lookup use stable IDs", () => {

@@ -12,13 +12,13 @@ collection facts.
 
 The site uses two static HTML entry points and shared vanilla JavaScript:
 
-- `index.html` renders the top-level views. `/` defaults to Collection, while
-  `/?view=emd`, `/?view=alco`, `/?view=ge`, and `/?view=bnsf` select the other
-  tabs.
+- `index.html` renders a concise introduction at `/`. `/?view=collection`,
+  `/?view=emd`, `/?view=alco`, `/?view=ge`, and `/?view=bnsf` select top-level
+  reference views.
 - `locomotive.html?id=<prototype-id>` renders one prototype detail view.
 
-Both entry points use the same site header, persistent navigation, legend, and
-footer. A small shared shell module owns navigation markup and active-state
+Both entry points use the same compact navigation and footer. A small shared
+shell module owns the wordmark, navigation markup, and active-state
 semantics. Page-specific modules render only the main content. This avoids large
 HTML duplication without creating a client-side framework or custom router.
 
@@ -30,8 +30,9 @@ new tab, and bookmarking therefore work without an in-memory navigation stack.
 ## Persistent shell
 
 The navigation order is Collection, EMD, ALCO, GE, BNSF. Collection is the
-default and first tab. The bar sits directly below the site header on every
-view. The current section is identified visually and with `aria-current="page"`.
+first tab. The compact wordmark sits at the far left, links to the introductory
+home page, and is followed by the navigation. The bar is full-width and sticky.
+The current section is identified visually and with `aria-current="page"`.
 On locomotive details, the manufacturer tab is active when it maps to a
 top-level manufacturer view; EMD details therefore keep EMD active.
 
@@ -40,7 +41,7 @@ retained. The accepted prototype establishes these visual decisions:
 
 - four-pixel status borders;
 - very light status-tinted node backgrounds;
-- legend swatches that use the same border thickness, tint, and color;
+- footer legend swatches that use the same border thickness, tint, and color;
 - a restrained underline for the active top-level tab.
 
 The selected/focused state remains independent from status. Keyboard focus uses
@@ -58,6 +59,10 @@ to its prototype detail URL.
 
 Historical-only prototypes never appear as physical collection entries. Wanted
 targets remain outside this initial Collection view.
+
+The Collection column order is prototype, railroad, livery, road number, model
+manufacturer, and store. When a verified manufacturer or retailer URL is known,
+its name links to that external site in a new browser tab.
 
 ### Manufacturer views
 
@@ -117,8 +122,8 @@ data, and collection rows. Small URL helpers build and parse top-level and detai
 URLs so behavior can be tested without a browser framework.
 
 The top-level entry point parses `view`, defaults missing or unknown values to
-Collection, marks the active tab, and dispatches to the Collection, manufacturer,
-or BNSF renderer. The detail entry point parses `id`, resolves that prototype,
+the introductory home page, marks the active tab, and dispatches to the
+Collection, manufacturer, or BNSF renderer. The detail entry point parses `id`, resolves that prototype,
 marks the appropriate manufacturer tab, and renders the existing detail card.
 
 Fetch failures retain a visible local-server instruction. Empty manufacturer
