@@ -9,9 +9,9 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.prototypes.length, 25);
   assert.equal(data.items.length, 2);
   assert.equal(data.orders.length, 2);
-  assert.equal(data.railroads.length, 6);
+  assert.equal(data.railroads.length, 7);
   assert.equal(data.historicalLocomotives.length, 2);
-  assert.equal(data.sources.length, 8);
+  assert.equal(data.sources.length, 14);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
 });
@@ -53,6 +53,55 @@ test("NW2 class, historical locomotive, and HO model remain distinct", async () 
   assert.equal("walthersPartNumber" in item, false);
   assert.deepEqual(item.sourceIds, ["pwrs-bli-nw2-2014"]);
   assert.equal("sourceIds" in item.images[0], false);
+});
+
+test("NW1 timeline stops GN service at the 1953 rebuild and omits non-operators", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const nw1 = data.prototypes.find(({ id }) => id === "emc-nw1");
+  assert.deepEqual(nw1.timeline.lineageService.map(({ railroadId }) => railroadId), [
+    "chicago-burlington-quincy", "great-northern",
+  ]);
+  assert.deepEqual(nw1.timeline.manufacturing, { start: 1937, end: 1939, sourceIds: ["american-rails-early-emc-switchers"] });
+  assert.equal(nw1.timeline.lineageService.find(({ railroadId }) => railroadId === "great-northern").end, 1953);
+});
+
+test("timeline fleet counts use operatedCount only", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const timelineSpans = data.prototypes.flatMap(({ timeline }) => timeline?.lineageService ?? []);
+  assert.equal(timelineSpans.some((span) => "purchasedNewCount" in span), false);
+  const nw1 = data.prototypes.find(({ id }) => id === "emc-nw1");
+  assert.equal(nw1.timeline.lineageService.some((span) => "operatedCount" in span), false);
+  const nw2 = data.prototypes.find(({ id }) => id === "emd-nw2");
+  assert.deepEqual(nw2.timeline.lineageService.map(({ railroadId }) => railroadId), [
+    "chicago-burlington-quincy", "great-northern", "northern-pacific", "burlington-northern", "santa-fe",
+  ]);
+  const np = nw2.timeline.lineageService.find(({ railroadId }) => railroadId === "northern-pacific");
+  assert.equal(np.operatedCount, 7);
+  assert.equal(nw2.timeline.lineageService.find(({ railroadId }) => railroadId === "chicago-burlington-quincy").operatedCount, 46);
+  assert.equal(nw2.timeline.lineageService.find(({ railroadId }) => railroadId === "great-northern").operatedCount, 53);
+  assert.equal(nw2.timeline.lineageService.some(({ railroadId }) => ["spokane-portland-seattle", "bnsf"].includes(railroadId)), false);
+});
+
+test("CB&Q 9245 specific timeline changes identity at the 1970 boundary", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const locomotive = data.historicalLocomotives.find(({ id }) => id === "cbq-9245");
+  assert.deepEqual(locomotive.serviceTimeline, [
+    { railroadId: "chicago-burlington-quincy", roadNumber: "9245", start: 1946, end: 1970, sourceIds: ["rrpicturearchives-cbq-9245"] },
+    { railroadId: "burlington-northern", roadNumber: "542", start: 1970, end: 1983, sourceIds: ["trainpix-bn-nw2"] },
+  ]);
+});
+
+test("service timelines reject reversed spans and unknown nested references", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const broken = structuredClone(data);
+  broken.prototypes.find(({ id }) => id === "emd-nw2").timeline.lineageService[0] = {
+    railroadId: "missing", start: 1970, end: 1940, sourceIds: ["missing"],
+  };
+  broken.historicalLocomotives.find(({ id }) => id === "cbq-9245").serviceTimeline[0].sourceIds = ["missing"];
+  const errors = validateData(broken);
+  assert.ok(errors.some((error) => error.includes("timeline references unknown railroad")));
+  assert.ok(errors.some((error) => error.includes("timeline has reversed span")));
+  assert.ok(errors.filter((error) => error.includes("references unknown source")).length >= 2);
 });
 
 test("duplicate prototype identifiers are rejected", () => {

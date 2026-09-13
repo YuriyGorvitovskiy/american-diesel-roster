@@ -103,6 +103,37 @@ later locomotive.
 Do not reintroduce freight-only, passenger-only, road-switcher, or special-duty
 claims as permanent classifications for every member of a lane.
 
+## Historical timeline visual grammar
+
+Compact locomotive timelines describe real manufacturing, prototype fleet
+service, and—when known—the identity history of a specific real locomotive.
+They never represent an HO collection model or its purchase history. Only
+railroads that actually operated the prototype appear. An aggregate railroad
+bar ends when the prototype leaves service under that identity; a rebuild into
+a different model does not extend the original model's bar. A specific
+historical locomotive may use one outlined continuous row whose pattern changes
+with its railroad identity. Bars use a true chronological scale, and the compact
+legend remains hidden until requested.
+Fleet counts use only `operatedCount`: the verified number of locomotives
+actually operated by that railroad. A purchase total is not substituted when
+acquisitions or inheritance make the operated fleet uncertain. Counts appear in
+the legend, never on timeline bars.
+Manufacturing may show the prototype's verified total production count in the
+legend; this is distinct from railroad `operatedCount`.
+
+Timeline identities are permanent across the project and must not be selected
+again for individual cards. All diagonal patterns use the same angle, stripe
+width, bar height, and border treatment:
+
+- Manufacturing: solid red (`#a92f27`).
+- Great Northern: blue / white (`#255d8f` / `#f7f4e9`).
+- Chicago, Burlington & Quincy: red / white (`#b52d29` / `#f7f4e9`).
+- Northern Pacific: golden yellow / black (`#d7a91e` / `#171814`).
+- Spokane, Portland & Seattle: forest green / yellow (`#236044` / `#e4bd32`).
+- Santa Fe / ATSF: black / white (`#20221f` / `#f7f4e9`).
+- Burlington Northern: bright green / white (`#32a852` / `#f7f4e9`).
+- BNSF: pumpkin orange / black (`#ef7622` / `#171814`).
+
 ## Navigation and page structure
 
 The root URL is a concise introduction to the purpose of the collection. Its

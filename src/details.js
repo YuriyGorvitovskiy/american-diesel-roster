@@ -1,5 +1,6 @@
 import { formatPrototypeName } from "./model.js";
 import { locomotiveUrl } from "./navigation.js";
+import { renderServiceTimeline } from "./service-timeline.js?v=count-2";
 
 export function displayValue(value) {
   return value == null || value === "" ? "Unknown" : String(value);
@@ -223,6 +224,9 @@ export function renderDetails(container, { prototype, status, related, historica
     badge.textContent = status.replace("_", " ");
     container.append(eyebrow, title, badge);
   }
+
+  const serviceTimeline = renderServiceTimeline(prototype, historicalLocomotives);
+  if (serviceTimeline) container.append(serviceTimeline);
 
   renderImageGallery(container, [
     ...historicalLocomotives.flatMap(({ images = [] }) => images),

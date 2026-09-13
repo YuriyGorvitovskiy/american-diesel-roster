@@ -73,6 +73,21 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
       }
     }
   };
+  const checkServiceSpans = (record, kind, spans) => {
+    for (const span of spans ?? []) {
+      if (span.railroadId && !railroadIds.has(span.railroadId)) {
+        errors.push(`${kind} "${record.id}" timeline references unknown railroad "${span.railroadId}".`);
+      }
+      if (!Number.isInteger(span.start) || !Number.isInteger(span.end)) {
+        errors.push(`${kind} "${record.id}" timeline requires integer start and end years.`);
+      } else if (span.start > span.end) {
+        errors.push(`${kind} "${record.id}" timeline has reversed span ${span.start}–${span.end}.`);
+      }
+      for (const id of span.sourceIds ?? []) {
+        if (!sourceIds.has(id)) errors.push(`${kind} "${record.id}" timeline references unknown source "${id}".`);
+      }
+    }
+  };
   for (const prototype of prototypes) {
     if (!["wanted", "historical_only"].includes(prototype.collectionRelevance)) {
       errors.push(`Prototype "${prototype.id}" has invalid collection intent "${prototype.collectionRelevance}".`);
@@ -83,6 +98,8 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
     for (const id of prototype.operatorIds ?? []) {
       if (!railroadIds.has(id)) errors.push(`Prototype "${prototype.id}" references unknown railroad "${id}".`);
     }
+    if (prototype.timeline?.manufacturing) checkServiceSpans(prototype, "Prototype", [prototype.timeline.manufacturing]);
+    checkServiceSpans(prototype, "Prototype", prototype.timeline?.lineageService);
     checkSources(prototype, "Prototype");
   }
   for (const item of items) {
@@ -97,6 +114,7 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
     for (const identity of locomotive.laterIdentities ?? []) {
       if (!railroadIds.has(identity.railroadId)) errors.push(`Historical locomotive "${locomotive.id}" references unknown railroad "${identity.railroadId}".`);
     }
+    checkServiceSpans(locomotive, "Historical locomotive", locomotive.serviceTimeline);
     let previousDate = "";
     for (const event of locomotive.timeline ?? []) {
       const match = /^(\d{4})-(\d{2})$/.exec(event.date ?? "");

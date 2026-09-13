@@ -83,7 +83,10 @@ export function buildPrototypeDetail(prototypeId, data) {
     .map((item) => ({ ...item, railroadName: railroadById.get(item.railroadId)?.name ?? null }));
   const citedIds = new Set([
     ...(prototype.sourceIds ?? []),
+    ...(prototype.timeline?.manufacturing?.sourceIds ?? []),
+    ...(prototype.timeline?.lineageService ?? []).flatMap(({ sourceIds = [] }) => sourceIds),
     ...historicalLocomotives.flatMap(({ sourceIds = [] }) => sourceIds),
+    ...historicalLocomotives.flatMap(({ serviceTimeline = [] }) => serviceTimeline.flatMap(({ sourceIds = [] }) => sourceIds)),
     ...collectionItems.flatMap(({ sourceIds = [] }) => sourceIds),
   ]);
 

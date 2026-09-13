@@ -17,6 +17,9 @@
         { "date": "1965-06", "event": "Photographed at Clyde, Illinois, by Chuck Zeiler on June 27, 1965." },
         { "date": "1965-07", "event": "Traded to EMD for an SW1200." }
       ],
+      "serviceTimeline": [
+        { "railroadId": "chicago-burlington-quincy", "roadNumber": "9201", "start": 1937, "end": 1965, "sourceIds": ["flickr-chuck-zeiler-cbq-9201"] }
+      ],
       "narrative": [
         "CB&Q 9201 was one of two NW1 switchers owned by the Burlington. Built in December 1937 under EMC order E185, serial 776, it remained with the railroad until being traded to EMD in July 1965."
       ],
@@ -54,6 +57,10 @@
         { "date": "1964-10", "event": "Prototype photographed at Eola, Illinois, carrying the “Way of the Zephyrs” slogan." },
         { "date": "1966-01", "event": "Prototype photographed at Eola without the slogan, documenting a later appearance." },
         { "date": "1983-05", "event": "Retired by Burlington Northern as locomotive 542." }
+      ],
+      "serviceTimeline": [
+        { "railroadId": "chicago-burlington-quincy", "roadNumber": "9245", "start": 1946, "end": 1970, "sourceIds": ["rrpicturearchives-cbq-9245"] },
+        { "railroadId": "burlington-northern", "roadNumber": "542", "start": 1970, "end": 1983, "sourceIds": ["trainpix-bn-nw2"] }
       ],
       "narrative": [
         "CB&Q 9245 was built in August 1946 under EMD order E699, serial 3641. Photographs document it carrying the \"Way of the Zephyrs\" slogan in October 1964, matching the general appearance represented by the BLI model. A January 1966 photograph shows it without the slogan, so the documented appearance was time-specific. The locomotive later became Burlington Northern 542 and remained in service until May 1983."
