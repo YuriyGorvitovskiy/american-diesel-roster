@@ -2,7 +2,7 @@
   --paper: #f4f0e7; --surface: #fffdf8; --ink: #20231f; --muted: #6c7068;
   --line: #c8c1b3; --owned: #1f5d48; --ordered: #a85d19; --wanted: #365f87;
   --historical: #777b75; --selected: #d4a72c; --shadow: 0 12px 32px rgb(39 35 25 / 9%);
-  --owned-tint: #edf5f1; --ordered-tint: #fbf1e8; --wanted-tint: #edf3f8; --historical-tint: #f1f2f0;
+  --owned-tint: #edf5f1; --ordered-tint: #fbf1e8; --wanted-tint: #edf3f8; --historical-tint: #e9ebe7;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, sans-serif; }
