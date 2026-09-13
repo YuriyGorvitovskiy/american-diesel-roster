@@ -22,9 +22,24 @@ test("layout gives every prototype a node in ordered branch lanes", () => {
 
 test("layout edges exactly represent declared successor relationships", () => {
   const layout = layoutTree(data.prototypes);
-  const expected = data.prototypes.flatMap((prototype) => prototype.successors.map((target) => `${prototype.id}->${target}`)).sort();
+  const nodeIds = new Set(layout.nodes.map(({ id }) => id));
+  const expected = data.prototypes
+    .filter(({ id }) => nodeIds.has(id))
+    .flatMap((prototype) => prototype.successors.filter((target) => nodeIds.has(target)).map((target) => `${prototype.id}->${target}`))
+    .sort();
   const actual = layout.edges.map(({ sourceId, targetId }) => `${sourceId}->${targetId}`).sort();
   assert.deepEqual(actual, expected);
+});
+
+test("GE Universal rows branch U23 locomotives below U28", () => {
+  const layout = layoutTree(data.prototypes, "ge");
+  for (const [mainModel, branchModel] of [["U28B", "U23B"], ["U28C", "U23C"]]) {
+    const main = layout.nodes.find(({ model }) => model === mainModel);
+    const branch = layout.nodes.find(({ model }) => model === branchModel);
+    assert.equal(branch.x, main.x);
+    assert.ok(branch.y > main.y);
+    assert.equal(layout.edges.find(({ targetId }) => targetId === branch.id).angled, true);
+  }
 });
 
 test("layout skips dangling successor relationships", () => {

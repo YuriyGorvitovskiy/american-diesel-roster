@@ -79,6 +79,154 @@
           "sourceIds": ["rrpicturearchives-cbq-9245"]
         }
       ]
+    },
+    {
+      "id": "cbq-9931b",
+      "prototypeId": "emd-e7",
+      "railroadId": "chicago-burlington-quincy",
+      "roadNumber": "9931B",
+      "builtDate": "1949-03",
+      "serialNumber": "6501",
+      "orderNumber": "E1006",
+      "frameNumber": null,
+      "builtAs": "CB&Q 9931B",
+      "laterIdentities": [{ "railroadId": "burlington-northern", "roadNumber": "9912" }],
+      "retiredDate": "1972-04",
+      "timeline": [
+        { "date": "1949-03", "event": "Built as CB&Q 9931B under EMD order E1006, serial 6501." },
+        { "date": "1970-03", "event": "Became Burlington Northern 9912 in the 1970 merger." },
+        { "date": "1972-04", "event": "Removed from Burlington Northern service." }
+      ],
+      "serviceTimeline": [
+        { "railroadId": "chicago-burlington-quincy", "roadNumber": "9931B", "start": 1949, "end": 1970, "sourceIds": ["rrpicturearchives-cbq-9931b"] },
+        { "railroadId": "burlington-northern", "roadNumber": "9912", "start": 1970, "end": 1972, "sourceIds": ["trainpix-bn-e7a"] }
+      ],
+      "narrative": ["CB&Q 9931B was built in March 1949 under EMD order E1006, serial 6501. It became Burlington Northern 9912 at the 1970 merger and left BN service in April 1972."],
+      "sourceIds": ["rrpicturearchives-cbq-9931b", "trainpix-bn-e7a"],
+      "images": [
+        {
+          "type": "historical-prototype",
+          "localPath": null,
+          "sourcePage": "https://www.rrpicturearchives.net/locomotives/cbq-9931B/100265",
+          "remoteImageUrl": "https://www.rrpicturearchives.net/picturefiles/41410/cbq9931B-bw1.jpg",
+          "caption": "CB&Q E7A 9931B leading westbound Galesburg Local Train 15 east of Naperville, Illinois",
+          "credit": "Chuck Zeiler",
+          "date": "1963-05-16",
+          "storage": "remote",
+          "sourceIds": ["rrpicturearchives-cbq-9931b"]
+        }
+      ]
+    },
+    {
+      "id": "gn-3035",
+      "prototypeId": "emd-gp35",
+      "railroadId": "great-northern",
+      "roadNumber": "3035",
+      "builtDate": "1965-04",
+      "serialNumber": "30123",
+      "orderNumber": null,
+      "frameNumber": null,
+      "builtAs": "Great Northern 3035",
+      "laterIdentities": [{ "railroadId": "burlington-northern", "roadNumber": "2518" }],
+      "retiredDate": "1989-12",
+      "timeline": [
+        { "date": "1965-04", "event": "Built as Great Northern 3035, serial 30123." },
+        { "date": "1970-03", "event": "Became Burlington Northern 2518 in the 1970 merger." },
+        { "date": "1989-12", "event": "Retired as a GP35; rebuilt in March 1990 as GP39M 2881." }
+      ],
+      "serviceTimeline": [
+        { "railroadId": "great-northern", "roadNumber": "3035", "start": 1965, "end": 1970, "sourceIds": ["great-northern-gp35-roster"] },
+        { "railroadId": "burlington-northern", "roadNumber": "2518", "start": 1970, "end": 1989, "sourceIds": ["great-northern-gp35-roster"] }
+      ],
+      "narrative": ["GN 3035 was delivered in April 1965 in the simplified Empire Builder scheme. It became BN 2518 in 1970, was retired as a GP35 in December 1989, and was rebuilt into the distinct GP39M model as BN 2881 in March 1990."],
+      "sourceIds": ["great-northern-gp35-roster", "rrpicturearchives-bn-2518"],
+      "images": [
+        {
+          "type": "historical-prototype",
+          "localPath": null,
+          "sourcePage": "https://www.rrpicturearchives.net/pictures/4726595",
+          "remoteImageUrl": "https://s3.amazonaws.com/rrpa_photos/69984/BN%202518-1.jpg",
+          "caption": "The former Great Northern GP35 3035 as Burlington Northern 2518 at Portland, Oregon",
+          "credit": "Ron Hawkins · RR Picture Archives",
+          "date": "1980-08-17",
+          "storage": "remote",
+          "sourceIds": ["rrpicturearchives-bn-2518"]
+        }
+      ]
+    },
+    {
+      "id": "np-3309",
+      "prototypeId": "ge-u33c",
+      "railroadId": "northern-pacific",
+      "roadNumber": "3309",
+      "builtDate": "1969-07",
+      "serialNumber": "37127",
+      "orderNumber": null,
+      "frameNumber": null,
+      "builtAs": "Northern Pacific 3309",
+      "laterIdentities": [{ "railroadId": "burlington-northern", "roadNumber": "5724" }],
+      "retiredDate": "1984-07",
+      "timeline": [
+        { "date": "1969-07", "event": "Built as Northern Pacific 3309, serial 37127, in a ten-locomotive order." },
+        { "date": "1970-03", "event": "Became Burlington Northern 5724 in the 1970 merger." },
+        { "date": "1984-07", "event": "Retired by Burlington Northern." }
+      ],
+      "serviceTimeline": [
+        { "railroadId": "northern-pacific", "roadNumber": "3309", "start": 1969, "end": 1970, "sourceIds": ["diesel-shop-u33c-roster"] },
+        { "railroadId": "burlington-northern", "roadNumber": "5724", "start": 1970, "end": 1984, "sourceIds": ["rrpicturearchives-np-3309"] }
+      ],
+      "narrative": ["NP 3309 was the last of Northern Pacific’s ten U33Cs, delivered in July 1969. It entered the Burlington Northern roster as 5724 the following year and was retired in July 1984."],
+      "sourceIds": ["diesel-shop-u33c-roster", "rapido-u33c-3309", "rrpicturearchives-np-3309"],
+      "images": [
+        {
+          "type": "historical-prototype",
+          "localPath": null,
+          "sourcePage": "https://www.rrpicturearchives.net/locomotives/np-3309/257426",
+          "remoteImageUrl": "https://www.rrpicturearchives.net/picturefiles/121309/NP%203309%20Cicero%203-27-70.jpg",
+          "caption": "Northern Pacific U33C 3309 at Clyde Yard in Cicero, Illinois",
+          "credit": "Photographer unknown · RR Picture Archives",
+          "date": "1970-03-27",
+          "storage": "remote",
+          "sourceIds": ["rrpicturearchives-np-3309"]
+        }
+      ]
+    },
+    {
+      "id": "gn-2514",
+      "prototypeId": "ge-u25b",
+      "railroadId": "great-northern",
+      "roadNumber": "2514",
+      "builtDate": "1965-04",
+      "serialNumber": "35571",
+      "orderNumber": null,
+      "frameNumber": null,
+      "builtAs": "Great Northern 2514",
+      "laterIdentities": [{ "railroadId": "burlington-northern", "roadNumber": "5414" }],
+      "retiredDate": "1981-05",
+      "timeline": [
+        { "date": "1965-04", "event": "Built as Great Northern 2514, serial 35571." },
+        { "date": "1970-03", "event": "Became Burlington Northern 5414 in the 1970 merger." },
+        { "date": "1981-05", "event": "Retired by Burlington Northern." }
+      ],
+      "serviceTimeline": [
+        { "railroadId": "great-northern", "roadNumber": "2514", "start": 1965, "end": 1970, "sourceIds": ["gnrhs-u25b-models", "bn-u25b-history"] },
+        { "railroadId": "burlington-northern", "roadNumber": "5414", "start": 1970, "end": 1981, "sourceIds": ["bn-u25b-history"] }
+      ],
+      "narrative": ["GN 2514 was built in April 1965, serial 35571, and served in Great Northern’s Havre freight pool. It became BN 5414 in 1970 and was retired in May 1981."],
+      "sourceIds": ["gnrhs-u25b-models", "bn-u25b-history", "rrpicturearchives-bn-5414"],
+      "images": [
+        {
+          "type": "historical-prototype",
+          "localPath": null,
+          "sourcePage": "https://www.rrpicturearchives.net/showPicture.aspx?id=5160427",
+          "remoteImageUrl": "https://s3.amazonaws.com/rrpa_photos/129822/EPSON020%20Edit.JPG",
+          "caption": "The former Great Northern U25B 2514 as Burlington Northern 5414 at Denver, Colorado",
+          "credit": "Jordan collection · RR Picture Archives",
+          "date": "1971-01-01",
+          "storage": "remote",
+          "sourceIds": ["rrpicturearchives-bn-5414"]
+        }
+      ]
     }
   ]
 }

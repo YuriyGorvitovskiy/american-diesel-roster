@@ -6,12 +6,12 @@ import { loadDataFiles, validateData } from "../scripts/validate-data.js";
 test("seed data has valid identifiers and references", async () => {
   const data = await loadDataFiles(new URL("..", import.meta.url));
   assert.deepEqual(validateData(data), []);
-  assert.equal(data.prototypes.length, 25);
+  assert.equal(data.prototypes.length, 57);
   assert.equal(data.items.length, 2);
-  assert.equal(data.orders.length, 2);
+  assert.equal(data.orders.length, 4);
   assert.equal(data.railroads.length, 7);
-  assert.equal(data.historicalLocomotives.length, 2);
-  assert.equal(data.sources.length, 14);
+  assert.equal(data.historicalLocomotives.length, 6);
+  assert.equal(data.sources.length, 39);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
 });
@@ -80,6 +80,8 @@ test("timeline fleet counts use operatedCount only", async () => {
   assert.equal(nw2.timeline.lineageService.find(({ railroadId }) => railroadId === "chicago-burlington-quincy").operatedCount, 46);
   assert.equal(nw2.timeline.lineageService.find(({ railroadId }) => railroadId === "great-northern").operatedCount, 53);
   assert.equal(nw2.timeline.lineageService.some(({ railroadId }) => ["spokane-portland-seattle", "bnsf"].includes(railroadId)), false);
+  const gp35 = data.prototypes.find(({ id }) => id === "emd-gp35");
+  assert.equal(gp35.timeline.lineageService.find(({ railroadId }) => railroadId === "burlington-northern").operatedCount, 79);
 });
 
 test("CB&Q 9245 specific timeline changes identity at the 1970 boundary", async () => {

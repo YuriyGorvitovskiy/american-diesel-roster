@@ -40,10 +40,10 @@ test("prototype intent cannot synthesize physical status", () => {
 
 test("roster joins owned items and orders without combining records", () => {
   const rows = buildRosterRows(data);
-  assert.equal(rows.length, 4);
-  assert.deepEqual(rows.map(({ status }) => status), ["owned", "owned", "ordered", "ordered"]);
-  assert.deepEqual(rows.map(({ sourceType }) => sourceType), ["collection", "collection", "order", "order"]);
-  assert.deepEqual(rows.map(({ prototypeName }) => prototypeName), ["EMD F3", "EMD NW2", "EMD E7", "EMD GP35"]);
+  assert.equal(rows.length, 6);
+  assert.deepEqual(rows.map(({ status }) => status), ["owned", "owned", "ordered", "ordered", "ordered", "ordered"]);
+  assert.deepEqual(rows.map(({ sourceType }) => sourceType), ["collection", "collection", "order", "order", "order", "order"]);
+  assert.deepEqual(rows.map(({ prototypeName }) => prototypeName), ["EMD F3", "EMD NW2", "EMD E7", "EMD GP35", "GE U25B", "GE U33C"]);
   assert.equal(rows[0].railroadName, null);
   assert.equal(rows[1].railroadName, "Chicago, Burlington & Quincy");
   assert.equal(rows[2].railroadName, "Chicago, Burlington & Quincy");

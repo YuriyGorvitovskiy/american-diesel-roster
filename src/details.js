@@ -153,7 +153,12 @@ function renderImageGallery(container, images) {
     }
     const figcaption = document.createElement("figcaption");
     const label = document.createElement("span"); label.className = "image-kind";
-    label.textContent = type === "collection-model" ? "Collection model" : "Historical photograph";
+    const imageLabels = {
+      "collection-model": "Collection model",
+      "manufacturer-product": "Manufacturer product image",
+      "historical-prototype": "Historical photograph",
+    };
+    label.textContent = imageLabels[type] ?? "Reference image";
     const text = document.createElement("span"); text.textContent = caption;
     figcaption.append(label, text);
     const creditText = document.createElement("small"); creditText.textContent = attribution; figcaption.append(creditText);
@@ -166,7 +171,7 @@ function renderImageGallery(container, images) {
     figure.append(visual, figcaption);
     if (storage === "remote") {
       const fallback = document.createElement("div"); fallback.className = "image-fallback"; fallback.hidden = true;
-      const fallbackLabel = document.createElement("strong"); fallbackLabel.textContent = "Historical photograph";
+      const fallbackLabel = document.createElement("strong"); fallbackLabel.textContent = imageLabels[type] ?? "Reference image";
       const fallbackCredit = document.createElement("span"); fallbackCredit.textContent = attribution;
       const fallbackLink = document.createElement("a");
       fallbackLink.href = sourcePage; fallbackLink.target = "_blank"; fallbackLink.rel = "noopener noreferrer";
@@ -210,7 +215,7 @@ function detailSection(titleText, headingTag) {
   return section;
 }
 
-export function renderDetails(container, { prototype, status, related, historicalLocomotives = [], collectionItems = [], sources = [], showHeader = true }) {
+export function renderDetails(container, { prototype, status, related, historicalLocomotives = [], collectionItems = [], orders = [], sources = [], showHeader = true }) {
   container.replaceChildren();
   const sectionHeadingTag = detailSectionHeadingTag(showHeader);
   if (showHeader) {
@@ -231,6 +236,7 @@ export function renderDetails(container, { prototype, status, related, historica
   renderImageGallery(container, [
     ...historicalLocomotives.flatMap(({ images = [] }) => images),
     ...collectionItems.flatMap(({ images = [] }) => images),
+    ...orders.flatMap(({ images = [] }) => images),
   ]);
 
   const fields = buildDetailFields(prototype);

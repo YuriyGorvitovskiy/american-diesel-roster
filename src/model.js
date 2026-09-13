@@ -43,7 +43,9 @@ export function buildRosterRows(data) {
     livery: record.livery ?? null,
     retailer: record.retailer ?? null,
     retailerUrl: record.retailerUrl ?? null,
-    image: (record.images ?? []).find(({ type, storage, localPath }) => type === "collection-model" && storage === "local-owner" && localPath) ?? null,
+    image: (record.images ?? []).find(({ type, storage, localPath, remoteImageUrl }) =>
+      (type === "collection-model" && storage === "local-owner" && localPath)
+      || (type === "manufacturer-product" && storage === "remote" && remoteImageUrl)) ?? null,
   });
   return [
     ...data.items.map((item) => toRow(item, "collection", "owned")),
@@ -81,6 +83,7 @@ export function buildPrototypeDetail(prototypeId, data) {
   const collectionItems = data.items
     .filter((item) => item.prototypeId === prototypeId)
     .map((item) => ({ ...item, railroadName: railroadById.get(item.railroadId)?.name ?? null }));
+  const orders = data.orders.filter((order) => order.prototypeId === prototypeId && order.status === "ordered");
   const citedIds = new Set([
     ...(prototype.sourceIds ?? []),
     ...(prototype.timeline?.manufacturing?.sourceIds ?? []),
@@ -88,6 +91,7 @@ export function buildPrototypeDetail(prototypeId, data) {
     ...historicalLocomotives.flatMap(({ sourceIds = [] }) => sourceIds),
     ...historicalLocomotives.flatMap(({ serviceTimeline = [] }) => serviceTimeline.flatMap(({ sourceIds = [] }) => sourceIds)),
     ...collectionItems.flatMap(({ sourceIds = [] }) => sourceIds),
+    ...orders.flatMap(({ sourceIds = [] }) => sourceIds),
   ]);
 
   return {
@@ -96,6 +100,7 @@ export function buildPrototypeDetail(prototypeId, data) {
     related: getRelatedPrototypes(prototype, prototypeById),
     historicalLocomotives,
     collectionItems,
+    orders,
     sources: (data.sources ?? []).filter(({ id }) => citedIds.has(id)),
   };
 }

@@ -15,11 +15,16 @@ export const rosterColumns = [
 ];
 
 export function rosterRowView(row) {
+  const image = row.image ? {
+    src: row.image.remoteImageUrl ?? row.image.localPath,
+    alt: row.image.credit ? `${row.image.caption}. Credit: ${row.image.credit}` : row.image.caption,
+  } : null;
+  if (image && row.image.sourcePage) image.sourcePage = row.image.sourcePage;
   return {
     prototypeHref: locomotiveUrl(row.prototypeId),
     manufacturerHref: row.manufacturerUrl ?? null,
     retailerHref: row.retailerUrl ?? null,
-    image: row.image ? { src: row.image.localPath, alt: row.image.caption } : null,
+    image,
   };
 }
 
@@ -57,7 +62,11 @@ function rosterTable(rows, label) {
         if (view.image) {
           const image = document.createElement("img"); image.className = "roster-thumbnail";
           image.src = view.image.src; image.alt = view.image.alt; image.loading = "lazy";
-          cell.append(image);
+          if (view.image.sourcePage) {
+            const imageLink = document.createElement("a");
+            imageLink.href = view.image.sourcePage; imageLink.target = "_blank"; imageLink.rel = "noopener noreferrer";
+            imageLink.append(image); cell.append(imageLink);
+          } else cell.append(image);
         }
         const link = document.createElement("a");
         link.className = "roster-link"; link.href = view.prototypeHref; link.textContent = row[key];

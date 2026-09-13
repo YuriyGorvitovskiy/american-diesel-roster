@@ -1,19 +1,35 @@
 {
   "orders": [
     {
-      "id": "order-gn-gp35-unknown",
+      "id": "order-gn-gp35-3035",
       "prototypeId": "emd-gp35",
       "railroadId": "great-northern",
-      "roadNumber": null,
-      "manufacturer": null,
-      "manufacturerSku": null,
-      "livery": "Orange and green",
-      "retailer": null,
+      "roadNumber": "3035",
+      "manufacturer": "Broadway Limited",
+      "manufacturerUrl": "https://broadway-limited.com/",
+      "manufacturerSku": "8895",
+      "livery": "Simplified Empire Builder",
+      "retailer": "Trainz",
+      "retailerUrl": "https://www.trainz.com/",
       "orderDate": null,
       "expectedDate": null,
       "price": null,
       "deposit": null,
       "notes": null,
+      "sourceIds": ["broadway-limited-gp35-8895-product-image"],
+      "images": [
+        {
+          "type": "manufacturer-product",
+          "localPath": null,
+          "sourcePage": "https://broadway-limited.com/cdn/shop/files/8895_1.jpg?v=1723826406&width=1800",
+          "remoteImageUrl": "https://broadway-limited.com/cdn/shop/files/8895_1.jpg?v=1723826406&width=1800",
+          "caption": "Broadway Limited product image used temporarily while the ordered GP35 is awaiting delivery",
+          "credit": "Broadway Limited Imports",
+          "date": null,
+          "storage": "remote",
+          "sourceIds": ["broadway-limited-gp35-8895-product-image"]
+        }
+      ],
       "status": "ordered"
     },
     {
@@ -23,7 +39,7 @@
       "roadNumber": "9931B",
       "manufacturer": "Rapido",
       "manufacturerUrl": "https://rapidotrains.com/",
-      "manufacturerSku": null,
+      "manufacturerSku": "29515",
       "livery": "Silver / Zephyr",
       "retailer": "TrainWorld",
       "retailerUrl": "https://www.trainworld.com/",
@@ -32,6 +48,84 @@
       "price": null,
       "deposit": { "amount": 0, "currency": "USD" },
       "notes": "Ordered model is an E7A variant.",
+      "sourceIds": ["rapido-e7-cbq-product-image"],
+      "images": [
+        {
+          "type": "manufacturer-product",
+          "localPath": null,
+          "sourcePage": "https://rapidotrains.com/media/catalog/product/cache/d032d9b21739d3cd21fbbf24c1430fc0/2/9/29012_cb_q_5_4.jpg",
+          "remoteImageUrl": "https://rapidotrains.com/media/catalog/product/cache/d032d9b21739d3cd21fbbf24c1430fc0/2/9/29012_cb_q_5_4.jpg",
+          "caption": "Rapido product image used temporarily while the ordered E7A is awaiting delivery",
+          "credit": "Rapido Trains",
+          "date": null,
+          "storage": "remote",
+          "sourceIds": ["rapido-e7-cbq-product-image"]
+        }
+      ],
+      "status": "ordered"
+    },
+    {
+      "id": "order-np-u33c-3309",
+      "prototypeId": "ge-u33c",
+      "railroadId": "northern-pacific",
+      "roadNumber": "3309",
+      "manufacturer": "Rapido",
+      "manufacturerUrl": "https://rapidotrains.com/",
+      "manufacturerSku": "43515",
+      "livery": "Black with yellow stripe",
+      "retailer": "Factory Direct Hobbies",
+      "retailerUrl": "https://factorydirecthobbies.com/",
+      "orderDate": null,
+      "expectedDate": null,
+      "price": null,
+      "deposit": null,
+      "notes": "Preorder.",
+      "sourceIds": ["rapido-u33c-np-product-image"],
+      "images": [
+        {
+          "type": "manufacturer-product",
+          "localPath": null,
+          "sourcePage": "https://rapidotrains.com/media/catalog/product/cache/29f372195088cd21067ad2e461ec6a6e/4/3/43013-u33c-np_11.jpg",
+          "remoteImageUrl": "https://rapidotrains.com/media/catalog/product/cache/29f372195088cd21067ad2e461ec6a6e/4/3/43013-u33c-np_11.jpg",
+          "caption": "Rapido product image used temporarily while Northern Pacific U33C 3309 is awaiting delivery",
+          "credit": "Rapido Trains",
+          "date": null,
+          "storage": "remote",
+          "sourceIds": ["rapido-u33c-np-product-image"]
+        }
+      ],
+      "status": "ordered"
+    },
+    {
+      "id": "order-gn-u25b-2514",
+      "prototypeId": "ge-u25b",
+      "railroadId": "great-northern",
+      "roadNumber": "2514",
+      "manufacturer": "Rapido",
+      "manufacturerUrl": "https://rapidotrains.com/",
+      "manufacturerSku": "35577",
+      "livery": "Big Sky Blue",
+      "retailer": "Factory Direct Hobbies",
+      "retailerUrl": "https://factorydirecthobbies.com/",
+      "orderDate": null,
+      "expectedDate": null,
+      "price": null,
+      "deposit": null,
+      "notes": "Preorder.",
+      "sourceIds": ["rapido-u25b-gn-product-image"],
+      "images": [
+        {
+          "type": "manufacturer-product",
+          "localPath": null,
+          "sourcePage": "https://rapidotrains.com/media/catalog/product/cache/29f372195088cd21067ad2e461ec6a6e/0/3/035501_2.jpg",
+          "remoteImageUrl": "https://rapidotrains.com/media/catalog/product/cache/29f372195088cd21067ad2e461ec6a6e/0/3/035501_2.jpg",
+          "caption": "Rapido product image used temporarily while the preordered U25B is awaiting delivery",
+          "credit": "Rapido Trains",
+          "date": null,
+          "storage": "remote",
+          "sourceIds": ["rapido-u25b-gn-product-image"]
+        }
+      ],
       "status": "ordered"
     }
   ]
