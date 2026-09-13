@@ -114,6 +114,12 @@ a different model does not extend the original model's bar. A specific
 historical locomotive may use one outlined continuous row whose pattern changes
 with its railroad identity. Bars use a true chronological scale, and the compact
 legend remains hidden until requested.
+Fleet counts use only `operatedCount`: the verified number of locomotives
+actually operated by that railroad. A purchase total is not substituted when
+acquisitions or inheritance make the operated fleet uncertain. Counts appear in
+the legend, never on timeline bars.
+Manufacturing may show the prototype's verified total production count in the
+legend; this is distinct from railroad `operatedCount`.
 
 Timeline identities are permanent across the project and must not be selected
 again for individual cards. All diagonal patterns use the same angle, stripe

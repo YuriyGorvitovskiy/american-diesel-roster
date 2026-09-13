@@ -65,15 +65,20 @@ test("NW1 timeline stops GN service at the 1953 rebuild and omits non-operators"
   assert.equal(nw1.timeline.lineageService.find(({ railroadId }) => railroadId === "great-northern").end, 1953);
 });
 
-test("NW2 timeline includes only verified operators and preserves NP count semantics", async () => {
+test("timeline fleet counts use operatedCount only", async () => {
   const data = await loadDataFiles(new URL("..", import.meta.url));
+  const timelineSpans = data.prototypes.flatMap(({ timeline }) => timeline?.lineageService ?? []);
+  assert.equal(timelineSpans.some((span) => "purchasedNewCount" in span), false);
+  const nw1 = data.prototypes.find(({ id }) => id === "emc-nw1");
+  assert.equal(nw1.timeline.lineageService.some((span) => "operatedCount" in span), false);
   const nw2 = data.prototypes.find(({ id }) => id === "emd-nw2");
   assert.deepEqual(nw2.timeline.lineageService.map(({ railroadId }) => railroadId), [
     "chicago-burlington-quincy", "great-northern", "northern-pacific", "burlington-northern", "santa-fe",
   ]);
   const np = nw2.timeline.lineageService.find(({ railroadId }) => railroadId === "northern-pacific");
   assert.equal(np.operatedCount, 7);
-  assert.equal("purchasedNewCount" in np, false);
+  assert.equal(nw2.timeline.lineageService.find(({ railroadId }) => railroadId === "chicago-burlington-quincy").operatedCount, 46);
+  assert.equal(nw2.timeline.lineageService.find(({ railroadId }) => railroadId === "great-northern").operatedCount, 53);
   assert.equal(nw2.timeline.lineageService.some(({ railroadId }) => ["spokane-portland-seattle", "bnsf"].includes(railroadId)), false);
 });
 

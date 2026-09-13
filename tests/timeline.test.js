@@ -37,6 +37,18 @@ test("NW2 view preserves accepted row order and continuous specific identity", a
     { identityId: "chicago-burlington-quincy", start: 1946, end: 1970 },
     { identityId: "burlington-northern", start: 1970, end: 1983 },
   ]);
+  assert.equal(view.rows.find(({ identityId }) => identityId === "chicago-burlington-quincy").detail.includes("46"), false);
+  assert.deepEqual(view.legend.find(({ identityId }) => identityId === "manufacturing"), {
+    identityId: "manufacturing",
+    label: "Manufacturing",
+    productionCount: 1145,
+  });
+  assert.deepEqual(view.legend.find(({ identityId }) => identityId === "chicago-burlington-quincy"), {
+    identityId: "chicago-burlington-quincy",
+    label: "Chicago, Burlington & Quincy",
+    operatedCount: 46,
+  });
+  assert.equal(view.legendNote, "Count = locomotives operated");
 });
 
 test("timeline renders without a specific historical locomotive", async () => {

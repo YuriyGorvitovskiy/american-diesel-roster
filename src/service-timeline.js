@@ -1,4 +1,4 @@
-import { buildTimelineView } from "./timeline.js";
+import { buildTimelineView } from "./timeline.js?v=count-2";
 import { TIMELINE_PATTERN_PALETTE as palette } from "./timeline-palette.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
@@ -36,15 +36,16 @@ function addBar(svg, span, y, scale) {
   const title = svgElement("title"); title.textContent = span.detail; rect.append(title); svg.append(rect);
 }
 
-function legend(ids, hasSpecific) {
+function legend(entries, hasSpecific, note) {
   const wrapper = document.createElement("div"); wrapper.className = "service-timeline-tools";
   const button = document.createElement("button"); button.type = "button"; button.className = "service-timeline-info";
   button.textContent = "i"; button.setAttribute("aria-label", "Show timeline legend"); button.setAttribute("aria-expanded", "false");
   const popup = document.createElement("div"); popup.className = "service-timeline-legend"; popup.hidden = true;
-  for (const id of ids) {
+  for (const { identityId: id, label: identityLabel, operatedCount, productionCount } of entries) {
     const row = document.createElement("div");
     const sample = document.createElement("span"); sample.style.background = `repeating-linear-gradient(125deg, ${palette[id].colors[0]} 0 11px, ${palette[id].colors[1]} 11px 22px)`;
-    const label = document.createElement("span"); label.textContent = palette[id].label;
+    const count = productionCount ?? operatedCount;
+    const label = document.createElement("span"); label.textContent = count == null ? identityLabel : `${identityLabel} — ${count.toLocaleString("en-US")}`;
     row.append(sample, label); popup.append(row);
   }
   if (hasSpecific) {
@@ -53,6 +54,8 @@ function legend(ids, hasSpecific) {
     const label = document.createElement("span"); label.textContent = "Specific historical locomotive";
     row.append(sample, label); popup.append(row);
   }
+  const noteElement = document.createElement("p"); noteElement.className = "service-timeline-legend-note"; noteElement.textContent = note;
+  popup.append(noteElement);
   button.addEventListener("click", () => {
     popup.hidden = !popup.hidden;
     button.setAttribute("aria-expanded", String(!popup.hidden));
@@ -86,5 +89,5 @@ export function renderServiceTimeline(prototype, historicalLocomotives = []) {
     svg.append(svgElement("rect", { x: scale(first.start) - 3, y: specificY - 3, width: scale(last.end) - scale(first.start) + 6, height: 18, rx: 2, class: "service-timeline-specific-frame" }));
     view.specific.segments.forEach((span) => addBar(svg, span, specificY, scale));
   }
-  figure.append(svg, legend(usedIds, Boolean(view.specific))); return figure;
+  figure.append(svg, legend(view.legend, Boolean(view.specific), view.legendNote)); return figure;
 }

@@ -6,10 +6,7 @@ export function yearFraction(year, bounds) {
 
 function rowDetail(prototype, span, identityId) {
   const identity = TIMELINE_PATTERN_PALETTE[identityId]?.label ?? identityId;
-  const count = span.purchasedNewCount != null
-    ? `${span.purchasedNewCount} purchased`
-    : span.operatedCount != null ? `${span.operatedCount} operated` : null;
-  return [identity, prototype.model, count, `${span.approximateStart ? "c. " : ""}${span.start}–${span.end}`]
+  return [identity, prototype.model, `${span.approximateStart ? "c. " : ""}${span.start}–${span.end}`]
     .filter(Boolean).join(" · ");
 }
 
@@ -46,5 +43,11 @@ export function buildTimelineView(prototype, historicalLocomotives = []) {
   };
   const ticks = [];
   for (let year = bounds.start; year <= bounds.end; year += 10) ticks.push(year);
-  return { bounds, ticks, rows: [manufacturing, ...service], specific };
+  const legend = [manufacturing, ...service].map(({ identityId, operatedCount }) => ({
+    identityId,
+    label: TIMELINE_PATTERN_PALETTE[identityId].label,
+    ...(identityId === "manufacturing" && prototype.productionCount != null ? { productionCount: prototype.productionCount } : {}),
+    ...(operatedCount != null ? { operatedCount } : {}),
+  }));
+  return { bounds, ticks, rows: [manufacturing, ...service], specific, legend, legendNote: "Count = locomotives operated" };
 }

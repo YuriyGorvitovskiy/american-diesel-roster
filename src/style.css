@@ -68,6 +68,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--selected); outl
 .service-timeline-legend > div > span:first-child { height: 12px; border: 1px solid #484941; border-radius: 1px; }
 .service-timeline-legend .service-timeline-specific-key { margin-top: 9px; padding-top: 8px; border-top: 1px solid var(--line); }
 .service-timeline-legend .service-timeline-specific-key > span:first-child { height: 14px; border: 1px solid #555850; background: transparent; }
+.service-timeline-legend-note { margin: 9px 0 0; padding-top: 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: .68rem; }
 .detail-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 26px 0 30px; }
 .detail-image { min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
 .detail-image-link { display: block; color: inherit; }

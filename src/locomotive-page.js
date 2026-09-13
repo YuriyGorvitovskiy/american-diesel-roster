@@ -1,7 +1,7 @@
-import { loadData, findDanglingReferences } from "./data.js?v=timeline-5";
+import { loadData, findDanglingReferences } from "./data.js?v=timeline-7";
 import { buildPrototypeDetail, formatPrototypeName, prototypePageHeading } from "./model.js?v=timeline-1";
 import { manufacturerViewForPrototype, parsePrototypeId, renderNavigation } from "./navigation.js";
-import { renderDetails } from "./details.js?v=timeline-5";
+import { renderDetails } from "./details.js?v=timeline-8";
 
 function renderError(main) {
   const section = document.createElement("section"); section.className = "empty-state";
