@@ -52,11 +52,11 @@ export const MANUFACTURER_PROTOTYPES = {
         models: [
           model("SW1", 661, "1939–1953", ["GN", "CB&Q"], SOURCES.emdSwitchers),
           model("SW7", 489, "1949–1951", ["ATSF", "NP", "CB&Q", "SLSF"], SOURCES.emdSwitchers),
-          model("SW8", 374, "1950–1954", ["GN", "BN"], "https://www.american-rails.com/11371.html", null,
-            "Corporate total: 309 EMD-built plus 65 GMD-built; seven rebuilds are excluded."),
+          model("SW8", 302, "1950–1954", ["GN", "BN"], "https://www.american-rails.com/11371.html", null,
+            "302 new locomotives were EMD-built; seven rebuilds and 65 GMD-built units are excluded."),
           model("SW9", 808, "1951–1953", ["GN", "NP", "CB&Q", "SP&S", "SLSF"], SOURCES.emdSwitchers),
-          model("SW1200", 1056, "1954–1966", ["ATSF", "GN", "NP", "CB&Q"], SOURCES.emdSwitchers, null,
-            "Corporate total includes EMD exports and GMD production; railroad rebuilds are excluded."),
+          model("SW1200", 764, "1954–1966", ["ATSF", "GN", "NP", "CB&Q"], "https://www.american-rails.com/19486.html", null,
+            "EMD built 732 domestic and 32 export units; one rebuild and 274 GMD-built units are excluded."),
         ],
       },
       {

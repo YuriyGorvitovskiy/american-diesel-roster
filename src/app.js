@@ -4,7 +4,7 @@ import { normalizeView, prototypesForManufacturer, renderNavigation } from "./na
 import { renderRoster } from "./roster.js?v=order-thumbnails-1";
 import { renderTree } from "./tree.js?v=ge-tree-11";
 import { renderAlcoPrototype } from "./alco-prototype.js?v=premerge-2";
-import { renderManufacturerPrototype } from "./manufacturer-prototype.js?v=premerge-3";
+import { renderManufacturerPrototype } from "./manufacturer-prototype.js?v=premerge-4";
 
 function heading(eyebrow, title, copy) {
   const wrapper = document.createElement("div"); wrapper.className = "section-heading";

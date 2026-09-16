@@ -36,6 +36,8 @@ test("EMD switcher generations stay chronological and include BN-family omission
 
   assert.deepEqual(nw.models.map(({ model }) => model), ["NW1", "NW2", "NW3", "NW5"]);
   assert.deepEqual(earlySw.models.map(({ model }) => model), ["SW1", "SW7", "SW8", "SW9", "SW1200"]);
+  assert.equal(earlySw.models.find(({ model }) => model === "SW8").production, 302);
+  assert.equal(earlySw.models.find(({ model }) => model === "SW1200").production, 764);
   assert.deepEqual(lateSw.models.map(({ model }) => model), ["SW1000", "SW1500"]);
   assert.equal(lateSw.models.find(({ model }) => model === "SW1000").production, 119);
 });
