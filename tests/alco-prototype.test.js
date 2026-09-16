@@ -1,10 +1,13 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 import {
   ALCO_PRODUCTION_CAPTION,
   ALCO_PROTOTYPE_FAMILIES,
+  resolveAlcoPrototypeStatus,
 } from "../src/alco-prototype.js";
+import { derivePrototypeStatus } from "../src/model.js";
 
 test("ALCO evolution nodes use ALCO-built production counts only", () => {
   const productionByModel = Object.fromEntries(
@@ -44,4 +47,21 @@ test("ALCO evolution nodes use ALCO-built production counts only", () => {
 
 test("ALCO evolution caption states the ALCO-only convention", () => {
   assert.equal(ALCO_PRODUCTION_CAPTION, "Number in each node = ALCO-built production.");
+});
+
+test("ALCO node status is derived from shared project data", async () => {
+  const [locomotives, collection, orders] = await Promise.all([
+    readFile(new URL("../data/locomotives.json", import.meta.url), "utf8").then(JSON.parse),
+    readFile(new URL("../data/collection.json", import.meta.url), "utf8").then(JSON.parse),
+    readFile(new URL("../data/orders.json", import.meta.url), "utf8").then(JSON.parse),
+  ]);
+  const data = {
+    prototypes: locomotives.prototypes,
+    items: collection.items,
+    orders: orders.orders,
+  };
+  const getStatus = (id) => derivePrototypeStatus(id, data);
+
+  assert.equal(resolveAlcoPrototypeStatus("RS-3", getStatus), "wanted");
+  assert.equal(resolveAlcoPrototypeStatus("C425", getStatus), "historical_only");
 });

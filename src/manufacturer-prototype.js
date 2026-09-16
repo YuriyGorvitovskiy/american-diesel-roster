@@ -3,13 +3,12 @@
 // SP&S, SLSF/Frisco, BN, and BNSF. It is a lineage, not a fixed predecessor count.
 // Connecting lines group a product family; they do not assert direct ancestry.
 //
-// EMD convention: totals follow the EMC/EMD corporate product lineage, including
-// demonstrators, export orders, and Canadian GMD/GMDD production carrying the same
-// model designation. License-built derivatives and railroad rebuild classes are
-// excluded. EMC-era production is included because EMC is EMD's direct corporate
-// predecessor. This convention prevents U.S.-only and corporate totals from being
-// mixed silently. Model-specific variants (for example SD75M versus SD75I) remain
-// separate even when a source also publishes a combined series total.
+// EMD convention: totals normally count EMD-built production, including EMD
+// demonstrators and export orders. EMC-era production is included because EMC is
+// EMD's direct corporate predecessor. GMD/GMDD production is included only for
+// explicitly noted EMD-lineage exceptions such as SD75M and SD75I. License-built
+// derivatives and railroad rebuild classes are excluded. Model-specific variants
+// remain separate even when a source also publishes a combined series total.
 //
 // GE convention: totals follow GE Transportation model production, including
 // demonstrators and exports, but not license-built derivatives. Evolution-series
@@ -30,13 +29,14 @@ const SOURCES = {
   geModern: "https://www.american-rails.com/es44ac.html",
 };
 
-const model = (name, production, years, railroadIds, source, id = null, notes = null) => ({
-  model: name, production, years, railroadIds, source, id, notes,
+const model = (name, production, years, railroadIds, source, id = null, notes = null, productionIncludesGmdd = false) => ({
+  model: name, production, years, railroadIds, source, id, notes, productionIncludesGmdd,
 });
 
 export const MANUFACTURER_PROTOTYPES = {
   emd: {
     caption: "Number in each node = EMD-built production.",
+    productionNote: "* GMD/GMDD-built production is included where noted for EMD-lineage models.",
     families: [
       {
         id: "emd-nw-switchers", label: "NW", subtitle: "Early switchers",
@@ -180,15 +180,15 @@ export const MANUFACTURER_PROTOTYPES = {
         ],
       },
       {
-        id: "emd-sd-modern", label: "SD · LATE / AC", subtitle: "AC-traction road power",
+        id: "emd-sd-modern", label: "SD · LATE", subtitle: "Late high-horsepower",
         models: [
           model("SD50", 361, "1981–1985", ["BNSF"], SOURCES.emdRoad),
           model("SD60M", 460, "1989–1993", ["BN"], "https://www.thedieselshop.us/BN.HTML"),
           model("SD70MAC", 1109, "1993–2007", ["BN", "BNSF"], "https://www.irm.org/in-the-news/sd70mac-acquired-by-irm/"),
           model("SD75M", 76, "1995–1996", ["ATSF", "BNSF"], "https://www.american-rails.com/946503.html", null,
-            "All 76 were GMDD-built; the separate SD75I total is not included."),
+            "All 76 were GMDD-built; the separate SD75I total is not included.", true),
           model("SD75I", 207, "1996–1999", ["BNSF"], "https://www.american-rails.com/946503.html", null,
-            "BNSF received 26 directly; all 207 corporate-line units were GMDD-built."),
+            "BNSF received 26 directly; all 207 corporate-line units were GMDD-built.", true),
           model("SD70ACe", 2134, "2004–2015", ["BNSF"], "https://en.wikipedia.org/wiki/EMD_SD70_series"),
         ],
       },
@@ -261,7 +261,8 @@ export const MANUFACTURER_PROTOTYPES = {
       },
       {
         id: "ge-ac", label: "AC", subtitle: "AC-traction road power",
-        models: [model("AC4400CW", 3018, "1993–2004", ["BNSF"], "https://en.wikipedia.org/wiki/List_of_GE_locomotives")],
+        models: [model("AC4400CW", 3018, "1993–2004", ["BNSF"], "https://www.trains.com/wp-content/uploads/2022/10/BNSF-2022-Locomotive-Roster.pdf", null,
+          "BNSF rostered AC4400CW 5600–5717 and warranty-protection units 5838–5840.")],
       },
       {
         id: "ge-evolution", label: "Evolution", subtitle: "GEVO road locomotives",
@@ -319,7 +320,7 @@ export function renderManufacturerPrototype(container, { manufacturer, getStatus
       link.href = `./locomotive.html?id=${id}`;
       link.setAttribute("aria-label", `${entry.model}, ${entry.production.toLocaleString("en-US")} produced, ${status.replaceAll("_", " ")}`);
       const name = document.createElement("strong");
-      name.textContent = entry.model;
+      name.textContent = `${entry.model}${entry.productionIncludesGmdd ? "*" : ""}`;
       const count = document.createElement("small");
       count.textContent = entry.production.toLocaleString("en-US");
       link.append(name, count);
@@ -331,7 +332,10 @@ export function renderManufacturerPrototype(container, { manufacturer, getStatus
 
   const note = document.createElement("p");
   note.className = "tree-note";
-  note.textContent = page.caption;
+  note.append(page.caption);
+  if (page.productionNote) {
+    note.append(document.createElement("br"), page.productionNote);
+  }
   container.append(grid, note);
 
   const alignFamilyColumns = () => {

@@ -90,6 +90,30 @@ test("EMD SD rows follow product chronology inside each generation", () => {
     families.flatMap(({ models }) => models).find(({ model }) => model === "SD75I").production,
     207,
   );
+  const late = families.find(({ id }) => id === "emd-sd-modern");
+  assert.equal(late.label, "SD · LATE");
+  assert.equal(late.subtitle, "Late high-horsepower");
+});
+
+test("EMD page visibly documents its GMD and GMDD production exception", () => {
+  const page = MANUFACTURER_PROTOTYPES.emd;
+  const exceptions = page.families.flatMap(({ models }) => models)
+    .filter(({ productionIncludesGmdd }) => productionIncludesGmdd);
+
+  assert.equal(page.caption, "Number in each node = EMD-built production.");
+  assert.equal(page.productionNote, "* GMD/GMDD-built production is included where noted for EMD-lineage models.");
+  assert.deepEqual(exceptions.map(({ model }) => model), ["SD75M", "SD75I"]);
+  assert.ok(exceptions.every(({ notes }) => notes.includes("GMDD-built")));
+});
+
+test("BNSF operation explicitly establishes AC4400CW eligibility", () => {
+  const ac4400cw = MANUFACTURER_PROTOTYPES.ge.families
+    .flatMap(({ models }) => models)
+    .find(({ model }) => model === "AC4400CW");
+
+  assert.deepEqual(ac4400cw.railroadIds, ["BNSF"]);
+  assert.equal(ac4400cw.source, "https://www.trains.com/wp-content/uploads/2022/10/BNSF-2022-Locomotive-Roster.pdf");
+  assert.match(ac4400cw.notes, /5600–5717.*5838–5840/);
 });
 
 test("EMD generations stay in compact, independently readable rows", () => {

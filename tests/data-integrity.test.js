@@ -6,7 +6,7 @@ import { loadDataFiles, validateData } from "../scripts/validate-data.js";
 test("seed data has valid identifiers and references", async () => {
   const data = await loadDataFiles(new URL("..", import.meta.url));
   assert.deepEqual(validateData(data), []);
-  assert.equal(data.prototypes.length, 57);
+  assert.equal(data.prototypes.length, 58);
   assert.equal(data.items.length, 3);
   assert.equal(data.orders.length, 4);
   assert.equal(data.railroads.length, 7);

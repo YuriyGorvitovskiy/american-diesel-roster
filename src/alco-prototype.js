@@ -69,19 +69,23 @@ export const ALCO_PROTOTYPE_FAMILIES = [
   },
 ];
 
-function prototypeId(model) {
+export function alcoPrototypeId(model) {
   return `alco-${model.toLowerCase().replaceAll("-", "")}`;
+}
+
+export function resolveAlcoPrototypeStatus(model, getStatus) {
+  return getStatus(alcoPrototypeId(model));
 }
 
 export function findAlcoPrototype(id) {
   for (const family of ALCO_PROTOTYPE_FAMILIES) {
-    const entry = family.models.find(([model]) => prototypeId(model) === id);
+    const entry = family.models.find(([model]) => alcoPrototypeId(model) === id);
     if (entry) return { id, builder: "ALCO", model: entry[0] };
   }
   return null;
 }
 
-export function renderAlcoPrototype(container) {
+export function renderAlcoPrototype(container, { getStatus }) {
   container.replaceChildren();
   const grid = document.createElement("div");
   grid.className = "alco-family-grid";
@@ -102,10 +106,12 @@ export function renderAlcoPrototype(container) {
     sequence.className = pairedFamily ? "alco-family-pairs" : "alco-family-sequence";
 
     const createNode = ([model, production]) => {
+      const id = alcoPrototypeId(model);
+      const status = resolveAlcoPrototypeStatus(model, getStatus);
       const link = document.createElement("a");
-      link.className = `tree-node alco-family-node status-${model === "RS-3" ? "wanted" : "historical_only"}`;
-      link.href = `./locomotive.html?id=${prototypeId(model)}`;
-      link.setAttribute("aria-label", `${model}, ${formatProductionCount(production)} produced`);
+      link.className = `tree-node alco-family-node status-${status}`;
+      link.href = `./locomotive.html?id=${id}`;
+      link.setAttribute("aria-label", `${model}, ${formatProductionCount(production)} produced, ${status.replaceAll("_", " ")}`);
       const name = document.createElement("strong");
       name.textContent = model;
       const count = document.createElement("small");

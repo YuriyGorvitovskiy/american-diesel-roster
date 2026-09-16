@@ -1,10 +1,10 @@
-import { loadData, findDanglingReferences } from "./data.js?v=manufacturer-prototype-2";
+import { loadData, findDanglingReferences } from "./data.js?v=premerge-2";
 import { buildRosterRows, derivePrototypeStatus } from "./model.js?v=order-thumbnails-1";
 import { normalizeView, prototypesForManufacturer, renderNavigation } from "./navigation.js";
 import { renderRoster } from "./roster.js?v=order-thumbnails-1";
 import { renderTree } from "./tree.js?v=ge-tree-11";
-import { renderAlcoPrototype } from "./alco-prototype.js?v=1";
-import { renderManufacturerPrototype } from "./manufacturer-prototype.js?v=emd-audit-1";
+import { renderAlcoPrototype } from "./alco-prototype.js?v=premerge-2";
+import { renderManufacturerPrototype } from "./manufacturer-prototype.js?v=premerge-3";
 
 function heading(eyebrow, title, copy) {
   const wrapper = document.createElement("div"); wrapper.className = "section-heading";
@@ -42,7 +42,7 @@ function renderManufacturer(main, view, data) {
     `${manufacturerName} diesels represented in the BNSF family, grouped by product family.`,
   ));
   const tree = document.createElement("div"); tree.className = "tree-viewport"; tree.setAttribute("aria-label", "Locomotive evolution tree");
-  if (view === "alco") renderAlcoPrototype(tree);
+  if (view === "alco") renderAlcoPrototype(tree, { getStatus: (id) => derivePrototypeStatus(id, data) });
   else renderManufacturerPrototype(tree, { manufacturer: view, getStatus: (id) => derivePrototypeStatus(id, data) });
   section.append(tree); main.append(section);
 }
