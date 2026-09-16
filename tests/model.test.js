@@ -16,7 +16,7 @@ const data = await loadDataFiles(new URL("..", import.meta.url));
 
 test("prototype status reflects physical and planning records", () => {
   assert.equal(derivePrototypeStatus("emd-f3", data), "owned");
-  assert.equal(derivePrototypeStatus("emd-gp35", data), "ordered");
+  assert.equal(derivePrototypeStatus("emd-gp35", data), "owned");
   assert.equal(derivePrototypeStatus("emd-e7", data), "ordered");
   assert.equal(derivePrototypeStatus("emd-sd9", data), "wanted");
   assert.equal(derivePrototypeStatus("emd-ft", data), "historical_only");
@@ -30,7 +30,6 @@ test("owned status comes solely from a physical collection item", () => {
 test("ordered status comes solely from active orders", () => {
   const withoutOrders = { ...data, orders: [] };
   assert.equal(derivePrototypeStatus("emd-e7", withoutOrders), "historical_only");
-  assert.equal(derivePrototypeStatus("emd-gp35", withoutOrders), "historical_only");
 });
 
 test("prototype intent cannot synthesize physical status", () => {
@@ -40,17 +39,18 @@ test("prototype intent cannot synthesize physical status", () => {
 
 test("roster joins owned items and orders without combining records", () => {
   const rows = buildRosterRows(data);
-  assert.equal(rows.length, 6);
-  assert.deepEqual(rows.map(({ status }) => status), ["owned", "owned", "ordered", "ordered", "ordered", "ordered"]);
-  assert.deepEqual(rows.map(({ sourceType }) => sourceType), ["collection", "collection", "order", "order", "order", "order"]);
-  assert.deepEqual(rows.map(({ prototypeName }) => prototypeName), ["EMD F3", "EMD NW2", "EMD E7", "EMD GP35", "GE U25B", "GE U33C"]);
+  assert.equal(rows.length, 7);
+  assert.deepEqual(rows.map(({ status }) => status), ["owned", "owned", "owned", "ordered", "ordered", "ordered", "ordered"]);
+  assert.deepEqual(rows.map(({ sourceType }) => sourceType), ["collection", "collection", "collection", "order", "order", "order", "order"]);
+  assert.deepEqual(rows.map(({ prototypeName }) => prototypeName), ["EMD F3", "EMD GP35", "EMD NW2", "EMD E7", "GE ET44AC", "GE U25B", "GE U33C"]);
   assert.equal(rows[0].railroadName, null);
-  assert.equal(rows[1].railroadName, "Chicago, Burlington & Quincy");
+  assert.equal(rows[1].railroadName, "Great Northern");
   assert.equal(rows[2].railroadName, "Chicago, Burlington & Quincy");
-  assert.equal(rows[2].manufacturerUrl, "https://rapidotrains.com/");
-  assert.equal(rows[2].retailerUrl, "https://www.trainworld.com/");
+  assert.equal(rows[3].railroadName, "Chicago, Burlington & Quincy");
+  assert.equal(rows[3].manufacturerUrl, "https://rapidotrains.com/");
+  assert.equal(rows[3].retailerUrl, "https://www.trainworld.com/");
   assert.ok(rows.every(({ status }) => status !== "historical_only"));
-  assert.deepEqual(rows[1].image, {
+  assert.deepEqual(rows[2].image, {
     type: "collection-model",
     localPath: "images/collection/cbq-9245-bli-side.png",
     sourcePage: null,
@@ -60,6 +60,23 @@ test("roster joins owned items and orders without combining records", () => {
     date: null,
     storage: "local-owner",
   });
+});
+
+test("GP35 delivery is represented as an owned model, not an active order", () => {
+  const detail = buildPrototypeDetail("emd-gp35", data);
+  assert.deepEqual(detail.collectionItems.map(({ id }) => id), ["collection-gn-gp35-3035"]);
+  assert.deepEqual(detail.orders, []);
+  assert.equal(detail.collectionItems[0].historicalLocomotiveId, "gn-3035");
+  assert.deepEqual(detail.collectionItems[0].images, [{
+    type: "collection-model",
+    localPath: "images/collection/gn-gp35-3035-side.png",
+    sourcePage: null,
+    remoteImageUrl: null,
+    caption: "Owner’s Broadway Limited Imports HO model of Great Northern GP35 3035",
+    credit: "Owner photograph",
+    date: null,
+    storage: "local-owner",
+  }]);
 });
 
 test("prototype naming and relationship lookup use stable IDs", () => {

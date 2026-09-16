@@ -1,38 +1,6 @@
 {
   "orders": [
     {
-      "id": "order-gn-gp35-3035",
-      "prototypeId": "emd-gp35",
-      "railroadId": "great-northern",
-      "roadNumber": "3035",
-      "manufacturer": "Broadway Limited",
-      "manufacturerUrl": "https://broadway-limited.com/",
-      "manufacturerSku": "8895",
-      "livery": "Simplified Empire Builder",
-      "retailer": "Trainz",
-      "retailerUrl": "https://www.trainz.com/",
-      "orderDate": null,
-      "expectedDate": null,
-      "price": null,
-      "deposit": null,
-      "notes": null,
-      "sourceIds": ["broadway-limited-gp35-8895-product-image"],
-      "images": [
-        {
-          "type": "manufacturer-product",
-          "localPath": null,
-          "sourcePage": "https://broadway-limited.com/cdn/shop/files/8895_1.jpg?v=1723826406&width=1800",
-          "remoteImageUrl": "https://broadway-limited.com/cdn/shop/files/8895_1.jpg?v=1723826406&width=1800",
-          "caption": "Broadway Limited product image used temporarily while the ordered GP35 is awaiting delivery",
-          "credit": "Broadway Limited Imports",
-          "date": null,
-          "storage": "remote",
-          "sourceIds": ["broadway-limited-gp35-8895-product-image"]
-        }
-      ],
-      "status": "ordered"
-    },
-    {
       "id": "order-cbq-e7a-9931b",
       "prototypeId": "emd-e7",
       "railroadId": "chicago-burlington-quincy",
@@ -126,6 +94,26 @@
           "sourceIds": ["rapido-u25b-gn-product-image"]
         }
       ],
+      "status": "ordered"
+    },
+    {
+      "id": "order-bnsf-et44ach-3674",
+      "prototypeId": "ge-et44ac",
+      "railroadId": "bnsf",
+      "roadNumber": "3674",
+      "manufacturer": null,
+      "manufacturerUrl": null,
+      "manufacturerSku": null,
+      "livery": null,
+      "retailer": null,
+      "retailerUrl": null,
+      "orderDate": null,
+      "expectedDate": null,
+      "price": null,
+      "deposit": null,
+      "notes": "Owner-confirmed ordered HO model of BNSF ET44ACH 3674; product details await confirmation.",
+      "sourceIds": [],
+      "images": [],
       "status": "ordered"
     }
   ]

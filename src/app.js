@@ -1,8 +1,10 @@
-import { loadData, findDanglingReferences } from "./data.js?v=ge-tree-2";
+import { loadData, findDanglingReferences } from "./data.js?v=premerge-2";
 import { buildRosterRows, derivePrototypeStatus } from "./model.js?v=order-thumbnails-1";
 import { normalizeView, prototypesForManufacturer, renderNavigation } from "./navigation.js";
 import { renderRoster } from "./roster.js?v=order-thumbnails-1";
 import { renderTree } from "./tree.js?v=ge-tree-11";
+import { renderAlcoPrototype } from "./alco-prototype.js?v=premerge-2";
+import { renderManufacturerPrototype } from "./manufacturer-prototype.js?v=premerge-4";
 
 function heading(eyebrow, title, copy) {
   const wrapper = document.createElement("div"); wrapper.className = "section-heading";
@@ -33,14 +35,15 @@ function renderCollection(main, data) {
 
 function renderManufacturer(main, view, data) {
   const section = document.createElement("section");
-  if (!["emd", "ge"].includes(view)) {
-    section.className = "empty-state";
-    section.append(heading("Manufacturer evolution", view.toUpperCase(), "Not yet populated.")); main.append(section); return;
-  }
   const manufacturerName = view.toUpperCase();
-  section.append(heading("Manufacturer evolution", `${manufacturerName} evolution tree`, "Choose a prototype to open its dedicated historical record."));
+  section.append(heading(
+    "Manufacturer evolution",
+    `${manufacturerName} evolution tree`,
+    `${manufacturerName} diesels represented in the BNSF family, grouped by product family.`,
+  ));
   const tree = document.createElement("div"); tree.className = "tree-viewport"; tree.setAttribute("aria-label", "Locomotive evolution tree");
-  renderTree(tree, { prototypes: prototypesForManufacturer(data.prototypes, view), getStatus: (id) => derivePrototypeStatus(id, data), manufacturer: view });
+  if (view === "alco") renderAlcoPrototype(tree, { getStatus: (id) => derivePrototypeStatus(id, data) });
+  else renderManufacturerPrototype(tree, { manufacturer: view, getStatus: (id) => derivePrototypeStatus(id, data) });
   section.append(tree); main.append(section);
 }
 

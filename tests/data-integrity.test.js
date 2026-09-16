@@ -6,14 +6,37 @@ import { loadDataFiles, validateData } from "../scripts/validate-data.js";
 test("seed data has valid identifiers and references", async () => {
   const data = await loadDataFiles(new URL("..", import.meta.url));
   assert.deepEqual(validateData(data), []);
-  assert.equal(data.prototypes.length, 57);
-  assert.equal(data.items.length, 2);
+  assert.equal(data.prototypes.length, 58);
+  assert.equal(data.items.length, 3);
   assert.equal(data.orders.length, 4);
   assert.equal(data.railroads.length, 7);
   assert.equal(data.historicalLocomotives.length, 6);
   assert.equal(data.sources.length, 39);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
+  assert.deepEqual(
+    data.orders.find(({ id }) => id === "order-bnsf-et44ach-3674"),
+    {
+      id: "order-bnsf-et44ach-3674",
+      prototypeId: "ge-et44ac",
+      railroadId: "bnsf",
+      roadNumber: "3674",
+      manufacturer: null,
+      manufacturerUrl: null,
+      manufacturerSku: null,
+      livery: null,
+      retailer: null,
+      retailerUrl: null,
+      orderDate: null,
+      expectedDate: null,
+      price: null,
+      deposit: null,
+      notes: "Owner-confirmed ordered HO model of BNSF ET44ACH 3674; product details await confirmation.",
+      sourceIds: [],
+      images: [],
+      status: "ordered",
+    },
+  );
 });
 
 test("NW1 provides historical context for the owned NW2 without a collection item", async () => {
