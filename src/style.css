@@ -38,6 +38,22 @@ main > section { padding: 48px 0; border-bottom: 1px solid var(--line); }
 .tree-canvas { position: relative; min-width: 100%; }
 .tree-canvas svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .tree-edge { fill: none; stroke: var(--line); stroke-width: 2; }
+.alco-family-grid { display: grid; gap: 0; min-width: 820px; }
+.alco-family { display: grid; grid-template-columns: var(--alco-label-width, 220px) minmax(0, 1fr); column-gap: 32px; min-height: 126px; padding: 28px 28px 26px 20px; }
+.alco-family header { align-self: center; }
+.alco-family h3 { margin: 0; font: 700 .82rem/1.1 system-ui, sans-serif; letter-spacing: .07em; text-transform: uppercase; }
+.alco-family header p { margin: 4px 0 0; color: var(--muted); font-size: .62rem; font-weight: 700; line-height: 1.25; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+.alco-family-sequence { position: relative; display: flex; align-items: center; gap: 36px; overflow: visible; }
+.tree-node.alco-family-node { position: relative; inset: auto; flex: 0 0 96px; width: 96px; }
+.manufacturer-family-grid .tree-node.alco-family-node { flex-basis: var(--manufacturer-node-width, 96px); width: var(--manufacturer-node-width, 96px); }
+.tree-node.alco-family-node strong { white-space: nowrap; }
+.tree-node.alco-family-node:not(:last-child)::after { content: ""; position: absolute; left: 100%; top: calc(50% - 1px); width: 40px; border-top: 2px solid var(--line); }
+.alco-family-pairs { display: flex; align-items: flex-start; gap: 36px; }
+.alco-family-pair { position: relative; display: grid; gap: 28px; }
+.alco-family-pair::before { content: ""; position: absolute; left: 50%; top: 58px; height: 36px; border-left: 2px solid var(--line); }
+.alco-family-pair:not(:last-child)::after { content: ""; position: absolute; left: calc(50% + 48px); top: 29px; width: 40px; border-top: 2px solid var(--line); }
+.alco-family-pair .alco-family-node::after { display: none; }
+.alco-template-page { min-height: 55vh; display: grid; align-content: center; }
 .tree-lane-label { position: absolute; left: 20px; width: 130px; color: var(--muted); font: 700 .72rem/1.2 system-ui; text-transform: uppercase; letter-spacing: .07em; }
 .tree-lane-label strong, .tree-lane-label small { display: block; }
 .tree-lane-label strong { color: var(--ink); font-size: .78rem; }

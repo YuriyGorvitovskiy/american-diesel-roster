@@ -42,6 +42,37 @@
           "storage": "local-owner"
         }
       ]
+    },
+    {
+      "id": "collection-gn-gp35-3035",
+      "prototypeId": "emd-gp35",
+      "historicalLocomotiveId": "gn-3035",
+      "railroadId": "great-northern",
+      "roadNumber": "3035",
+      "manufacturer": "Broadway Limited",
+      "manufacturerUrl": "https://broadway-limited.com/",
+      "scale": "HO",
+      "manufacturerProductNumber": "8895",
+      "livery": "Simplified Empire Builder",
+      "purchaseDate": null,
+      "purchasePrice": null,
+      "retailer": "Trainz",
+      "retailerUrl": "https://www.trainz.com/",
+      "decoderAddress": null,
+      "notes": null,
+      "sourceIds": ["broadway-limited-gp35-8895-product-image"],
+      "images": [
+        {
+          "type": "collection-model",
+          "localPath": "images/collection/gn-gp35-3035-side.png",
+          "sourcePage": null,
+          "remoteImageUrl": null,
+          "caption": "Owner’s Broadway Limited Imports HO model of Great Northern GP35 3035",
+          "credit": "Owner photograph",
+          "date": null,
+          "storage": "local-owner"
+        }
+      ]
     }
   ]
 }

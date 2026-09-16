@@ -81,7 +81,7 @@ and verified before it enters the catalog.
 Known facts at v0.1 are deliberately limited:
 
 - EMD F3 is owned; railroad, road number, and manufacturer are unknown.
-- Great Northern orange/green EMD GP35 is ordered.
+- Great Northern orange/green EMD GP35 number 3035 is owned.
 - Rapido EMD E7A, CB&Q silver/Zephyr, road number 9931B, is ordered through
   TrainWorld with a $0 preorder deposit.
 - EMD SD9 and ALCO RS-3 are wanted; CB&Q is an interesting SD9 target.

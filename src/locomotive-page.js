@@ -2,6 +2,26 @@ import { loadData, findDanglingReferences } from "./data.js?v=timeline-8";
 import { buildPrototypeDetail, formatPrototypeName, prototypePageHeading } from "./model.js?v=order-image-1";
 import { manufacturerViewForPrototype, parsePrototypeId, renderNavigation } from "./navigation.js";
 import { renderDetails } from "./details.js?v=order-image-1";
+import { findAlcoPrototype } from "./alco-prototype.js?v=1";
+import { findManufacturerPrototype } from "./manufacturer-prototype.js?v=1";
+
+function renderPrototypeTemplate(main, prototype) {
+  document.title = `${prototype.model} — American Diesel Roster`;
+  const section = document.createElement("section");
+  section.className = "alco-template-page";
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  const eyebrow = document.createElement("p");
+  eyebrow.className = "eyebrow";
+  eyebrow.textContent = prototype.builder === "ALCO" ? "American Locomotive Company"
+    : prototype.builder === "EMD" ? "Electro-Motive Division"
+      : "General Electric";
+  const title = document.createElement("h1");
+  title.textContent = prototype.model;
+  heading.append(eyebrow, title);
+  section.append(heading);
+  main.replaceChildren(section);
+}
 
 function renderError(main) {
   const section = document.createElement("section"); section.className = "empty-state";
@@ -24,8 +44,16 @@ async function start() {
   try {
     const data = await loadData();
     findDanglingReferences(data).forEach((error) => console.error(error));
-    const detail = buildPrototypeDetail(parsePrototypeId(window.location.search), data);
-    if (!detail) return renderError(main);
+    const prototypeId = parsePrototypeId(window.location.search);
+    const detail = buildPrototypeDetail(prototypeId, data);
+    if (!detail) {
+      const prototype = findAlcoPrototype(prototypeId) ?? findManufacturerPrototype(prototypeId);
+      if (prototype) {
+        renderNavigation(navigation, manufacturerViewForPrototype(prototype));
+        return renderPrototypeTemplate(main, prototype);
+      }
+      return renderError(main);
+    }
     renderNavigation(navigation, manufacturerViewForPrototype(detail.prototype));
     document.title = `${formatPrototypeName(detail.prototype)} — American Diesel Roster`;
     const { builderName, modelName } = prototypePageHeading(detail.prototype);
