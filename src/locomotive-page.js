@@ -1,7 +1,7 @@
-import { loadData, findDanglingReferences } from "./data.js?v=timeline-8";
-import { buildPrototypeDetail, formatPrototypeName, prototypePageHeading } from "./model.js?v=order-image-1";
+import { loadData, findDanglingReferences } from "./data.js?v=et44ach-3674-2";
+import { buildPrototypeDetail, formatPrototypeName, prototypePageHeading } from "./model.js?v=preorder-details-1";
 import { manufacturerViewForPrototype, parsePrototypeId, renderNavigation } from "./navigation.js";
-import { renderDetails } from "./details.js?v=order-image-1";
+import { renderDetails } from "./details.js?v=preorder-details-1";
 import { findAlcoPrototype } from "./alco-prototype.js?v=1";
 import { findManufacturerPrototype } from "./manufacturer-prototype.js?v=1";
 

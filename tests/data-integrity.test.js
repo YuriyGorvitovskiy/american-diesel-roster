@@ -10,33 +10,51 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.items.length, 3);
   assert.equal(data.orders.length, 4);
   assert.equal(data.railroads.length, 7);
-  assert.equal(data.historicalLocomotives.length, 6);
-  assert.equal(data.sources.length, 39);
+  assert.equal(data.historicalLocomotives.length, 7);
+  assert.equal(data.sources.length, 43);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
-  assert.deepEqual(
-    data.orders.find(({ id }) => id === "order-bnsf-et44ach-3674"),
-    {
-      id: "order-bnsf-et44ach-3674",
-      prototypeId: "ge-et44ac",
-      railroadId: "bnsf",
-      roadNumber: "3674",
-      manufacturer: null,
-      manufacturerUrl: null,
-      manufacturerSku: null,
-      livery: null,
-      retailer: null,
-      retailerUrl: null,
-      orderDate: null,
-      expectedDate: null,
-      price: null,
-      deposit: null,
-      notes: "Owner-confirmed ordered HO model of BNSF ET44ACH 3674; product details await confirmation.",
-      sourceIds: [],
-      images: [],
-      status: "ordered",
-    },
-  );
+  const et44 = data.prototypes.find(({ id }) => id === "ge-et44ac");
+  assert.equal(et44.model, "ET44AC");
+  assert.notEqual(et44.model, "ET44C4");
+  assert.equal(et44.axleConfiguration, "C-C");
+  assert.equal(et44.tractionType, "AC");
+  assert.equal(et44.horsepower, 4400);
+  assert.deepEqual(et44.predecessors, ["ge-es44ac"]);
+  assert.deepEqual(et44.operatorIds, ["bnsf"]);
+  assert.equal(et44.narrative.some((paragraph) => paragraph.includes("3674")), false);
+  assert.equal("operatedCount" in et44.timeline.lineageService[0], false);
+
+  const locomotive = data.historicalLocomotives.find(({ id }) => id === "bnsf-3674");
+  assert.equal(locomotive.prototypeId, "ge-et44ac");
+  assert.equal(locomotive.builtDate, "2023-08");
+  assert.deepEqual(locomotive.serviceTimeline, [
+    { railroadId: "bnsf", roadNumber: "3674", start: 2023, end: 2026, sourceIds: ["scaletrains-sxt43710", "rrpicturearchives-bnsf-3674"] },
+  ]);
+
+  const order = data.orders.find(({ id }) => id === "order-bnsf-et44ach-3674");
+  assert.equal(order.prototypeId, "ge-et44ac");
+  assert.equal(order.historicalLocomotiveId, "bnsf-3674");
+  assert.equal(order.manufacturer, "ScaleTrains");
+  assert.equal(order.manufacturerSku, "SXT43710");
+  assert.equal(order.scale, "HO (1:87.1)");
+  assert.equal(order.soundControl, "DCC & Sound · ESU LokSound 5");
+  assert.equal(order.expectedDate, "2027-02");
+  assert.equal(order.manufacturerUrl, "https://www.scaletrains.com/rivet-counter-ho-scale-ge-et44ach-bnsf-heritage-iii-10.html");
+  assert.equal(order.retailer, "ScaleTrains");
+  assert.equal(order.retailerUrl, order.manufacturerUrl);
+  assert.deepEqual(order.sourceIds, ["scaletrains-sxt43710", "scaletrains-sxt43710-product-image"]);
+  assert.deepEqual(order.images, [{
+    type: "manufacturer-product",
+    localPath: null,
+    sourcePage: "https://www.scaletrains.com/rivet-counter-ho-scale-ge-et44ach-bnsf-heritage-iii-10.html",
+    remoteImageUrl: "https://www.scaletrains.com/media/catalog/product/cache/832b44601db91560d95f56fa687bb4de/s/x/sxt43706-bnsf_side.jpg",
+    caption: "ScaleTrains Rivet Counter BNSF Heritage III ET44ACH product image",
+    credit: "ScaleTrains",
+    date: null,
+    storage: "remote",
+    sourceIds: ["scaletrains-sxt43710-product-image"],
+  }]);
 });
 
 test("NW1 provides historical context for the owned NW2 without a collection item", async () => {
@@ -143,6 +161,33 @@ test("orders cannot reference an unknown railroad", () => {
     railroads: [],
   });
   assert.ok(errors.includes('Order "bad-order" references unknown railroad "missing".'));
+});
+
+test("orders cannot reference an unknown historical locomotive", () => {
+  const errors = validateData({
+    prototypes: [{ id: "ge-et44ac", predecessors: [], successors: [], operatorIds: [] }],
+    items: [],
+    orders: [{ id: "bad-order", prototypeId: "ge-et44ac", historicalLocomotiveId: "missing" }],
+    railroads: [],
+    historicalLocomotives: [],
+  });
+  assert.ok(errors.includes('Order "bad-order" references unknown historical locomotive "missing".'));
+});
+
+test("orders must match their referenced historical locomotive", () => {
+  const errors = validateData({
+    prototypes: [{ id: "ge-et44ac", predecessors: [], successors: [], operatorIds: [] }],
+    items: [],
+    orders: [{
+      id: "mismatched-order", prototypeId: "ge-et44ac", railroadId: "bnsf",
+      roadNumber: "3674", historicalLocomotiveId: "other-locomotive",
+    }],
+    railroads: [{ id: "bnsf", predecessors: [], successors: [] }],
+    historicalLocomotives: [{
+      id: "other-locomotive", prototypeId: "ge-et44ac", railroadId: "bnsf", roadNumber: "9999",
+    }],
+  });
+  assert.ok(errors.includes('Order "mismatched-order" does not match historical locomotive "other-locomotive".'));
 });
 
 test("prototype intent excludes physical and order states", () => {

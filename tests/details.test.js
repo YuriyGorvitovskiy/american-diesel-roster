@@ -6,6 +6,7 @@ import {
   buildDetailFields,
   buildHistoricalFields,
   buildImageItems,
+  buildOrderFields,
   buildTimelineItems,
   createNarrativeSections,
   detailSectionHeadingTag,
@@ -79,6 +80,25 @@ test("collection fields show model facts and hide unknown ownership details", ()
     "Livery", "Sound / control",
   ]);
   assert.ok(fields.every(({ value }) => value !== "Unknown"));
+});
+
+test("incoming model fields expose preorder-specific facts", () => {
+  const fields = buildOrderFields({
+    manufacturer: "ScaleTrains", productLine: "Rivet Counter", manufacturerSku: "SXT43710",
+    scale: "HO (1:87.1)", railroadName: "BNSF", roadNumber: "3674", livery: "Heritage III",
+    soundControl: "DCC & Sound · ESU LokSound 5", expectedDate: "2027-02",
+  });
+  assert.deepEqual(fields, [
+    { label: "Manufacturer", value: "ScaleTrains" },
+    { label: "Product line", value: "Rivet Counter" },
+    { label: "Item number", value: "SXT43710" },
+    { label: "Scale", value: "HO (1:87.1)" },
+    { label: "Railroad", value: "BNSF" },
+    { label: "Road number", value: "3674" },
+    { label: "Livery", value: "Heritage III" },
+    { label: "Sound / control", value: "DCC & Sound · ESU LokSound 5" },
+    { label: "Expected delivery", value: "February 2027" },
+  ]);
 });
 
 test("image items preserve local owner and remote reference provenance", () => {

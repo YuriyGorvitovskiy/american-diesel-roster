@@ -1,10 +1,10 @@
 const paths = {
-  prototypes: "./data/locomotives.json?v=premerge-2",
+  prototypes: "./data/locomotives.json?v=et44ach-3674-1",
   items: "./data/collection.json",
-  orders: "./data/orders.json?v=et44ach-3674",
+  orders: "./data/orders.json?v=et44ach-3674-2",
   railroads: "./data/railroads.json?v=timeline-1",
-  historicalLocomotives: "./data/historical-locomotives.json?v=timeline-1",
-  sources: "./data/sources.json?v=timeline-1",
+  historicalLocomotives: "./data/historical-locomotives.json?v=et44ach-3674-1",
+  sources: "./data/sources.json?v=et44ach-3674-2",
 };
 
 export async function loadData() {
