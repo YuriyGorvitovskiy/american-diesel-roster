@@ -29,10 +29,7 @@ function appendRelationshipValue(container, railroads, emptyText, onOpenRailroad
     container.textContent = emptyText;
     return;
   }
-  railroads.forEach((railroad, index) => {
-    if (index) container.append(document.createTextNode(", "));
-    container.append(relationshipLink(railroad, onOpenRailroad));
-  });
+  railroads.forEach((railroad) => container.append(relationshipLink(railroad, onOpenRailroad)));
 }
 
 function nodeClass(railroad) {
