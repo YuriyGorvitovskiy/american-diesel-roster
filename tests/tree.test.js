@@ -49,7 +49,7 @@ test("layout skips dangling successor relationships", () => {
 
 test("tree nodes expose production instead of visible status text", () => {
   assert.deepEqual(treeNodeView({ id: "emc-nw1", model: "NW1", productionCount: 27 }, "historical_only"), {
-    href: "./locomotive.html?id=emc-nw1",
+    href: "/locomotive.html?id=emc-nw1",
     model: "NW1",
     production: "27",
     status: "historical_only",
@@ -60,7 +60,7 @@ test("tree nodes expose production instead of visible status text", () => {
 
 test("unknown tree production renders a dash without inventing a total", () => {
   assert.deepEqual(treeNodeView({ id: "emd-ft", model: "FT", productionCount: null }, "historical_only"), {
-    href: "./locomotive.html?id=emd-ft",
+    href: "/locomotive.html?id=emd-ft",
     model: "FT",
     production: "—",
     status: "historical_only",

@@ -9,7 +9,9 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.prototypes.length, 58);
   assert.equal(data.items.length, 3);
   assert.equal(data.orders.length, 4);
-  assert.equal(data.railroads.length, 7);
+  assert.equal(data.railroads.length, 30);
+  assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
+  assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
   assert.equal(data.sources.length, 43);
   assert.equal(data.items[0].prototypeId, "emd-f3");

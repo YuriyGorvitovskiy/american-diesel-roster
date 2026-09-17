@@ -28,7 +28,7 @@ test("detail fields omit unknown facts and retain known zero values", () => {
 test("lineage relationships link to bookmarkable detail URLs", () => {
   assert.deepEqual(relationshipView({ id: "emd-nw2", builder: "EMD", model: "NW2" }), {
     label: "EMD NW2",
-    href: "./locomotive.html?id=emd-nw2",
+    href: "/locomotive.html?id=emd-nw2",
   });
 });
 

@@ -14,7 +14,7 @@ Browsers normally prevent `file://` pages from fetching JSON. From the repositor
 root, start a local server:
 
 ```bash
-python3 -m http.server 8000
+npm start
 ```
 
 Then open [http://localhost:8000/](http://localhost:8000/).
@@ -22,6 +22,8 @@ Then open [http://localhost:8000/](http://localhost:8000/).
 The root page introduces the collection. Top-level reference views use query
 URLs such as `/?view=collection` and `/?view=emd`. Locomotive records use
 bookmarkable URLs such as `/locomotive.html?id=emc-nw1`.
+Railroad records use paths such as `/railroads/gn`; the local server routes
+those paths back to the application entry point.
 
 Run automated checks with:
 
@@ -48,7 +50,7 @@ generic prototype and this specific identity.
 
 Incoming models remain separate in `data/orders.json`, even though the interface
 shows owned and ordered records together. Railroad identity and lineage live in
-`data/railroads.json`. All cross-file relationships use stable IDs.
+`data/railroads/index.json` and one file per company in `data/railroads/`. All cross-file relationships use stable IDs.
 
 Physical and order records are authoritative: `owned` is derived only from
 `data/collection.json`, and `ordered` only from active records in
@@ -81,6 +83,7 @@ data/sources.json           Reusable research provenance
 images/prototype/           Future prototype photographs
 images/collection/          Future photographs of physical HO models
 scripts/validate-data.js    ID and reference validation
+scripts/serve.js            Local static server with railroad-route fallback
 tests/                     Dependency-free Node tests
 PROJECT.md                 Persistent domain and architecture guidance
 ```

@@ -1,10 +1,10 @@
 const paths = {
-  prototypes: "./data/locomotives.json?v=et44ach-3674-3",
-  items: "./data/collection.json",
-  orders: "./data/orders.json?v=et44ach-3674-2",
-  railroads: "./data/railroads.json?v=timeline-1",
-  historicalLocomotives: "./data/historical-locomotives.json?v=et44ach-3674-3",
-  sources: "./data/sources.json?v=et44ach-3674-2",
+  prototypes: "/data/locomotives.json?v=et44ach-3674-3",
+  items: "/data/collection.json",
+  orders: "/data/orders.json?v=et44ach-3674-2",
+  railroadIndex: "/data/railroads/index.json?v=bnsf-prototype-13",
+  historicalLocomotives: "/data/historical-locomotives.json?v=et44ach-3674-3",
+  sources: "/data/sources.json?v=et44ach-3674-2",
 };
 
 export async function loadData() {
@@ -12,9 +12,16 @@ export async function loadData() {
     const response = await fetch(path);
     if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
     const document = await response.json();
-    return [key, document[key]];
+    return [key, key === "railroadIndex" ? document.railroads : document[key]];
   }));
-  return Object.fromEntries(entries);
+  const data = Object.fromEntries(entries);
+  const railroads = await Promise.all(data.railroadIndex.map(async (id) => {
+    const response = await fetch(`/data/railroads/${id}.json?v=bnsf-prototype-13`);
+    if (!response.ok) throw new Error(`/data/railroads/${id}.json: HTTP ${response.status}`);
+    return response.json();
+  }));
+  delete data.railroadIndex;
+  return { ...data, railroads };
 }
 
 export function findDanglingReferences(data) {

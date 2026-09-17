@@ -10,13 +10,17 @@ export function navigationItems(activeView) {
   return TOP_LEVEL_VIEWS.map((id) => ({
     id,
     label: LABELS[id],
-    href: `./?view=${id}`,
+    href: `/?view=${id}`,
     current: id === activeView,
   }));
 }
 
 export function locomotiveUrl(id) {
-  return `./locomotive.html?id=${encodeURIComponent(id)}`;
+  return `/locomotive.html?id=${encodeURIComponent(id)}`;
+}
+
+export function railroadUrl(slug) {
+  return `/railroads/${encodeURIComponent(slug)}`;
 }
 
 export function parsePrototypeId(search) {
@@ -38,7 +42,7 @@ export function prototypesForManufacturer(prototypes, view) {
 export function renderNavigation(container, activeView) {
   const brand = document.createElement("a");
   brand.className = "site-brand";
-  brand.href = "./";
+  brand.href = "/";
   brand.setAttribute("aria-label", "American Diesel Roster home");
   const name = document.createElement("strong"); name.textContent = "American Diesel Roster";
   const tagline = document.createElement("small"); tagline.textContent = "Historical reference";

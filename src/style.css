@@ -5,15 +5,17 @@
   --owned-tint: #edf5f1; --ordered-tint: #fbf1e8; --wanted-tint: #edf3f8; --historical-tint: #e9ebe7;
 }
 * { box-sizing: border-box; }
+html { scrollbar-gutter: stable; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, sans-serif; }
 h1, h2, h3 { font-family: Georgia, serif; line-height: 1.08; margin: 0 0 .65rem; }
 h1 { font-size: clamp(2.5rem, 6vw, 5.8rem); white-space: nowrap; }
-h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); }
+h2, .entity-page-heading h1 { font-size: clamp(1.8rem, 3vw, 2.8rem); }
 .site-header, main, footer { width: min(1440px, calc(100% - 32px)); margin-inline: auto; }
 .site-header { padding: 72px 0 42px; border-bottom: 1px solid var(--line); }
 .eyebrow { color: var(--muted); font-size: .75rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; margin: 0 0 .6rem; }
 .lede { font-family: Georgia, serif; font-size: 1.2rem; white-space: nowrap; }
 .legend { display: flex; flex-wrap: wrap; gap: 18px; list-style: none; padding: 20px 0 0; margin: 0; }
+.legend[hidden] { display: none; }
 .legend li { display: flex; align-items: center; gap: 7px; font-size: .83rem; font-weight: 700; }
 .legend-mark { width: 20px; height: 15px; border: 4px solid currentColor; border-radius: 4px; background: var(--status-tint); }
 .status-owned { --status: var(--owned); color: var(--owned); }
@@ -24,14 +26,14 @@ h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); }
 .status-ordered { --status-tint: var(--ordered-tint); }
 .status-wanted { --status-tint: var(--wanted-tint); }
 .status-historical_only { --status-tint: var(--historical-tint); }
-.site-nav { position: sticky; top: 0; z-index: 10; width: 100%; display: flex; align-items: stretch; overflow-x: auto; border-bottom: 1px solid var(--line); background: rgb(255 253 248 / 96%); box-shadow: 0 5px 18px rgb(39 35 25 / 5%); }
+.site-nav { position: fixed; inset: 0 0 auto; z-index: 10; width: 100%; display: flex; align-items: stretch; overflow-x: auto; border-bottom: 1px solid var(--line); background: rgb(255 253 248 / 92%); box-shadow: 0 5px 18px rgb(39 35 25 / 5%); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .site-nav > a { flex: 0 0 auto; padding: 14px 20px 11px; border-bottom: 4px solid transparent; color: var(--muted); font-weight: 800; text-decoration: none; }
 .site-nav > a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--wanted); }
 .site-nav .site-brand { padding: 8px 28px 7px max(20px, calc((100vw - 1440px) / 2)); border-bottom: 0; color: var(--ink); text-align: left; }
 .site-brand strong, .site-brand small { display: block; }
 .site-brand strong { font: 700 1.05rem/1.05 Georgia, serif; }
 .site-brand small { margin-top: 3px; color: var(--muted); font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; }
-main > section { padding: 48px 0; border-bottom: 1px solid var(--line); }
+main > section { padding: 78px 0 48px; border-bottom: 1px solid var(--line); }
 .section-heading { max-width: 720px; margin-bottom: 24px; }
 .section-heading p:last-child { color: var(--muted); }
 .tree-viewport { overflow: auto; background: var(--surface); border: 1px solid var(--line); border-left: 5px solid var(--selected); border-radius: 10px; box-shadow: var(--shadow); }
@@ -117,6 +119,42 @@ dt { color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: u
 .external-table-link::after { content: " ↗"; font-size: .72em; }
 .empty-state { min-height: 34vh; display: grid; align-content: center; }
 .empty-state > a { color: var(--wanted); font-weight: 800; text-underline-offset: 3px; }
+.key-major { color: #276247; background: #eaf2eb; }.key-regional { color: #2f5e84; background: #e7eef5; }.key-local { color: #8b552d; background: #f3e8d8; }
+.bnsf-genealogy > .section-heading { max-width: none; }
+.genealogy-viewport { overflow: auto; border: 1px solid var(--line); border-left: 5px solid var(--selected); border-radius: 10px; background: var(--surface); box-shadow: var(--shadow); }
+.genealogy-canvas { position: relative; min-width: 1390px; background: var(--surface); }
+.genealogy-canvas svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.railroad-edge { fill: none; stroke: #8a7250; stroke-width: 2; stroke-linecap: square; stroke-linejoin: miter; vector-effect: non-scaling-stroke; }
+.railroad-node { position: absolute; z-index: 1; width: 184px; min-height: 66px; translate: 0 -50%; display: grid; align-content: center; gap: 3px; padding: 10px 12px; border: 2px solid #a47a57; border-left: 7px solid #8b552d; border-radius: 6px; background: #f3e8d8; color: var(--ink); box-shadow: 0 4px 12px rgb(51 45 34 / 9%); text-decoration: none; }
+.railroad-node:hover { translate: 0 calc(-50% - 3px); box-shadow: 0 8px 18px rgb(51 45 34 / 15%); }
+.railroad-node span { color: var(--muted); font-size: .58rem; font-weight: 900; letter-spacing: .11em; text-transform: uppercase; }
+.railroad-node strong { font: 700 .86rem/1.12 Georgia, serif; }
+.railroad-node small { color: var(--muted); font-size: .65rem; }
+.railroad-node-major { border-color: #587566; border-left: 7px solid #276247; background: #eaf2eb; }
+.railroad-node-major strong { font-size: .98rem; }
+.railroad-node-bnsf { width: 220px; min-height: 92px; }
+.railroad-node-bnsf strong { font-size: 1.06rem; }
+.railroad-node-regional { border-color: #879bad; border-left: 7px solid #2f5e84; background: #e7eef5; }
+.railroad-node-local { border-color: #a47a57; border-left: 7px solid #8b552d; background: #f3e8d8; }
+.railroad-legend-mark { width: 20px; height: 15px; border: 2px solid currentColor; border-radius: 3px; }
+.railroad-legend-mark.key-major { border-left: 6px solid #276247; }
+.railroad-legend-mark.key-regional { border-left: 6px solid #2f5e84; }
+.railroad-legend-mark.key-local { border-left: 6px solid #8b552d; }
+.railroad-detail-prototype { min-height: calc(100vh - 75px); }
+.railroad-hero { max-width: none; }
+.entity-page-heading h1 { white-space: normal; }
+.railroad-hero h1 { white-space: normal; }
+.railroad-meta { color: var(--muted); font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+.railroad-meta b { padding: 0 .5em; color: var(--selected); }
+.railroad-lede { max-width: 760px; margin-top: 28px; font: 1.25rem/1.6 Georgia, serif; }
+.railroad-detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 52px; }
+.railroad-detail-grid article { padding: 26px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.railroad-detail-grid dl { display: grid; grid-template-columns: 120px 1fr; gap: 12px; }
+.railroad-detail-grid dd { font-size: 1rem; }
+.railroad-detail-grid a { color: var(--wanted); font-weight: 750; text-underline-offset: 3px; }
+.railroad-predecessors a, .railroad-successor a { display: block; }
+.railroad-schemes { grid-column: 1 / -1; }
+.railroad-schemes ul { columns: 2; padding-left: 1.2rem; }
 .home-intro { min-height: calc(100vh - 100px); display: grid; align-content: start; justify-items: start; }
 .home-intro h1 { max-width: 940px; font-size: clamp(3.4rem, 8vw, 7.6rem); white-space: normal; }
 .home-lede { max-width: 700px; color: var(--muted); font: 1.25rem/1.6 Georgia, serif; }
@@ -140,6 +178,10 @@ footer p { margin: 0; }
   .detail-gallery, .fact-grid { grid-template-columns: 1fr; }
   .historical-timeline li { grid-template-columns: 1fr; gap: 4px; }
   .relationships { grid-template-columns: 1fr; }
+  .railroad-detail-grid { grid-template-columns: 1fr; gap: 20px; }
+  .railroad-detail-grid { margin-top: 34px; }
+  .railroad-schemes { grid-column: auto; }
+  .railroad-schemes ul { columns: 1; }
   thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
   tr { display: block; padding: 10px 14px; border-bottom: 1px solid var(--line); }
   td { display: grid; grid-template-columns: 125px 1fr; border: 0; padding: 4px 0; }

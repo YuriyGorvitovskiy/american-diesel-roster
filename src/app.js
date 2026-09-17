@@ -1,10 +1,11 @@
-import { loadData, findDanglingReferences } from "./data.js?v=et44ach-3674-3";
+import { loadData, findDanglingReferences } from "./data.js?v=bnsf-routes-13";
 import { buildRosterRows, derivePrototypeStatus } from "./model.js?v=order-thumbnails-1";
-import { normalizeView, prototypesForManufacturer, renderNavigation } from "./navigation.js";
+import { normalizeView, prototypesForManufacturer, railroadUrl, renderNavigation } from "./navigation.js?v=railroad-relationships-1";
 import { renderRoster } from "./roster.js?v=order-thumbnails-1";
 import { renderTree } from "./tree.js?v=ge-tree-11";
 import { renderAlcoPrototype } from "./alco-prototype.js?v=premerge-2";
 import { renderManufacturerPrototype } from "./manufacturer-prototype.js?v=premerge-4";
+import { renderBnsfGenealogy, renderRailroadPage } from "./railroad-pages.js?v=1";
 
 function heading(eyebrow, title, copy) {
   const wrapper = document.createElement("div"); wrapper.className = "section-heading";
@@ -47,10 +48,30 @@ function renderManufacturer(main, view, data) {
   section.append(tree); main.append(section);
 }
 
-function renderBnsf(main) {
-  const section = document.createElement("section"); section.className = "empty-state";
-  section.append(heading("Railroad history", "BNSF", "This section will contain BNSF predecessor genealogy, a railroad timeline, and locomotive purchases by predecessor roads."));
-  main.append(section);
+function renderBnsf(main, data) {
+  const renderTree = () => {
+    main.replaceChildren();
+    renderFooterLegend("bnsf", false);
+    renderBnsfGenealogy(main, data.railroads, showRailroad);
+  };
+  const renderRailroad = (railroad) => {
+    main.replaceChildren();
+    renderFooterLegend("bnsf", true);
+    renderRailroadPage(main, railroad, data.railroads, showRailroad);
+  };
+  const showRailroad = (railroad) => {
+    history.pushState({}, "", railroadUrl(railroad.slug));
+    renderRailroad(railroad);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  const renderCurrentLocation = () => {
+    const slug = window.location.pathname.match(/^\/railroads\/([^/]+)\/?$/)?.[1];
+    const selected = slug ? data.railroads.find((railroad) => railroad.slug === decodeURIComponent(slug)) : null;
+    if (selected) renderRailroad(selected);
+    else renderTree();
+  };
+  window.addEventListener("popstate", renderCurrentLocation);
+  renderCurrentLocation();
 }
 
 function renderLoadError(main) {
@@ -59,10 +80,22 @@ function renderLoadError(main) {
   main.replaceChildren(error);
 }
 
+function renderFooterLegend(view, railroadDetail) {
+  const legend = document.querySelector("footer .legend");
+  legend.hidden = railroadDetail;
+  if (railroadDetail) return;
+  if (view !== "bnsf") return;
+  legend.setAttribute("aria-label", "Railroad size legend");
+  legend.innerHTML = '<li><span class="railroad-legend-mark key-major"></span>Major system</li><li><span class="railroad-legend-mark key-regional"></span>Regional railroad</li><li><span class="railroad-legend-mark key-local"></span>Local railroad</li>';
+}
+
 async function start() {
   const main = document.querySelector("#page-content");
-  const view = normalizeView(new URLSearchParams(window.location.search).get("view"));
+  const railroadPath = /^\/railroads(?:\/|$)/.test(window.location.pathname);
+  const railroadDetail = /^\/railroads\/[^/]+\/?$/.test(window.location.pathname);
+  const view = railroadPath ? "bnsf" : normalizeView(new URLSearchParams(window.location.search).get("view"));
   renderNavigation(document.querySelector("#site-navigation"), view);
+  renderFooterLegend(view, railroadDetail);
   try {
     const data = await loadData();
     findDanglingReferences(data).forEach((error) => console.error(error));
@@ -70,7 +103,7 @@ async function start() {
     if (view === "home") renderHome(main);
     else if (view === "collection") renderCollection(main, data);
     else if (["emd", "alco", "ge"].includes(view)) renderManufacturer(main, view, data);
-    else renderBnsf(main);
+    else renderBnsf(main, data);
   } catch (error) {
     console.error(error); renderLoadError(main);
   }
