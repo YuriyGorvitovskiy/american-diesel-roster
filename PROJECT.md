@@ -33,6 +33,13 @@ corporate-lineage visualization.
 
 SP&S representation is a confirmed collection gap.
 
+The BNSF genealogy is a curated, navigable set of 30 company records stored one
+company per file. Its diagram uses pale green for major systems, pale blue for
+regional railroads, and pale brown for local railroads, with a darker matching
+left stripe on every card. Railroad detail pages share the same typography,
+navigation, and content-card treatment as locomotive and manufacturer pages.
+The genealogy preserves card separation when browser zoom changes text wrapping.
+
 ## Prototype, historical locomotive, and collection-item distinction
 
 A Prototype describes a real locomotive class: builder, model, dates,

@@ -6,6 +6,10 @@ export function formatPrototypeName(prototype) {
   return [prototype.builder, prototype.model, prototype.variant].filter(Boolean).join(" ");
 }
 
+function railroadCatalogName(railroad) {
+  return railroad?.catalogName ?? railroad?.name ?? null;
+}
+
 const builderNames = {
   EMC: "Electro-Motive Corporation",
   EMD: "Electro-Motive Division",
@@ -36,7 +40,7 @@ export function buildRosterRows(data) {
     status,
     prototypeId: record.prototypeId,
     prototypeName: formatPrototypeName(prototypes.get(record.prototypeId)),
-    railroadName: railroads.get(record.railroadId)?.name ?? null,
+    railroadName: railroadCatalogName(railroads.get(record.railroadId)),
     roadNumber: record.roadNumber ?? null,
     manufacturer: record.manufacturer ?? null,
     manufacturerUrl: record.manufacturerUrl ?? null,
@@ -74,18 +78,18 @@ export function buildPrototypeDetail(prototypeId, data) {
     .filter((locomotive) => locomotive.prototypeId === prototypeId)
     .map((locomotive) => ({
       ...locomotive,
-      railroadName: railroadById.get(locomotive.railroadId)?.name ?? null,
+      railroadName: railroadCatalogName(railroadById.get(locomotive.railroadId)),
       laterIdentities: (locomotive.laterIdentities ?? []).map((identity) => ({
         ...identity,
-        railroadName: railroadById.get(identity.railroadId)?.name ?? null,
+        railroadName: railroadCatalogName(railroadById.get(identity.railroadId)),
       })),
     }));
   const collectionItems = data.items
     .filter((item) => item.prototypeId === prototypeId)
-    .map((item) => ({ ...item, railroadName: railroadById.get(item.railroadId)?.name ?? null }));
+    .map((item) => ({ ...item, railroadName: railroadCatalogName(railroadById.get(item.railroadId)) }));
   const orders = data.orders
     .filter((order) => order.prototypeId === prototypeId && order.status === "ordered")
-    .map((order) => ({ ...order, railroadName: railroadById.get(order.railroadId)?.name ?? null }));
+    .map((order) => ({ ...order, railroadName: railroadCatalogName(railroadById.get(order.railroadId)) }));
   const citedIds = new Set([
     ...(prototype.sourceIds ?? []),
     ...(prototype.timeline?.manufacturing?.sourceIds ?? []),

@@ -58,7 +58,7 @@ async function start() {
     document.title = `${formatPrototypeName(detail.prototype)} — American Diesel Roster`;
     const { builderName, modelName } = prototypePageHeading(detail.prototype);
     const section = document.createElement("section");
-    const heading = document.createElement("div"); heading.className = "section-heading";
+    const heading = document.createElement("div"); heading.className = "section-heading entity-page-heading";
     const eyebrow = document.createElement("p"); eyebrow.className = "eyebrow"; eyebrow.textContent = builderName;
     const title = document.createElement("h1"); title.textContent = modelName;
     const badge = document.createElement("span"); badge.className = `status-badge status-${detail.status}`; badge.textContent = detail.status.replace("_", " ");

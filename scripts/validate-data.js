@@ -5,7 +5,6 @@ const FILES = {
   prototypes: "data/locomotives.json",
   items: "data/collection.json",
   orders: "data/orders.json",
-  railroads: "data/railroads.json",
   historicalLocomotives: "data/historical-locomotives.json",
   sources: "data/sources.json",
 };
@@ -16,7 +15,12 @@ export async function loadDataFiles(rootPath) {
     const document = JSON.parse(await readFile(new URL(path, root), "utf8"));
     return [key, document[key]];
   }));
-  return Object.fromEntries(entries);
+  const data = Object.fromEntries(entries);
+  const railroadIndex = JSON.parse(await readFile(new URL("data/railroads/index.json", root), "utf8"));
+  const railroads = await Promise.all(railroadIndex.railroads.map(async (fileId) => (
+    JSON.parse(await readFile(new URL(`data/railroads/${fileId}.json`, root), "utf8"))
+  )));
+  return { ...data, railroads };
 }
 
 export function validateData({ prototypes = [], items = [], orders = [], railroads = [], historicalLocomotives = [], sources = [] }) {
@@ -140,8 +144,12 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
     checkSources(order, "Order");
   }
   for (const railroad of railroads) {
-    for (const id of [...(railroad.predecessors ?? []), ...(railroad.successors ?? [])]) {
+    const successorIds = railroad.successor == null ? (railroad.successors ?? []) : [railroad.successor];
+    for (const id of [...(railroad.predecessors ?? []), ...successorIds]) {
       if (!railroadIds.has(id)) errors.push(`Railroad "${railroad.id}" references unknown railroad "${id}".`);
+    }
+    if (railroad.parentSystem != null && !railroadIds.has(railroad.parentSystem)) {
+      errors.push(`Railroad "${railroad.id}" references unknown parent system "${railroad.parentSystem}".`);
     }
   }
   return errors;

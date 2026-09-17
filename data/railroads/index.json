@@ -1,0 +1,8 @@
+{
+  "railroads": [
+    "bnsf", "bn", "gn", "spmm", "msc", "spp", "montana-central", "np", "slse", "spokane-palouse",
+    "frisco", "atlantic-pacific", "atn", "sps", "oregon-electric", "oregon-trunk", "cbq", "aurora-branch",
+    "chicago-aurora", "fwd", "cs", "updg", "dspp", "pacific-coast", "cps", "atsf", "gcsf", "psf",
+    "kcmo-texas", "kcmo"
+  ]
+}
