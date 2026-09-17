@@ -1,6 +1,6 @@
 import { formatPrototypeName } from "./model.js";
 import { locomotiveUrl } from "./navigation.js";
-import { renderServiceTimeline } from "./service-timeline.js?v=count-2";
+import { renderServiceTimeline } from "./service-timeline.js?v=ongoing-1";
 
 export function displayValue(value) {
   return value == null || value === "" ? "Unknown" : String(value);

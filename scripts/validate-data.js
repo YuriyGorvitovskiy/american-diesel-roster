@@ -79,9 +79,9 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
       if (span.railroadId && !railroadIds.has(span.railroadId)) {
         errors.push(`${kind} "${record.id}" timeline references unknown railroad "${span.railroadId}".`);
       }
-      if (!Number.isInteger(span.start) || !Number.isInteger(span.end)) {
-        errors.push(`${kind} "${record.id}" timeline requires integer start and end years.`);
-      } else if (span.start > span.end) {
+      if (!Number.isInteger(span.start) || (span.end !== null && !Number.isInteger(span.end))) {
+        errors.push(`${kind} "${record.id}" timeline requires an integer start year and an integer or null end year.`);
+      } else if (span.end !== null && span.start > span.end) {
         errors.push(`${kind} "${record.id}" timeline has reversed span ${span.start}–${span.end}.`);
       }
       for (const id of span.sourceIds ?? []) {

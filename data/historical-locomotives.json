@@ -244,7 +244,7 @@
         { "date": "2023-08", "event": "Built at Wabtec’s Fort Worth, Texas, plant as BNSF 3674, the final road number in the 3650–3674 ET44ACH group." }
       ],
       "serviceTimeline": [
-        { "railroadId": "bnsf", "roadNumber": "3674", "start": 2023, "end": 2026, "sourceIds": ["scaletrains-sxt43710", "rrpicturearchives-bnsf-3674"] }
+        { "railroadId": "bnsf", "roadNumber": "3674", "start": 2023, "end": null, "sourceIds": ["scaletrains-sxt43710", "rrpicturearchives-bnsf-3674"] }
       ],
       "narrative": ["BNSF 3674 is an ET44AC designated ET44ACH by BNSF. It was built at Wabtec’s Fort Worth plant in August 2023 and is the final road number in BNSF’s 3650–3674 group."],
       "sourceIds": ["scaletrains-sxt43710", "rrpicturearchives-bnsf-3674", "flickr-christian-schnake-bnsf-3674"],

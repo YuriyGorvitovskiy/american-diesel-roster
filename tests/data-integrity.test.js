@@ -29,7 +29,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(locomotive.prototypeId, "ge-et44ac");
   assert.equal(locomotive.builtDate, "2023-08");
   assert.deepEqual(locomotive.serviceTimeline, [
-    { railroadId: "bnsf", roadNumber: "3674", start: 2023, end: 2026, sourceIds: ["scaletrains-sxt43710", "rrpicturearchives-bnsf-3674"] },
+    { railroadId: "bnsf", roadNumber: "3674", start: 2023, end: null, sourceIds: ["scaletrains-sxt43710", "rrpicturearchives-bnsf-3674"] },
   ]);
 
   const order = data.orders.find(({ id }) => id === "order-bnsf-et44ach-3674");
@@ -145,6 +145,20 @@ test("service timelines reject reversed spans and unknown nested references", as
   assert.ok(errors.some((error) => error.includes("timeline references unknown railroad")));
   assert.ok(errors.some((error) => error.includes("timeline has reversed span")));
   assert.ok(errors.filter((error) => error.includes("references unknown source")).length >= 2);
+});
+
+test("ongoing timeline spans allow a null end year", () => {
+  const errors = validateData({
+    prototypes: [{
+      id: "ge-et44ac", collectionRelevance: "historical_only", predecessors: [], successors: [], operatorIds: [],
+      timeline: {
+        manufacturing: { start: 2015, end: null, sourceIds: [] },
+        lineageService: [],
+      },
+    }],
+    items: [], orders: [], railroads: [], historicalLocomotives: [], sources: [],
+  });
+  assert.equal(errors.some((error) => error.includes("integer start and end years")), false);
 });
 
 test("duplicate prototype identifiers are rejected", () => {
