@@ -99,21 +99,37 @@
     {
       "id": "order-bnsf-et44ach-3674",
       "prototypeId": "ge-et44ac",
+      "historicalLocomotiveId": "bnsf-3674",
       "railroadId": "bnsf",
       "roadNumber": "3674",
-      "manufacturer": null,
-      "manufacturerUrl": null,
-      "manufacturerSku": null,
-      "livery": null,
-      "retailer": null,
-      "retailerUrl": null,
+      "manufacturer": "ScaleTrains",
+      "manufacturerUrl": "https://www.scaletrains.com/rivet-counter-ho-scale-ge-et44ach-bnsf-heritage-iii-10.html",
+      "manufacturerSku": "SXT43710",
+      "productLine": "Rivet Counter",
+      "scale": "HO (1:87.1)",
+      "livery": "Heritage III",
+      "soundControl": "DCC & Sound · ESU LokSound 5",
+      "retailer": "ScaleTrains",
+      "retailerUrl": "https://www.scaletrains.com/rivet-counter-ho-scale-ge-et44ach-bnsf-heritage-iii-10.html",
       "orderDate": null,
-      "expectedDate": null,
+      "expectedDate": "2027-02",
       "price": null,
       "deposit": null,
-      "notes": "Owner-confirmed ordered HO model of BNSF ET44ACH 3674; product details await confirmation.",
-      "sourceIds": [],
-      "images": [],
+      "notes": "Preordered Rivet Counter model with GE Hi-Ad trucks, six powered axles, a 5,300-gallon fuel tank, JEM Communications PTC antenna array, Nathan AirChime K5HLR2 horn, cab-mounted grade-crossing camera, detailed cab interior, etched-metal radiator grilles, directional headlights, front deck-mounted ditch lights, illuminated number boards, walkway lights, dual cube speakers, ESU PowerPack, a five-pole skew-wound motor, dual flywheels, all-wheel drive, and all-wheel electrical pickup.",
+      "sourceIds": ["scaletrains-sxt43710", "scaletrains-sxt43710-product-image"],
+      "images": [
+        {
+          "type": "manufacturer-product",
+          "localPath": null,
+          "sourcePage": "https://www.scaletrains.com/rivet-counter-ho-scale-ge-et44ach-bnsf-heritage-iii-10.html",
+          "remoteImageUrl": "https://www.scaletrains.com/media/catalog/product/cache/832b44601db91560d95f56fa687bb4de/s/x/sxt43706-bnsf_side.jpg",
+          "caption": "ScaleTrains Rivet Counter BNSF Heritage III ET44ACH product image",
+          "credit": "ScaleTrains",
+          "date": null,
+          "storage": "remote",
+          "sourceIds": ["scaletrains-sxt43710-product-image"]
+        }
+      ],
       "status": "ordered"
     }
   ]

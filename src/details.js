@@ -1,6 +1,6 @@
 import { formatPrototypeName } from "./model.js";
 import { locomotiveUrl } from "./navigation.js";
-import { renderServiceTimeline } from "./service-timeline.js?v=count-2";
+import { renderServiceTimeline } from "./service-timeline.js?v=ongoing-1";
 
 export function displayValue(value) {
   return value == null || value === "" ? "Unknown" : String(value);
@@ -57,6 +57,16 @@ export function buildCollectionFields(item) {
     ["Manufacturer", item.manufacturer], ["Product number", item.manufacturerProductNumber],
     ["Scale", item.scale], ["Railroad", item.railroadName], ["Road number", item.roadNumber],
     ["Livery", item.livery], ["Sound / control", item.soundControl],
+  ]);
+}
+
+export function buildOrderFields(order) {
+  return fields([
+    ["Manufacturer", order.manufacturer], ["Product line", order.productLine],
+    ["Item number", order.manufacturerSku], ["Scale", order.scale],
+    ["Railroad", order.railroadName], ["Road number", order.roadNumber],
+    ["Livery", order.livery], ["Sound / control", order.soundControl],
+    ["Expected delivery", formatMonth(order.expectedDate)],
   ]);
 }
 
@@ -262,6 +272,15 @@ export function renderDetails(container, { prototype, status, related, historica
     owned.className = "status-badge status-owned"; owned.textContent = "owned";
     section.append(owned);
     renderFacts(section, buildCollectionFields(item));
+    container.append(section);
+  }
+  for (const order of orders) {
+    const section = detailSection("Incoming model", sectionHeadingTag);
+    const ordered = document.createElement("span");
+    ordered.className = "status-badge status-ordered"; ordered.textContent = "ordered";
+    section.append(ordered);
+    renderFacts(section, buildOrderFields(order));
+    renderNarrative(section, [order.notes]);
     container.append(section);
   }
   if (sources.length) {

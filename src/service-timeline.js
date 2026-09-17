@@ -1,4 +1,4 @@
-import { buildTimelineView } from "./timeline.js?v=count-2";
+import { buildTimelineView } from "./timeline.js?v=ongoing-1";
 import { TIMELINE_PATTERN_PALETTE as palette } from "./timeline-palette.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
@@ -29,7 +29,7 @@ function addPatterns(svg, ids) {
 
 function addBar(svg, span, y, scale) {
   const rect = svgElement("rect", {
-    x: scale(span.start), y, width: Math.max(2, scale(span.end) - scale(span.start)), height: 12,
+    x: scale(span.start), y, width: Math.max(2, scale(span.renderEnd) - scale(span.start)), height: 12,
     rx: 1.5, fill: `url(#${patternId(span.identityId)})`, stroke: "#484941", "stroke-width": .65,
     tabindex: 0, role: "img", "aria-label": span.detail,
   });
@@ -86,7 +86,7 @@ export function renderServiceTimeline(prototype, historicalLocomotives = []) {
   serviceRows.forEach((span, index) => addBar(svg, span, serviceStartY + index * rowGap, scale));
   if (view.specific) {
     const first = view.specific.segments[0]; const last = view.specific.segments.at(-1);
-    svg.append(svgElement("rect", { x: scale(first.start) - 3, y: specificY - 3, width: scale(last.end) - scale(first.start) + 6, height: 18, rx: 2, class: "service-timeline-specific-frame" }));
+    svg.append(svgElement("rect", { x: scale(first.start) - 3, y: specificY - 3, width: scale(last.renderEnd) - scale(first.start) + 6, height: 18, rx: 2, class: "service-timeline-specific-frame" }));
     view.specific.segments.forEach((span) => addBar(svg, span, specificY, scale));
   }
   figure.append(svg, legend(view.legend, Boolean(view.specific), view.legendNote)); return figure;

@@ -38,6 +38,10 @@
     { "id": "trainpix-bn-roster", "title": "Burlington Northern Motive Power Roster", "publisher": "TrainPix", "url": "https://www.trainpix.com/BN/ROSTER.HTM", "type": "historical-roster", "accessedDate": "2026-09-13" },
     { "id": "rrpicturearchives-np-3309", "title": "Northern Pacific 3309 — GE U33C", "publisher": "RR Picture Archives", "url": "https://www.rrpicturearchives.net/locomotives/np-3309/257426", "type": "historical-roster-and-photograph", "accessedDate": "2026-09-13" },
     { "id": "diesel-shop-u23b-roster", "title": "GE U23B Roster", "publisher": "The Diesel Shop", "url": "https://www.thedieselshop.us/GE_U23B.HTML", "type": "prototype-roster", "accessedDate": "2026-09-13" },
-    { "id": "diesel-shop-ge-data-sheets", "title": "GE Diesel Data Sheets", "publisher": "The Diesel Shop", "url": "https://thedieselshop.us/GE%20DataIndex.HTML", "type": "prototype-reference", "accessedDate": "2026-09-13" }
+    { "id": "diesel-shop-ge-data-sheets", "title": "GE Diesel Data Sheets", "publisher": "The Diesel Shop", "url": "https://thedieselshop.us/GE%20DataIndex.HTML", "type": "prototype-reference", "accessedDate": "2026-09-13" },
+    { "id": "scaletrains-sxt43710", "title": "Rivet Counter HO Scale GE ET44ACH, BNSF Heritage III", "publisher": "ScaleTrains", "url": "https://www.scaletrains.com/rivet-counter-ho-scale-ge-et44ach-bnsf-heritage-iii-10.html", "type": "prototype-and-product-reference", "accessedDate": "2026-09-16" },
+    { "id": "scaletrains-sxt43710-product-image", "title": "BNSF Heritage III ET44ACH product image", "publisher": "ScaleTrains", "url": "https://www.scaletrains.com/media/catalog/product/cache/832b44601db91560d95f56fa687bb4de/s/x/sxt43706-bnsf_side.jpg", "type": "manufacturer-product-image", "accessedDate": "2026-09-16" },
+    { "id": "rrpicturearchives-bnsf-3674", "title": "BNSF Railway 3674 — GE ET44AC", "publisher": "RR Picture Archives", "url": "https://www.rrpicturearchives.net/locomotives/bnsf-3674/267073", "type": "historical-roster-and-photographs", "accessedDate": "2026-09-16" },
+    { "id": "flickr-christian-schnake-bnsf-3674", "title": "BNSF 3674 North at Turners, Missouri", "publisher": "Flickr", "url": "https://www.flickr.com/photos/161186770@N02/53242631490/", "type": "historical-photograph", "accessedDate": "2026-09-16" }
   ]
 }

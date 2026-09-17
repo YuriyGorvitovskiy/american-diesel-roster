@@ -60,3 +60,27 @@ test("timeline renders without a specific historical locomotive", async () => {
 test("prototype without timeline has no timeline view", () => {
   assert.equal(buildTimelineView({ id: "emd-f3", model: "F3" }, []), null);
 });
+
+test("ongoing ranges retain null ends while rendering through the current year", () => {
+  const prototype = {
+    id: "ge-et44ac", model: "ET44AC", productionCount: null,
+    timeline: {
+      manufacturing: { start: 2015, end: null, sourceIds: [] },
+      lineageService: [{ railroadId: "bnsf", start: 2023, end: null, sourceIds: [] }],
+    },
+  };
+  const historical = [{
+    id: "bnsf-3674",
+    serviceTimeline: [{ railroadId: "bnsf", roadNumber: "3674", start: 2023, end: null, sourceIds: [] }],
+  }];
+
+  const view = buildTimelineView(prototype, historical, 2026);
+
+  assert.deepEqual(view.rows.map(({ end, renderEnd, detail }) => ({ end, renderEnd, detail })), [
+    { end: null, renderEnd: 2026, detail: "Manufacturing · ET44AC · 2015–present" },
+    { end: null, renderEnd: 2026, detail: "BNSF · ET44AC · 2023–present" },
+  ]);
+  assert.deepEqual(view.specific.segments.map(({ end, renderEnd, detail }) => ({ end, renderEnd, detail })), [
+    { end: null, renderEnd: 2026, detail: "BNSF 3674 · 2023–present" },
+  ]);
+});

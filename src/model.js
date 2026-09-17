@@ -83,7 +83,9 @@ export function buildPrototypeDetail(prototypeId, data) {
   const collectionItems = data.items
     .filter((item) => item.prototypeId === prototypeId)
     .map((item) => ({ ...item, railroadName: railroadById.get(item.railroadId)?.name ?? null }));
-  const orders = data.orders.filter((order) => order.prototypeId === prototypeId && order.status === "ordered");
+  const orders = data.orders
+    .filter((order) => order.prototypeId === prototypeId && order.status === "ordered")
+    .map((order) => ({ ...order, railroadName: railroadById.get(order.railroadId)?.name ?? null }));
   const citedIds = new Set([
     ...(prototype.sourceIds ?? []),
     ...(prototype.timeline?.manufacturing?.sourceIds ?? []),

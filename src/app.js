@@ -1,4 +1,4 @@
-import { loadData, findDanglingReferences } from "./data.js?v=premerge-2";
+import { loadData, findDanglingReferences } from "./data.js?v=et44ach-3674-3";
 import { buildRosterRows, derivePrototypeStatus } from "./model.js?v=order-thumbnails-1";
 import { normalizeView, prototypesForManufacturer, renderNavigation } from "./navigation.js";
 import { renderRoster } from "./roster.js?v=order-thumbnails-1";

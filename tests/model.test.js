@@ -49,6 +49,10 @@ test("roster joins owned items and orders without combining records", () => {
   assert.equal(rows[3].railroadName, "Chicago, Burlington & Quincy");
   assert.equal(rows[3].manufacturerUrl, "https://rapidotrains.com/");
   assert.equal(rows[3].retailerUrl, "https://www.trainworld.com/");
+  assert.equal(rows[4].manufacturerUrl, "https://www.scaletrains.com/rivet-counter-ho-scale-ge-et44ach-bnsf-heritage-iii-10.html");
+  assert.equal(rows[4].retailer, "ScaleTrains");
+  assert.equal(rows[4].retailerUrl, rows[4].manufacturerUrl);
+  assert.equal(rows[4].image.remoteImageUrl, "https://www.scaletrains.com/media/catalog/product/cache/832b44601db91560d95f56fa687bb4de/s/x/sxt43706-bnsf_side.jpg");
   assert.ok(rows.every(({ status }) => status !== "historical_only"));
   assert.deepEqual(rows[2].image, {
     type: "collection-model",
@@ -77,6 +81,13 @@ test("GP35 delivery is represented as an owned model, not an active order", () =
     date: null,
     storage: "local-owner",
   }]);
+});
+
+test("ET44AC detail joins its incoming model to BNSF", () => {
+  const detail = buildPrototypeDetail("ge-et44ac", data);
+  assert.deepEqual(detail.orders.map(({ id }) => id), ["order-bnsf-et44ach-3674"]);
+  assert.equal(detail.orders[0].railroadName, "BNSF");
+  assert.equal(detail.orders[0].historicalLocomotiveId, "bnsf-3674");
 });
 
 test("prototype naming and relationship lookup use stable IDs", () => {

@@ -38,6 +38,7 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
   const prototypeIds = new Set(prototypes.map(({ id }) => id));
   const railroadIds = new Set(railroads.map(({ id }) => id));
   const historicalLocomotiveIds = new Set(historicalLocomotives.map(({ id }) => id));
+  const historicalLocomotivesById = new Map(historicalLocomotives.map((record) => [record.id, record]));
   const sourceIds = new Set(sources.map(({ id }) => id));
   const checkReference = (record, kind, field, ids, target) => {
     if (record[field] != null && !ids.has(record[field])) {
@@ -78,9 +79,9 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
       if (span.railroadId && !railroadIds.has(span.railroadId)) {
         errors.push(`${kind} "${record.id}" timeline references unknown railroad "${span.railroadId}".`);
       }
-      if (!Number.isInteger(span.start) || !Number.isInteger(span.end)) {
-        errors.push(`${kind} "${record.id}" timeline requires integer start and end years.`);
-      } else if (span.start > span.end) {
+      if (!Number.isInteger(span.start) || (span.end !== null && !Number.isInteger(span.end))) {
+        errors.push(`${kind} "${record.id}" timeline requires an integer start year and an integer or null end year.`);
+      } else if (span.end !== null && span.start > span.end) {
         errors.push(`${kind} "${record.id}" timeline has reversed span ${span.start}–${span.end}.`);
       }
       for (const id of span.sourceIds ?? []) {
@@ -129,6 +130,13 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
   for (const order of orders) {
     checkReference(order, "Order", "prototypeId", prototypeIds, "prototype");
     checkReference(order, "Order", "railroadId", railroadIds, "railroad");
+    checkReference(order, "Order", "historicalLocomotiveId", historicalLocomotiveIds, "historical locomotive");
+    const historicalLocomotive = historicalLocomotivesById.get(order.historicalLocomotiveId);
+    if (historicalLocomotive && (
+      historicalLocomotive.prototypeId !== order.prototypeId
+      || historicalLocomotive.railroadId !== order.railroadId
+      || historicalLocomotive.roadNumber !== order.roadNumber
+    )) errors.push(`Order "${order.id}" does not match historical locomotive "${order.historicalLocomotiveId}".`);
     checkSources(order, "Order");
   }
   for (const railroad of railroads) {
