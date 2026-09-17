@@ -151,6 +151,7 @@ dt { color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: u
 .railroad-detail-grid article { padding: 26px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
 .railroad-detail-grid dl { display: grid; grid-template-columns: 120px 1fr; gap: 12px; }
 .railroad-detail-grid dd { font-size: 1rem; }
+.railroad-detail-grid a { color: var(--wanted); font-weight: 750; text-underline-offset: 3px; }
 .railroad-schemes { grid-column: 1 / -1; }
 .railroad-schemes ul { columns: 2; padding-left: 1.2rem; }
 .home-intro { min-height: calc(100vh - 100px); display: grid; align-content: start; justify-items: start; }

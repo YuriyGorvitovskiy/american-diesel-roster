@@ -19,6 +19,10 @@ export function locomotiveUrl(id) {
   return `/locomotive.html?id=${encodeURIComponent(id)}`;
 }
 
+export function railroadUrl(slug) {
+  return `/railroads/${encodeURIComponent(slug)}`;
+}
+
 export function parsePrototypeId(search) {
   return new URLSearchParams(search).get("id");
 }

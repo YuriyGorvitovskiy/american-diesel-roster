@@ -1,6 +1,6 @@
 import { loadData, findDanglingReferences } from "./data.js?v=bnsf-routes-13";
 import { buildRosterRows, derivePrototypeStatus } from "./model.js?v=order-thumbnails-1";
-import { normalizeView, prototypesForManufacturer, renderNavigation } from "./navigation.js?v=bnsf-routes-13";
+import { normalizeView, prototypesForManufacturer, railroadUrl, renderNavigation } from "./navigation.js?v=railroad-relationships-1";
 import { renderRoster } from "./roster.js?v=order-thumbnails-1";
 import { renderTree } from "./tree.js?v=ge-tree-11";
 import { renderAlcoPrototype } from "./alco-prototype.js?v=premerge-2";
@@ -57,10 +57,10 @@ function renderBnsf(main, data) {
   const renderRailroad = (railroad) => {
     main.replaceChildren();
     renderFooterLegend("bnsf", true);
-    renderRailroadPage(main, railroad, data.railroads);
+    renderRailroadPage(main, railroad, data.railroads, showRailroad);
   };
   const showRailroad = (railroad) => {
-    history.pushState({}, "", `/railroads/${railroad.slug}`);
+    history.pushState({}, "", railroadUrl(railroad.slug));
     renderRailroad(railroad);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };

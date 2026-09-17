@@ -1,6 +1,38 @@
+import { railroadUrl } from "./navigation.js?v=railroad-relationships-1";
+
 function railroadYears(railroad) {
   if (railroad.startYear == null && railroad.endYear == null) return "Dates unknown";
   return `${railroad.startYear ?? "?"}–${railroad.endYear ?? "present"}`;
+}
+
+export function railroadRelationships(railroad, railroads) {
+  const byId = new Map(railroads.map((item) => [item.id, item]));
+  return {
+    predecessors: (railroad.predecessors || []).map((id) => byId.get(id)).filter(Boolean),
+    successor: byId.get(railroad.successor) ?? null,
+  };
+}
+
+function relationshipLink(railroad, onOpenRailroad) {
+  const link = document.createElement("a");
+  link.href = railroadUrl(railroad.slug);
+  link.textContent = railroad.name;
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    onOpenRailroad(railroad);
+  });
+  return link;
+}
+
+function appendRelationshipValue(container, railroads, emptyText, onOpenRailroad) {
+  if (!railroads.length) {
+    container.textContent = emptyText;
+    return;
+  }
+  railroads.forEach((railroad, index) => {
+    if (index) container.append(document.createTextNode(", "));
+    container.append(relationshipLink(railroad, onOpenRailroad));
+  });
 }
 
 function nodeClass(railroad) {
@@ -148,7 +180,7 @@ export function renderBnsfGenealogy(main, railroads, onOpenRailroad) {
   canvas.innerHTML = '<svg aria-hidden="true"></svg>';
   for (const { railroad, x, y } of positions) {
     const link = document.createElement("a");
-    link.href = `/railroads/${railroad.slug}`;
+    link.href = railroadUrl(railroad.slug);
     link.className = nodeClass(railroad);
     link.dataset.railroadId = railroad.id;
     link.style.left = `${x}px`; link.style.top = `${y}px`;
@@ -174,14 +206,19 @@ export function renderBnsfGenealogy(main, railroads, onOpenRailroad) {
   fitAndDraw();
 }
 
-export function renderRailroadPage(main, railroad, railroads) {
-  const byId = new Map(railroads.map((item) => [item.id, item]));
+export function renderRailroadPage(main, railroad, railroads, onOpenRailroad) {
   const section = document.createElement("section"); section.className = "railroad-detail-prototype";
   const marks = railroad.reportingMarks?.join(" · ") || "Reporting marks unknown";
   section.innerHTML = `<div class="railroad-hero entity-page-heading"><p class="eyebrow">${railroad.type.replaceAll("-", " ")}</p><h1>${railroad.name}</h1><p class="railroad-meta">${marks} <b>·</b> ${railroadYears(railroad)}</p>${railroad.description ? `<p class="railroad-lede">${railroad.description}</p>` : ""}</div>`;
   const relationships = document.createElement("div"); relationships.className = "railroad-detail-grid";
-  const predecessorNames = (railroad.predecessors || []).map((id) => byId.get(id)?.name).filter(Boolean);
-  relationships.innerHTML = `<article><p class="eyebrow">Lineage</p><h2>Relationships</h2><dl><dt>Predecessors</dt><dd>${predecessorNames.join(", ") || "None in this curated set"}</dd><dt>Successor</dt><dd>${byId.get(railroad.successor)?.name || "Final company"}</dd></dl></article><article><p class="eyebrow">Reference</p><h2>Statistics</h2><p class="muted">Historical statistics have not yet been supplied.</p></article>`;
+  const relationshipArticle = document.createElement("article");
+  relationshipArticle.innerHTML = '<p class="eyebrow">Lineage</p><h2>Relationships</h2><dl><dt>Predecessors</dt><dd class="railroad-predecessors"></dd><dt>Successor</dt><dd class="railroad-successor"></dd></dl>';
+  const resolved = railroadRelationships(railroad, railroads);
+  appendRelationshipValue(relationshipArticle.querySelector(".railroad-predecessors"), resolved.predecessors, "None in this curated set", onOpenRailroad);
+  appendRelationshipValue(relationshipArticle.querySelector(".railroad-successor"), resolved.successor ? [resolved.successor] : [], "Final company", onOpenRailroad);
+  const statistics = document.createElement("article");
+  statistics.innerHTML = '<p class="eyebrow">Reference</p><h2>Statistics</h2><p class="muted">Historical statistics have not yet been supplied.</p>';
+  relationships.append(relationshipArticle, statistics);
   const schemes = document.createElement("article"); schemes.className = "railroad-schemes";
   schemes.innerHTML = `<p class="eyebrow">Visual identity</p><h2>${railroad.preDiesel ? "Pre-diesel railroad" : "Paint schemes"}</h2>${railroad.preDiesel ? '<p class="muted">No diesel-livery gallery is planned unless later research supplies relevant motor equipment.</p>' : railroad.paintSchemes?.length ? `<ul>${railroad.paintSchemes.map((scheme) => `<li>${scheme}</li>`).join("")}</ul>` : '<p class="muted">Paint-scheme artwork will be supplied separately.</p>'}`;
   relationships.append(schemes); section.append(relationships); main.append(section);

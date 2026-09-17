@@ -1,7 +1,20 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { verticalScaleForColumns } from "../src/railroad-pages.js";
+import { railroadRelationships, verticalScaleForColumns } from "../src/railroad-pages.js";
+
+test("railroad relationships resolve navigable predecessor and successor records", () => {
+  const railroads = [
+    { id: "slse", slug: "slse", name: "Seattle, Lake Shore & Eastern" },
+    { id: "spokane-palouse", slug: "spokane-palouse", name: "Spokane & Palouse Railway" },
+    { id: "northern-pacific", slug: "np", name: "Northern Pacific Railway", predecessors: ["slse", "spokane-palouse"], successor: "burlington-northern" },
+    { id: "burlington-northern", slug: "bn", name: "Burlington Northern" },
+  ];
+
+  const relationships = railroadRelationships(railroads[2], railroads);
+  assert.deepEqual(relationships.predecessors.map(({ slug }) => slug), ["slse", "spokane-palouse"]);
+  assert.equal(relationships.successor.slug, "bn");
+});
 
 test("railroad genealogy expands vertical spacing for zoomed card heights", () => {
   const positions = [

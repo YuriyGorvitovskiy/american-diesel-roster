@@ -3,6 +3,7 @@ import test from "node:test";
 
 import {
   locomotiveUrl,
+  railroadUrl,
   navigationItems,
   normalizeView,
   parsePrototypeId,
@@ -39,4 +40,9 @@ test("detail URLs encode and parse stable prototype IDs", () => {
   assert.equal(locomotiveUrl("emc-nw1"), "/locomotive.html?id=emc-nw1");
   assert.equal(parsePrototypeId("?id=emc-nw1"), "emc-nw1");
   assert.equal(parsePrototypeId(""), null);
+});
+
+test("railroad URLs use bookmarkable slugs", () => {
+  assert.equal(railroadUrl("spokane-palouse"), "/railroads/spokane-palouse");
+  assert.equal(railroadUrl("name with spaces"), "/railroads/name%20with%20spaces");
 });
