@@ -1,1 +1,645 @@
-{"id":"santa-fe","slug":"atsf","name":"Atchison, Topeka & Santa Fe Railway","commonName":"Santa Fe","reportingMarks":["ATSF"],"startYear":1859,"endYear":1995,"type":"major","predecessors":["gcsf","psf","kcmo"],"successor":"bnsf","description":"This page is prepared for one of the largest future paint-scheme galleries.","statistics":null,"paintSchemes":["Zebra Stripe","Cat Whiskers","early Blue/Yellow","later Blue/Yellow","Red/Silver Warbonnet","Blue/Silver Bluebonnet","Yellow/Silver Yellowbonnet","Yellow/Blue Freightbonnet","SPSF Kodachrome","Super Fleet Red/Silver Warbonnet","important passenger schemes"],"sources":[]}
+{
+  "id": "santa-fe",
+  "slug": "atsf",
+  "name": "Atchison, Topeka & Santa Fe Railway",
+  "commonName": "Santa Fe",
+  "reportingMarks": [
+    "ATSF"
+  ],
+  "startYear": 1859,
+  "endYear": 1995,
+  "type": "major",
+  "predecessors": [
+    "gcsf",
+    "psf",
+    "kcmo"
+  ],
+  "successor": "bnsf",
+  "description": "Santa Fe entered the diesel era in 1935 as an overwhelmingly steam-powered railroad. Over the next sixty years, diesel-electric traction completely replaced steam while a smaller workforce and equipment fleet moved traffic across a still-vast western network. By 1995, Santa Fe operated an entirely diesel locomotive fleet as the independent ATSF era drew to a close.",
+  "statistics": {
+    "title": "1935–1995 — 60 Years of Diesel Evolution",
+    "snapshots": [
+      {
+        "year": 1935,
+        "label": "Dawn of Diesel",
+        "metrics": {
+          "locomotives": {
+            "value": "~1,900"
+          },
+          "steam": {
+            "value": "~1,900"
+          },
+          "diesel": {
+            "value": "3"
+          },
+          "dieselShare": {
+            "value": "<1%"
+          },
+          "capitalization": {
+            "value": "~$600M",
+            "label": "Capitalization"
+          },
+          "employees": {
+            "value": "~40,000"
+          },
+          "routeMiles": {
+            "value": "~12,000 mi",
+            "label": "Route / operated mileage"
+          },
+          "rollingStock": {
+            "value": "~85,000",
+            "label": "Non-locomotive rolling stock"
+          }
+        },
+        "context": "Santa Fe was still overwhelmingly a steam railroad. Diesel-electric operation was only beginning, while the Great Depression had left a substantial portion of the locomotive fleet stored or underutilized.",
+        "sourceIds": [
+          "atsf-kansas-historical-records",
+          "atsf-period-statistics"
+        ]
+      },
+      {
+        "year": 1995,
+        "label": "End of the Santa Fe Era",
+        "metrics": {
+          "locomotives": {
+            "value": "1,595"
+          },
+          "steam": {
+            "value": "0"
+          },
+          "diesel": {
+            "value": "1,595"
+          },
+          "dieselShare": {
+            "value": "100%"
+          },
+          "capitalization": {
+            "value": "$5.35B",
+            "label": "Book capitalization / shareholder equity"
+          },
+          "employees": {
+            "value": "~15,000"
+          },
+          "routeMiles": {
+            "value": "9,126 mi",
+            "label": "Miles of road operated"
+          },
+          "rollingStock": {
+            "value": "~26,000",
+            "label": "Non-locomotive rolling stock"
+          }
+        },
+        "sourceIds": [
+          "atsf-1995-r1",
+          "atsf-combination-reporting"
+        ]
+      }
+    ],
+    "notes": [
+      "1935 values prefixed with ~ are rounded comparative estimates cross-referenced against surrounding-period Santa Fe statistics.",
+      "Capitalization and shareholder equity indicate broad financial scale; they are not identical accounting concepts.",
+      "Rolling stock is approximate freight and passenger car fleet scale in 1935, and approximately 25,664 owned freight cars plus a smaller remainder of railroad equipment in 1995."
+    ]
+  },
+  "paintSchemes": [
+    {
+      "id": "early-passenger-diesel",
+      "name": "Super Chief Golden Olive",
+      "startYear": 1935,
+      "periodLabel": "1935",
+      "paintCode": null,
+      "category": "Passenger",
+      "representativeLocomotive": "EMC passenger boxcab #1 / 1A–1B",
+      "description": "Santa Fe's first purpose-built passenger diesel appearance. The original 1935 scheme used Super Chief Golden Olive on the body, Sarasota Blue on the lower body and skirts, Cobalt Blue on the roof, and a Pimpernel Scarlet roofline accent with black pinstriping.",
+      "historicalColors": [
+        {
+          "name": "Super Chief Golden Olive",
+          "application": "main body"
+        },
+        {
+          "name": "Sarasota Blue",
+          "application": "lower body / skirts"
+        },
+        {
+          "name": "Cobalt Blue",
+          "application": "roof"
+        },
+        {
+          "name": "Pimpernel Scarlet",
+          "application": "roofline accent"
+        },
+        {
+          "name": "Black",
+          "application": "pinstriping/details"
+        }
+      ],
+      "images": [
+        {
+          "type": "historical",
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/ATSF1_1935.JPG",
+          "caption": "ATSF No. 1 — 1935",
+          "description": "Santa Fe's first passenger diesel set in its original 1935 appearance.",
+          "credit": "Acme News Service · September 20, 1935 · Public Domain",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:ATSF1_1935.JPG",
+          "sourceLabel": "Wikimedia Commons"
+        },
+        {
+          "type": "reconstruction",
+          "src": "/images/railroads/atsf-super-chief-golden-olive-reconstruction.png",
+          "caption": "ATSF No. 1 / 1A — Super Chief Golden Olive, 1935",
+          "description": "Historical color reconstruction of Santa Fe's original 1935 passenger diesel paint scheme.",
+          "credit": "Reconstruction based on period photographs and documented Santa Fe color descriptions.",
+          "sourceUrl": null,
+          "sourceLabel": null
+        }
+      ],
+      "sourceIds": [
+        "commons-atsf1-1935"
+      ]
+    },
+    {
+      "id": "basic-black",
+      "name": "Basic Black",
+      "startYear": 1937,
+      "periodLabel": "1937",
+      "paintCode": "BNT",
+      "category": "Switcher",
+      "representativeLocomotive": "HH600 #2301",
+      "description": "Santa Fe's HH600 switchers introduced the railroad's earliest plain black switcher appearance. ATSF 2301 was delivered in 1937 in a solid black scheme with no trim, no herald, and no side lettering — a stark pre-Zebra look that was soon modified in service.",
+      "prototypeLabel": "Prototype",
+      "historicalNote": "The earliest delivered appearance was plain black with no name and no herald; initials were added soon after delivery, and heralds came later. This entry depicts the original delivered state.",
+      "images": [
+        {
+          "type": "reconstruction",
+          "src": "/images/railroads/atsf-hh600-2301-basic-black-reconstruction.png",
+          "caption": "ATSF HH600 No. 2301 — Basic Black, 1937",
+          "description": "Historical reconstruction of the locomotive's earliest delivered appearance in solid black with no trim, no herald, and no ATSF side lettering.",
+          "credit": "American Diesel Roster historical reconstruction",
+          "note": "Reconstruction based on documented ATSF roster paint data and early delivery notes.",
+          "sourceUrl": null,
+          "sourceLabel": null
+        }
+      ]
+    },
+    {
+      "id": "passenger-warbonnet",
+      "name": "Red / Silver Passenger Warbonnet",
+      "startYear": 1937,
+      "periodLabel": "1937–1971",
+      "paintCode": "SRW where applicable",
+      "category": "Passenger",
+      "representativeLocomotive": "E6A #15",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe's classic passenger Warbonnet combined a red nose and bonnet, yellow outlining, and a silver body to create one of the most recognizable railroad paint schemes in North America. Introduced on the streamlined passenger fleet in 1937, it remained Santa Fe's signature passenger identity for decades.",
+      "images": [
+        {
+          "type": "historical",
+          "src": "https://www.american-rails.com/images/88929823652345t115y2682970939849.jpg",
+          "caption": "ATSF E6A No. 15 — Red / Silver Passenger Warbonnet",
+          "description": "Classic Santa Fe passenger Warbonnet with red nose and bonnet, yellow outlining, and silver body treatment.",
+          "credit": "American-Rails.com collection · circa 1966",
+          "sourceUrl": "https://www.american-rails.com/e353.html",
+          "sourceLabel": "American-Rails.com"
+        }
+      ],
+      "sourceIds": [
+        "american-rails-atsf-e6a-15"
+      ]
+    },
+    {
+      "id": "black-silver-trim",
+      "name": "Black with Silver Trim",
+      "startYear": 1939,
+      "periodLabel": "1939–c.1947",
+      "paintCode": "BST",
+      "category": "Switcher",
+      "representativeLocomotive": "HH1000 #2310",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe's Black with Silver Trim switcher scheme marked an early step beyond the railroad's first plain black diesel appearance. Applied to early switchers such as HH1000 No. 2310, it combined a black body with a silver side stripe, ATSF herald, and side lettering, forming an important pre-Zebra stage in Santa Fe's switcher paint evolution.",
+      "images": [
+        {
+          "type": "reconstruction",
+          "src": "/images/railroads/atsf-hh1000-2310-black-silver-trim-reconstruction.png",
+          "caption": "ATSF HH1000 No. 2310 — Black with Silver Trim",
+          "description": "Historical reconstruction of Santa Fe's early black-and-silver-trim switcher scheme with side stripe, herald, and ATSF lettering.",
+          "credit": "American Diesel Roster historical reconstruction",
+          "note": "Reconstruction based on documented ATSF roster paint data and early switcher scheme references.",
+          "sourceUrl": null,
+          "sourceLabel": null
+        }
+      ]
+    },
+    {
+      "id": "cat-whisker-full",
+      "name": "Cat Whisker, Full Vermilion Trim",
+      "startYear": 1941,
+      "periodLabel": "1941–1946",
+      "paintCode": "BCVT1",
+      "category": "Freight cab",
+      "representativeLocomotive": "FTA #122L",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe's early freight FT fleet introduced the Cat Whisker treatment in blue and creamy yellow, separated by a full-length vermilion stripe. A black roof and pilot framed the design, while the square nose herald and three horizontal whisker stripes created one of the railroad's most distinctive early freight-diesel identities.",
+      "images": [
+        {
+          "type": "historical",
+          "src": "https://upload.wikimedia.org/wikipedia/commons/1/12/Santa_Fe_FT_locomotive_1941.JPG",
+          "caption": "ATSF FT No. 100 — 1941",
+          "description": "Original black-and-white photograph of a Santa Fe FT in Cat Whisker paint.",
+          "credit": "Santa Fe Railway · February 3, 1941 · Public Domain",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Santa_Fe_FT_locomotive_1941.JPG",
+          "sourceLabel": "Wikimedia Commons"
+        },
+        {
+          "type": "reconstruction",
+          "src": "/images/railroads/atsf-cat-whisker-bcvt1-provisional-reconstruction.png",
+          "caption": "ATSF FTA No. 122L — Cat Whisker, Full Vermilion Trim",
+          "description": "Historical color reconstruction of the as-delivered blue, cream and full-vermilion Cat Whisker freight scheme.",
+          "credit": "American Diesel Roster historical reconstruction",
+          "note": "Reconstruction based on ATSF roster paint documentation and period photographs.",
+          "sourceUrl": null,
+          "sourceLabel": null
+        }
+      ],
+      "sourceIds": [
+        "commons-santa-fe-ft-1941"
+      ]
+    },
+    {
+      "id": "black-orange-zebra",
+      "name": "Black / Orange Zebra",
+      "startYear": 1945,
+      "periodLabel": "c.1945–1948",
+      "paintCode": "BOZ",
+      "category": "Switcher",
+      "representativeLocomotive": "HH1000 #2319",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe's Black / Orange Zebra scheme was an early switcher safety-and-visibility variant that introduced diagonal orange end striping to the railroad's black switcher fleet. Applied to locomotives such as HH1000 No. 2319, it combined a black body, orange Zebra striping, silver trim, and ATSF herald/lettering, forming a short-lived but visually distinctive step in Santa Fe's switcher paint evolution before later silver-striped Zebra variants became standard.",
+      "images": [
+        {
+          "type": "reconstruction",
+          "src": "/images/railroads/atsf-hh1000-2319-black-orange-zebra-reconstruction.png",
+          "caption": "ATSF HH1000 No. 2319 — Black / Orange Zebra",
+          "description": "Historical reconstruction of Santa Fe's early black-and-orange Zebra switcher scheme with orange diagonal striping, silver trim, herald, and ATSF lettering.",
+          "credit": "American Diesel Roster historical reconstruction",
+          "note": "Reconstruction based on documented ATSF roster paint data and early switcher scheme references.",
+          "sourceUrl": null,
+          "sourceLabel": null
+        }
+      ]
+    },
+    {
+      "id": "cat-whisker-partial",
+      "name": "Cat Whisker, Partial Vermilion Trim",
+      "startYear": 1947,
+      "periodLabel": "1947–1951",
+      "paintCode": "BCVT2",
+      "category": "Freight cab",
+      "representativeLocomotive": "FT #153",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe's Cat Whisker, Partial Vermilion Trim scheme was a modified freight F-unit variation introduced after the earlier full-vermilion Cat Whisker style. It retained the blue-and-cream body, black roof and pilot, and signature whiskered nose herald, but reduced the vermilion trim so that it appeared only on the front section forward of the cab door.",
+      "images": [
+        {
+          "type": "reconstruction",
+          "src": "/images/railroads/atsf-ft-153-cat-whisker-partial-vermilion-reconstruction.png?v=2",
+          "caption": "ATSF FT No. 153 — Cat Whisker, Partial Vermilion Trim",
+          "description": "Historical reconstruction of Santa Fe's modified Cat Whisker freight scheme with vermilion trim limited to the front section forward of the cab door.",
+          "credit": "American Diesel Roster historical reconstruction",
+          "note": "Reconstruction based on documented ATSF paint-variant references for the modified Cat Whisker scheme.",
+          "sourceUrl": null,
+          "sourceLabel": null
+        }
+      ]
+    },
+    {
+      "id": "black-silver-zebra",
+      "name": "Black / Silver Zebra",
+      "startYear": 1950,
+      "periodLabel": "1950s–1960s",
+      "paintCode": null,
+      "category": "Switcher",
+      "representativeLocomotive": "VO-1000 #2218",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe's Black / Silver Zebra scheme became one of the railroad's most recognizable switcher appearances. A black body was paired with high-visibility silver, aluminum, or white diagonal end striping and matching trim, giving yard locomotives a distinctive visual identity that evolved from the earlier plain-black and experimental Zebra variants.",
+      "images": [
+        {
+          "type": "historical",
+          "src": "https://www.rrpicturearchives.net/picturefiles/150454/ATSF%202218.JPG",
+          "caption": "ATSF VO-1000 No. 2218 — Black / Silver Zebra",
+          "description": "Santa Fe switcher in the classic black-bodied Zebra scheme with bright silver/aluminum/white diagonal striping.",
+          "credit": "RRPictureArchives.NET collection · ATSF 2218 · circa 1960",
+          "sourceUrl": "http://www.rrpicturearchives.net/showPicture.aspx?id=6362368",
+          "sourceLabel": "RRPictureArchives.NET"
+        }
+      ],
+      "sourceIds": [
+        "rrpicturearchives-atsf-2218-black-silver-zebra"
+      ]
+    },
+    {
+      "id": "solid-blue-experimental",
+      "name": "Solid Blue Experimental",
+      "startYear": 1950,
+      "periodLabel": "Early 1950s",
+      "paintCode": "SBCB",
+      "category": "Experimental",
+      "representativeLocomotive": "EMD FT #170",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe briefly experimented with a simplified all-blue freight FT scheme in the early 1950s. The body was finished in solid dark blue, with a yellow vertical nose band, yellow cigar-band nose herald, and yellow side lettering, creating a bold transitional look between the earlier Cat Whisker and later Blue/Yellow freight treatments.",
+      "images": [
+        {
+          "type": "reconstruction",
+          "src": "/images/railroads/atsf-ft-170-solid-blue-experimental-reconstruction.png",
+          "caption": "ATSF FT No. 170 — Solid Blue Experimental",
+          "description": "AI-assisted historical reconstruction of Santa Fe's all-blue experimental FT paint scheme.",
+          "credit": "American Diesel Roster historical reconstruction",
+          "note": "Reconstructed from the original historical photograph, with improved clarity, corrected color balance, and preserved scheme details.",
+          "sourceUrl": null,
+          "sourceLabel": null,
+          "originalSourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLz9vXUJudl_9OxWT-f0OWMcbCpb3VGE_fawbW-PO6qCxVbR_X3RoZtzXFskaXssv5jyGR-MiaVoCExz1ww7Sj4eRL11VjJce1wyIQu1F3XEzsJajoft7t6QUGxZ5wdHGIqV2YIXyoKKz0Sug0w5qQY8KhdFV99MdqtTKzBflsFMurbVMFo-U280T_Jg/s825/SF-FT-170-All-Blue-Summit-May-1951-Chard-color.png",
+          "originalSourceLabel": "View original",
+          "originalSourceCredit": "Chard Walker · Summit · May 1951"
+        }
+      ],
+      "sourceIds": [
+        "victorville-layout-atsf-ft-170"
+      ]
+    },
+    {
+      "id": "cigar-band",
+      "name": "Blue / Yellow Cigar Band",
+      "startYear": 1950,
+      "periodLabel": "1950s",
+      "paintCode": "BYT family where applicable",
+      "category": "Freight cab",
+      "representativeLocomotive": "F7A #275L",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe's Blue / Yellow Cigar Band scheme gave freight F-units a bold blue body with chrome-yellow trim and the distinctive cigar-band nose herald. Applied to freight cab units in the post-Cat Whisker era, it formed one of the railroad's most recognizable mid-century freight diesel identities.",
+      "images": [
+        {
+          "type": "historical",
+          "src": "https://www.railpictures.net/images/d2/6/7/7/7677.1703499267.jpg",
+          "caption": "ATSF F7A No. 275L — Blue / Yellow Cigar Band",
+          "description": "Santa Fe freight F-unit in the classic blue-and-yellow Cigar Band scheme with cigar-band nose herald and yellow side lettering.",
+          "credit": "Charles Stookey / RailPictures.net collection · ATSF 275L · Oklahoma City · January 1975",
+          "sourceUrl": "https://www.railpictures.net/photo/848076/",
+          "sourceLabel": "RailPictures.net"
+        }
+      ],
+      "sourceIds": [
+        "railpictures-atsf-275l"
+      ]
+    },
+    {
+      "id": "cat-whisker-no-trim",
+      "name": "Cat Whisker, No Vermilion Trim",
+      "startYear": 1951,
+      "periodLabel": "1951–c.1953",
+      "paintCode": "BCNT",
+      "category": "Freight cab",
+      "representativeLocomotive": "FTA 405 (ex-143C)",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe's Cat Whisker, No Vermilion Trim scheme was the final simplified form of the early freight F-unit Cat Whisker family. It retained the blue-and-cream body, black roof and pilot, and signature whiskered nose emblem, but removed the vermilion trim entirely, creating a cleaner transitional appearance just before later freight paint schemes took over.",
+      "images": [
+        {
+          "type": "reconstruction",
+          "src": "/images/railroads/atsf-fta-405-cat-whisker-no-vermilion-reconstruction.png?v=2",
+          "caption": "ATSF FTA No. 405 — Cat Whisker, No Vermilion Trim",
+          "description": "Historical reconstruction of Santa Fe's simplified Cat Whisker freight scheme with the vermilion trim removed completely.",
+          "credit": "American Diesel Roster historical reconstruction",
+          "note": "Reconstruction based on documented ATSF paint-variant references and a period black-and-white photograph.",
+          "sourceUrl": null,
+          "sourceLabel": null,
+          "originalSourceUrl": "https://old.atsfrr.org/resources/funits/gfx/p11f1.jpg",
+          "originalSourceLabel": "View original",
+          "originalSourceCredit": "Original period black-and-white photograph"
+        }
+      ]
+    },
+    {
+      "id": "blue-silver-white-zebra",
+      "name": "Blue with Silver / Aluminum / White Zebra",
+      "startYear": 1955,
+      "periodLabel": "c.1955–1960",
+      "paintCode": "BSAWZ",
+      "category": "Road switcher",
+      "representativeLocomotive": "RSD7 #607",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe's Blue with Silver / Aluminum / White Zebra scheme extended the railroad's Zebra-striping idea onto larger blue-bodied road locomotives. Applied to units such as RSD7 No. 607, it combined a dark blue body with bright silver/aluminum/white end striping, side trim, and bold Santa Fe lettering, creating one of the railroad's most distinctive late-1950s diesel appearances.",
+      "images": [
+        {
+          "type": "reconstruction",
+          "src": "/images/railroads/atsf-rsd7-607-blue-silver-white-zebra-reconstruction.png?v=2",
+          "caption": "ATSF RSD7 No. 607 — Blue with Silver / Aluminum / White Zebra",
+          "description": "Historical reconstruction of Santa Fe's blue-bodied Zebra variant with silver/aluminum/white end striping and side trim.",
+          "credit": "American Diesel Roster historical reconstruction",
+          "note": "Reconstruction based on documented ATSF roster paint data and Zebra-family scheme references.",
+          "sourceUrl": null,
+          "sourceLabel": null
+        }
+      ]
+    },
+    {
+      "id": "pinstripe-bookend",
+      "name": "Blue / Yellow Pinstripe / Bookend",
+      "startYear": 1960,
+      "periodLabel": "1960s–early 1970s",
+      "paintCode": "BYT2 where applicable",
+      "category": "Road-switcher",
+      "representativeLocomotive": "GP20 #1107",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe's Blue / Yellow Pinstripe, or “Bookend,” scheme gave road-switchers a dark blue body, yellow end panels, thin yellow side striping, and large side lettering. The design emphasized the locomotive's rectangular form and became one of Santa Fe's defining road-switcher identities before later yellow-wrapped bonnet repaints appeared.",
+      "images": [
+        {
+          "type": "reconstruction",
+          "src": "/images/railroads/atsf-gp20-1107-blue-yellow-bookend-reconstruction.png",
+          "caption": "ATSF GP20 No. 1107 — Blue / Yellow Pinstripe / Bookend",
+          "description": "Historical reconstruction of Santa Fe's blue-and-yellow Bookend road-switcher scheme with yellow ends, thin side striping, and large side lettering.",
+          "credit": "American Diesel Roster historical reconstruction",
+          "note": "Reconstruction created to show the Bookend scheme clearly in a representative 3/4 view.",
+          "sourceUrl": null,
+          "sourceLabel": null
+        }
+      ]
+    },
+    {
+      "id": "bluebonnet",
+      "name": "Bluebonnet",
+      "startYear": 1971,
+      "periodLabel": "1971–1972",
+      "paintCode": null,
+      "category": "Transitional",
+      "representativeLocomotive": "F7A #332L",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe's Bluebonnet scheme was a short-lived transitional repaint applied to former passenger F-units after their reassignment from passenger service. The red Warbonnet was replaced by freight blue while the silver body was retained, creating one of Santa Fe's most distinctive early-1970s bridge schemes between classic passenger colors and the later Yellowbonnet program.",
+      "images": [
+        {
+          "type": "historical",
+          "src": "https://www.railpictures.net/images/d1/9/5/4/3954.1378738525.jpg",
+          "caption": "ATSF F7A No. 332L — Bluebonnet",
+          "description": "Former passenger F-unit in Santa Fe's transitional Bluebonnet scheme with blue Warbonnet nose, yellow cigar-band herald, and silver body.",
+          "credit": "Joe McMillan / RailPictures.net collection · ATSF 332L · Cameron, Texas · March 6, 1974",
+          "sourceUrl": "https://www.railpictures.net/photo/450617/",
+          "sourceLabel": "RailPictures.net"
+        }
+      ],
+      "sourceIds": [
+        "railpictures-atsf-332l-bluebonnet"
+      ]
+    },
+    {
+      "id": "yellow-silver-yellowbonnet",
+      "name": "Yellow / Silver Yellowbonnet",
+      "startYear": 1972,
+      "periodLabel": "1972",
+      "paintCode": null,
+      "category": "Transitional",
+      "representativeLocomotive": "F7A #304L",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe's Yellow / Silver Yellowbonnet scheme adapted former passenger F-units for freight-era service by replacing the red Warbonnet with yellow while retaining the silver body sides. The result was a distinctive transitional livery that bridged the gap between classic passenger styling and the later blue-and-yellow freight Warbonnet era.",
+      "images": [
+        {
+          "type": "historical",
+          "src": "https://www.railpictures.net/images/d1/8/9/9/1899.1200139200.jpg",
+          "caption": "ATSF F7A No. 304L — Yellow / Silver Yellowbonnet",
+          "description": "Former passenger F-unit in Santa Fe's transitional Yellow / Silver Yellowbonnet scheme.",
+          "credit": "Craig Walker / RailPictures.net collection · ATSF 304L · Fullerton, California · September 30, 1972",
+          "sourceUrl": "https://www.railpictures.net/photo/218695/",
+          "sourceLabel": "RailPictures.net"
+        }
+      ],
+      "sourceIds": [
+        "railpictures-atsf-304l-yellow-silver"
+      ]
+    },
+    {
+      "id": "standard-yellowbonnet",
+      "name": "Standard Yellowbonnet",
+      "startYear": 1972,
+      "periodLabel": "1972–1995",
+      "paintCode": null,
+      "category": "Road freight",
+      "representativeLocomotive": "SD45 #5515",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe's Standard Yellowbonnet became the railroad's signature freight locomotive appearance from the 1970s into the 1990s. With a dark blue body, large yellow Warbonnet nose treatment, and bold side lettering, it translated the classic Santa Fe bonnet concept into a durable and widely applied road-freight scheme.",
+      "images": [
+        {
+          "type": "historical",
+          "src": "https://www.railpictures.net/images/d2/6/0/0/1600.1473048170.jpg",
+          "caption": "ATSF SD45 No. 5515 — Standard Yellowbonnet",
+          "description": "Santa Fe road-freight locomotive in the standard blue-and-yellow Yellowbonnet scheme used across the later ATSF era.",
+          "credit": "RailPictures.net collection",
+          "sourceUrl": "https://www.railpictures.net/images/d2/6/0/0/1600.1473048170.jpg",
+          "sourceLabel": "RailPictures.net"
+        }
+      ],
+      "sourceIds": [
+        "railpictures-atsf-standard-yellowbonnet"
+      ]
+    },
+    {
+      "id": "bicentennial",
+      "name": "Bicentennial",
+      "startYear": 1975,
+      "periodLabel": "1975–1978",
+      "paintCode": null,
+      "category": "Commemorative",
+      "representativeLocomotive": "SD45-2 #5700",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe marked the United States Bicentennial with one of its most elaborate special paint schemes. Five SD45-2 locomotives, 5700–5704, received a bold red, white, and blue treatment with stars and large Presidential Seals. ATSF 5700 was the first of the group and became a prominent Super C locomotive during the Bicentennial period.",
+      "historicalNote": "Five units: ATSF 5700–5704. Painted: 1975–1976. ATSF 5700 was the first Bicentennial SD45-2. The Presidential Seal was a large applied emblem mounted to the locomotive side, not painted artwork.",
+      "images": [
+        {
+          "type": "historical",
+          "src": "https://www.railpictures.net/images/d2/8/9/5/9895.1591310186.jpg",
+          "caption": "ATSF SD45-2 No. 5700 — Bicentennial",
+          "description": "The first of five Santa Fe SD45-2 locomotives painted in the red, white, and blue Bicentennial scheme.",
+          "credit": "Cody White Collection / RailPictures.net",
+          "sourceUrl": "https://www.railpictures.net/photo/738355/",
+          "sourceLabel": "RailPictures.net"
+        }
+      ],
+      "sourceIds": [
+        "railpictures-atsf-5700-bicentennial"
+      ]
+    },
+    {
+      "id": "experimental-kodachrome",
+      "name": "Experimental SPSF Kodachrome",
+      "startYear": 1985,
+      "periodLabel": "1985",
+      "paintCode": null,
+      "category": "Merger era",
+      "representativeLocomotive": "SD45u #5394",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe SD45u No. 5394 was the first locomotive painted in the proposed SPSF merger-era Kodachrome scheme. Its experimental version differed from the later standardized treatment, most notably in its white lettering, four-stripe nose treatment, and lower black roofline, making it an important transitional paint-scheme variant in ATSF history.",
+      "historicalNote": "First ATSF locomotive painted in SPSF Kodachrome. This experimental first-version treatment had white lettering, four nose stripes, and a lower black roofline; the later standard Kodachrome differed in lettering and striping details.",
+      "images": [
+        {
+          "type": "historical",
+          "src": "https://s3.amazonaws.com/rrpa_photos/140415/ATSF%205394-2%207_Sep_1985%20Devore_CA%20Ron_Hawkins%20Photo.jpg",
+          "caption": "ATSF SD45u No. 5394 — Experimental SPSF Kodachrome",
+          "description": "The first Santa Fe locomotive painted in the experimental SPSF Kodachrome merger-era scheme, shown with white lettering and the early four-stripe nose treatment.",
+          "credit": "Ron Hawkins / RRPictureArchives.NET collection · ATSF 5394 · Devore, California · September 7, 1985",
+          "sourceUrl": "https://www.rrpicturearchives.net/showPicture.aspx?id=5550975",
+          "sourceLabel": "RRPictureArchives.NET"
+        }
+      ],
+      "sourceIds": [
+        "rrpicturearchives-atsf-5394-experimental-kodachrome"
+      ]
+    },
+    {
+      "id": "standard-kodachrome",
+      "name": "Standard SPSF Kodachrome",
+      "startYear": 1985,
+      "periodLabel": "1985–1987",
+      "paintCode": null,
+      "category": "Merger-era",
+      "representativeLocomotive": "SD45-2 #5679",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe's Standard SPSF Kodachrome scheme represented the mature form of the proposed Southern Pacific–Santa Fe merger-era paint treatment. With yellow cab and nose panels, red body sides, black roof, large yellow SF initials, and the standardized three-stripe nose treatment, it became the definitive ATSF Kodachrome appearance after the initial experimental version.",
+      "historicalNote": "Standard SPSF Kodachrome was the standardized merger-era ATSF successor to the experimental version represented by SD45u 5394.",
+      "images": [
+        {
+          "type": "historical",
+          "src": "https://old.atsfrr.org/Reviews/HO/Diesel/SD-45New/ATSF_SD45-2_5679_640.jpg",
+          "caption": "ATSF SD45-2 No. 5679 — Standard SPSF Kodachrome",
+          "description": "Santa Fe road freight locomotive in the standardized SPSF Kodachrome merger-era scheme with yellow lettering and the standard three-stripe nose treatment.",
+          "credit": "ATSF Historical & Modeling Society / old.atsfrr.org collection · ATSF 5679",
+          "sourceUrl": "https://old.atsfrr.org/Reviews/HO/Diesel/SD-45New/ATSF_SD45-2_ModelingByRalphBack.html",
+          "sourceLabel": "old.atsfrr.org"
+        }
+      ],
+      "sourceIds": [
+        "atsfrr-atsf-5679-standard-kodachrome"
+      ]
+    },
+    {
+      "id": "super-fleet-warbonnet",
+      "name": "Super Fleet Red / Silver Warbonnet",
+      "startYear": 1989,
+      "periodLabel": "1989–1995",
+      "paintCode": null,
+      "category": "Super Fleet",
+      "representativeLocomotive": "FP45 #101",
+      "prototypeLabel": "Prototype",
+      "description": "Santa Fe revived its classic red-and-silver Warbonnet in 1989 for the new Super Fleet program. Applied first to rebuilt FP45s and then to modern high-priority freight locomotives, the scheme paired the traditional red bonnet and silver body with large Santa Fe side lettering, reconnecting the railroad's contemporary freight image with its famous passenger-era identity.",
+      "historicalNote": "The Super Fleet Warbonnet revival began in 1989. FP45 101 and 102 were among the first locomotives unveiled in the revived scheme. The design later spread to modern Santa Fe freight power including GP60M, B40-8W, Dash 9, and SD75-series locomotives.",
+      "images": [
+        {
+          "type": "historical",
+          "src": "https://www.railpictures.net/images/d1/5/5/7/3557.1272515389.jpg",
+          "caption": "ATSF FP45 No. 101 — Super Fleet Red / Silver Warbonnet",
+          "description": "One of the first locomotives to wear Santa Fe's revived Super Fleet Warbonnet scheme in 1989.",
+          "credit": "Craig Walker / RailPictures.net collection · ATSF 101 · San Bernardino, California · July 4, 1989",
+          "sourceUrl": "https://www.railpictures.net/photo/322432/",
+          "sourceLabel": "RailPictures.net"
+        }
+      ],
+      "sourceIds": [
+        "railpictures-atsf-101-super-fleet"
+      ]
+    }
+  ],
+  "sources": []
+}
