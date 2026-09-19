@@ -13,7 +13,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 64);
+  assert.equal(data.sources.length, 81);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
   const et44 = data.prototypes.find(({ id }) => id === "ge-et44ac");
@@ -57,6 +57,23 @@ test("seed data has valid identifiers and references", async () => {
     storage: "remote",
     sourceIds: ["scaletrains-sxt43710-product-image"],
   }]);
+});
+
+test("ATSF comparison preserves the approved historical precision and propulsion shift", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const atsf = data.railroads.find(({ id }) => id === "santa-fe");
+  const [early, late] = atsf.statistics.snapshots;
+  assert.deepEqual([early.year, late.year], [1935, 1995]);
+  assert.deepEqual([early.metrics.steam.value, early.metrics.diesel.value, early.metrics.dieselShare.value], ["~1,900", "3", "<1%"]);
+  assert.deepEqual([late.metrics.steam.value, late.metrics.diesel.value, late.metrics.dieselShare.value], ["0", "1,595", "100%"]);
+  assert.deepEqual(
+    ["capitalization", "employees", "routeMiles", "locomotives", "rollingStock"].map((key) => early.metrics[key].value),
+    ["~$600M", "~40,000", "~12,000 mi", "~1,900", "~85,000"],
+  );
+  assert.deepEqual(
+    ["capitalization", "employees", "routeMiles", "locomotives", "rollingStock"].map((key) => late.metrics[key].value),
+    ["$5.35B", "~15,000", "9,126 mi", "1,595", "~26,000"],
+  );
 });
 
 test("NW1 provides historical context for the owned NW2 without a collection item", async () => {

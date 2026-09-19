@@ -49,11 +49,11 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
       errors.push(`${kind} "${record.id}" references unknown ${target} "${record[field]}".`);
     }
   };
-  const checkSources = (record, kind) => {
+  const checkSources = (record, kind, checkEntityImages = true) => {
     for (const id of record.sourceIds ?? []) {
       if (!sourceIds.has(id)) errors.push(`${kind} "${record.id}" references unknown source "${id}".`);
     }
-    for (const image of record.images ?? []) {
+    for (const image of checkEntityImages ? (record.images ?? []) : []) {
       if (!["collection-model", "manufacturer-product", "historical-prototype"].includes(image.type)) {
         errors.push(`${kind} "${record.id}" has invalid image type "${image.type}".`);
       }
@@ -164,7 +164,7 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
       if (!scheme.id?.trim()) errors.push(`Railroad "${railroad.id}" paint scheme requires an id.`);
       else if (schemeIds.has(scheme.id)) errors.push(`Duplicate ${railroad.id.toUpperCase()} paint scheme id "${scheme.id}".`);
       schemeIds.add(scheme.id);
-      checkSources(scheme, "Railroad paint scheme");
+      checkSources(scheme, "Railroad paint scheme", false);
       if (scheme.startYear != null) {
         if (!Number.isInteger(scheme.startYear)) errors.push(`Railroad paint scheme "${scheme.id}" has invalid startYear.`);
         else if (scheme.startYear < previousYear) errors.push(`Railroad "${railroad.id}" paint schemes are not chronological at "${scheme.id}".`);
@@ -172,11 +172,25 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
       } else if (!scheme.periodLabel?.trim()) {
         errors.push(`Railroad paint scheme "${scheme.id}" requires a periodLabel when startYear is unknown.`);
       }
-      for (const field of ["sourcePage", "remoteImageUrl", "caption", "credit"]) {
-        if (!scheme.photo?.[field]?.trim()) errors.push(`Railroad paint scheme "${scheme.id}" photo requires ${field}.`);
-      }
-      if (scheme.photo?.date != null && !/^\d{4}-\d{2}-\d{2}$/.test(scheme.photo.date)) {
-        errors.push(`Railroad paint scheme "${scheme.id}" has invalid photo date "${scheme.photo.date}".`);
+      if (railroad.id === "santa-fe") {
+        if (scheme.images?.length) {
+          for (const image of scheme.images) {
+            if (!["historical", "reconstruction"].includes(image.type)) errors.push(`Railroad paint scheme "${scheme.id}" has invalid image type.`);
+            for (const field of ["src", "caption", "description", "credit"]) {
+              if (!image[field]?.trim()) errors.push(`Railroad paint scheme "${scheme.id}" image requires ${field}.`);
+            }
+            if (image.type === "historical" && (!image.sourceUrl?.trim() || !image.sourceLabel?.trim())) errors.push(`Railroad paint scheme "${scheme.id}" historical image requires source attribution.`);
+          }
+        } else if (scheme.image?.kind !== "pending") {
+          errors.push(`Railroad paint scheme "${scheme.id}" requires images or a pending image area.`);
+        }
+      } else {
+        for (const field of ["sourcePage", "remoteImageUrl", "caption", "credit"]) {
+          if (!scheme.photo?.[field]?.trim()) errors.push(`Railroad paint scheme "${scheme.id}" photo requires ${field}.`);
+        }
+        if (scheme.photo?.date != null && !/^\d{4}-\d{2}-\d{2}$/.test(scheme.photo.date)) {
+          errors.push(`Railroad paint scheme "${scheme.id}" has invalid photo date "${scheme.photo.date}".`);
+        }
       }
     }
   }

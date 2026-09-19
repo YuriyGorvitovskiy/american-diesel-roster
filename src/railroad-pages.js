@@ -219,7 +219,14 @@ function renderStatistics(railroad, sources) {
     return article;
   }
   article.innerHTML = '<p class="eyebrow">Then and now</p><h2>Operating scale</h2><p class="muted">Two dated snapshots; approximate and greater-than figures retain the precision reported by the company.</p>';
+  if (railroad.statistics.title) {
+    article.querySelector("h2").textContent = railroad.statistics.title;
+    article.querySelector("p.muted").textContent = "Santa Fe’s locomotive fleet changed from almost entirely steam to entirely diesel-electric.";
+  }
   const grid = document.createElement("div"); grid.className = "railroad-snapshot-grid";
+  const labels = railroad.id === "santa-fe"
+    ? { locomotives: "Locomotives", capitalization: "Capitalization", employees: "Employees", routeMiles: "Route / operated mileage", rollingStock: "Non-locomotive rolling stock" }
+    : statisticLabels;
   for (const [column, snapshot] of snapshots.entries()) {
     const heading = document.createElement("div"); heading.className = "railroad-snapshot-heading";
     heading.style.gridColumn = column + 1;
@@ -227,7 +234,7 @@ function renderStatistics(railroad, sources) {
     const label = document.createElement("span"); label.textContent = snapshot.label;
     const date = document.createElement("small"); date.textContent = snapshot.date;
     heading.append(year, label, date); grid.append(heading);
-    for (const [row, [key, fallbackLabel]] of Object.entries(statisticLabels).entries()) {
+    for (const [row, [key, fallbackLabel]] of Object.entries(labels).entries()) {
       const metric = snapshot.metrics?.[key];
       const item = document.createElement("div"); item.className = `railroad-metric${["employees", "routeMiles", "locomotives", "freightCars"].includes(key) ? " railroad-metric-primary" : ""}${key === "marketCapitalization" || key === "bookEquity" ? " railroad-metric-financial" : ""}`;
       item.style.gridColumn = column + 1;
@@ -235,11 +242,30 @@ function renderStatistics(railroad, sources) {
       const term = document.createElement("span"); term.className = "railroad-metric-label"; term.textContent = metric?.label || fallbackLabel;
       const value = document.createElement("strong"); value.className = "railroad-metric-value"; value.textContent = metric?.value || "—";
       item.append(term, value);
+      if (key === "locomotives" && snapshot.metrics.steam && snapshot.metrics.diesel) {
+        item.classList.add("railroad-metric-propulsion");
+        const bar = document.createElement("div"); bar.className = `railroad-propulsion-bar${snapshot.metrics.steam.value === "0" ? " railroad-propulsion-diesel" : ""}`;
+        bar.setAttribute("aria-hidden", "true");
+        const steam = document.createElement("span"); steam.className = "railroad-propulsion-steam";
+        const diesel = document.createElement("span"); diesel.className = "railroad-propulsion-diesel-segment";
+        bar.append(steam, diesel);
+        const detail = document.createElement("small"); detail.className = "railroad-propulsion-detail";
+        detail.textContent = `Steam ${snapshot.metrics.steam.value} · Diesel-electric ${snapshot.metrics.diesel.value} · ${snapshot.metrics.dieselShare.value} diesel`;
+        item.append(bar, detail);
+      }
       if (metric?.note) { const note = document.createElement("small"); note.textContent = metric.note; item.append(note); }
       grid.append(item);
     }
   }
   article.append(grid);
+  for (const snapshot of snapshots) {
+    if (!snapshot.context) continue;
+    const context = document.createElement("p"); context.className = "muted railroad-statistics-note";
+    context.textContent = snapshot.context; article.append(context);
+  }
+  for (const noteText of railroad.statistics.notes || []) {
+    const note = document.createElement("p"); note.className = "muted railroad-statistics-note"; note.textContent = noteText; article.append(note);
+  }
   const cited = (railroad.sourceIds || []).map((id) => sources.find((source) => source.id === id)).filter(Boolean);
   if (cited.length) {
     const heading = document.createElement("h3"); heading.textContent = "Sources";
@@ -269,7 +295,88 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
   relationships.append(relationshipArticle, statistics);
   const schemes = document.createElement("article"); schemes.className = "railroad-schemes";
   schemes.innerHTML = `<p class="eyebrow">Visual identity</p><h2>${railroad.preDiesel ? "Pre-diesel railroad" : "Paint schemes"}</h2>`;
-  if (railroad.preDiesel) {
+  if (railroad.id === "santa-fe") {
+    schemes.classList.add("atsf-paint-schemes");
+    schemes.innerHTML = '<p class="eyebrow">Paint schemes</p><h2>Santa Fe Diesel Colors, 1935–1995</h2><p>Santa Fe\'s diesel identity evolved through passenger, freight, switching, experimental, commemorative, and merger-era paint schemes. Variants are shown separately where documented rather than collapsed into a single representative scheme.</p>';
+    const list = document.createElement("div"); list.className = "atsf-paint-list";
+    const sorted = [...railroad.paintSchemes].sort((a, b) => (a.startYear ?? Infinity) - (b.startYear ?? Infinity));
+    let undatedHeadingAdded = false;
+    for (const scheme of sorted) {
+      if (scheme.startYear == null && !undatedHeadingAdded) {
+        const heading = document.createElement("p"); heading.className = "atsf-undated-heading";
+        heading.textContent = "Documented variants without a supplied start year";
+        list.append(heading); undatedHeadingAdded = true;
+      }
+      const card = document.createElement("section"); card.className = "railroad-paint-history";
+      let image;
+      if (scheme.images?.length) {
+        image = document.createElement("div"); image.className = "atsf-paint-media";
+        if (scheme.images.length > 1) { image.classList.add("atsf-paint-media-multi"); card.classList.add("atsf-paint-history-multi"); }
+        for (const asset of scheme.images) {
+          const figure = document.createElement("figure"); figure.className = "railroad-paint-photo atsf-paint-figure";
+          const frame = document.createElement("div"); frame.className = "atsf-paint-frame";
+          const photo = document.createElement("img"); photo.src = asset.src; photo.alt = asset.caption; photo.loading = "lazy";
+          if (asset.type === "historical" && asset.sourceUrl) {
+            const link = document.createElement("a"); link.href = asset.sourceUrl; link.target = "_blank"; link.rel = "noopener noreferrer";
+            link.append(photo); frame.append(link);
+            const fallback = document.createElement("a"); fallback.href = asset.sourceUrl;
+            fallback.target = "_blank"; fallback.rel = "noopener noreferrer";
+            fallback.textContent = "View original photograph →"; fallback.hidden = true;
+            photo.addEventListener("error", () => { link.hidden = true; fallback.hidden = false; });
+            frame.append(fallback);
+          } else frame.append(photo);
+          const caption = document.createElement("figcaption");
+          const kind = document.createElement("span"); kind.className = "image-kind";
+          kind.textContent = asset.type === "historical" ? "Historical photograph" : "Historical color reconstruction";
+          const title = document.createElement("strong"); title.textContent = asset.caption;
+          const description = document.createElement("span"); description.textContent = asset.description;
+          const credit = document.createElement("small");
+          if (asset.sourceUrl) {
+            const creditLink = document.createElement("a"); creditLink.href = asset.sourceUrl;
+            creditLink.target = "_blank"; creditLink.rel = "noopener noreferrer";
+            creditLink.textContent = asset.credit; credit.append(creditLink);
+          } else credit.textContent = asset.credit;
+          caption.append(kind, title, description, credit);
+          if (asset.note) {
+            const note = document.createElement("small"); note.textContent = asset.note; caption.append(note);
+          }
+          if (asset.originalSourceUrl) {
+            const original = document.createElement("small"); original.className = "atsf-original-source";
+            const context = document.createElement("span"); context.textContent = "Original historical photograph";
+            const attribution = document.createElement("span"); attribution.textContent = asset.originalSourceCredit;
+            const originalLink = document.createElement("a"); originalLink.href = asset.originalSourceUrl;
+            originalLink.target = "_blank"; originalLink.rel = "noopener noreferrer";
+            originalLink.textContent = asset.originalSourceLabel || "View original";
+            original.append(context, attribution, originalLink); caption.append(original);
+          }
+          if (asset.sourceUrl) {
+            const source = document.createElement("a"); source.className = "image-source-link";
+            source.href = asset.sourceUrl; source.target = "_blank"; source.rel = "noopener noreferrer";
+            source.textContent = asset.sourceLabel || "View source"; caption.append(source);
+          }
+          figure.append(frame, caption); image.append(figure);
+        }
+      } else {
+        image = document.createElement("figure"); image.className = "railroad-paint-photo atsf-paint-image";
+        const pending = document.createElement("span"); pending.textContent = "Image pending"; image.append(pending);
+      }
+      const body = document.createElement("div"); body.className = "railroad-paint-body";
+      const period = document.createElement("p"); period.className = "eyebrow"; period.textContent = `${scheme.periodLabel} · ${scheme.category}`;
+      const name = document.createElement("h3"); name.textContent = scheme.name;
+      const code = document.createElement("p"); code.className = "atsf-paint-code";
+      if (scheme.paintCode) code.textContent = `ATSF paint code · ${scheme.paintCode}`;
+      const prototype = document.createElement("p"); prototype.className = "atsf-paint-prototype";
+      prototype.textContent = scheme.prototypeLabel
+        ? `${scheme.prototypeLabel} · ${scheme.representativeLocomotive}`
+        : scheme.representativeLocomotive || "Prototype reference not supplied";
+      const description = document.createElement("p"); description.textContent = scheme.description;
+      body.append(period, name);
+      if (scheme.paintCode) body.append(code);
+      body.append(prototype, description);
+      card.append(image, body); list.append(card);
+    }
+    schemes.append(list);
+  } else if (railroad.preDiesel) {
     const note = document.createElement("p"); note.className = "muted";
     note.textContent = "No diesel-livery gallery is planned unless later research supplies relevant motor equipment.";
     schemes.append(note);
@@ -327,5 +434,6 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
     note.textContent = "Paint-scheme artwork will be supplied separately.";
     schemes.append(note);
   }
-  relationships.append(schemes); section.append(relationships); main.append(section);
+  relationships.append(schemes);
+  section.append(relationships); main.append(section);
 }

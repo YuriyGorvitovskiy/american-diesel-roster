@@ -170,6 +170,14 @@ dt { color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: u
 .railroad-metric-value { margin: 0; font: 700 1.35rem/1.15 Georgia, serif; }
 .railroad-metric-financial { background: #f8f5ee; }
 .railroad-statistics h3 { margin-top: 25px; font-size: 1rem; }
+.railroad-metric-propulsion { background: #f8f5ee; }
+.railroad-propulsion-bar { display: flex; height: 17px; margin-top: 9px; overflow: hidden; border-radius: 3px; }
+.railroad-propulsion-steam { flex: 1; background: #4c5150; }
+.railroad-propulsion-diesel-segment { width: 10px; background: #b64d35; }
+.railroad-propulsion-diesel .railroad-propulsion-steam { display: none; }
+.railroad-propulsion-diesel .railroad-propulsion-diesel-segment { width: 100%; }
+.railroad-propulsion-detail { font-weight: 700; }
+.railroad-statistics-note { font-size: .8rem; margin: 5px 0; }
 .railroad-schemes ul { columns: 2; padding-left: 1.2rem; }
 .railroad-paint-history { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
 .railroad-paint-photo { min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
@@ -182,6 +190,25 @@ dt { color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: u
 .railroad-paint-body h3 { margin: 8px 0; font: 700 1.65rem/1.2 Georgia, serif; }
 .railroad-paint-body > p:not(.eyebrow) { line-height: 1.6; }
 .railroad-paint-locomotive { color: var(--muted); font-weight: 800; }
+.atsf-paint-schemes > p:not(.eyebrow) { max-width: 760px; line-height: 1.6; }
+.atsf-undated-heading { margin: 36px 0 0; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: .78rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+.atsf-paint-image { display: grid; aspect-ratio: 16 / 10; place-items: center; background: #eeeae1; }
+.atsf-paint-image > span { color: var(--muted); font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.atsf-paint-image a, .atsf-paint-image img { display: block; width: 100%; height: 100%; }
+.atsf-paint-image img { object-fit: contain; }
+.atsf-paint-history-multi { grid-template-columns: 1fr; }
+.atsf-paint-media { display: grid; min-width: 0; gap: 16px; }
+.atsf-paint-media-multi { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.atsf-paint-figure { min-width: 0; }
+.atsf-paint-frame { display: grid; aspect-ratio: 16 / 10; place-items: center; overflow: hidden; background: #eeeae1; }
+.atsf-paint-frame > a { display: grid; width: 100%; height: 100%; place-items: center; }
+.atsf-paint-frame > a[hidden] { display: none; }
+.atsf-paint-frame img { width: 100%; height: 100%; max-height: none; object-fit: contain; }
+.atsf-paint-figure figcaption { gap: 5px; line-height: 1.4; }
+.atsf-paint-figure figcaption strong { font-family: Georgia, serif; font-size: 1rem; }
+.atsf-original-source { display: grid; gap: 2px; margin-top: 4px; padding-top: 7px; border-top: 1px solid var(--line); color: var(--muted); }
+.atsf-original-source a { width: fit-content; }
+.atsf-paint-code, .atsf-paint-prototype { margin: 4px 0; color: var(--muted); font-size: .82rem; font-weight: 750; }
 .home-intro { min-height: calc(100vh - 100px); display: grid; align-content: start; justify-items: start; }
 .home-intro h1 { max-width: 940px; font-size: clamp(3.4rem, 8vw, 7.6rem); white-space: normal; }
 .home-lede { max-width: 700px; color: var(--muted); font: 1.25rem/1.6 Georgia, serif; }
@@ -219,6 +246,7 @@ footer p { margin: 0; }
 }
 @media (max-width: 620px) { h1 { white-space: normal; } }
 @media (max-width: 620px) { .railroad-statistics { overflow-x: auto; } .railroad-snapshot-grid { min-width: 620px; } }
+@media (max-width: 700px) { .atsf-paint-media-multi { grid-template-columns: 1fr; } }
 @media (max-width: 720px) { .site-brand small { display: none; } .site-nav .site-brand { padding-left: 18px; } }
 @media (max-width: 800px) { .lede { white-space: normal; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
