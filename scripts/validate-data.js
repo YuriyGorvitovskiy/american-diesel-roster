@@ -144,12 +144,40 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
     checkSources(order, "Order");
   }
   for (const railroad of railroads) {
+    checkSources(railroad, "Railroad");
     const successorIds = railroad.successor == null ? (railroad.successors ?? []) : [railroad.successor];
     for (const id of [...(railroad.predecessors ?? []), ...successorIds]) {
       if (!railroadIds.has(id)) errors.push(`Railroad "${railroad.id}" references unknown railroad "${id}".`);
     }
     if (railroad.parentSystem != null && !railroadIds.has(railroad.parentSystem)) {
       errors.push(`Railroad "${railroad.id}" references unknown parent system "${railroad.parentSystem}".`);
+    }
+    for (const snapshot of railroad.statistics?.snapshots ?? []) {
+      for (const id of snapshot.sourceIds ?? []) {
+        if (!sourceIds.has(id)) errors.push(`Railroad "${railroad.id}" snapshot ${snapshot.year} references unknown source "${id}".`);
+      }
+    }
+    const schemes = (railroad.paintSchemes ?? []).filter((scheme) => scheme && typeof scheme === "object");
+    const schemeIds = new Set();
+    let previousYear = -Infinity;
+    for (const scheme of schemes) {
+      if (!scheme.id?.trim()) errors.push(`Railroad "${railroad.id}" paint scheme requires an id.`);
+      else if (schemeIds.has(scheme.id)) errors.push(`Duplicate ${railroad.id.toUpperCase()} paint scheme id "${scheme.id}".`);
+      schemeIds.add(scheme.id);
+      checkSources(scheme, "Railroad paint scheme");
+      if (scheme.startYear != null) {
+        if (!Number.isInteger(scheme.startYear)) errors.push(`Railroad paint scheme "${scheme.id}" has invalid startYear.`);
+        else if (scheme.startYear < previousYear) errors.push(`Railroad "${railroad.id}" paint schemes are not chronological at "${scheme.id}".`);
+        else previousYear = scheme.startYear;
+      } else if (!scheme.periodLabel?.trim()) {
+        errors.push(`Railroad paint scheme "${scheme.id}" requires a periodLabel when startYear is unknown.`);
+      }
+      for (const field of ["sourcePage", "remoteImageUrl", "caption", "credit"]) {
+        if (!scheme.photo?.[field]?.trim()) errors.push(`Railroad paint scheme "${scheme.id}" photo requires ${field}.`);
+      }
+      if (scheme.photo?.date != null && !/^\d{4}-\d{2}-\d{2}$/.test(scheme.photo.date)) {
+        errors.push(`Railroad paint scheme "${scheme.id}" has invalid photo date "${scheme.photo.date}".`);
+      }
     }
   }
   return errors;

@@ -2,9 +2,9 @@ const paths = {
   prototypes: "/data/locomotives.json?v=et44ach-3674-3",
   items: "/data/collection.json",
   orders: "/data/orders.json?v=et44ach-3674-2",
-  railroadIndex: "/data/railroads/index.json?v=bnsf-prototype-13",
+  railroadIndex: "/data/railroads/index.json?v=bnsf-company-preview-1",
   historicalLocomotives: "/data/historical-locomotives.json?v=et44ach-3674-3",
-  sources: "/data/sources.json?v=et44ach-3674-2",
+  sources: "/data/sources.json?v=bnsf-history-corrections-1",
 };
 
 export async function loadData() {
@@ -16,7 +16,7 @@ export async function loadData() {
   }));
   const data = Object.fromEntries(entries);
   const railroads = await Promise.all(data.railroadIndex.map(async (id) => {
-    const response = await fetch(`/data/railroads/${id}.json?v=bnsf-prototype-13`);
+    const response = await fetch(`/data/railroads/${id}.json?v=bnsf-history-corrections-1`);
     if (!response.ok) throw new Error(`/data/railroads/${id}.json: HTTP ${response.status}`);
     return response.json();
   }));

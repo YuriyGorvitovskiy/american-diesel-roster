@@ -150,11 +150,38 @@ dt { color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: u
 .railroad-detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 52px; }
 .railroad-detail-grid article { padding: 26px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
 .railroad-detail-grid dl { display: grid; grid-template-columns: 120px 1fr; gap: 12px; }
+.railroad-detail-grid > article:first-child > dl { grid-template-columns: max-content minmax(0, 1fr); }
 .railroad-detail-grid dd { font-size: 1rem; }
 .railroad-detail-grid a { color: var(--wanted); font-weight: 750; text-underline-offset: 3px; }
-.railroad-predecessors a, .railroad-successor a { display: block; }
+.railroad-predecessors a, .railroad-successor a { display: block; width: fit-content; }
+.railroad-predecessors a + a { margin-top: 4px; }
 .railroad-schemes { grid-column: 1 / -1; }
+.railroad-detail-grid:has(.railroad-snapshot-grid) > article { grid-column: 1 / -1; }
+.railroad-detail-grid:has(.railroad-snapshot-grid) > article:first-child { max-width: none; }
+.railroad-statistics > h2 { margin-bottom: 8px; }
+.railroad-snapshot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; margin: 26px 0 30px; }
+.railroad-snapshot-heading { display: grid; gap: 2px; padding: 20px; border: 1px solid var(--line); border-top: 5px solid var(--selected); border-radius: 6px 6px 0 0; background: #f4f0e7; }
+.railroad-snapshot-heading strong { font: 700 2.3rem/1 Georgia, serif; }
+.railroad-snapshot-heading span { font-weight: 800; }
+.railroad-snapshot-heading small, .railroad-metric small { color: var(--muted); line-height: 1.45; }
+.railroad-metric { display: grid; align-content: start; gap: 5px; min-width: 0; padding: 17px 20px; border: 1px solid var(--line); border-top: 0; }
+.railroad-metric:nth-last-child(-n + 2) { border-radius: 0 0 6px 6px; }
+.railroad-metric-label { color: var(--muted); font-size: .72rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+.railroad-metric-value { margin: 0; font: 700 1.35rem/1.15 Georgia, serif; }
+.railroad-metric-financial { background: #f8f5ee; }
+.railroad-statistics h3 { margin-top: 25px; font-size: 1rem; }
 .railroad-schemes ul { columns: 2; padding-left: 1.2rem; }
+.railroad-paint-history { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+.railroad-paint-photo { min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+.railroad-paint-photo > a:first-child { display: block; }
+.railroad-paint-photo img { display: block; width: 100%; max-height: 420px; object-fit: contain; background: #eee9df; }
+.railroad-paint-photo figcaption { display: grid; gap: 3px; padding: 10px 12px 12px; }
+.railroad-paint-photo figcaption small { color: var(--muted); }
+.railroad-paint-fallback { display: grid; min-height: 240px; place-items: center; padding: 24px; border: 1px solid var(--line); background: #f4f0e7; }
+.railroad-paint-fallback[hidden] { display: none; }
+.railroad-paint-body h3 { margin: 8px 0; font: 700 1.65rem/1.2 Georgia, serif; }
+.railroad-paint-body > p:not(.eyebrow) { line-height: 1.6; }
+.railroad-paint-locomotive { color: var(--muted); font-weight: 800; }
 .home-intro { min-height: calc(100vh - 100px); display: grid; align-content: start; justify-items: start; }
 .home-intro h1 { max-width: 940px; font-size: clamp(3.4rem, 8vw, 7.6rem); white-space: normal; }
 .home-lede { max-width: 700px; color: var(--muted); font: 1.25rem/1.6 Georgia, serif; }
@@ -182,12 +209,16 @@ footer p { margin: 0; }
   .railroad-detail-grid { margin-top: 34px; }
   .railroad-schemes { grid-column: auto; }
   .railroad-schemes ul { columns: 1; }
+  .railroad-paint-history { grid-template-columns: 1fr; gap: 14px; }
+  .railroad-snapshot-grid { gap: 0 10px; }
+  .railroad-snapshot-heading, .railroad-metric { padding: 12px; }
   thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
   tr { display: block; padding: 10px 14px; border-bottom: 1px solid var(--line); }
   td { display: grid; grid-template-columns: 125px 1fr; border: 0; padding: 4px 0; }
   td::before { content: attr(data-label); color: var(--muted); font-size: .7rem; font-weight: 800; text-transform: uppercase; }
 }
 @media (max-width: 620px) { h1 { white-space: normal; } }
+@media (max-width: 620px) { .railroad-statistics { overflow-x: auto; } .railroad-snapshot-grid { min-width: 620px; } }
 @media (max-width: 720px) { .site-brand small { display: none; } .site-nav .site-brand { padding-left: 18px; } }
 @media (max-width: 800px) { .lede { white-space: normal; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
