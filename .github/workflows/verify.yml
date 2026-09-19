@@ -1,0 +1,26 @@
+name: Verify
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Run tests
+        run: npm test
+      - name: Validate data
+        run: node scripts/validate-data.js
+      - name: Check changed lines for whitespace errors
+        run: git diff --check HEAD^ HEAD

@@ -2,23 +2,35 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { loadDataFiles, validateData } from "../scripts/validate-data.js";
 
-test("BNSF paint history includes the newly researched appearances in chronological order", async () => {
+test("BNSF paint history retains all 16 accepted appearances in chronological order", async () => {
   const { railroads, sources } = await loadDataFiles(new URL("..", import.meta.url));
   const schemes = railroads.find(({ id }) => id === "bnsf").paintSchemes;
   const ids = schemes.map(({ id }) => id);
-  for (const id of ["bnsf-kodachrome", "simplified-heritage-ii", "blue-white-smurfs", "america250"]) {
+  assert.deepEqual(ids, [
+    "premium-heritage",
+    "bnsf-lettered-warbonnet",
+    "bnsf-kodachrome",
+    "bnsf-executive-green",
+    "bnsf-cascade-green",
+    "bnsf-blue-yellow",
+    "great-pumpkin",
+    "heritage-i",
+    "heritage-ii",
+    "simplified-heritage-ii",
+    "golden-swoosh",
+    "heritage-iii",
+    "heritage-iv",
+    "blue-white-smurfs",
+    "twenty-fifth-anniversary",
+    "america250",
+  ]);
+  for (const id of ids) {
     const scheme = schemes.find((item) => item.id === id);
     assert.ok(scheme, `${id} is present`);
     assert.ok(scheme.photo.remoteImageUrl, `${id} has a historical photograph`);
     assert.ok(scheme.photo.sourcePage, `${id} links to the photograph source`);
     for (const sourceId of scheme.sourceIds) assert.ok(sources.some((source) => source.id === sourceId));
   }
-  assert.ok(ids.indexOf("bnsf-lettered-warbonnet") < ids.indexOf("bnsf-kodachrome"));
-  assert.ok(ids.indexOf("bnsf-kodachrome") < ids.indexOf("bnsf-executive-green"));
-  assert.ok(ids.indexOf("heritage-ii") < ids.indexOf("simplified-heritage-ii"));
-  assert.ok(ids.indexOf("heritage-iv") < ids.indexOf("blue-white-smurfs"));
-  assert.ok(ids.indexOf("blue-white-smurfs") < ids.indexOf("twenty-fifth-anniversary"));
-  assert.ok(ids.indexOf("twenty-fifth-anniversary") < ids.indexOf("america250"));
 });
 
 test("paint history rejects broken provenance and incomplete photographs", async () => {

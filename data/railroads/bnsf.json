@@ -83,9 +83,9 @@
     },
     {
       "id": "bnsf-executive-green", "name": "BN Executive / Grinstein Green — BNSF lettered", "startYear": 1996, "endYear": null, "periodLabel": "1996 · survived for decades", "category": "Transitional", "representativeLocomotive": "BNSF SD70MAC 9535",
-      "description": "BNSF inherited Burlington Northern's dark Grinstein green and cream Executive colors. During the transition, SD70MACs carried BNSF identification in this predecessor-derived appearance, and several retained it for decades. BNSF 9535 is a particularly long-lived example of the visual bridge between the two railroads.",
+      "description": "BNSF inherited Burlington Northern's dark Grinstein green and cream Executive colors. SD70MAC 9711 was among the earliest BNSF-lettered Executive units, documented in service in January 1996 alongside 9712. Several SD70MACs retained this predecessor-derived appearance for decades; BNSF 9535 is a particularly long-lived example of the visual bridge between the two railroads.",
       "photo": { "sourcePage": "https://www.bnsf.com/news-media/railtalk/heritage/uniquelocomotives.html", "remoteImageUrl": "https://www.bnsf.com/news-media/images/rt-unique-locomotives-story-6.jpg", "caption": "BNSF SD70MAC 9535 in Executive green", "credit": "BNSF Railway" },
-      "sourceIds": ["bnsf-unique-locomotives"]
+      "sourceIds": ["bnsf-unique-locomotives", "rmrrc-march-1996-rail-report"]
     },
     {
       "id": "bnsf-cascade-green", "name": "BN Cascade Green — BNSF transitional treatment", "startYear": 1996, "endYear": null, "periodLabel": "First appeared 1996", "category": "Experimental · transitional", "representativeLocomotive": "BNSF GP39E 2911",
@@ -125,7 +125,7 @@
     },
     {
       "id": "golden-swoosh", "name": "Golden Swoosh", "startYear": 2005, "endYear": null, "periodLabel": "First appeared 2005", "category": "Experimental", "representativeLocomotive": "BNSF ES44DC 7695",
-      "description": "ES44DC 7695 was a one-of-a-kind test of the new Swoosh identity. Its gold/yellow emblem differed from the black treatment adopted immediately afterward. This locomotive marks the experimental step between Heritage II and the final Heritage III design, and retained its unusual appearance for many years.",
+      "description": "ES44DC 7695 was a one-of-a-kind test of the new Swoosh identity and the first locomotive to carry the new Swoosh-style BNSF lettering. Its gold/yellow emblem differed from the black treatment adopted immediately afterward. This locomotive marks the experimental step between Heritage II and the final Heritage III design, and retained its unusual appearance for many years.",
       "photo": { "sourcePage": "https://www.bnsf.com/news-media/railtalk/heritage/uniquelocomotives.html", "remoteImageUrl": "https://www.bnsf.com/news-media/images/rt-unique-locomotives-story-3.jpg", "caption": "BNSF ES44DC 7695 and its Golden Swoosh", "credit": "BNSF Railway" },
       "sourceIds": ["bnsf-unique-locomotives"]
     },
