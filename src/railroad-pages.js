@@ -203,20 +203,129 @@ export function renderBnsfGenealogy(main, railroads, onOpenRailroad) {
   fitAndDraw();
 }
 
-export function renderRailroadPage(main, railroad, railroads, onOpenRailroad) {
+const statisticLabels = {
+  employees: "Employees", routeMiles: "Route miles", routeMilesOwned: "Route miles owned",
+  trackageRights: "Trackage rights", totalOperatedTrack: "Total operated track",
+  locomotives: "Locomotives", freightCars: "Freight cars",
+  marketCapitalization: "Market capitalization", bookEquity: "Book equity",
+};
+
+function renderStatistics(railroad, sources) {
+  const article = document.createElement("article");
+  article.className = "railroad-statistics";
+  const snapshots = railroad.statistics?.snapshots;
+  if (!snapshots?.length) {
+    article.innerHTML = '<p class="eyebrow">Reference</p><h2>Statistics</h2><p class="muted">Historical statistics have not yet been supplied.</p>';
+    return article;
+  }
+  article.innerHTML = '<p class="eyebrow">Then and now</p><h2>Operating scale</h2><p class="muted">Two dated snapshots; approximate and greater-than figures retain the precision reported by the company.</p>';
+  const grid = document.createElement("div"); grid.className = "railroad-snapshot-grid";
+  for (const [column, snapshot] of snapshots.entries()) {
+    const heading = document.createElement("div"); heading.className = "railroad-snapshot-heading";
+    heading.style.gridColumn = column + 1;
+    const year = document.createElement("strong"); year.textContent = snapshot.year;
+    const label = document.createElement("span"); label.textContent = snapshot.label;
+    const date = document.createElement("small"); date.textContent = snapshot.date;
+    heading.append(year, label, date); grid.append(heading);
+    for (const [row, [key, fallbackLabel]] of Object.entries(statisticLabels).entries()) {
+      const metric = snapshot.metrics?.[key];
+      const item = document.createElement("div"); item.className = `railroad-metric${["employees", "routeMiles", "locomotives", "freightCars"].includes(key) ? " railroad-metric-primary" : ""}${key === "marketCapitalization" || key === "bookEquity" ? " railroad-metric-financial" : ""}`;
+      item.style.gridColumn = column + 1;
+      item.style.gridRow = row + 2;
+      const term = document.createElement("span"); term.className = "railroad-metric-label"; term.textContent = metric?.label || fallbackLabel;
+      const value = document.createElement("strong"); value.className = "railroad-metric-value"; value.textContent = metric?.value || "—";
+      item.append(term, value);
+      if (metric?.note) { const note = document.createElement("small"); note.textContent = metric.note; item.append(note); }
+      grid.append(item);
+    }
+  }
+  article.append(grid);
+  const cited = (railroad.sourceIds || []).map((id) => sources.find((source) => source.id === id)).filter(Boolean);
+  if (cited.length) {
+    const heading = document.createElement("h3"); heading.textContent = "Sources";
+    const list = document.createElement("ul"); list.className = "source-list";
+    for (const source of cited) {
+      const item = document.createElement("li"); const link = document.createElement("a");
+      link.href = source.url; link.target = "_blank"; link.rel = "noopener noreferrer";
+      link.textContent = `${source.title} — ${source.publisher}`;
+      item.append(link); list.append(item);
+    }
+    article.append(heading, list);
+  }
+  return article;
+}
+
+export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, sources = []) {
   const section = document.createElement("section"); section.className = "railroad-detail-prototype";
   const marks = railroad.reportingMarks?.join(" · ") || "Reporting marks unknown";
-  section.innerHTML = `<div class="railroad-hero entity-page-heading"><p class="eyebrow">${railroad.type.replaceAll("-", " ")}</p><h1>${railroad.name}</h1><p class="railroad-meta">${marks} <b>·</b> ${railroadYears(railroad)}</p>${railroad.description ? `<p class="railroad-lede">${railroad.description}</p>` : ""}</div>`;
+  section.innerHTML = `<div class="railroad-hero entity-page-heading"><p class="eyebrow">${railroad.type.replaceAll("-", " ")}</p><h1>${railroad.name}</h1><p class="railroad-meta">${marks} <b>·</b> ${railroadYears(railroad)}${railroad.status ? ` <b>·</b> ${railroad.status}` : ""}${railroad.headquarters ? ` <b>·</b> ${railroad.headquarters}` : ""}</p>${railroad.description ? `<p class="railroad-lede">${railroad.description}</p>` : ""}</div>`;
   const relationships = document.createElement("div"); relationships.className = "railroad-detail-grid";
   const relationshipArticle = document.createElement("article");
   relationshipArticle.innerHTML = '<p class="eyebrow">Lineage</p><h2>Relationships</h2><dl><dt>Predecessors</dt><dd class="railroad-predecessors"></dd><dt>Successor</dt><dd class="railroad-successor"></dd></dl>';
   const resolved = railroadRelationships(railroad, railroads);
   appendRelationshipValue(relationshipArticle.querySelector(".railroad-predecessors"), resolved.predecessors, "None in this curated set", onOpenRailroad);
   appendRelationshipValue(relationshipArticle.querySelector(".railroad-successor"), resolved.successor ? [resolved.successor] : [], "Final company", onOpenRailroad);
-  const statistics = document.createElement("article");
-  statistics.innerHTML = '<p class="eyebrow">Reference</p><h2>Statistics</h2><p class="muted">Historical statistics have not yet been supplied.</p>';
+  const statistics = renderStatistics(railroad, sources);
   relationships.append(relationshipArticle, statistics);
   const schemes = document.createElement("article"); schemes.className = "railroad-schemes";
-  schemes.innerHTML = `<p class="eyebrow">Visual identity</p><h2>${railroad.preDiesel ? "Pre-diesel railroad" : "Paint schemes"}</h2>${railroad.preDiesel ? '<p class="muted">No diesel-livery gallery is planned unless later research supplies relevant motor equipment.</p>' : railroad.paintSchemes?.length ? `<ul>${railroad.paintSchemes.map((scheme) => `<li>${scheme}</li>`).join("")}</ul>` : '<p class="muted">Paint-scheme artwork will be supplied separately.</p>'}`;
+  schemes.innerHTML = `<p class="eyebrow">Visual identity</p><h2>${railroad.preDiesel ? "Pre-diesel railroad" : "Paint schemes"}</h2>`;
+  if (railroad.preDiesel) {
+    const note = document.createElement("p"); note.className = "muted";
+    note.textContent = "No diesel-livery gallery is planned unless later research supplies relevant motor equipment.";
+    schemes.append(note);
+  } else if (railroad.paintSchemes?.some((scheme) => typeof scheme === "object")) {
+    for (const scheme of railroad.paintSchemes) {
+      if (typeof scheme !== "object") continue;
+      const block = document.createElement("section"); block.className = "railroad-paint-history";
+      const figure = document.createElement("figure"); figure.className = "railroad-paint-photo";
+      if (scheme.photo?.remoteImageUrl && scheme.photo?.sourcePage) {
+        const link = document.createElement("a"); link.href = scheme.photo.sourcePage;
+        link.target = "_blank"; link.rel = "noopener noreferrer";
+        const image = document.createElement("img"); image.src = scheme.photo.remoteImageUrl;
+        image.alt = scheme.photo.caption; image.loading = "lazy";
+        link.append(image); figure.append(link);
+        const fallback = document.createElement("a"); fallback.className = "railroad-paint-fallback";
+        fallback.href = scheme.photo.sourcePage; fallback.target = "_blank";
+        fallback.rel = "noopener noreferrer"; fallback.textContent = "View original photograph →";
+        fallback.hidden = true;
+        image.addEventListener("error", () => { link.hidden = true; fallback.hidden = false; });
+        figure.append(fallback);
+        const caption = document.createElement("figcaption");
+        const kind = document.createElement("span"); kind.className = "image-kind";
+        kind.textContent = "Historical photograph";
+        const captionText = document.createElement("span"); captionText.textContent = scheme.photo.caption;
+        const credit = document.createElement("small");
+        const photoDate = /^\d{4}-\d{2}-\d{2}$/.test(scheme.photo.date ?? "")
+          ? new Intl.DateTimeFormat("en-US", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })
+            .format(new Date(`${scheme.photo.date}T00:00:00Z`))
+          : null;
+        credit.textContent = [scheme.photo.credit, photoDate].filter(Boolean).join(" · ");
+        const source = document.createElement("a"); source.className = "image-source-link";
+        source.href = scheme.photo.sourcePage; source.target = "_blank";
+        source.rel = "noopener noreferrer"; source.textContent = "View original";
+        caption.append(kind, captionText, credit, source);
+        figure.append(caption);
+      }
+      const body = document.createElement("div"); body.className = "railroad-paint-body";
+      const eyebrow = document.createElement("p"); eyebrow.className = "eyebrow";
+      eyebrow.textContent = `${scheme.periodLabel ?? `${scheme.startYear}–${scheme.endYear ?? "present"}`} · ${scheme.category}`;
+      const title = document.createElement("h3"); title.textContent = scheme.name;
+      const locomotive = document.createElement("p"); locomotive.className = "railroad-paint-locomotive";
+      locomotive.textContent = scheme.representativeLocomotive;
+      const description = document.createElement("p"); description.textContent = scheme.description;
+      body.append(eyebrow, title, locomotive, description);
+      block.append(figure, body); schemes.append(block);
+    }
+  } else if (railroad.paintSchemes?.length) {
+    const list = document.createElement("ul");
+    for (const name of railroad.paintSchemes) {
+      const item = document.createElement("li"); item.textContent = name; list.append(item);
+    }
+    schemes.append(list);
+  } else {
+    const note = document.createElement("p"); note.className = "muted";
+    note.textContent = "Paint-scheme artwork will be supplied separately.";
+    schemes.append(note);
+  }
   relationships.append(schemes); section.append(relationships); main.append(section);
 }

@@ -5,7 +5,7 @@ import { renderRoster } from "./roster.js?v=order-thumbnails-1";
 import { renderTree } from "./tree.js?v=ge-tree-11";
 import { renderAlcoPrototype } from "./alco-prototype.js?v=premerge-2";
 import { renderManufacturerPrototype } from "./manufacturer-prototype.js?v=premerge-4";
-import { renderBnsfGenealogy, renderRailroadPage } from "./railroad-pages.js?v=1";
+import { renderBnsfGenealogy, renderRailroadPage } from "./railroad-pages.js?v=bnsf-company-1";
 
 function heading(eyebrow, title, copy) {
   const wrapper = document.createElement("div"); wrapper.className = "section-heading";
@@ -57,7 +57,7 @@ function renderBnsf(main, data) {
   const renderRailroad = (railroad) => {
     main.replaceChildren();
     renderFooterLegend("bnsf", true);
-    renderRailroadPage(main, railroad, data.railroads, showRailroad);
+    renderRailroadPage(main, railroad, data.railroads, showRailroad, data.sources);
   };
   const showRailroad = (railroad) => {
     history.pushState({}, "", railroadUrl(railroad.slug));

@@ -1,1 +1,165 @@
-{"id":"bnsf","slug":"bnsf","name":"BNSF Railway","catalogName":"BNSF","startYear":1995,"endYear":null,"type":"final","predecessors":["burlington-northern","santa-fe"],"successor":null,"description":"The root and final destination of this curated genealogy.","statistics":null,"paintSchemes":[],"sources":[]}
+{
+  "id": "bnsf",
+  "slug": "bnsf",
+  "name": "BNSF Railway",
+  "catalogName": "BNSF",
+  "reportingMarks": ["BNSF"],
+  "startYear": 1995,
+  "endYear": null,
+  "status": "Active",
+  "headquarters": "Fort Worth, Texas",
+  "type": "final",
+  "predecessors": ["burlington-northern", "santa-fe"],
+  "successor": null,
+  "description": "BNSF was created from two major western railroad systems. Burlington Northern Santa Fe Corporation was formed in 1995 when Burlington Northern Inc. and Santa Fe Pacific Corporation were combined under a new holding company. On December 31, 1996, the Burlington Northern Railroad and the Atchison, Topeka and Santa Fe Railway were formally merged as the Burlington Northern and Santa Fe Railway. The railroad adopted the shorter BNSF Railway name in 2005. Berkshire Hathaway acquired BNSF in 2010, making it a wholly owned subsidiary. Today BNSF operates more than 32,500 route miles across 28 states and three Canadian provinces.",
+  "statistics": {
+    "snapshots": [
+      {
+        "year": 1996,
+        "label": "First full merger snapshot",
+        "date": "December 31, 1996",
+        "metrics": {
+          "employees": { "value": "43,000" },
+          "routeMiles": { "value": "35,000", "label": "Route miles operated" },
+          "routeMilesOwned": { "value": "27,000", "label": "Route miles owned" },
+          "trackageRights": null,
+          "totalOperatedTrack": { "value": "52,500 miles", "note": "Includes multiple main tracks, yard tracks and sidings." },
+          "locomotives": { "value": "4,434", "note": "Diesel locomotives owned or held under non-cancelable leases exceeding one year. Excludes 196 locomotives operated under power-purchase agreements." },
+          "freightCars": { "value": "95,655", "note": "Owned or held under non-cancelable leases exceeding one year." },
+          "marketCapitalization": { "value": "≈ $13B", "note": "Approximate early-1997 market value, shown for context rather than as a December 31, 1996 measurement." },
+          "bookEquity": null
+        },
+        "sourceIds": ["bnsf-1996-10k"]
+      },
+      {
+        "year": 2025,
+        "label": "Current snapshot",
+        "date": "December 31, 2025",
+        "metrics": {
+          "employees": { "value": "≈35,000" },
+          "routeMiles": { "value": ">32,500", "label": "Route miles operated" },
+          "routeMilesOwned": { "value": ">23,000", "label": "Route miles owned" },
+          "trackageRights": { "value": ">9,000 route miles" },
+          "totalOperatedTrack": { "value": ">50,000 miles", "note": "Includes single and multiple main tracks, yard tracks and sidings." },
+          "locomotives": { "value": "≈6,700", "note": "Owned or held under non-cancelable leases exceeding one year." },
+          "freightCars": { "value": "≈70,700", "note": "Owned or held under non-cancelable leases exceeding one year." },
+          "marketCapitalization": { "value": "Private", "note": "Wholly owned by Berkshire Hathaway; no standalone public market capitalization." },
+          "bookEquity": { "value": "$51.634B" }
+        },
+        "sourceIds": ["bnsf-2025-10k"]
+      }
+    ]
+  },
+  "paintSchemes": [
+    {
+      "id": "premium-heritage",
+      "name": "Premium Heritage / Green Warbonnet",
+      "aliases": ["Green Warbonnet"],
+      "startYear": 1995,
+      "endYear": 2013,
+      "category": "Experimental · transitional",
+      "representativeLocomotive": "BNSF SD70MAC 9647",
+      "description": "BNSF 9647 was the first locomotive painted specifically for the newly created Burlington Northern Santa Fe. Applied in August 1995, this one-of-a-kind design combined Santa Fe Warbonnet geometry with Burlington Northern's Grinstein green and cream. Its nose carried BNSF initials while the long hood displayed the full company name. No fleet-wide version followed; 9647 kept the scheme until its 2013 repaint into Heritage III.",
+      "photo": {
+        "sourcePage": "https://www.rrpicturearchives.net/showPicture.aspx?id=1123176",
+        "remoteImageUrl": "https://www.rrpicturearchives.net/picturefiles/31175/BNSF%209647%20010.JPG",
+        "caption": "BNSF SD70MAC 9647 in the Green Warbonnet scheme",
+        "credit": "Dane Carlisle / RR Picture Archives",
+        "date": "2008-04-12"
+      },
+      "sourceIds": ["rrpicturearchives-bnsf-9647-green-warbonnet"]
+    },
+    {
+      "id": "bnsf-lettered-warbonnet", "name": "Warbonnet / Superfleet — BNSF lettered", "startYear": 1995, "endYear": null, "periodLabel": "1995 · survived for decades", "category": "Transitional", "representativeLocomotive": "BNSF SD75M 8251",
+      "description": "Santa Fe's red-and-silver Superfleet Warbonnet survived the merger. Delivered in December 1995, SD75M 8251 was the first locomotive to receive BNSF lettering while retaining this design. It was an intentional BNSF-branded continuation, not simply a patched predecessor locomotive. BNSF-lettered Warbonnets remained in service for many years as later Heritage schemes spread through the fleet.",
+      "photo": { "sourcePage": "https://www.rrpicturearchives.net/pictures/3692390", "remoteImageUrl": "https://s3.amazonaws.com/rrpa_photos/54290/DSC_5556.JPG", "caption": "BNSF SD75M 8251, front and side of its BNSF-lettered Warbonnet", "credit": "Rob Jacox / RR Picture Archives", "date": "2013-11-10" },
+      "sourceIds": ["rrpicturearchives-bnsf-8251"]
+    },
+    {
+      "id": "bnsf-kodachrome", "name": "BNSF Kodachrome", "startYear": 1996, "endYear": null, "periodLabel": "≈1996–early 2000s", "category": "Transitional", "representativeLocomotive": "BNSF C30-7 5176 · ex-ATSF 8133",
+      "description": "The red, yellow and black ‘Kodachrome’ scheme was created for the proposed Santa Fe–Southern Pacific merger of the 1980s. After that merger failed, six former ATSF C30-7s worked for BNSF while still wearing Kodachrome: 5176, 5182, 5184, 5185, 5189 and 5193. They carried BNSF identification on the inherited paint. This was a colorful merger-era transitional appearance, not a new fleet livery.",
+      "photo": { "sourcePage": "https://www.flickr.com/photos/troop440/48669385502/", "remoteImageUrl": "https://live.staticflickr.com/65535/48669385502_5b5923d6fc_b.jpg", "caption": "BNSF C30-7 5176 in Kodachrome paint", "credit": "Bob King / Flickr", "date": "2001-04-21" },
+      "sourceIds": ["flickr-bob-king-bnsf-5176", "trainweb-bnsf-kodachromes"]
+    },
+    {
+      "id": "bnsf-executive-green", "name": "BN Executive / Grinstein Green — BNSF lettered", "startYear": 1996, "endYear": null, "periodLabel": "1996 · survived for decades", "category": "Transitional", "representativeLocomotive": "BNSF SD70MAC 9535",
+      "description": "BNSF inherited Burlington Northern's dark Grinstein green and cream Executive colors. During the transition, SD70MACs carried BNSF identification in this predecessor-derived appearance, and several retained it for decades. BNSF 9535 is a particularly long-lived example of the visual bridge between the two railroads.",
+      "photo": { "sourcePage": "https://www.bnsf.com/news-media/railtalk/heritage/uniquelocomotives.html", "remoteImageUrl": "https://www.bnsf.com/news-media/images/rt-unique-locomotives-story-6.jpg", "caption": "BNSF SD70MAC 9535 in Executive green", "credit": "BNSF Railway" },
+      "sourceIds": ["bnsf-unique-locomotives"]
+    },
+    {
+      "id": "bnsf-cascade-green", "name": "BN Cascade Green — BNSF transitional treatment", "startYear": 1996, "endYear": null, "periodLabel": "First appeared 1996", "category": "Experimental · transitional", "representativeLocomotive": "BNSF GP39E 2911",
+      "description": "GP39Es 2911 and 2931 received prominent BNSF lettering and the early cross-and-circle herald while retaining Burlington Northern's Cascade Green base colors. This was a deliberate attempt to combine predecessor paint with the new company's identity, rather than a small reporting-mark patch. It did not become a fleet standard.",
+      "photo": { "sourcePage": "https://www.rrpicturearchives.net/showPicture.aspx?id=1797990", "remoteImageUrl": "https://s3.amazonaws.com/rrpa_photos/23945/100_0232.jpg", "caption": "BNSF GP39E 2911, front and side in transitional Cascade Green", "credit": "Alex Vaughn / RR Picture Archives", "date": "2009-04-28" },
+      "sourceIds": ["rrpicturearchives-bnsf-2911"]
+    },
+    {
+      "id": "bnsf-blue-yellow", "name": "ATSF Blue & Yellow — BNSF transitional treatment", "startYear": 1996, "endYear": null, "periodLabel": "First appeared 1996", "category": "Experimental · transitional", "representativeLocomotive": "BNSF GP30u 2472",
+      "description": "GP30u 2472 retained Santa Fe's blue-and-yellow colors but gained large BNSF lettering and an early BNSF herald. The result was a deliberately branded transitional design, not merely new reporting marks on old paint. This uncommon treatment was never adopted fleet-wide.",
+      "photo": { "sourcePage": "https://www.rrpicturearchives.net/pictures/100896", "remoteImageUrl": "https://s3.amazonaws.com/rrpa_photos/719/2472lw.jpg", "caption": "BNSF GP30u 2472 broadside in blue and yellow", "credit": "Lance Wales / RR Picture Archives", "date": "2003-04-11" },
+      "sourceIds": ["rrpicturearchives-bnsf-2472"]
+    },
+    {
+      "id": "great-pumpkin", "name": "Great Pumpkin", "startYear": 1996, "endYear": null, "periodLabel": "First appeared 1996", "category": "Experimental", "representativeLocomotive": "BNSF SD60M 9297 · later 8197 and 1474",
+      "description": "In May 1996, SD60M 9297 became a rolling experiment for BNSF's new image. Nicknamed the Great Pumpkin, it combined Omaha Orange with dark green and additional red, silver and blue references to the two predecessor systems. Its two sides intentionally carried different stripe treatments for comparison, and BNSF employees were asked which they preferred. The experimental design became the basis for Heritage I later that year, with refinements including yellow rather than red separation stripes. The locomotive retained its unusual appearance through later renumberings as 8197 and 1474.",
+      "photo": { "sourcePage": "https://www.bnsf.com/news-media/railtalk/heritage/uniquelocomotives.html", "remoteImageUrl": "https://www.bnsf.com/news-media/images/rt-unique-locomotives-story-2.jpg", "caption": "The Great Pumpkin, later numbered BNSF 1474", "credit": "BNSF Railway" },
+      "sourceIds": ["bnsf-unique-locomotives", "qstation-bnsf-9297"]
+    },
+    {
+      "id": "heritage-i", "name": "Heritage I · H1", "startYear": 1996, "endYear": null, "periodLabel": "1996 · later surviving examples", "category": "Standard", "representativeLocomotive": "BNSF C44-9W 960",
+      "description": "Introduced in August 1996, Heritage I established Omaha Orange and dark green as BNSF's principal colors, divided by yellow striping and paired with the early cross-and-circle herald. C44-9W 960 was the first new GE locomotive delivered in H1, while GP38-2 2099 was the first former Burlington Northern locomotive repainted into it. This became the foundation of BNSF's enduring orange identity.",
+      "photo": { "sourcePage": "https://www.rrpicturearchives.net/pictures/2025034", "remoteImageUrl": "https://s3.amazonaws.com/rrpa_photos/48313/BNSF%20960%20-1A%20at%20Oreapolis%20NE%203-14-09%20%201024N.JPG", "caption": "BNSF C44-9W 960 in Heritage I at Plattsmouth, Nebraska", "credit": "Paul Rome / RR Picture Archives", "date": "2009-03-14" },
+      "sourceIds": ["rrpicturearchives-bnsf-960"]
+    },
+    {
+      "id": "heritage-ii", "name": "Heritage II · H2", "startYear": 1997, "endYear": null, "periodLabel": "First appeared 1997", "category": "Standard", "representativeLocomotive": "BNSF C44-9W 740",
+      "description": "Heritage II refined the orange-and-green design with wider yellow striping, yellow lettering and a cigar-band-style nose. Experimental GE units including 739, 740 and 745 helped establish the appearance; SD70MAC 9838 was the first EMD locomotive delivered in H2. It became BNSF's principal new road-locomotive scheme until the 2005 Swoosh identity.",
+      "photo": { "sourcePage": "https://www.rrpicturearchives.net/pictures/5789549", "remoteImageUrl": "https://www.rrpicturearchives.net/picturefiles/144720/DSC_4891.JPG", "caption": "BNSF C44-9W 740 in Heritage II", "credit": "RR Picture Archives" },
+      "sourceIds": ["rrpicturearchives-bnsf-740"]
+    },
+    {
+      "id": "simplified-heritage-ii", "name": "Simplified Heritage II · H2 variant", "startYear": 1998, "endYear": null, "periodLabel": "First appeared 1998", "category": "Standard variant", "representativeLocomotive": "BNSF C44-9W 4800",
+      "description": "The 1998 C44-9W deliveries introduced a simplified variation of Heritage II. The 4800-series locomotives retained BNSF's orange-and-green corporate colors but omitted several prominent elements of the full H2 treatment, producing a noticeably plainer appearance. Because this was a factory-applied BNSF variation rather than a temporary patch or inherited predecessor paint, it is documented here as a Heritage II variant rather than as a separate corporate era.",
+      "photo": { "sourcePage": "https://www.rrpicturearchives.net/pictures/5043873", "remoteImageUrl": "https://s3.amazonaws.com/rrpa_photos/34072/BNSF4800%20C44-9W.JPG", "caption": "BNSF C44-9W 4800 in simplified Heritage II", "credit": "Nathan Petersen / RR Picture Archives", "date": "2008-01-01" },
+      "sourceIds": ["railpictures-bnsf-4800-marias", "rrpicturearchives-bnsf-4800"]
+    },
+    {
+      "id": "golden-swoosh", "name": "Golden Swoosh", "startYear": 2005, "endYear": null, "periodLabel": "First appeared 2005", "category": "Experimental", "representativeLocomotive": "BNSF ES44DC 7695",
+      "description": "ES44DC 7695 was a one-of-a-kind test of the new Swoosh identity. Its gold/yellow emblem differed from the black treatment adopted immediately afterward. This locomotive marks the experimental step between Heritage II and the final Heritage III design, and retained its unusual appearance for many years.",
+      "photo": { "sourcePage": "https://www.bnsf.com/news-media/railtalk/heritage/uniquelocomotives.html", "remoteImageUrl": "https://www.bnsf.com/news-media/images/rt-unique-locomotives-story-3.jpg", "caption": "BNSF ES44DC 7695 and its Golden Swoosh", "credit": "BNSF Railway" },
+      "sourceIds": ["bnsf-unique-locomotives"]
+    },
+    {
+      "id": "heritage-iii", "name": "Heritage III · H3 / New Image / Swoosh", "startYear": 2005, "endYear": null, "category": "Standard", "representativeLocomotive": "BNSF ES44DC 7701",
+      "description": "Heritage III introduced BNSF's modern corporate identity in 2005. Omaha Orange remained dominant, while black replaced green as the principal contrasting color and the Swoosh logo replaced earlier heralds. ES44DC 7701 was the first locomotive in the finalized standard design. H3 became the defining appearance of modern BNSF road power.",
+      "photo": { "sourcePage": "https://www.rrpicturearchives.net/pictures/5332034", "remoteImageUrl": "https://s3.amazonaws.com/rrpa_photos/136171/bnsf7701_28sep10_hill582.JPG", "caption": "BNSF ES44DC 7701 in Heritage III at Cajon Pass", "credit": "Joshua Baakko / RR Picture Archives", "date": "2010-09-28" },
+      "sourceIds": ["rrpicturearchives-bnsf-7701"]
+    },
+    {
+      "id": "heritage-iv", "name": "Heritage IV · H4", "startYear": 2006, "endYear": null, "category": "Standard · local-service", "representativeLocomotive": "BNSF GP38-2 2273",
+      "description": "Heritage IV is a simplified post-Swoosh treatment used chiefly on switchers, rebuilds and local-service power. Its layout recalls Heritage I, but black replaces green and the modern BNSF Swoosh identifies it with the post-2005 fleet. It appeared on several GP, SD and rebuilt classes as a distinct companion to the road-locomotive H3 design.",
+      "photo": { "sourcePage": "https://commons.wikimedia.org/wiki/File:BNSF_2273_Lincoln,_NE_3-13-14.jpg", "remoteImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ee/BNSF_2273_Lincoln%2C_NE_3-13-14.jpg", "caption": "BNSF GP38-2 2273 at Lincoln, Nebraska, in Heritage IV", "credit": "Augy8400 / Wikimedia Commons · CC BY-SA 4.0", "date": "2014-03-13" },
+      "sourceIds": ["commons-bnsf-2273"]
+    },
+    {
+      "id": "blue-white-smurfs", "name": "Blue & White ‘Smurfs’", "startYear": null, "endYear": null, "periodLabel": "By 2010", "category": "Acquired · transitional", "representativeLocomotive": "BNSF GP38-2 2048 · ex-GMTX 2660",
+      "description": "BNSF acquired ten blue-and-white locomotives and kept their existing colors because the power was needed quickly. With BNSF lettering applied to the blue bodies, they became unmistakable oddballs in an increasingly orange fleet; GP38-2 2048 was photographed in this appearance by November 2010. Railfans nicknamed them the ‘Smurfs,’ a name BNSF later used when recounting their history. Most were eventually repainted, leaving only one or two in blue and white by 2022.",
+      "photo": { "sourcePage": "https://www.flickr.com/photos/diesel-doctor/52808974653", "remoteImageUrl": "https://live.staticflickr.com/65535/52808974653_f74b8fb090_b.jpg", "caption": "BNSF GP38-2 2048 in retained blue-and-white paint", "credit": "Paul Rome / Flickr", "date": "2010-11-23" },
+      "sourceIds": ["bnsf-unique-locomotives", "flickr-paul-rome-bnsf-2048"]
+    },
+    {
+      "id": "twenty-fifth-anniversary", "name": "25th Anniversary", "startYear": 2020, "endYear": null, "periodLabel": "First appeared 2020", "category": "Commemorative", "representativeLocomotive": "BNSF ES44AC 6111 · one of ten units",
+      "description": "For the 25th anniversary of the Burlington Northern–Santa Fe combination, BNSF decorated ten locomotives with predecessor railroad emblems. They kept the modern BNSF base scheme but honored the systems that became part of today's railroad. This was a coordinated commemorative program, not a new standard fleet paint scheme.",
+      "photo": { "sourcePage": "https://www.bnsf.com/news-media/railtalk/heritage/uniquelocomotives.html", "remoteImageUrl": "https://www.bnsf.com/news-media/images/rt-unique-locomotives-story-7.png", "caption": "BNSF ES44AC 6111 with 25th Anniversary markings", "credit": "BNSF Railway" },
+      "sourceIds": ["bnsf-unique-locomotives"]
+    },
+    {
+      "id": "america250", "name": "America250", "startYear": 2026, "endYear": null, "periodLabel": "2026–present", "category": "Commemorative", "representativeLocomotive": "BNSF ES44ACH 250 · 1776 · 2026",
+      "description": "BNSF departed dramatically from its traditional orange palette in 2026 for the 250th anniversary of the United States. Three ES44ACH locomotives — 250, 1776 and 2026 — received a purpose-designed red, white and blue livery incorporating stars and striping, the modern BNSF Swoosh, ‘We the People,’ ‘Freedom’ and ‘Liberty.’ Unveiled on May 14, 2026, the trio marked the first BNSF commemorative paint scheme outside the company's traditional orange palette. The locomotives entered regular service across the BNSF system while also appearing at special America250 events.",
+      "photo": { "sourcePage": "https://www.bnsf.com/news-media/railtalk/heritage/bnsf-america-250-locomotives.html", "remoteImageUrl": "https://www.bnsf.com/news-media/images/rt-America-250-locomotives-story-hero.jpg", "caption": "BNSF ES44ACH 1776 in the America250 scheme", "credit": "BNSF Railway", "date": "2026-05-14" },
+      "sourceIds": ["bnsf-america250-locomotives", "bnsf-america250-announcement"]
+    }
+  ],
+  "sourceIds": ["bnsf-1996-10k", "bnsf-2025-10k", "berkshire-bnsf-acquisition-announcement"],
+  "sources": []
+}
