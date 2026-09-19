@@ -52,13 +52,11 @@ function renderBnsf(main, data) {
   const renderTree = () => {
     main.replaceChildren();
     renderFooterLegend("bnsf", false);
-    document.querySelector("footer > p").hidden = false;
     renderBnsfGenealogy(main, data.railroads, showRailroad);
   };
   const renderRailroad = (railroad) => {
     main.replaceChildren();
     renderFooterLegend("bnsf", true);
-    document.querySelector("footer > p").hidden = railroad.id === "santa-fe";
     renderRailroadPage(main, railroad, data.railroads, showRailroad, data.sources);
   };
   const showRailroad = (railroad) => {
