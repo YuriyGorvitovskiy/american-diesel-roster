@@ -1,6 +1,7 @@
 import { formatPrototypeName } from "./model.js";
 import { locomotiveUrl } from "./navigation.js";
 import { renderServiceTimeline } from "./service-timeline.js?v=ongoing-1";
+import { useArchiveOnError } from "./image-archive.js";
 
 export function displayValue(value) {
   return value == null || value === "" ? "Unknown" : String(value);
@@ -187,7 +188,7 @@ function renderImageGallery(container, images) {
       fallbackLink.href = sourcePage; fallbackLink.target = "_blank"; fallbackLink.rel = "noopener noreferrer";
       fallbackLink.textContent = "View original photograph →";
       fallback.append(fallbackLabel, fallbackCredit, fallbackLink);
-      image.addEventListener("error", () => showImageFallback(visual, fallback));
+      image.addEventListener("error", useArchiveOnError(image, () => showImageFallback(visual, fallback)));
       figure.append(fallback);
     }
     gallery.append(figure);
