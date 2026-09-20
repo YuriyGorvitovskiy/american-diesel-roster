@@ -65,8 +65,9 @@
             "value": "~30,000"
           },
           "locomotives": {
-            "value": "Unavailable",
-            "note": "No verified independent BN count in project data."
+            "value": "2,391",
+            "label": "Owned/leased locomotives in service",
+            "note": "Plus 197 locomotives operated under power-purchase agreements."
           },
           "rollingStock": {
             "value": "Unavailable separately",
@@ -116,7 +117,7 @@
         "sourcePage": "https://donsdepot.irm.org/dr1485.htm",
         "remoteImageUrl": "https://donsdepot.irm.org/dr0107/bn2755.jpg",
         "caption": "BN 2755 in White Face",
-        "credit": "George H. Menge / Don Ress Collection / Don’s Rail Photos",
+        "credit": "George H. Menge / Don Ross Collection / Don’s Rail Photos",
         "date": "1990-02-16"
       },
       "sourceIds": ["dons-depot-bn-2755"]
