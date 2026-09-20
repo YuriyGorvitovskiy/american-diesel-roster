@@ -70,8 +70,8 @@
             "note": "Plus 197 locomotives operated under power-purchase agreements."
           },
           "rollingStock": {
-            "value": "Unavailable separately",
-            "note": "~65,000 locomotives and rail cars combined; no verified split."
+            "value": "~63,000 rail cars",
+            "note": "Estimated from ~65,000 rolling-stock units minus 2,391 owned/leased locomotives in service; the total may include 197 power-purchase locomotives."
           },
           "capitalization": {
             "value": "~$4.21B",
