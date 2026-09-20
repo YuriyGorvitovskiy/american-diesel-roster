@@ -17,7 +17,7 @@
   "successor": "bnsf",
   "description": "Santa Fe entered the diesel era in 1935 as an overwhelmingly steam-powered railroad. Over the next sixty years, diesel-electric traction completely replaced steam while a smaller workforce and equipment fleet moved traffic across a still-vast western network. By 1995, Santa Fe operated an entirely diesel locomotive fleet as the independent ATSF era drew to a close.",
   "statistics": {
-    "title": "1935–1995 — 60 Years of Diesel Evolution",
+    "intro": "Santa Fe’s locomotive fleet changed from almost entirely steam to entirely diesel-electric.",
     "snapshots": [
       {
         "year": 1935,

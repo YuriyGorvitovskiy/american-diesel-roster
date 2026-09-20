@@ -1,4 +1,5 @@
 import { railroadUrl } from "./navigation.js?v=railroad-relationships-1";
+import { useArchiveOnError } from "./image-archive.js";
 
 function railroadYears(railroad) {
   if (railroad.startYear == null && railroad.endYear == null) return "Dates unknown";
@@ -219,13 +220,10 @@ function renderStatistics(railroad, sources) {
     return article;
   }
   article.innerHTML = '<p class="eyebrow">Then and now</p><h2>Operating scale</h2><p class="muted">Two dated snapshots; approximate and greater-than figures retain the precision reported by the company.</p>';
-  if (railroad.statistics.title) {
-    article.querySelector("h2").textContent = railroad.statistics.title;
-    article.querySelector("p.muted").textContent = "Santa Fe’s locomotive fleet changed from almost entirely steam to entirely diesel-electric.";
-  }
+  if (railroad.statistics.intro) article.querySelector("p.muted").textContent = railroad.statistics.intro;
   const grid = document.createElement("div"); grid.className = "railroad-snapshot-grid";
-  const labels = railroad.id === "santa-fe"
-    ? { locomotives: "Locomotives", capitalization: "Capitalization", employees: "Employees", routeMiles: "Route / operated mileage", rollingStock: "Non-locomotive rolling stock" }
+  const labels = railroad.id === "santa-fe" || railroad.id === "burlington-northern"
+    ? { routeMiles: "System mileage", employees: "Employees", locomotives: "Locomotives", rollingStock: "Non-locomotive rolling stock", capitalization: "Capitalization" }
     : statisticLabels;
   for (const [column, snapshot] of snapshots.entries()) {
     const heading = document.createElement("div"); heading.className = "railroad-snapshot-heading";
@@ -236,7 +234,7 @@ function renderStatistics(railroad, sources) {
     heading.append(year, label, date); grid.append(heading);
     for (const [row, [key, fallbackLabel]] of Object.entries(labels).entries()) {
       const metric = snapshot.metrics?.[key];
-      const item = document.createElement("div"); item.className = `railroad-metric${["employees", "routeMiles", "locomotives", "freightCars"].includes(key) ? " railroad-metric-primary" : ""}${key === "marketCapitalization" || key === "bookEquity" ? " railroad-metric-financial" : ""}`;
+      const item = document.createElement("div"); item.className = `railroad-metric${["employees", "routeMiles", "locomotives", "freightCars"].includes(key) ? " railroad-metric-primary" : ""}${["marketCapitalization", "bookEquity", "capitalization"].includes(key) ? " railroad-metric-financial" : ""}`;
       item.style.gridColumn = column + 1;
       item.style.gridRow = row + 2;
       const term = document.createElement("span"); term.className = "railroad-metric-label"; term.textContent = metric?.label || fallbackLabel;
@@ -297,7 +295,7 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
   schemes.innerHTML = `<p class="eyebrow">Visual identity</p><h2>${railroad.preDiesel ? "Pre-diesel railroad" : "Paint schemes"}</h2>`;
   if (railroad.id === "santa-fe") {
     schemes.classList.add("atsf-paint-schemes");
-    schemes.innerHTML = '<p class="eyebrow">Paint schemes</p><h2>Santa Fe Diesel Colors, 1935–1995</h2><p>Santa Fe\'s diesel identity evolved through passenger, freight, switching, experimental, commemorative, and merger-era paint schemes. Variants are shown separately where documented rather than collapsed into a single representative scheme.</p>';
+    schemes.innerHTML = '<p class="eyebrow">Visual identity</p><h2>Paint schemes</h2><p>Santa Fe\'s diesel identity evolved from 1935 to 1995 through passenger, freight, switching, experimental, commemorative, and merger-era paint schemes. Variants are shown separately where documented rather than collapsed into a single representative scheme.</p>';
     const list = document.createElement("div"); list.className = "atsf-paint-list";
     const sorted = [...railroad.paintSchemes].sort((a, b) => (a.startYear ?? Infinity) - (b.startYear ?? Infinity));
     let undatedHeadingAdded = false;
@@ -322,7 +320,7 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
             const fallback = document.createElement("a"); fallback.href = asset.sourceUrl;
             fallback.target = "_blank"; fallback.rel = "noopener noreferrer";
             fallback.textContent = "View original photograph →"; fallback.hidden = true;
-            photo.addEventListener("error", () => { link.hidden = true; fallback.hidden = false; });
+            photo.addEventListener("error", useArchiveOnError(photo, () => { link.hidden = true; fallback.hidden = false; }));
             frame.append(fallback);
           } else frame.append(photo);
           const caption = document.createElement("figcaption");
@@ -395,7 +393,7 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
         fallback.href = scheme.photo.sourcePage; fallback.target = "_blank";
         fallback.rel = "noopener noreferrer"; fallback.textContent = "View original photograph →";
         fallback.hidden = true;
-        image.addEventListener("error", () => { link.hidden = true; fallback.hidden = false; });
+        image.addEventListener("error", useArchiveOnError(image, () => { link.hidden = true; fallback.hidden = false; }));
         figure.append(fallback);
         const caption = document.createElement("figcaption");
         const kind = document.createElement("span"); kind.className = "image-kind";

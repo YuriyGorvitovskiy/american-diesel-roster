@@ -1,1 +1,152 @@
-{"id":"burlington-northern","slug":"bn","name":"Burlington Northern","reportingMarks":["BN"],"startYear":1970,"endYear":1996,"type":"major-successor","predecessors":["great-northern","northern-pacific","chicago-burlington-quincy","spokane-portland-seattle","frisco","cs","fwd","pacific-coast"],"successor":"bnsf","description":"Created in 1970 from the major northern systems. Frisco joined BN in 1980. Colorado & Southern merged into BN in 1981 and Fort Worth & Denver in 1982.","statistics":null,"paintSchemes":[],"sources":[]}
+{
+  "id": "burlington-northern",
+  "slug": "bn",
+  "name": "Burlington Northern",
+  "reportingMarks": [
+    "BN"
+  ],
+  "startYear": 1970,
+  "endYear": 1996,
+  "type": "major-successor",
+  "predecessors": [
+    "great-northern",
+    "northern-pacific",
+    "chicago-burlington-quincy",
+    "spokane-portland-seattle",
+    "frisco",
+    "cs",
+    "fwd",
+    "pacific-coast"
+  ],
+  "successor": "bnsf",
+  "description": "Burlington Northern was formed on March 2, 1970, from Great Northern, Northern Pacific, Chicago, Burlington & Quincy, and Spokane, Portland & Seattle. During its 25-year independent existence, BN expanded and rationalized its network and absorbed the St. Louis–San Francisco Railway (Frisco) in 1980. Burlington Northern Inc. and Santa Fe Pacific combined on September 22, 1995; their operating railroads remained separate until ATSF merged into Burlington Northern Railroad on December 31, 1996.",
+  "statistics": {
+    "intro": "Two snapshots of Burlington Northern as an independent railroad.",
+    "snapshots": [
+      {
+        "year": 1970,
+        "label": "Formation",
+        "date": "March 2, 1970",
+        "metrics": {
+          "routeMiles": {
+            "value": "~24,000 mi",
+            "label": "System route mileage"
+          },
+          "employees": {
+            "value": "47,865"
+          },
+          "locomotives": {
+            "value": "~2,000"
+          },
+          "rollingStock": {
+            "value": "~123,200"
+          },
+          "capitalization": {
+            "value": "~$3.2B",
+            "note": "Approximate combined assets of Great Northern, Northern Pacific, Chicago, Burlington & Quincy, and Spokane, Portland & Seattle at the time of BN formation."
+          }
+        },
+        "sourceIds": [
+          "bnsf-history-legacy",
+          "doj-bn-1970-complaint"
+        ]
+      },
+      {
+        "year": "1994/95",
+        "label": "Pre-ATSF combination",
+        "date": "1994 year-end / early 1995",
+        "metrics": {
+          "routeMiles": {
+            "value": ">22,000 mi",
+            "label": "System route mileage"
+          },
+          "employees": {
+            "value": "~30,000"
+          },
+          "locomotives": {
+            "value": "2,391",
+            "label": "Owned/leased locomotives in service",
+            "note": "Plus 197 locomotives operated under power-purchase agreements."
+          },
+          "rollingStock": {
+            "value": "~62,500"
+          },
+          "capitalization": {
+            "value": "~$4.21B",
+            "note": "SEC aggregate market value of voting stock held by non-affiliates; not directly equivalent to modern market capitalization."
+          }
+        },
+        "sourceIds": [
+          "bn-1994-r1",
+          "dot-today-1995-bn"
+        ]
+      }
+    ],
+    "notes": [
+      "Formation-era and pre-combination fleet figures retain the precision of their historical sources."
+    ]
+  },
+  "paintSchemes": [
+    {
+      "id": "cascade-green",
+      "name": "Cascade Green",
+      "startYear": 1970,
+      "periodLabel": "1970 onward",
+      "category": "Standard",
+      "representativeLocomotive": "BN GP38 #2176",
+      "description": "Cascade Green became Burlington Northern’s standard corporate paint scheme after its formation in 1970. A green body, dark roof, white BN logos and road numbers, and diagonal white nose striping defined its original identity and preceded later distinct BN variants.",
+      "photo": {
+        "sourcePage": "https://dieselera.com/burlington-northern-gp38x-ex-conrail-penn-central-gp38s/",
+        "remoteImageUrl": "https://dieselera.com/wp-content/uploads/2021/09/dem-burlington-northern-conrail-gp38-04.jpg",
+        "caption": "BN GP38 #2176 in Cascade Green",
+        "credit": "Kevin EuDaly collection / Diesel Era"
+      },
+      "sourceIds": ["diesel-era-bn-gp38-2176"]
+    },
+    {
+      "id": "white-face",
+      "name": "White Face",
+      "startYear": 1989,
+      "periodLabel": "Late 1980s onward",
+      "category": "Later BN variation",
+      "representativeLocomotive": "BN 2755",
+      "description": "White Face emerged in the late 1980s as a variation of Cascade Green. It retained BN’s green body and dark roof while expanding the white cab-face treatment, becoming the railroad’s standard late-era variation of the Cascade Green identity.",
+      "photo": {
+        "sourcePage": "https://donsdepot.irm.org/dr1485.htm",
+        "remoteImageUrl": "https://donsdepot.irm.org/dr0107/bn2755.jpg",
+        "caption": "BN 2755 in White Face",
+        "credit": "George H. Menge / Don Ross Collection / Don’s Rail Photos",
+        "date": "1990-02-16"
+      },
+      "sourceIds": ["dons-depot-bn-2755"]
+    },
+    {
+      "id": "executive-grinstein-green",
+      "name": "Executive / Grinstein Green",
+      "startYear": 1990,
+      "periodLabel": "1990 executive fleet",
+      "category": "1993 road locomotives",
+      "representativeLocomotive": "BN SD70MAC #9479",
+      "description": "Executive / Grinstein Green was a late BN scheme and a departure from the earlier green-bodied styles. A cream body, dark green upper section, thin red stripe, black lower band, and bold black BN markings defined the look most closely associated with BN’s SD70MAC fleet.",
+      "photo": {
+        "sourcePage": "https://www.american-rails.com/926307.html",
+        "remoteImageUrl": "https://www.american-rails.com/images/91782481257812986591863987676.jpg",
+        "caption": "BN SD70MAC #9479 and #9737 in Executive / Grinstein Green",
+        "credit": "Warren Calloway / American-Rails.com",
+        "date": "1996-09-01"
+      },
+      "sourceIds": ["american-rails-bn-9479-executive"]
+    }
+  ],
+  "sources": [],
+  "sourceIds": [
+    "bnsf-history-legacy",
+    "doj-bn-1970-complaint",
+    "dot-today-1995-bn",
+    "bn-1994-r1",
+    "bnsf-1996-10k",
+    "diesel-era-bn-gp38-2176",
+    "dons-depot-bn-2755",
+    "american-rails-bn-9479-executive"
+  ]
+}

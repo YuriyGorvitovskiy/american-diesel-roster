@@ -1,3 +1,6 @@
+import { locomotiveUrl } from "./navigation.js";
+import { useArchiveOnError } from "./image-archive.js";
+
 export function groupRosterRows(rows) {
   return {
     owned: rows.filter(({ status }) => status === "owned"),
@@ -62,6 +65,7 @@ function rosterTable(rows, label) {
         if (view.image) {
           const image = document.createElement("img"); image.className = "roster-thumbnail";
           image.src = view.image.src; image.alt = view.image.alt; image.loading = "lazy";
+          image.addEventListener("error", useArchiveOnError(image, () => { image.hidden = true; }));
           if (view.image.sourcePage) {
             const imageLink = document.createElement("a");
             imageLink.href = view.image.sourcePage; imageLink.target = "_blank"; imageLink.rel = "noopener noreferrer";
@@ -90,4 +94,3 @@ export function renderRoster(container, rows) {
   const groups = groupRosterRows(rows);
   container.append(rosterTable(groups.owned, "Owned"), rosterTable(groups.ordered, "Ordered / incoming"));
 }
-import { locomotiveUrl } from "./navigation.js";
