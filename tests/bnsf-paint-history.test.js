@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { loadDataFiles, validateData } from "../scripts/validate-data.js";
 
-test("BNSF paint history retains all 16 accepted appearances in chronological order", async () => {
+test("BNSF paint history retains exactly 15 documented appearances in chronological order", async () => {
   const { railroads, sources } = await loadDataFiles(new URL("..", import.meta.url));
   const schemes = railroads.find(({ id }) => id === "bnsf").paintSchemes;
   const ids = schemes.map(({ id }) => id);
@@ -16,7 +16,6 @@ test("BNSF paint history retains all 16 accepted appearances in chronological or
     "great-pumpkin",
     "heritage-i",
     "heritage-ii",
-    "simplified-heritage-ii",
     "golden-swoosh",
     "heritage-iii",
     "heritage-iv",
