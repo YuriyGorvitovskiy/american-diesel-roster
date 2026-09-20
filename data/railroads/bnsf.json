@@ -118,12 +118,6 @@
       "sourceIds": ["rrpicturearchives-bnsf-740"]
     },
     {
-      "id": "simplified-heritage-ii", "name": "Simplified Heritage II · H2 variant", "startYear": 1998, "endYear": null, "periodLabel": "First appeared 1998", "category": "Standard variant", "representativeLocomotive": "BNSF C44-9W 4800",
-      "description": "The 1998 C44-9W deliveries introduced a simplified variation of Heritage II. The 4800-series locomotives retained BNSF's orange-and-green corporate colors but omitted several prominent elements of the full H2 treatment, producing a noticeably plainer appearance. Because this was a factory-applied BNSF variation rather than a temporary patch or inherited predecessor paint, it is documented here as a Heritage II variant rather than as a separate corporate era.",
-      "photo": { "sourcePage": "https://www.rrpicturearchives.net/pictures/5043873", "remoteImageUrl": "https://s3.amazonaws.com/rrpa_photos/34072/BNSF4800%20C44-9W.JPG", "caption": "BNSF C44-9W 4800 in simplified Heritage II", "credit": "Nathan Petersen / RR Picture Archives", "date": "2008-01-01" },
-      "sourceIds": ["railpictures-bnsf-4800-marias", "rrpicturearchives-bnsf-4800"]
-    },
-    {
       "id": "golden-swoosh", "name": "Golden Swoosh", "startYear": 2005, "endYear": null, "periodLabel": "First appeared 2005", "category": "Experimental", "representativeLocomotive": "BNSF ES44DC 7695",
       "description": "ES44DC 7695 was a one-of-a-kind test of the new Swoosh identity and the first locomotive to carry the new Swoosh-style BNSF lettering. Its gold/yellow emblem differed from the black treatment adopted immediately afterward. This locomotive marks the experimental step between Heritage II and the final Heritage III design, and retained its unusual appearance for many years.",
       "photo": { "sourcePage": "https://www.bnsf.com/news-media/railtalk/heritage/uniquelocomotives.html", "remoteImageUrl": "https://www.bnsf.com/news-media/images/rt-unique-locomotives-story-3.jpg", "caption": "BNSF ES44DC 7695 and its Golden Swoosh", "credit": "BNSF Railway" },
