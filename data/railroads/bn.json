@@ -39,8 +39,7 @@
             "value": "~2,000"
           },
           "rollingStock": {
-            "value": "122,000 freight cars",
-            "note": "Plus more than 1,200 passenger-equipment units."
+            "value": "123,200"
           },
           "capitalization": {
             "value": "Unavailable",
@@ -70,8 +69,7 @@
             "note": "Plus 197 locomotives operated under power-purchase agreements."
           },
           "rollingStock": {
-            "value": "~63,000 rail cars",
-            "note": "Estimated from ~65,000 rolling-stock units minus 2,391 owned/leased locomotives in service; the total may include 197 power-purchase locomotives."
+            "value": "~62,500"
           },
           "capitalization": {
             "value": "~$4.21B",
