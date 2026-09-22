@@ -123,7 +123,7 @@ test("CB&Q paint cards retain the reviewed sequence, identities, and image prove
     assert.ok(scheme.photo.remoteImageUrl || scheme.photo.localPath);
     if (scheme.photo.localPath) assert.equal(scheme.photo.kind, "AI reconstruction from archival reference");
   }
-  assert.equal(schemes[2].photo.remoteImageUrl, schemes[2].photo.sourcePage);
+  assert.equal(schemes[2].photo.sourcePage, "https://www.american-rails.com/cbq.html");
   assert.ok(schemes[5].photo.remoteImageUrl);
 });
 
