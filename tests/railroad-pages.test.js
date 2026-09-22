@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { railroadRelationships, verticalScaleForColumns } from "../src/railroad-pages.js";
+import { railroadRelationships, statisticEntriesFor, verticalScaleForColumns } from "../src/railroad-pages.js";
 
 test("railroad relationships resolve navigable predecessor and successor records", () => {
   const railroads = [
@@ -39,4 +39,14 @@ test("railroad genealogy keeps its accepted spacing when cards already fit", () 
   const heights = new Map([["first", 66], ["second", 66]]);
 
   assert.equal(verticalScaleForColumns(positions, heights), 1);
+});
+
+test("CB&Q uses the common five-field operating-scale order", () => {
+  assert.deepEqual(statisticEntriesFor({ id: "chicago-burlington-quincy" }), [
+    ["routeMiles", "System mileage"],
+    ["employees", "Employees"],
+    ["locomotives", "Locomotives"],
+    ["rollingStock", "Non-locomotive rolling stock"],
+    ["capitalization", "Capitalization"],
+  ]);
 });

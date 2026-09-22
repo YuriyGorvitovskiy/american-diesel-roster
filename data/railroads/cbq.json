@@ -1,1 +1,199 @@
-{"id":"chicago-burlington-quincy","slug":"cbq","name":"Chicago, Burlington & Quincy","reportingMarks":["CB&Q"],"startYear":1849,"endYear":1970,"type":"major","predecessors":["chicago-aurora"],"successor":"burlington-northern","description":null,"statistics":null,"paintSchemes":["early diesel schemes","Grayback","Chinese Red","stainless-steel passenger locomotives","Zephyr-related passenger appearances"],"sources":[]}
+{
+  "id": "chicago-burlington-quincy",
+  "slug": "cbq",
+  "name": "Chicago, Burlington & Quincy",
+  "reportingMarks": ["CB&Q"],
+  "startYear": 1849,
+  "endYear": 1970,
+  "type": "major",
+  "predecessors": ["chicago-aurora"],
+  "successor": "burlington-northern",
+  "description": "The Burlington grew from an Illinois predecessor founded in 1849 into a major Midwestern and Western railroad. Jointly controlled by Great Northern and Northern Pacific, it pioneered streamlined diesel passenger service with the Pioneer Zephyr and entered Burlington Northern on March 2, 1970.",
+  "statistics": {
+    "intro": "Two snapshots bracket the Pioneer Zephyr's arrival and CB&Q's final independently reported years before the Burlington Northern merger.",
+    "snapshots": [
+      {
+        "year": 1934,
+        "label": "Pioneer Zephyr era",
+        "date": "1934 reporting year",
+        "metrics": {
+          "routeMiles": {
+            "value": "9,143.98 mi",
+            "label": "Route miles / miles of road operated",
+            "note": "1934 annual report: average mileage of road operated."
+          },
+          "employees": {
+            "value": "~22,700",
+            "label": "Employees · 1933 average",
+            "note": "Nearest defensible carrier-specific estimate, based on the ICC's 1933 average of 22,703 employees."
+          },
+          "locomotives": {
+            "value": "1,068",
+            "note": "Year-end locomotive total; includes eight locomotives leased from the Colorado & Southern Lines."
+          },
+          "rollingStock": {
+            "value": "47,132",
+            "note": "46,179 freight-train cars plus 953 passenger-train cars; excludes 3,267 company-service cars."
+          },
+          "capitalization": {
+            "value": "~$390.5M",
+            "note": "$170,839,100 common stock plus $219,672,000 funded debt outstanding in public hands."
+          }
+        },
+        "context": "The annual report recorded the three-car Pioneer Zephyr as passenger-train equipment, separately from two diesel-electric switching locomotives acquired during 1934.",
+        "sourceIds": ["cbq-1934-annual-report", "icc-1933-railway-statistics"]
+      },
+      {
+        "year": 1968,
+        "label": "Latest complete pre-merger snapshot",
+        "date": "1968 reporting year",
+        "metrics": {
+          "routeMiles": {
+            "value": "8,509 mi",
+            "label": "Route miles / miles of road operated",
+            "note": "Moody's 1969: average freight mileage for CB&Q proper."
+          },
+          "employees": {
+            "value": "16,938",
+            "note": "Average employment during 1968."
+          },
+          "locomotives": {
+            "value": "672"
+          },
+          "rollingStock": {
+            "value": "41,080",
+            "note": "40,408 freight cars plus 672 passenger cars; excludes company-service cars."
+          },
+          "capitalization": {
+            "value": "~$420.0M",
+            "note": "$170,839,100 capital stock plus $249,195,000 long-term debt and equipment obligations."
+          }
+        },
+        "context": "The 1969 transportation manual reports December 31, 1968 data for CB&Q proper; Colorado & Southern and Fort Worth & Denver appear separately.",
+        "sourceIds": ["moodys-1969-transportation-manual"]
+      }
+    ],
+    "notes": [
+      "Values prefixed with ~ are estimates or rounded calculations; the 1934 employee figure uses the nearest verified carrier-specific ICC average, from 1933.",
+      "The sources use slightly different mileage terms: the 1934 report says average mileage of road operated; Moody's lists 1968 average freight mileage. Both figures refer to CB&Q proper, with C&S and FW&D reported separately.",
+      "Capitalization is calculated consistently as issued capital stock plus outstanding long-term funded and equipment debt; it is not market capitalization.",
+      "Non-locomotive rolling stock combines freight and passenger cars and excludes company-service cars in both snapshots.",
+      "The Pioneer Zephyr is not counted as a locomotive: CB&Q's 1934 report classified the articulated three-car train with passenger equipment and listed diesel switching locomotives separately."
+    ]
+  },
+  "paintSchemes": [
+    {
+      "id": "early-black-aluminum",
+      "name": "Early Black / Aluminum",
+      "periodLabel": "late 1930s–1940s",
+      "category": "early diesel switchers",
+      "representativeLocomotive": "CB&Q 9103",
+      "description": "Black body with aluminum/silver lettering and trim; early CB&Q switcher paint scheme used before the later Blackbird treatment.",
+      "historicalNote": "Early CB&Q diesel switcher scheme with a black body, aluminum/silver lettering and trim, and a simple pre-Blackbird appearance. This treatment predates the later “Way of the Zephyrs” Blackbird style and represents Burlington’s earliest diesel switcher paint era.",
+      "photo": {
+        "sourcePage": "https://www.lakestatesarchive.org/William-S-Kuba-Collection/CBQ-Diesel-Locomotives-Switchers/i-6jSqsCr/A",
+        "localPath": "/images/railroads/cbq-9103-early-black-aluminum-reconstruction.png",
+        "alt": "CB&Q 9103 in the Early Black / Aluminum paint scheme",
+        "caption": "CB&Q 9103 in Early Black / Aluminum",
+        "credit": "William S. Kuba Collection — Lake States Railway Historical Association Archive",
+        "kind": "AI reconstruction from archival reference"
+      },
+      "sourceIds": ["lake-states-kuba-cbq-9103"]
+    },
+    {
+      "id": "blackbird",
+      "name": "Blackbird",
+      "periodLabel": "1940s–1960s",
+      "category": "road-switchers and switchers",
+      "representativeLocomotive": "CB&Q GP7 218",
+      "description": "Black body with gray upper surfaces, “Way of the Zephyrs” lettering, Burlington Route herald, and distinctive striped ends. A signature pre-Chinese Red CB&Q diesel scheme used on locomotives such as GP7s and NW2s.",
+      "historicalNote": "Classic mid-century CB&Q diesel scheme with a black body, gray upper surfaces, “Way of the Zephyrs” script, and distinctive striped ends. This scheme was used on switchers and road-switchers before the later Chinese Red era.",
+      "photo": {
+        "sourcePage": "http://railfan44.blogspot.com/2013/07/the-last-decade-of-cb-on-racetrack.html",
+        "localPath": "/images/railroads/cbq-gp7-218-blackbird-reconstruction.png",
+        "alt": "CB&Q GP7 218 in the Blackbird paint scheme",
+        "caption": "CB&Q GP7 218 in Blackbird",
+        "credit": "Railfan44 — The Last Decade of CB&Q on the Racetrack",
+        "kind": "AI reconstruction from archival reference"
+      },
+      "sourceIds": ["railfan44-cbq-gp7-218-blackbird"]
+    },
+    {
+      "id": "grayback-freight",
+      "name": "Grayback — Freight",
+      "periodLabel": "1940s–1960s",
+      "category": "freight cab units",
+      "representativeLocomotive": "FW&D F7 751A — Burlington subsidiary",
+      "description": "Off-white / light-gray freight F-unit scheme with a prominent red side band, Burlington lettering, and a distinctive red/white/black nose treatment. Used on CB&Q FT, F3, F7, and F9 freight cab units during the mid-century diesel era.",
+      "historicalNote": "Classic CB&Q freight F-unit scheme with an off-white / light-gray body, a prominent red side band, and a red/white/black nose treatment. This was the standard Burlington freight appearance for FT, F3, F7, and later related F-unit freight locomotives before the Chinese Red era.",
+      "photo": {
+        "sourcePage": "https://www.american-rails.com/images/20690237275623u4yi81209279089081.jpg",
+        "remoteImageUrl": "https://www.american-rails.com/images/20690237275623u4yi81209279089081.jpg",
+        "alt": "FW&D F7 751A in the Burlington Grayback — Freight paint scheme",
+        "caption": "FW&D F7 751A in Burlington Grayback — Freight",
+        "credit": "American-Rails.com"
+      },
+      "sourceIds": ["american-rails-cbq-grayback-freight", "brhs-fwd-f7-roster"]
+    },
+    {
+      "id": "passenger-silver-black-whisker",
+      "name": "Passenger Silver — Black Whisker",
+      "periodLabel": "1940s–c.1958",
+      "category": "passenger cab units",
+      "representativeLocomotive": "CB&Q E5 9911A “Silver Pilot”",
+      "description": "Silver passenger scheme with black nose “whiskers” / nosepiece, Burlington passenger lettering, and streamlined Zephyr-era styling. Represents CB&Q’s early passenger diesel appearance before the later red-whisker treatment.",
+      "historicalNote": "Early CB&Q passenger diesel treatment with a silver body and black nose “whiskers” / nosepiece. This was the classic pre-1958 Burlington passenger appearance used on streamlined passenger locomotives before the later red-whisker variation.",
+      "photo": {
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:EMD_E5_at_IRM.jpg",
+        "localPath": "/images/railroads/cbq-e5-9911a-passenger-silver-black-whisker-reconstruction.png",
+        "alt": "CB&Q E5 9911A Silver Pilot in the Passenger Silver — Black Whisker paint scheme",
+        "caption": "CB&Q E5 9911A Silver Pilot in Passenger Silver — Black Whisker",
+        "credit": "Wikimedia Commons — EMD E5 at IRM",
+        "kind": "AI reconstruction from archival reference"
+      },
+      "sourceIds": ["wikimedia-emd-e5-at-irm", "irm-cbq-9911a-silver-pilot"]
+    },
+    {
+      "id": "passenger-silver-red-whisker",
+      "name": "Passenger Silver — Red Whisker",
+      "periodLabel": "c.1958–1970",
+      "category": "passenger cab units",
+      "representativeLocomotive": "CB&Q E8A 9945B",
+      "description": "Silver passenger scheme with red nose “whiskers” / nosepiece, Burlington passenger lettering, and streamlined styling. Represents CB&Q’s later passenger diesel appearance, used on E-units in the late pre-merger era after the earlier black-whisker treatment.",
+      "historicalNote": "Late CB&Q passenger diesel treatment with a silver body and red nose “whiskers” / nosepiece. This was the later Burlington passenger appearance used after the earlier black-whisker version, while retaining the streamlined silver Zephyr-era styling.",
+      "photo": {
+        "sourcePage": "http://railfan44.blogspot.com/2013/07/the-last-decade-of-cb-on-racetrack.html",
+        "localPath": "/images/railroads/cbq-e8-passenger-silver-red-whisker-reconstruction.png",
+        "alt": "CB&Q E8A 9945B with white numbers on black numberboards in the Passenger Silver — Red Whisker paint scheme",
+        "caption": "CB&Q E8A 9945B in Passenger Silver — Red Whisker",
+        "credit": "Railfan44 — The Last Decade of CB&Q on the Racetrack",
+        "kind": "AI reconstruction from archival reference"
+      },
+      "sourceIds": ["railfan44-cbq-gp7-218-blackbird", "railfan44-cbq-e8-9945b", "trainboard-cbq-red-whisker-e8"]
+    },
+    {
+      "id": "chinese-red",
+      "name": "Chinese Red",
+      "periodLabel": "1958–1970",
+      "category": "road-switchers and road freight diesels",
+      "representativeLocomotive": "CB&Q GP20 922",
+      "description": "Chinese Red body with gray upper surfaces, white striping and lettering, and a bold late-era Burlington appearance. Used on CB&Q road freight diesels from 1958 until the Burlington Northern merger, with application differences across models treated as one scheme.",
+      "historicalNote": "Late-era CB&Q diesel scheme with a Chinese Red body, gray upper surfaces, white striping and lettering, and a bold Burlington road-freight appearance. This became the standard CB&Q freight diesel treatment in the final pre-merger years and was applied across multiple locomotive types, including GP20s, GP30s, GP35s, GP40s, SD24s, and others.",
+      "photo": {
+        "sourcePage": "http://railfan44.blogspot.com/2013/07/the-last-decade-of-cb-on-racetrack.html",
+        "remoteImageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh94iDiEgmOF_GS8o52EAeGDLRQSAy5J7FoPZWkIUzvaj11Yb3SSTeebD83iWQhhqSo2TY1bOZOnimrtValYUfvWWYycHp4lhyphenhyphen8T_R5asJy6dn64gx1Y3M7xUoX-dcMBjotHZU9WoVUdZo/s1600/XCBQ922+210+53X-620520+Park+St.,+Westmont,+IL+GP20+1961-1.JPG",
+        "alt": "CB&Q GP20 922 in the Chinese Red paint scheme",
+        "caption": "CB&Q GP20 922 in Chinese Red",
+        "credit": "Railfan44 — The Last Decade of CB&Q on the Racetrack"
+      },
+      "sourceIds": ["railfan44-cbq-gp20-922-chinese-red"]
+    }
+  ],
+  "sourceIds": [
+    "cbq-1934-annual-report",
+    "icc-1933-railway-statistics",
+    "moodys-1969-transportation-manual",
+    "bnsf-history-legacy"
+  ],
+  "sources": []
+}

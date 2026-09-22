@@ -13,7 +13,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 86);
+  assert.equal(data.sources.length, 98);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
   const et44 = data.prototypes.find(({ id }) => id === "ge-et44ac");
@@ -74,6 +74,53 @@ test("ATSF comparison preserves the approved historical precision and propulsion
     ["capitalization", "employees", "routeMiles", "locomotives", "rollingStock"].map((key) => late.metrics[key].value),
     ["$5.35B", "~15,000", "9,126 mi", "1,595", "~26,000"],
   );
+});
+
+test("CB&Q comparison preserves the approved 1934 and pre-merger operating snapshots", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const cbq = data.railroads.find(({ id }) => id === "chicago-burlington-quincy");
+  const [early, late] = cbq.statistics.snapshots;
+
+  assert.deepEqual([early.year, late.year], [1934, 1968]);
+  assert.deepEqual(
+    ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"].map((key) => early.metrics[key].value),
+    ["9,143.98 mi", "~22,700", "1,068", "47,132", "~$390.5M"],
+  );
+  assert.deepEqual(
+    ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"].map((key) => late.metrics[key].value),
+    ["8,509 mi", "16,938", "672", "41,080", "~$420.0M"],
+  );
+  assert.ok(cbq.statistics.notes.some((note) => note.includes("Pioneer Zephyr")));
+  assert.ok(cbq.sourceIds.includes("cbq-1934-annual-report"));
+  assert.ok(cbq.sourceIds.includes("moodys-1969-transportation-manual"));
+  assert.equal(early.metrics.routeMiles.label, late.metrics.routeMiles.label);
+  assert.equal(early.metrics.routeMiles.label, "Route miles / miles of road operated");
+  assert.equal(early.metrics.employees.label, "Employees · 1933 average");
+  assert.equal(cbq.sourceIds.includes("great-northern-1968-annual-report"), false);
+});
+
+test("CB&Q paint cards retain the reviewed sequence, identities, and image provenance", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const schemes = data.railroads.find(({ id }) => id === "chicago-burlington-quincy").paintSchemes;
+  assert.deepEqual(schemes.map(({ id }) => id), [
+    "early-black-aluminum", "blackbird", "grayback-freight", "passenger-silver-black-whisker",
+    "passenger-silver-red-whisker", "chinese-red",
+  ]);
+  assert.equal(schemes[1].periodLabel, "1940s–1960s");
+  assert.equal(schemes[2].representativeLocomotive, "FW&D F7 751A — Burlington subsidiary");
+  assert.match(schemes[3].representativeLocomotive, /9911A.*Silver Pilot/);
+  assert.equal(schemes[4].representativeLocomotive, "CB&Q E8A 9945B");
+  assert.equal(schemes[4].photo.sourcePage, "http://railfan44.blogspot.com/2013/07/the-last-decade-of-cb-on-racetrack.html");
+  assert.equal(schemes[4].photo.credit, "Railfan44 — The Last Decade of CB&Q on the Racetrack");
+  for (const scheme of schemes) {
+    assert.ok(scheme.photo.sourcePage);
+    assert.ok(scheme.photo.credit);
+    assert.ok(scheme.photo.alt);
+    assert.ok(scheme.photo.remoteImageUrl || scheme.photo.localPath);
+    if (scheme.photo.localPath) assert.equal(scheme.photo.kind, "AI reconstruction from archival reference");
+  }
+  assert.equal(schemes[2].photo.remoteImageUrl, schemes[2].photo.sourcePage);
+  assert.ok(schemes[5].photo.remoteImageUrl);
 });
 
 test("NW1 provides historical context for the owned NW2 without a collection item", async () => {
