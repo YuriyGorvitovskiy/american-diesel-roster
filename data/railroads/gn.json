@@ -1,1 +1,113 @@
-{"id":"great-northern","slug":"gn","name":"Great Northern Railway","catalogName":"Great Northern","reportingMarks":["GN"],"startYear":1889,"endYear":1970,"type":"major","predecessors":["spmm","msc","montana-central"],"successor":"burlington-northern","description":null,"statistics":null,"paintSchemes":["Empire Builder Orange/Green","simplified Orange/Green","Big Sky Blue","passenger Empire Builder schemes"],"sources":[]}
+{
+  "id": "great-northern",
+  "slug": "gn",
+  "name": "Great Northern Railway",
+  "catalogName": "Great Northern",
+  "reportingMarks": ["GN"],
+  "startYear": 1889,
+  "endYear": 1970,
+  "type": "major",
+  "predecessors": ["spmm", "msc", "montana-central"],
+  "successor": "burlington-northern",
+  "description": null,
+  "history": [
+    "Great Northern Railway was created on September 18, 1889, as the corporate vehicle through which James J. Hill consolidated and expanded his northern railroad system. On February 1, 1890, it assumed control of the St. Paul, Minneapolis & Manitoba and related properties. Engineer John F. Stevens found the route through Marias Pass across the Rocky Mountains, and the final spike of the Pacific extension was driven near Scenic, Washington, on January 6, 1893. Regular service between the Twin Cities and Seattle followed that year.",
+    "Great Northern developed into a northern transcontinental system linking Minneapolis–St. Paul and Duluth with North Dakota, Montana, Idaho, Washington and connections into Canada. Its traffic base included grain, livestock, timber, minerals and the iron ore of Minnesota's Mesabi Range. Great Northern and Northern Pacific jointly acquired control of the Chicago, Burlington & Quincy in 1901 and organized the Spokane, Portland & Seattle Railway in 1905, creating relationships that would eventually become central to the Burlington Northern system.",
+    "The railroad made major investments in its mountain route. The new 7.79-mile Cascade Tunnel and its associated electrified route opened in 1929, lowering and improving the crossing of the Cascades. That same year Great Northern inaugurated the Empire Builder, named for James J. Hill, which became the railroad's signature transcontinental passenger train.",
+    "Great Northern experimented with diesel power unusually early. AGEIR boxcab No. 5100 entered the roster in 1926 and was the railroad's first diesel locomotive. For this project's production-series diesel milestone, however, use 1938: that year GN received EMC NW1 No. 5102, part of a 27-unit production model. EMC NC No. 5101 arrived in the same period. At the end of 1938, diesel power still represented only three units in a fleet of 960 locomotives; steam remained overwhelmingly dominant and 15 electric locomotives worked the railroad's electrified territory.",
+    "Over the following decades diesel power replaced both steam and the Cascade electrics. By the late 1960s Great Northern operated an entirely diesel-electric locomotive fleet. After decades of proposals and regulatory proceedings, Great Northern joined Northern Pacific, Chicago, Burlington & Quincy and Spokane, Portland & Seattle to form Burlington Northern on March 2, 1970. Great Northern's northern transcontinental main line became one of the principal routes of the new system and later of BNSF Railway."
+  ],
+  "statistics": {
+    "snapshots": [
+      {
+        "year": 1938,
+        "label": "First production-series diesel",
+        "date": "1938",
+        "metrics": {
+          "routeMiles": { "value": "8,071.54", "label": "Route miles" },
+          "employees": { "value": "≈17,000" },
+          "locomotives": { "value": "960", "note": "942 steam · 15 electric · 3 diesel" },
+          "rollingStock": { "value": "53,516", "note": "50,754 freight · 815 passenger · 1,947 company service" },
+          "capitalization": { "value": "$579.9M" }
+        }
+      },
+      {
+        "year": "1968–1969",
+        "label": "Eve of Burlington Northern",
+        "date": "1968 corporate data · 1969 locomotive roster",
+        "metrics": {
+          "routeMiles": { "value": "8,277", "label": "Route miles", "note": "1968" },
+          "employees": { "value": "15,913", "note": "1968" },
+          "locomotives": { "value": "607", "note": "607 diesel-electric · 1969" },
+          "rollingStock": { "value": "44,504", "note": "41,256 freight · 514 passenger · 2,734 caboose & work equipment · 1968" },
+          "capitalization": { "value": "$528.3M", "note": "1968" }
+        }
+      }
+    ]
+  },
+  "paintSchemes": [
+    {
+      "id": "basic-black",
+      "name": "Basic Black",
+      "periodLabel": "1926–1941",
+      "representativeLocomotive": "EMC NC #5101",
+      "description": "Great Northern's earliest diesel locomotives wore a simple black scheme with light lettering and the classic circular Great Northern herald. This utilitarian treatment appeared on the railroad's pioneering diesel switchers and early internal-combustion locomotives before the introduction of the better-known passenger color schemes. It reflected a practical, no-nonsense appearance suited to yard and switching service.",
+      "photo": {
+        "sourcePage": "https://atom.pnrarchive.org/index.php/great-northern-diesel-locomotive-5101-in-1938",
+        "localPath": "/images/railroads/gn-5101-basic-black-generated.png",
+        "alt": "Great Northern EMC NC 5101 in the Basic Black scheme in a winter yard",
+        "caption": "EMC NC #5101 in Great Northern's early Basic Black scheme.",
+        "credit": "User-supplied generated / restored image",
+        "kind": "AI reconstruction from archival reference"
+      }
+    },
+    {
+      "id": "empire-builder",
+      "name": "Empire Builder",
+      "periodLabel": "1941–1962",
+      "paintIdentity": "Omaha Orange · Pullman Green · Imitation Gold",
+      "representativeLocomotive": "F7A #309A",
+      "description": "Introduced with Great Northern's streamlined diesel era, the Empire Builder scheme combined Omaha Orange and Pullman Green separated by fine imitation-gold striping. It became the railroad's signature first-generation road diesel livery and was closely associated with the passenger image of the Empire Builder and related streamlined power. This was the classic Great Northern diesel appearance of the 1940s and 1950s.",
+      "photo": {
+        "sourcePage": "https://atom.pnrarchive.org/index.php/great-northern-diesel-locomotive-309a-at-minneapolis-minnesota-1969",
+        "localPath": "/images/railroads/gn-309a-empire-builder-generated.png",
+        "alt": "Great Northern F7A 309A in the Empire Builder scheme in snow",
+        "caption": "F7A #309A in the classic Empire Builder scheme.",
+        "credit": "User-supplied generated / restored image",
+        "kind": "AI reconstruction from archival reference"
+      }
+    },
+    {
+      "id": "simplified-empire-builder",
+      "name": "Simplified Empire Builder",
+      "periodLabel": "1962–1967",
+      "paintIdentity": "Simplified Omaha Orange · Pullman Green",
+      "representativeLocomotive": "F7A #307A",
+      "description": "In 1962 Great Northern simplified its established orange-and-green diesel livery by removing the fine imitation-gold separation striping and reducing some of the decorative complexity. The resulting scheme preserved the familiar Great Northern identity while lowering paint-shop labor and maintenance effort. Minor application differences existed across locomotive types, but for this project they are treated as one scheme.",
+      "photo": {
+        "sourcePage": "https://atom.pnrarchive.org/index.php/great-northern-diesel-locomotive-307a-at-minneapolis-minnesota-1969",
+        "localPath": "/images/railroads/gn-307a-simplified-empire-builder-generated.png",
+        "alt": "Great Northern F7A 307A in the Simplified Empire Builder scheme on a turntable",
+        "caption": "F7A #307A in the Simplified Empire Builder scheme.",
+        "credit": "User-supplied generated / restored image",
+        "kind": "AI reconstruction from archival reference"
+      }
+    },
+    {
+      "id": "big-sky-blue",
+      "name": "Big Sky Blue",
+      "periodLabel": "1967–1970",
+      "representativeLocomotive": "SD45 #422",
+      "description": "Introduced in 1967, Big Sky Blue replaced the earlier orange-and-green look with a bold modern scheme of blue, white, and dark upper surfaces, paired with the updated Great Northern goat emblem. This became the railroad's final diesel image before the 1970 Burlington Northern merger. The scheme gave late Great Northern power a distinctly modern corporate appearance during the road's last independent years.",
+      "photo": {
+        "sourcePage": "https://atom.pnrarchive.org/index.php/great-northern-diesel-locomotive-422-at-la-grange-illinois-1968",
+        "localPath": "/images/railroads/gn-422-big-sky-blue-generated.png",
+        "alt": "Great Northern SD45 422 in the Big Sky Blue scheme with its trucks fully visible",
+        "caption": "SD45 #422 in Great Northern's Big Sky Blue scheme.",
+        "credit": "User-supplied generated / restored image",
+        "kind": "AI reconstruction from archival reference"
+      }
+    }
+  ],
+  "sources": []
+}

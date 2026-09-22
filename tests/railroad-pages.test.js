@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { railroadRelationships, statisticEntriesFor, verticalScaleForColumns } from "../src/railroad-pages.js";
+import { paintSchemeEyebrow, railroadNarrativeParagraphs, railroadRelationships, statisticEntriesFor, verticalScaleForColumns } from "../src/railroad-pages.js";
 
 test("railroad relationships resolve navigable predecessor and successor records", () => {
   const railroads = [
@@ -49,4 +49,27 @@ test("CB&Q uses the common five-field operating-scale order", () => {
     ["rollingStock", "Non-locomotive rolling stock"],
     ["capitalization", "Capitalization"],
   ]);
+});
+
+test("Great Northern uses the shared five-field operating-scale order", () => {
+  assert.deepEqual(statisticEntriesFor({ id: "great-northern" }), [
+    ["routeMiles", "System mileage"],
+    ["employees", "Employees"],
+    ["locomotives", "Locomotives"],
+    ["rollingStock", "Non-locomotive rolling stock"],
+    ["capitalization", "Capitalization"],
+  ]);
+});
+
+test("railroad narratives support multiple historical overview paragraphs", () => {
+  assert.deepEqual(
+    railroadNarrativeParagraphs({ history: ["First paragraph.", "Second paragraph."], description: "Summary." }),
+    ["First paragraph.", "Second paragraph."],
+  );
+  assert.deepEqual(railroadNarrativeParagraphs({ description: "Existing summary." }), ["Existing summary."]);
+});
+
+test("paint scheme headings omit an unsupplied category", () => {
+  assert.equal(paintSchemeEyebrow({ periodLabel: "1926–1941" }), "1926–1941");
+  assert.equal(paintSchemeEyebrow({ periodLabel: "1941–1962", category: "Passenger" }), "1941–1962 · Passenger");
 });

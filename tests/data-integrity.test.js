@@ -99,6 +99,74 @@ test("CB&Q comparison preserves the approved 1934 and pre-merger operating snaps
   assert.equal(cbq.sourceIds.includes("great-northern-1968-annual-report"), false);
 });
 
+test("Great Northern preserves the supplied history and 1938 versus 1968–1969 snapshots", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const gn = data.railroads.find(({ id }) => id === "great-northern");
+  const [early, late] = gn.statistics.snapshots;
+
+  assert.equal(gn.history.length, 5);
+  assert.match(gn.history[3], /1926.*first diesel locomotive/);
+  assert.match(gn.history[3], /production-series diesel milestone.*1938/);
+  assert.match(gn.history[4], /March 2, 1970/);
+  assert.deepEqual([early.year, early.label], [1938, "First production-series diesel"]);
+  assert.deepEqual([late.year, late.label], ["1968–1969", "Eve of Burlington Northern"]);
+  assert.deepEqual(
+    ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"].map((key) => early.metrics[key].value),
+    ["8,071.54", "≈17,000", "960", "53,516", "$579.9M"],
+  );
+  assert.deepEqual(
+    ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"].map((key) => late.metrics[key].value),
+    ["8,277", "15,913", "607", "44,504", "$528.3M"],
+  );
+  assert.equal(early.metrics.locomotives.note, "942 steam · 15 electric · 3 diesel");
+  assert.equal(early.metrics.rollingStock.note, "50,754 freight · 815 passenger · 1,947 company service");
+  assert.equal(late.metrics.locomotives.note, "607 diesel-electric · 1969");
+  assert.equal(late.metrics.rollingStock.note, "41,256 freight · 514 passenger · 2,734 caboose & work equipment · 1968");
+  assert.equal(late.metrics.capitalization.note, "1968");
+  assert.equal(late.metrics.employees.note, "1968");
+  assert.equal(late.metrics.routeMiles.note, "1968");
+});
+
+test("Great Northern paint cards preserve the accepted order, artwork, and archive sources", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const schemes = data.railroads.find(({ id }) => id === "great-northern").paintSchemes;
+
+  assert.deepEqual(schemes.map(({ id }) => id), [
+    "basic-black", "empire-builder", "simplified-empire-builder", "big-sky-blue",
+  ]);
+  assert.deepEqual(schemes.map(({ periodLabel }) => periodLabel), [
+    "1926–1941", "1941–1962", "1962–1967", "1967–1970",
+  ]);
+  assert.deepEqual(schemes.map(({ representativeLocomotive }) => representativeLocomotive), [
+    "EMC NC #5101", "F7A #309A", "F7A #307A", "SD45 #422",
+  ]);
+  assert.deepEqual(schemes.map(({ photo }) => photo.localPath), [
+    "/images/railroads/gn-5101-basic-black-generated.png",
+    "/images/railroads/gn-309a-empire-builder-generated.png",
+    "/images/railroads/gn-307a-simplified-empire-builder-generated.png",
+    "/images/railroads/gn-422-big-sky-blue-generated.png",
+  ]);
+  assert.deepEqual(schemes.map(({ photo }) => photo.sourcePage), [
+    "https://atom.pnrarchive.org/index.php/great-northern-diesel-locomotive-5101-in-1938",
+    "https://atom.pnrarchive.org/index.php/great-northern-diesel-locomotive-309a-at-minneapolis-minnesota-1969",
+    "https://atom.pnrarchive.org/index.php/great-northern-diesel-locomotive-307a-at-minneapolis-minnesota-1969",
+    "https://atom.pnrarchive.org/index.php/great-northern-diesel-locomotive-422-at-la-grange-illinois-1968",
+  ]);
+  assert.deepEqual(schemes.map(({ paintIdentity }) => paintIdentity ?? null), [
+    null,
+    "Omaha Orange · Pullman Green · Imitation Gold",
+    "Simplified Omaha Orange · Pullman Green",
+    null,
+  ]);
+  assert.ok(schemes[2].description.includes("treated as one scheme"));
+  for (const scheme of schemes) {
+    assert.equal(scheme.photo.kind, "AI reconstruction from archival reference");
+    assert.equal(scheme.photo.credit, "User-supplied generated / restored image");
+    assert.ok(scheme.photo.caption);
+    assert.ok(scheme.photo.alt);
+  }
+});
+
 test("CB&Q paint cards retain the reviewed sequence, identities, and image provenance", async () => {
   const data = await loadDataFiles(new URL("..", import.meta.url));
   const schemes = data.railroads.find(({ id }) => id === "chicago-burlington-quincy").paintSchemes;
