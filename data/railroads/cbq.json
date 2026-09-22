@@ -158,18 +158,19 @@
       "name": "Passenger Silver — Red Whisker",
       "periodLabel": "c.1958–1970",
       "category": "passenger cab units",
-      "representativeLocomotive": "CB&Q E8A 9945B",
+      "representativeLocomotive": "CB&Q E8A 9946B",
       "description": "Silver passenger scheme with red nose “whiskers” / nosepiece, Burlington passenger lettering, and streamlined styling. Represents CB&Q’s later passenger diesel appearance, used on E-units in the late pre-merger era after the earlier black-whisker treatment.",
       "historicalNote": "Late CB&Q passenger diesel treatment with a silver body and red nose “whiskers” / nosepiece. This was the later Burlington passenger appearance used after the earlier black-whisker version, while retaining the streamlined silver Zephyr-era styling.",
       "photo": {
         "sourcePage": "http://railfan44.blogspot.com/2013/07/the-last-decade-of-cb-on-racetrack.html",
-        "localPath": "/images/railroads/cbq-e8-passenger-silver-red-whisker-reconstruction.png",
-        "alt": "CB&Q E8A 9945B with white numbers on black numberboards in the Passenger Silver — Red Whisker paint scheme",
-        "caption": "CB&Q E8A 9945B in Passenger Silver — Red Whisker",
+        "remoteImageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8G8uo-jbAHLEzKp2uY4joHLnJIABk4N9Mzk034CHmwEdd6WlZA8T5GJ3Dr-jbK7WN5ZLAZSY0BEZDwyDN_WrIYiU7aKDzgWAGbzo5pNior21_ytGmKY-lfaAvyN3HXpD8NsOdNud_6sE/s1600/XCBQ9946B-660126+Westmont,+IL+E8A.JPG",
+        "alt": "CB&Q E8A 9946B in the Passenger Silver — Red Whisker paint scheme at Westmont, Illinois",
+        "caption": "CB&Q E8A 9946B in Passenger Silver — Red Whisker",
         "credit": "Railfan44 — The Last Decade of CB&Q on the Racetrack",
-        "kind": "AI reconstruction from archival reference"
+        "kind": "Historical photograph",
+        "date": "1966-01-26"
       },
-      "sourceIds": ["railfan44-cbq-gp7-218-blackbird", "railfan44-cbq-e8-9945b", "trainboard-cbq-red-whisker-e8"]
+      "sourceIds": ["railfan44-cbq-e8a-9946b"]
     },
     {
       "id": "chinese-red",

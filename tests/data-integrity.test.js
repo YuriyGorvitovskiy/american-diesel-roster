@@ -13,7 +13,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 98);
+  assert.equal(data.sources.length, 97);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
   const et44 = data.prototypes.find(({ id }) => id === "ge-et44ac");
@@ -109,9 +109,13 @@ test("CB&Q paint cards retain the reviewed sequence, identities, and image prove
   assert.equal(schemes[1].periodLabel, "1940s–1960s");
   assert.equal(schemes[2].representativeLocomotive, "FW&D F7 751A — Burlington subsidiary");
   assert.match(schemes[3].representativeLocomotive, /9911A.*Silver Pilot/);
-  assert.equal(schemes[4].representativeLocomotive, "CB&Q E8A 9945B");
+  assert.equal(schemes[4].representativeLocomotive, "CB&Q E8A 9946B");
   assert.equal(schemes[4].photo.sourcePage, "http://railfan44.blogspot.com/2013/07/the-last-decade-of-cb-on-racetrack.html");
   assert.equal(schemes[4].photo.credit, "Railfan44 — The Last Decade of CB&Q on the Racetrack");
+  assert.equal(schemes[4].photo.date, "1966-01-26");
+  assert.equal(schemes[4].photo.kind, "Historical photograph");
+  assert.ok(schemes[4].photo.remoteImageUrl.includes("XCBQ9946B-660126"));
+  assert.equal(schemes[4].photo.localPath, undefined);
   for (const scheme of schemes) {
     assert.ok(scheme.photo.sourcePage);
     assert.ok(scheme.photo.credit);

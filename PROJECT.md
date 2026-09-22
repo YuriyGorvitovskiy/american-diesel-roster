@@ -187,7 +187,7 @@ CB&Q sequence is Early Black / Aluminum, Blackbird, Grayback — Freight,
 Passenger Silver — Black Whisker, Passenger Silver — Red Whisker, and Chinese
 Red. Grayback's pictured FW&D 751A is identified as a Burlington subsidiary,
 not as CB&Q proper. The silver passenger exemplars are E5 9911A “Silver Pilot”
-and E8A 9945B.
+and E8A 9946B.
 
 Dead remote image links are normal maintenance and should be replaced when
 necessary without discarding the provenance record. Personal WebArchive copies
