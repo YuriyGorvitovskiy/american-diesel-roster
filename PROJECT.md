@@ -179,6 +179,16 @@ repository without an appropriate reason, permission, or license, and never
 substitute a photograph of a different road number merely because it depicts the
 same locomotive class.
 
+CB&Q paint-scheme cards distinguish original remote photographs from locally
+stored AI reconstructions. Reconstructions are labeled “AI reconstruction from
+archival reference” and link to their source material; the label must not imply
+that the generated image is an original or a faithful restoration. The six-card
+CB&Q sequence is Early Black / Aluminum, Blackbird, Grayback — Freight,
+Passenger Silver — Black Whisker, Passenger Silver — Red Whisker, and Chinese
+Red. Grayback's pictured FW&D 751A is identified as a Burlington subsidiary,
+not as CB&Q proper. The silver passenger exemplars are E5 9911A “Silver Pilot”
+and E8A 9946B.
+
 Dead remote image links are normal maintenance and should be replaced when
 necessary without discarding the provenance record. Personal WebArchive copies
 may be kept outside Git for archival reference, but they are not repository

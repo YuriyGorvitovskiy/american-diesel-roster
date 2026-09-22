@@ -211,6 +211,19 @@ const statisticLabels = {
   marketCapitalization: "Market capitalization", bookEquity: "Book equity",
 };
 
+const commonStatisticLabels = {
+  routeMiles: "System mileage",
+  employees: "Employees",
+  locomotives: "Locomotives",
+  rollingStock: "Non-locomotive rolling stock",
+  capitalization: "Capitalization",
+};
+
+export function statisticEntriesFor(railroad) {
+  const usesCommonComparison = ["santa-fe", "burlington-northern", "chicago-burlington-quincy"].includes(railroad.id);
+  return Object.entries(usesCommonComparison ? commonStatisticLabels : statisticLabels);
+}
+
 function renderStatistics(railroad, sources) {
   const article = document.createElement("article");
   article.className = "railroad-statistics";
@@ -222,9 +235,7 @@ function renderStatistics(railroad, sources) {
   article.innerHTML = '<p class="eyebrow">Then and now</p><h2>Operating scale</h2><p class="muted">Two dated snapshots; approximate and greater-than figures retain the precision reported by the company.</p>';
   if (railroad.statistics.intro) article.querySelector("p.muted").textContent = railroad.statistics.intro;
   const grid = document.createElement("div"); grid.className = "railroad-snapshot-grid";
-  const labels = railroad.id === "santa-fe" || railroad.id === "burlington-northern"
-    ? { routeMiles: "System mileage", employees: "Employees", locomotives: "Locomotives", rollingStock: "Non-locomotive rolling stock", capitalization: "Capitalization" }
-    : statisticLabels;
+  const labels = Object.fromEntries(statisticEntriesFor(railroad));
   for (const [column, snapshot] of snapshots.entries()) {
     const heading = document.createElement("div"); heading.className = "railroad-snapshot-heading";
     heading.style.gridColumn = column + 1;
@@ -383,21 +394,23 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
       if (typeof scheme !== "object") continue;
       const block = document.createElement("section"); block.className = "railroad-paint-history";
       const figure = document.createElement("figure"); figure.className = "railroad-paint-photo";
-      if (scheme.photo?.remoteImageUrl && scheme.photo?.sourcePage) {
+      if ((scheme.photo?.localPath || scheme.photo?.remoteImageUrl) && scheme.photo?.sourcePage) {
         const link = document.createElement("a"); link.href = scheme.photo.sourcePage;
         link.target = "_blank"; link.rel = "noopener noreferrer";
-        const image = document.createElement("img"); image.src = scheme.photo.remoteImageUrl;
-        image.alt = scheme.photo.caption; image.loading = "lazy";
+        const image = document.createElement("img"); image.src = scheme.photo.localPath || scheme.photo.remoteImageUrl;
+        image.alt = scheme.photo.alt || scheme.photo.caption; image.loading = "lazy";
         link.append(image); figure.append(link);
         const fallback = document.createElement("a"); fallback.className = "railroad-paint-fallback";
         fallback.href = scheme.photo.sourcePage; fallback.target = "_blank";
         fallback.rel = "noopener noreferrer"; fallback.textContent = "View original photograph →";
         fallback.hidden = true;
-        image.addEventListener("error", useArchiveOnError(image, () => { link.hidden = true; fallback.hidden = false; }));
+        image.addEventListener("error", scheme.photo.localPath
+          ? () => { link.hidden = true; fallback.hidden = false; }
+          : useArchiveOnError(image, () => { link.hidden = true; fallback.hidden = false; }));
         figure.append(fallback);
         const caption = document.createElement("figcaption");
         const kind = document.createElement("span"); kind.className = "image-kind";
-        kind.textContent = "Historical photograph";
+        kind.textContent = scheme.photo.kind || "Historical photograph";
         const captionText = document.createElement("span"); captionText.textContent = scheme.photo.caption;
         const credit = document.createElement("small");
         const photoDate = /^\d{4}-\d{2}-\d{2}$/.test(scheme.photo.date ?? "")

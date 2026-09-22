@@ -185,8 +185,11 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
           errors.push(`Railroad paint scheme "${scheme.id}" requires images or a pending image area.`);
         }
       } else {
-        for (const field of ["sourcePage", "remoteImageUrl", "caption", "credit"]) {
+        for (const field of ["sourcePage", "caption", "credit"]) {
           if (!scheme.photo?.[field]?.trim()) errors.push(`Railroad paint scheme "${scheme.id}" photo requires ${field}.`);
+        }
+        if (!scheme.photo?.remoteImageUrl?.trim() && !scheme.photo?.localPath?.trim()) {
+          errors.push(`Railroad paint scheme "${scheme.id}" photo requires remoteImageUrl or localPath.`);
         }
         if (scheme.photo?.date != null && !/^\d{4}-\d{2}-\d{2}$/.test(scheme.photo.date)) {
           errors.push(`Railroad paint scheme "${scheme.id}" has invalid photo date "${scheme.photo.date}".`);
