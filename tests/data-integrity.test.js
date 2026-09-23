@@ -13,7 +13,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 97);
+  assert.equal(data.sources.length, 101);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
   const et44 = data.prototypes.find(({ id }) => id === "ge-et44ac");
@@ -112,19 +112,27 @@ test("Great Northern preserves the supplied history and 1938 versus 1968–1969 
   assert.deepEqual([late.year, late.label], ["1968–1969", "Eve of Burlington Northern"]);
   assert.deepEqual(
     ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"].map((key) => early.metrics[key].value),
-    ["8,071.54", "≈17,000", "960", "53,516", "$579.9M"],
+    ["8,071.54", "≈17,000", "960", "51,569", "$579.9M"],
   );
   assert.deepEqual(
     ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"].map((key) => late.metrics[key].value),
-    ["8,277", "15,913", "607", "44,504", "$528.3M"],
+    ["8,277", "15,913", "607", "41,770", "$528.3M"],
   );
   assert.equal(early.metrics.locomotives.note, "942 steam · 15 electric · 3 diesel");
-  assert.equal(early.metrics.rollingStock.note, "50,754 freight · 815 passenger · 1,947 company service");
+  assert.equal(early.metrics.rollingStock.note, "50,754 freight · 815 passenger · excludes 1,947 company-service cars");
   assert.equal(late.metrics.locomotives.note, "607 diesel-electric · 1969");
-  assert.equal(late.metrics.rollingStock.note, "41,256 freight · 514 passenger · 2,734 caboose & work equipment · 1968");
+  assert.equal(late.metrics.rollingStock.note, "41,256 freight · 514 passenger · excludes 2,734 caboose & work equipment · 1968");
   assert.equal(late.metrics.capitalization.note, "1968");
   assert.equal(late.metrics.employees.note, "1968");
   assert.equal(late.metrics.routeMiles.note, "1968");
+  assert.deepEqual(early.sourceIds, ["great-northern-1938-annual-report"]);
+  assert.deepEqual(late.sourceIds, [
+    "great-northern-1968-annual-report",
+    "great-northern-equipment-no-43-1969",
+  ]);
+  assert.ok(gn.sourceIds.includes("great-northern-condensed-history-1969"));
+  assert.ok(gn.sourceIds.includes("bnsf-history-legacy"));
+  assert.ok(gn.sourceIds.includes("great-northern-empire-nw2-roster"));
 });
 
 test("Great Northern paint cards preserve the accepted order, artwork, and archive sources", async () => {

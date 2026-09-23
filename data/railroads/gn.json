@@ -9,6 +9,15 @@
   "type": "major",
   "predecessors": ["spmm", "msc", "montana-central"],
   "successor": "burlington-northern",
+  "sourceIds": [
+    "great-northern-1938-annual-report",
+    "great-northern-1968-annual-report",
+    "great-northern-equipment-no-43-1969",
+    "great-northern-condensed-history-1969",
+    "bnsf-history-legacy",
+    "great-northern-empire-nw2-roster",
+    "american-rails-great-northern-roster"
+  ],
   "description": null,
   "history": [
     "Great Northern Railway was created on September 18, 1889, as the corporate vehicle through which James J. Hill consolidated and expanded his northern railroad system. On February 1, 1890, it assumed control of the St. Paul, Minneapolis & Manitoba and related properties. Engineer John F. Stevens found the route through Marias Pass across the Rocky Mountains, and the final spike of the Pacific extension was driven near Scenic, Washington, on January 6, 1893. Regular service between the Twin Cities and Seattle followed that year.",
@@ -23,11 +32,12 @@
         "year": 1938,
         "label": "First production-series diesel",
         "date": "1938",
+        "sourceIds": ["great-northern-1938-annual-report"],
         "metrics": {
           "routeMiles": { "value": "8,071.54", "label": "Route miles" },
           "employees": { "value": "≈17,000" },
           "locomotives": { "value": "960", "note": "942 steam · 15 electric · 3 diesel" },
-          "rollingStock": { "value": "53,516", "note": "50,754 freight · 815 passenger · 1,947 company service" },
+          "rollingStock": { "value": "51,569", "note": "50,754 freight · 815 passenger · excludes 1,947 company-service cars" },
           "capitalization": { "value": "$579.9M" }
         }
       },
@@ -35,11 +45,12 @@
         "year": "1968–1969",
         "label": "Eve of Burlington Northern",
         "date": "1968 corporate data · 1969 locomotive roster",
+        "sourceIds": ["great-northern-1968-annual-report", "great-northern-equipment-no-43-1969"],
         "metrics": {
           "routeMiles": { "value": "8,277", "label": "Route miles", "note": "1968" },
           "employees": { "value": "15,913", "note": "1968" },
           "locomotives": { "value": "607", "note": "607 diesel-electric · 1969" },
-          "rollingStock": { "value": "44,504", "note": "41,256 freight · 514 passenger · 2,734 caboose & work equipment · 1968" },
+          "rollingStock": { "value": "41,770", "note": "41,256 freight · 514 passenger · excludes 2,734 caboose & work equipment · 1968" },
           "capitalization": { "value": "$528.3M", "note": "1968" }
         }
       }
