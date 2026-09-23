@@ -12,6 +12,7 @@
   "sourceIds": [
     "great-northern-1938-annual-report",
     "great-northern-1968-annual-report",
+    "great-northern-equipment-no-42-1968",
     "great-northern-equipment-no-43-1969",
     "great-northern-condensed-history-1969",
     "bnsf-history-legacy",
@@ -35,7 +36,7 @@
         "sourceIds": ["great-northern-1938-annual-report"],
         "metrics": {
           "routeMiles": { "value": "8,071.54", "label": "Route miles" },
-          "employees": { "value": "≈17,000" },
+          "employees": { "value": "16,330" },
           "locomotives": { "value": "960", "note": "942 steam · 15 electric · 3 diesel" },
           "rollingStock": { "value": "51,569", "note": "50,754 freight · 815 passenger · excludes 1,947 company-service cars" },
           "capitalization": { "value": "$579.9M" }
@@ -45,7 +46,7 @@
         "year": "1968–1969",
         "label": "Eve of Burlington Northern",
         "date": "1968 corporate data · 1969 locomotive roster",
-        "sourceIds": ["great-northern-1968-annual-report", "great-northern-equipment-no-43-1969"],
+        "sourceIds": ["great-northern-1968-annual-report", "great-northern-equipment-no-42-1968", "great-northern-equipment-no-43-1969"],
         "metrics": {
           "routeMiles": { "value": "8,277", "label": "Route miles", "note": "1968" },
           "employees": { "value": "15,913", "note": "1968" },

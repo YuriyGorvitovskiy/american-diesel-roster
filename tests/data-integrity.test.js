@@ -13,7 +13,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 101);
+  assert.equal(data.sources.length, 102);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
   const et44 = data.prototypes.find(({ id }) => id === "ge-et44ac");
@@ -112,7 +112,7 @@ test("Great Northern preserves the supplied history and 1938 versus 1968–1969 
   assert.deepEqual([late.year, late.label], ["1968–1969", "Eve of Burlington Northern"]);
   assert.deepEqual(
     ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"].map((key) => early.metrics[key].value),
-    ["8,071.54", "≈17,000", "960", "51,569", "$579.9M"],
+    ["8,071.54", "16,330", "960", "51,569", "$579.9M"],
   );
   assert.deepEqual(
     ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"].map((key) => late.metrics[key].value),
@@ -128,6 +128,7 @@ test("Great Northern preserves the supplied history and 1938 versus 1968–1969 
   assert.deepEqual(early.sourceIds, ["great-northern-1938-annual-report"]);
   assert.deepEqual(late.sourceIds, [
     "great-northern-1968-annual-report",
+    "great-northern-equipment-no-42-1968",
     "great-northern-equipment-no-43-1969",
   ]);
   assert.ok(gn.sourceIds.includes("great-northern-condensed-history-1969"));
