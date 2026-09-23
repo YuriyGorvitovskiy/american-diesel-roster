@@ -220,8 +220,18 @@ const commonStatisticLabels = {
 };
 
 export function statisticEntriesFor(railroad) {
-  const usesCommonComparison = ["santa-fe", "burlington-northern", "chicago-burlington-quincy"].includes(railroad.id);
+  const usesCommonComparison = ["santa-fe", "burlington-northern", "chicago-burlington-quincy", "great-northern"].includes(railroad.id);
   return Object.entries(usesCommonComparison ? commonStatisticLabels : statisticLabels);
+}
+
+export function railroadNarrativeParagraphs(railroad) {
+  if (railroad.history?.length) return railroad.history;
+  return railroad.description ? [railroad.description] : [];
+}
+
+export function paintSchemeEyebrow(scheme) {
+  const period = scheme.periodLabel ?? `${scheme.startYear}–${scheme.endYear ?? "present"}`;
+  return [period, scheme.category].filter(Boolean).join(" · ");
 }
 
 function renderStatistics(railroad, sources) {
@@ -293,7 +303,12 @@ function renderStatistics(railroad, sources) {
 export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, sources = []) {
   const section = document.createElement("section"); section.className = "railroad-detail-prototype";
   const marks = railroad.reportingMarks?.join(" · ") || "Reporting marks unknown";
-  section.innerHTML = `<div class="railroad-hero entity-page-heading"><p class="eyebrow">${railroad.type.replaceAll("-", " ")}</p><h1>${railroad.name}</h1><p class="railroad-meta">${marks} <b>·</b> ${railroadYears(railroad)}${railroad.status ? ` <b>·</b> ${railroad.status}` : ""}${railroad.headquarters ? ` <b>·</b> ${railroad.headquarters}` : ""}</p>${railroad.description ? `<p class="railroad-lede">${railroad.description}</p>` : ""}</div>`;
+  section.innerHTML = `<div class="railroad-hero entity-page-heading"><p class="eyebrow">${railroad.type.replaceAll("-", " ")}</p><h1>${railroad.name}</h1><p class="railroad-meta">${marks} <b>·</b> ${railroadYears(railroad)}${railroad.status ? ` <b>·</b> ${railroad.status}` : ""}${railroad.headquarters ? ` <b>·</b> ${railroad.headquarters}` : ""}</p></div>`;
+  const hero = section.querySelector(".railroad-hero");
+  for (const paragraph of railroadNarrativeParagraphs(railroad)) {
+    const lede = document.createElement("p"); lede.className = "railroad-lede"; lede.textContent = paragraph;
+    hero.append(lede);
+  }
   const relationships = document.createElement("div"); relationships.className = "railroad-detail-grid";
   const relationshipArticle = document.createElement("article");
   relationshipArticle.innerHTML = '<p class="eyebrow">Lineage</p><h2>Relationships</h2><dl><dt>Predecessors</dt><dd class="railroad-predecessors"></dd><dt>Successor</dt><dd class="railroad-successor"></dd></dl>';
@@ -426,12 +441,16 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
       }
       const body = document.createElement("div"); body.className = "railroad-paint-body";
       const eyebrow = document.createElement("p"); eyebrow.className = "eyebrow";
-      eyebrow.textContent = `${scheme.periodLabel ?? `${scheme.startYear}–${scheme.endYear ?? "present"}`} · ${scheme.category}`;
+      eyebrow.textContent = paintSchemeEyebrow(scheme);
       const title = document.createElement("h3"); title.textContent = scheme.name;
+      const identity = document.createElement("p"); identity.className = "railroad-paint-identity";
+      identity.textContent = scheme.paintIdentity;
       const locomotive = document.createElement("p"); locomotive.className = "railroad-paint-locomotive";
       locomotive.textContent = scheme.representativeLocomotive;
       const description = document.createElement("p"); description.textContent = scheme.description;
-      body.append(eyebrow, title, locomotive, description);
+      body.append(eyebrow, title);
+      if (scheme.paintIdentity) body.append(identity);
+      body.append(locomotive, description);
       block.append(figure, body); schemes.append(block);
     }
   } else if (railroad.paintSchemes?.length) {
