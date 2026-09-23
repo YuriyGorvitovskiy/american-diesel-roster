@@ -13,7 +13,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 102);
+  assert.equal(data.sources.length, 103);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
   const et44 = data.prototypes.find(({ id }) => id === "ge-et44ac");
@@ -125,13 +125,17 @@ test("Great Northern preserves the supplied history and 1938 versus 1968–1969 
   assert.equal(late.metrics.capitalization.note, "1968");
   assert.equal(late.metrics.employees.note, "1968");
   assert.equal(late.metrics.routeMiles.note, "1968");
-  assert.deepEqual(early.sourceIds, ["great-northern-1938-annual-report"]);
+  assert.deepEqual(early.sourceIds, [
+    "great-northern-1938-annual-report",
+    "great-northern-1940-annual-report",
+  ]);
   assert.deepEqual(late.sourceIds, [
     "great-northern-1968-annual-report",
     "great-northern-equipment-no-42-1968",
     "great-northern-equipment-no-43-1969",
   ]);
   assert.ok(gn.sourceIds.includes("great-northern-condensed-history-1969"));
+  assert.ok(gn.sourceIds.includes("great-northern-1940-annual-report"));
   assert.ok(gn.sourceIds.includes("bnsf-history-legacy"));
   assert.ok(gn.sourceIds.includes("great-northern-empire-nw2-roster"));
 });

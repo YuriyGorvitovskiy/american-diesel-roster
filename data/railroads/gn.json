@@ -11,6 +11,7 @@
   "successor": "burlington-northern",
   "sourceIds": [
     "great-northern-1938-annual-report",
+    "great-northern-1940-annual-report",
     "great-northern-1968-annual-report",
     "great-northern-equipment-no-42-1968",
     "great-northern-equipment-no-43-1969",
@@ -33,7 +34,7 @@
         "year": 1938,
         "label": "First production-series diesel",
         "date": "1938",
-        "sourceIds": ["great-northern-1938-annual-report"],
+        "sourceIds": ["great-northern-1938-annual-report", "great-northern-1940-annual-report"],
         "metrics": {
           "routeMiles": { "value": "8,071.54", "label": "Route miles" },
           "employees": { "value": "16,330" },
