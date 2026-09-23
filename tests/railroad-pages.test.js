@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { paintSchemeEyebrow, railroadNarrativeParagraphs, railroadRelationships, statisticEntriesFor, verticalScaleForColumns } from "../src/railroad-pages.js";
+import { paintSchemeEyebrow, railroadNarrativeParagraphs, railroadRelationships, sourceReferenceFor, statisticEntriesFor, verticalScaleForColumns } from "../src/railroad-pages.js";
 
 test("railroad relationships resolve navigable predecessor and successor records", () => {
   const railroads = [
@@ -59,6 +59,39 @@ test("Great Northern uses the shared five-field operating-scale order", () => {
     ["rollingStock", "Non-locomotive rolling stock"],
     ["capitalization", "Capitalization"],
   ]);
+});
+
+test("Northern Pacific uses the shared five-field operating-scale order", () => {
+  assert.deepEqual(statisticEntriesFor({ id: "northern-pacific" }), [
+    ["routeMiles", "System mileage"],
+    ["employees", "Employees"],
+    ["locomotives", "Locomotives"],
+    ["rollingStock", "Non-locomotive rolling stock"],
+    ["capitalization", "Capitalization"],
+  ]);
+});
+
+test("BNSF and future railroads use the shared five-field operating-scale order", () => {
+  const expected = [
+    ["routeMiles", "System mileage"],
+    ["employees", "Employees"],
+    ["locomotives", "Locomotives"],
+    ["rollingStock", "Non-locomotive rolling stock"],
+    ["capitalization", "Capitalization"],
+  ];
+  assert.deepEqual(statisticEntriesFor({ id: "bnsf" }), expected);
+  assert.deepEqual(statisticEntriesFor({ id: "future-railroad" }), expected);
+});
+
+test("railroad sources without URLs render as text instead of broken links", () => {
+  assert.deepEqual(sourceReferenceFor({ title: "Annual report", publisher: "Railroad", url: "https://example.com/report" }), {
+    label: "Annual report — Railroad",
+    url: "https://example.com/report",
+  });
+  assert.deepEqual(sourceReferenceFor({ title: "Archival source", publisher: "Archive" }), {
+    label: "Archival source — Archive",
+    url: null,
+  });
 });
 
 test("railroad narratives support multiple historical overview paragraphs", () => {

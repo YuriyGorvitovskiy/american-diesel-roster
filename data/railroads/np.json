@@ -1,1 +1,139 @@
-{"id":"northern-pacific","slug":"np","name":"Northern Pacific Railway","reportingMarks":["NP"],"startYear":1864,"endYear":1970,"type":"major","predecessors":["slse","spokane-palouse"],"successor":"burlington-northern","description":null,"statistics":null,"paintSchemes":["early freight schemes","Loewy passenger green","North Coast Limited passenger schemes","later NP freight schemes"],"sources":[]}
+{
+  "id": "northern-pacific",
+  "slug": "np",
+  "name": "Northern Pacific Railway",
+  "reportingMarks": ["NP"],
+  "startYear": 1864,
+  "endYear": 1970,
+  "type": "major",
+  "predecessors": ["slse", "spokane-palouse"],
+  "successor": "burlington-northern",
+  "sourceIds": [
+    "bnsf-history-legacy",
+    "diesel-shop-northern-pacific-roster",
+    "np-1938-capitalization",
+    "ssa-np-beneficial-1938",
+    "nprha-np-equipment",
+    "pnra-np-100-first-diesel",
+    "np-1966-annual-report",
+    "np-late-1960s-brochure",
+    "np-1968-official-equipment-list"
+  ],
+  "description": "Northern Pacific was one of the principal northern transcontinental railroads, linking the Twin Cities and Lake Superior with the Pacific Northwest. Chartered in 1864, reorganized as the Northern Pacific Railway Company in 1896, it entered the diesel era in 1938 and became one of the four principal railroads merged into Burlington Northern on March 2, 1970.",
+  "history": [
+    "Northern Pacific Railroad was chartered by Congress on July 2, 1864, with President Abraham Lincoln signing the act that authorized a northern transcontinental railroad from the Great Lakes toward Puget Sound and the Pacific Northwest. Construction began in the early 1870s from both the Lake Superior and Pacific ends. The Panic of 1873 and the collapse of financier Jay Cooke halted expansion and forced the railroad into bankruptcy, but construction resumed after reorganization.",
+    "The eastern and western portions of the Northern Pacific were joined in Montana in 1883, with the ceremonial last spike driven at Gold Creek on September 8. The railroad subsequently completed a more direct route across Washington's Cascade Range; the Stampede Pass line and Stampede Tunnel opened in 1888, strengthening Northern Pacific's direct connection with Puget Sound.",
+    "A second financial crisis placed Northern Pacific in receivership in 1893. J. P. Morgan led the reorganization, and in 1896 the property emerged as the Northern Pacific Railway Company. In 1900 the railroad inaugurated the North Coast Limited, which became its signature transcontinental passenger train. The following year Northern Pacific and Great Northern jointly purchased 97.2 percent of Chicago, Burlington & Quincy stock, gaining direct access to Chicago and major Midwestern markets.",
+    "Northern Pacific entered the diesel era in 1938 with EMC NW No. 100, the railroad's first diesel locomotive. Initially used as a Seattle dock switcher, it represented only the beginning of a gradual transition from steam. By 1943 Northern Pacific was already expanding its diesel program, operating six diesel switchers and ordering eleven 5,400-horsepower road-diesel sets along with nine additional switchers. Dieselization accelerated after World War II and the railroad's steam locomotive fleet was completely replaced by diesel-electric power in 1958.",
+    "By the late 1960s Northern Pacific remained one of the major rail systems of the northern United States, linking the Twin Cities with the Pacific Northwest and carrying grain, timber, minerals and manufactured goods. A contemporary NP publication reported about 13,000 employees, approximately 6,748 miles of railroad and more than 37,000 freight cars. On March 2, 1970, Northern Pacific became part of Burlington Northern together with Great Northern, Chicago, Burlington & Quincy and Spokane, Portland & Seattle, ending 106 years of the Northern Pacific lineage as an independent railroad."
+  ],
+  "statistics": {
+    "snapshots": [
+      {
+        "year": 1938,
+        "label": "First Diesel",
+        "date": "1938",
+        "sourceIds": ["np-1938-capitalization", "ssa-np-beneficial-1938", "nprha-np-equipment", "pnra-np-100-first-diesel"],
+        "metrics": {
+          "routeMiles": { "value": "~6,900 mi", "label": "System mileage", "note": "Rounded late-1930s system extent." },
+          "employees": { "value": "~20,300", "note": "1938 average employee-contributors to the Northern Pacific Beneficial Association were approximately 20,278; membership covered all Northern Pacific employees and was a condition of employment." },
+          "locomotives": { "value": "~800", "note": "Overwhelmingly steam; EMC NW No. 100 was Northern Pacific's first diesel locomotive." },
+          "rollingStock": { "value": "~40,000", "note": "Approximate non-locomotive fleet scale around the beginning of dieselization; primarily freight equipment." },
+          "capitalization": { "value": "$565M", "note": "1938 total capitalization; source table reports $248M of capital stock." }
+        }
+      },
+      {
+        "year": "1968–1969",
+        "label": "Eve of Burlington Northern",
+        "date": "1966 financial · 1968 equipment · late-1960s operations",
+        "sourceIds": ["np-1966-annual-report", "np-late-1960s-brochure", "np-1968-official-equipment-list", "diesel-shop-northern-pacific-roster"],
+        "metrics": {
+          "routeMiles": { "value": "6,748 mi", "label": "Average mileage operated" },
+          "employees": { "value": "~13,000" },
+          "locomotives": { "value": ">600", "note": "All diesel-electric; contemporary Northern Pacific material described a fleet of more than 600 locomotive units." },
+          "rollingStock": { "value": "37,971", "note": "Freight cars in the 1968 equipment count; passenger and company-service equipment are not included." },
+          "capitalization": { "value": "~$579M", "note": "Comparable capitalization benchmark based on the 1966 annual report: common stock plus capital surplus plus long-term debt, rounded." }
+        }
+      }
+    ]
+  },
+  "paintSchemes": [
+    {
+      "id": "black-yellow-freight",
+      "name": "Black & Yellow Freight",
+      "startYear": 1940,
+      "periodLabel": "1940s–1970",
+      "category": "Standard freight",
+      "paintIdentity": "Black · Yellow",
+      "representativeLocomotive": "GE U33C #3309",
+      "description": "Northern Pacific's black-and-yellow treatment became the railroad's enduring freight-diesel identity. A black or very dark body, yellow nose and lower sill treatment, yellow lettering, and the circular Northern Pacific Monad created a simple, highly recognizable appearance. Application details varied among switchers, cab units and road locomotives, but for this project those differences are treated as one basic freight scheme. The appearance remained in use through the final years of Northern Pacific.",
+      "photo": {
+        "sourcePage": "https://rrpicturearchives.net/showPicture.aspx?id=2135507357",
+        "localPath": "/images/railroads/np-3309-black-yellow-restored.png",
+        "alt": "Northern Pacific U33C 3309 in the Black and Yellow Freight scheme",
+        "caption": "GE U33C #3309 in Northern Pacific Black & Yellow Freight paint.",
+        "credit": "Cody White Collection / RRPictureArchives.NET · restored historical photograph",
+        "kind": "AI-assisted restoration of historical photograph"
+      },
+      "sourceIds": ["rrpicturearchives-np-3309-black-yellow"]
+    },
+    {
+      "id": "1947-streamliner",
+      "name": "1947 Streamliner",
+      "startYear": 1947,
+      "periodLabel": "1947–1953",
+      "category": "Passenger",
+      "paintIdentity": "Dark Green · Light Green · Gold trim",
+      "representativeLocomotive": "EMD F3A #6500A",
+      "description": "Northern Pacific introduced its first postwar streamlined passenger diesel appearance in 1947 with the new F3 fleet. The scheme combined a dark green upper body with a lighter green side band, separated and accented by yellow-gold striping and lettering. The flowing Main Street of the Northwest script and Northern Pacific Monad completed the railroad's new streamlined passenger identity. Enthusiasts later applied several nicknames to this appearance, but this project uses the contemporary descriptive name Streamliner scheme.",
+      "photo": {
+        "sourcePage": "https://www.atom.pnrarchive.org/index.php/northern-pacific-diesel-locomotive-number-6500-at-east-auburn-washington-in-1949",
+        "localPath": "/images/railroads/np-6500a-1947-streamliner-reconstruction.png",
+        "alt": "Northern Pacific F3A 6500A in the 1947 Streamliner passenger scheme",
+        "caption": "F3A #6500A in Northern Pacific's original postwar Streamliner passenger scheme.",
+        "credit": "Pacific Northwest Railroad Archive · American Diesel Roster historical color reconstruction",
+        "kind": "Historical color reconstruction from archival photograph"
+      },
+      "sourceIds": ["pnra-np-6500a-streamliner"]
+    },
+    {
+      "id": "loewy-passenger",
+      "name": "Loewy Passenger",
+      "startYear": 1953,
+      "periodLabel": "1953–1970",
+      "category": "Passenger",
+      "paintIdentity": "Dark Green · Light Green · White trim",
+      "representativeLocomotive": "EMD F3A #6506A",
+      "description": "Introduced in 1953, Northern Pacific's Raymond Loewy-designed passenger scheme modernized the earlier Streamliner appearance while retaining the railroad's characteristic two-tone green identity. The most visible change was the use of crisp white separation striping and trim in place of the earlier yellow-gold treatment, producing a cleaner and more contemporary passenger image. Archival documentation identifies F3A No. 6506A as the first locomotive to receive the new Loewy paint design.",
+      "photo": {
+        "sourcePage": "https://arc.lib.montana.edu/mor/rvndb/rvn_railroad_search.php?limit=10&page=5510&rvn_railroad=Northern+Pacific+Railway",
+        "localPath": "/images/railroads/np-6506a-loewy-passenger-reconstruction.png",
+        "alt": "Northern Pacific F3A 6506A in Raymond Loewy's passenger paint scheme",
+        "caption": "F3A #6506A in the 1953 Loewy Passenger scheme.",
+        "credit": "Ron V. Nixon Collection / Museum of the Rockies · American Diesel Roster historical color reconstruction",
+        "kind": "Historical color reconstruction from archival photograph"
+      },
+      "sourceIds": ["mor-np-6506a-loewy"]
+    },
+    {
+      "id": "experimental-simplified",
+      "name": "Experimental Simplified",
+      "startYear": 1969,
+      "periodLabel": "Late 1960s–1970",
+      "category": "Experimental",
+      "paintIdentity": "Dark Blue-Black · Yellow · Red trim · Silver panels",
+      "representativeLocomotive": "EMD F9A #7005A / BN #820",
+      "description": "Near the end of Northern Pacific's independent existence, F9A No. 7005A received an experimental simplified paint treatment. On No. 7005A, the experimental treatment replaced the traditional passenger greens with a dark upper body, broad yellow lower section, thin red separation stripe, and exposed silver-toned upper grille panels. It remained an experiment rather than a system-wide replacement scheme. After the 1970 Burlington Northern merger the locomotive became BN No. 820 and was photographed still carrying Northern Pacific lettering and the experimental colors.",
+      "photo": {
+        "sourcePage": "https://atom.pnrarchive.org/index.php/burlington-northern-diesel-locomotive-820-at-spokane-washington-in-1970-2",
+        "localPath": "/images/railroads/np-820-experimental-simplified-restored.png",
+        "alt": "Former Northern Pacific F9A 7005A as BN 820 retaining the Experimental Simplified Northern Pacific scheme",
+        "caption": "Former NP F9A #7005A, renumbered BN #820, retaining Northern Pacific's Experimental Simplified scheme.",
+        "credit": "Pacific Northwest Railroad Archive · restored historical photograph",
+        "kind": "AI-assisted restoration of historical photograph"
+      },
+      "sourceIds": ["pnra-np-820-experimental-simplified"]
+    }
+  ],
+  "sources": []
+}

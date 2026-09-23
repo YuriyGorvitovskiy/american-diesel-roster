@@ -19,15 +19,11 @@
         "label": "First full merger snapshot",
         "date": "December 31, 1996",
         "metrics": {
-          "employees": { "value": "43,000" },
           "routeMiles": { "value": "35,000", "label": "Route miles operated" },
-          "routeMilesOwned": { "value": "27,000", "label": "Route miles owned" },
-          "trackageRights": null,
-          "totalOperatedTrack": { "value": "52,500 miles", "note": "Includes multiple main tracks, yard tracks and sidings." },
+          "employees": { "value": "43,000" },
           "locomotives": { "value": "4,434", "note": "Diesel locomotives owned or held under non-cancelable leases exceeding one year. Excludes 196 locomotives operated under power-purchase agreements." },
-          "freightCars": { "value": "95,655", "note": "Owned or held under non-cancelable leases exceeding one year." },
-          "marketCapitalization": { "value": "≈ $13B", "note": "Approximate early-1997 market value, shown for context rather than as a December 31, 1996 measurement." },
-          "bookEquity": null
+          "rollingStock": { "value": "95,655", "note": "Freight cars owned or held under non-cancelable leases exceeding one year." },
+          "capitalization": { "value": "≈ $13B", "note": "Approximate early-1997 market capitalization, shown for context rather than as a December 31, 1996 measurement." }
         },
         "sourceIds": ["bnsf-1996-10k"]
       },
@@ -36,15 +32,11 @@
         "label": "Current snapshot",
         "date": "December 31, 2025",
         "metrics": {
-          "employees": { "value": "≈35,000" },
           "routeMiles": { "value": ">32,500", "label": "Route miles operated" },
-          "routeMilesOwned": { "value": ">23,000", "label": "Route miles owned" },
-          "trackageRights": { "value": ">9,000 route miles" },
-          "totalOperatedTrack": { "value": ">50,000 miles", "note": "Includes single and multiple main tracks, yard tracks and sidings." },
+          "employees": { "value": "≈35,000" },
           "locomotives": { "value": "≈6,700", "note": "Owned or held under non-cancelable leases exceeding one year." },
-          "freightCars": { "value": "≈70,700", "note": "Owned or held under non-cancelable leases exceeding one year." },
-          "marketCapitalization": { "value": "Private", "note": "Wholly owned by Berkshire Hathaway; no standalone public market capitalization." },
-          "bookEquity": { "value": "$51.634B" }
+          "rollingStock": { "value": "≈70,700", "note": "Freight cars owned or held under non-cancelable leases exceeding one year." },
+          "capitalization": { "value": "$51.634B", "note": "Book equity; BNSF is wholly owned by Berkshire Hathaway and has no standalone public market capitalization." }
         },
         "sourceIds": ["bnsf-2025-10k"]
       }
