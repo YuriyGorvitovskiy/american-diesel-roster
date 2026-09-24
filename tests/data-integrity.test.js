@@ -13,7 +13,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 114);
+  assert.equal(data.sources.length, 115);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
   const et44 = data.prototypes.find(({ id }) => id === "ge-et44ac");
@@ -170,6 +170,7 @@ test("Northern Pacific paint cards preserve the accepted order, artwork, and sch
     "pnra-np-6500a-streamliner",
     "mor-np-6506a-loewy",
     "pnra-np-820-experimental-simplified",
+    "railpictures-np-7005a-1960",
   ];
 
   assert.deepEqual(schemes.map(({ id }) => id), [
@@ -183,7 +184,13 @@ test("Northern Pacific paint cards preserve the accepted order, artwork, and sch
   ]);
   assert.deepEqual(schemes.flatMap(({ sourceIds }) => sourceIds), paintSourceIds);
   assert.equal(paintSourceIds.some((id) => np.sourceIds.includes(id)), false);
-  assert.match(schemes[3].description, /On No\. 7005A, the experimental treatment replaced the traditional passenger greens with a dark upper body/);
+  assert.equal(schemes[3].startYear, 1960);
+  assert.equal(schemes[3].periodLabel, "1960–1970");
+  assert.match(schemes[3].description, /^By 1960, Northern Pacific F9A No\. 7005A was wearing an experimental simplified paint treatment\. On No\. 7005A, the experimental treatment replaced the traditional passenger greens with a dark upper body/);
+  assert.deepEqual(schemes[3].sourceIds, [
+    "pnra-np-820-experimental-simplified",
+    "railpictures-np-7005a-1960",
+  ]);
   for (const scheme of schemes) {
     assert.ok(scheme.photo.sourcePage);
     assert.ok(scheme.photo.alt);

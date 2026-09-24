@@ -118,12 +118,12 @@
     {
       "id": "experimental-simplified",
       "name": "Experimental Simplified",
-      "startYear": 1969,
-      "periodLabel": "Late 1960s–1970",
+      "startYear": 1960,
+      "periodLabel": "1960–1970",
       "category": "Experimental",
       "paintIdentity": "Dark Blue-Black · Yellow · Red trim · Silver panels",
       "representativeLocomotive": "EMD F9A #7005A / BN #820",
-      "description": "Near the end of Northern Pacific's independent existence, F9A No. 7005A received an experimental simplified paint treatment. On No. 7005A, the experimental treatment replaced the traditional passenger greens with a dark upper body, broad yellow lower section, thin red separation stripe, and exposed silver-toned upper grille panels. It remained an experiment rather than a system-wide replacement scheme. After the 1970 Burlington Northern merger the locomotive became BN No. 820 and was photographed still carrying Northern Pacific lettering and the experimental colors.",
+      "description": "By 1960, Northern Pacific F9A No. 7005A was wearing an experimental simplified paint treatment. On No. 7005A, the experimental treatment replaced the traditional passenger greens with a dark upper body, broad yellow lower section, thin red separation stripe, and exposed silver-toned upper grille panels. It remained an experiment rather than a system-wide replacement scheme. After the 1970 Burlington Northern merger the locomotive became BN No. 820 and was photographed still carrying Northern Pacific lettering and the experimental colors.",
       "photo": {
         "sourcePage": "https://atom.pnrarchive.org/index.php/burlington-northern-diesel-locomotive-820-at-spokane-washington-in-1970-2",
         "localPath": "/images/railroads/np-820-experimental-simplified-restored.png",
@@ -132,7 +132,7 @@
         "credit": "Pacific Northwest Railroad Archive · restored historical photograph",
         "kind": "AI-assisted restoration of historical photograph"
       },
-      "sourceIds": ["pnra-np-820-experimental-simplified"]
+      "sourceIds": ["pnra-np-820-experimental-simplified", "railpictures-np-7005a-1960"]
     }
   ],
   "sources": []
