@@ -204,13 +204,6 @@ export function renderBnsfGenealogy(main, railroads, onOpenRailroad) {
   fitAndDraw();
 }
 
-const statisticLabels = {
-  employees: "Employees", routeMiles: "Route miles", routeMilesOwned: "Route miles owned",
-  trackageRights: "Trackage rights", totalOperatedTrack: "Total operated track",
-  locomotives: "Locomotives", freightCars: "Freight cars",
-  marketCapitalization: "Market capitalization", bookEquity: "Book equity",
-};
-
 const commonStatisticLabels = {
   routeMiles: "System mileage",
   employees: "Employees",
@@ -220,8 +213,14 @@ const commonStatisticLabels = {
 };
 
 export function statisticEntriesFor(railroad) {
-  const usesCommonComparison = ["santa-fe", "burlington-northern", "chicago-burlington-quincy", "great-northern"].includes(railroad.id);
-  return Object.entries(usesCommonComparison ? commonStatisticLabels : statisticLabels);
+  return Object.entries(commonStatisticLabels);
+}
+
+export function sourceReferenceFor(source) {
+  return {
+    label: `${source.title} — ${source.publisher}`,
+    url: source.url ?? null,
+  };
 }
 
 export function railroadNarrativeParagraphs(railroad) {
@@ -290,10 +289,16 @@ function renderStatistics(railroad, sources) {
     const heading = document.createElement("h3"); heading.textContent = "Sources";
     const list = document.createElement("ul"); list.className = "source-list";
     for (const source of cited) {
-      const item = document.createElement("li"); const link = document.createElement("a");
-      link.href = source.url; link.target = "_blank"; link.rel = "noopener noreferrer";
-      link.textContent = `${source.title} — ${source.publisher}`;
-      item.append(link); list.append(item);
+      const item = document.createElement("li");
+      const reference = sourceReferenceFor(source);
+      if (reference.url) {
+        const link = document.createElement("a");
+        link.href = reference.url; link.target = "_blank"; link.rel = "noopener noreferrer";
+        link.textContent = reference.label; item.append(link);
+      } else {
+        item.textContent = reference.label;
+      }
+      list.append(item);
     }
     article.append(heading, list);
   }

@@ -13,7 +13,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 103);
+  assert.equal(data.sources.length, 115);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
   const et44 = data.prototypes.find(({ id }) => id === "ge-et44ac");
@@ -74,6 +74,19 @@ test("ATSF comparison preserves the approved historical precision and propulsion
     ["capitalization", "employees", "routeMiles", "locomotives", "rollingStock"].map((key) => late.metrics[key].value),
     ["$5.35B", "~15,000", "9,126 mi", "1,595", "~26,000"],
   );
+});
+
+test("BNSF comparison uses the shared five-metric schema", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const bnsf = data.railroads.find(({ id }) => id === "bnsf");
+  const [early, late] = bnsf.statistics.snapshots;
+  const commonKeys = ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"];
+
+  assert.deepEqual(Object.keys(early.metrics).sort(), [...commonKeys].sort());
+  assert.deepEqual(Object.keys(late.metrics).sort(), [...commonKeys].sort());
+  assert.deepEqual(commonKeys.map((key) => early.metrics[key].value), ["35,000", "43,000", "4,434", "95,655", "≈ $13B"]);
+  assert.deepEqual(commonKeys.map((key) => late.metrics[key].value), [">32,500", "≈35,000", "≈6,700", "≈70,700", "$51.634B"]);
+  assert.match(late.metrics.capitalization.note, /Book equity/);
 });
 
 test("CB&Q comparison preserves the approved 1934 and pre-merger operating snapshots", async () => {
@@ -138,6 +151,53 @@ test("Great Northern preserves the supplied history and 1938 versus 1968–1969 
   assert.ok(gn.sourceIds.includes("great-northern-1940-annual-report"));
   assert.ok(gn.sourceIds.includes("bnsf-history-legacy"));
   assert.ok(gn.sourceIds.includes("great-northern-empire-nw2-roster"));
+});
+
+test("Northern Pacific identifies the source periods in its late snapshot date", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const np = data.railroads.find(({ id }) => id === "northern-pacific");
+  const late = np.statistics.snapshots[1];
+
+  assert.equal(late.date, "1966 financial · 1968 equipment · late-1960s operations");
+});
+
+test("Northern Pacific paint cards preserve the accepted order, artwork, and scheme-local provenance", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const np = data.railroads.find(({ id }) => id === "northern-pacific");
+  const schemes = np.paintSchemes;
+  const paintSourceIds = [
+    "rrpicturearchives-np-3309-black-yellow",
+    "pnra-np-6500a-streamliner",
+    "mor-np-6506a-loewy",
+    "pnra-np-820-experimental-simplified",
+    "railpictures-np-7005a-1960",
+  ];
+
+  assert.deepEqual(schemes.map(({ id }) => id), [
+    "black-yellow-freight", "1947-streamliner", "loewy-passenger", "experimental-simplified",
+  ]);
+  assert.deepEqual(schemes.map(({ photo }) => photo.localPath), [
+    "/images/railroads/np-3309-black-yellow-restored.png",
+    "/images/railroads/np-6500a-1947-streamliner-reconstruction.png",
+    "/images/railroads/np-6506a-loewy-passenger-reconstruction.png",
+    "/images/railroads/np-820-experimental-simplified-restored.png",
+  ]);
+  assert.deepEqual(schemes.flatMap(({ sourceIds }) => sourceIds), paintSourceIds);
+  assert.equal(paintSourceIds.some((id) => np.sourceIds.includes(id)), false);
+  assert.equal(schemes[3].startYear, 1960);
+  assert.equal(schemes[3].periodLabel, "1960–1970");
+  assert.match(schemes[3].description, /^By 1960, Northern Pacific F9A No\. 7005A was wearing an experimental simplified paint treatment\. On No\. 7005A, the experimental treatment replaced the traditional passenger greens with a dark upper body/);
+  assert.deepEqual(schemes[3].sourceIds, [
+    "pnra-np-820-experimental-simplified",
+    "railpictures-np-7005a-1960",
+  ]);
+  for (const scheme of schemes) {
+    assert.ok(scheme.photo.sourcePage);
+    assert.ok(scheme.photo.alt);
+    assert.ok(scheme.photo.caption);
+    assert.ok(scheme.photo.credit);
+    assert.ok(scheme.photo.kind);
+  }
 });
 
 test("Great Northern paint cards preserve the accepted order, artwork, and archive sources", async () => {
