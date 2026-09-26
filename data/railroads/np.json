@@ -6,7 +6,7 @@
   "startYear": 1864,
   "endYear": 1970,
   "type": "major",
-  "predecessors": ["slse", "spokane-palouse"],
+  "predecessors": [],
   "successor": "burlington-northern",
   "sourceIds": [
     "bnsf-history-legacy",

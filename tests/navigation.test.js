@@ -43,6 +43,6 @@ test("detail URLs encode and parse stable prototype IDs", () => {
 });
 
 test("railroad URLs use bookmarkable slugs", () => {
-  assert.equal(railroadUrl("spokane-palouse"), "/railroads/spokane-palouse");
+  assert.equal(railroadUrl("oregon-trunk"), "/railroads/oregon-trunk");
   assert.equal(railroadUrl("name with spaces"), "/railroads/name%20with%20spaces");
 });

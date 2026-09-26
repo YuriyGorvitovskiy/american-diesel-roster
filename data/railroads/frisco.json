@@ -7,7 +7,7 @@
   "startYear": 1876,
   "endYear": 1980,
   "type": "major",
-  "predecessors": ["atlantic-pacific", "atn"],
+  "predecessors": ["atn"],
   "successor": "burlington-northern",
   "description": "The St. Louis–San Francisco Railway Company (SLSF), commonly known as Frisco, was a major central and southern railroad linking the Midwest with the Gulf region. Despite its name, the railroad never reached San Francisco.",
   "history": [

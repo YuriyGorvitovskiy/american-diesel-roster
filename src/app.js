@@ -86,7 +86,7 @@ function renderFooterLegend(view, railroadDetail) {
   if (railroadDetail) return;
   if (view !== "bnsf") return;
   legend.setAttribute("aria-label", "Railroad size legend");
-  legend.innerHTML = '<li><span class="railroad-legend-mark key-major"></span>Major system</li><li><span class="railroad-legend-mark key-regional"></span>Regional railroad</li><li><span class="railroad-legend-mark key-local"></span>Local railroad</li>';
+  legend.innerHTML = '<li><span class="railroad-legend-mark key-major"></span>Major system</li><li><span class="railroad-legend-mark key-regional"></span>Regional railroad</li>';
 }
 
 async function start() {
