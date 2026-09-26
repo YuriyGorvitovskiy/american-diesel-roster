@@ -45,7 +45,7 @@
         "year": 1968,
         "label": "Pre-BN",
         "date": "1968 reporting year",
-        "sourceIds": ["trains-sps-fallen-flags-statistics", "mnhs-sps-records"],
+        "sourceIds": ["trains-sps-fallen-flags-statistics"],
         "metrics": {
           "routeMiles": { "value": "922", "label": "Route miles" },
           "employees": { "value": "~2,500" },
