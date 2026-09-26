@@ -90,6 +90,7 @@ test("pre-diesel corporate ancestors are absent from the railroad collection", a
 test("surviving railroads link only to diesel-era predecessors", async () => {
   const data = await loadDataFiles(new URL("..", import.meta.url));
   const predecessorsById = Object.fromEntries(data.railroads.map(({ id, predecessors = [] }) => [id, predecessors]));
+  const successorsById = Object.fromEntries(data.railroads.map(({ id, successor = null }) => [id, successor]));
 
   assert.deepEqual(predecessorsById["great-northern"], []);
   assert.deepEqual(predecessorsById["northern-pacific"], []);
@@ -97,7 +98,9 @@ test("surviving railroads link only to diesel-era predecessors", async () => {
   assert.deepEqual(predecessorsById["chicago-burlington-quincy"], []);
   assert.deepEqual(predecessorsById.cs, []);
   assert.deepEqual(predecessorsById["pacific-coast"], []);
-  assert.deepEqual(predecessorsById["santa-fe"], ["gcsf", "psf"]);
+  assert.deepEqual(predecessorsById.psf, []);
+  assert.deepEqual(predecessorsById["santa-fe"], ["gcsf", "psf", "kcmo-texas"]);
+  assert.equal(successorsById["kcmo-texas"], "santa-fe");
 });
 
 test("diesel-era regional railroads use the supplied operating dates", async () => {
