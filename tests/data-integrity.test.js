@@ -1,7 +1,24 @@
 import assert from "node:assert/strict";
+import { access } from "node:fs/promises";
 import test from "node:test";
 
 import { loadDataFiles, validateData } from "../scripts/validate-data.js";
+
+const removedPreDieselRailroadIds = [
+  "msc",
+  "spp",
+  "spmm",
+  "montana-central",
+  "slse",
+  "spokane-palouse",
+  "atlantic-pacific",
+  "aurora-branch",
+  "chicago-aurora",
+  "updg",
+  "dspp",
+  "cps",
+  "kcmo",
+];
 
 test("seed data has valid identifiers and references", async () => {
   const data = await loadDataFiles(new URL("..", import.meta.url));
@@ -9,7 +26,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.prototypes.length, 58);
   assert.equal(data.items.length, 3);
   assert.equal(data.orders.length, 4);
-  assert.equal(data.railroads.length, 30);
+  assert.equal(data.railroads.length, 17);
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
@@ -57,6 +74,43 @@ test("seed data has valid identifiers and references", async () => {
     storage: "remote",
     sourceIds: ["scaletrains-sxt43710-product-image"],
   }]);
+});
+
+test("pre-diesel corporate ancestors are absent from the railroad collection", async () => {
+  const root = new URL("..", import.meta.url);
+  const data = await loadDataFiles(root);
+  const railroadIds = new Set(data.railroads.map(({ id }) => id));
+
+  for (const id of removedPreDieselRailroadIds) {
+    assert.equal(railroadIds.has(id), false, `${id} must not be indexed`);
+    await assert.rejects(access(new URL(`data/railroads/${id}.json`, root)), { code: "ENOENT" });
+  }
+});
+
+test("surviving railroads link only to diesel-era predecessors", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const predecessorsById = Object.fromEntries(data.railroads.map(({ id, predecessors = [] }) => [id, predecessors]));
+
+  assert.deepEqual(predecessorsById["great-northern"], []);
+  assert.deepEqual(predecessorsById["northern-pacific"], []);
+  assert.deepEqual(predecessorsById.frisco, ["atn"]);
+  assert.deepEqual(predecessorsById["chicago-burlington-quincy"], []);
+  assert.deepEqual(predecessorsById.cs, []);
+  assert.deepEqual(predecessorsById["pacific-coast"], []);
+  assert.deepEqual(predecessorsById["santa-fe"], ["gcsf", "psf"]);
+});
+
+test("diesel-era regional railroads use the supplied operating dates", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const yearsById = Object.fromEntries(data.railroads.map(({ id, startYear, endYear }) => [id, [startYear, endYear]]));
+
+  assert.deepEqual(yearsById.atn, [1897, 1971]);
+  assert.deepEqual(yearsById["oregon-electric"], [1906, 1970]);
+  assert.deepEqual(yearsById["oregon-trunk"], [1909, 1970]);
+  assert.deepEqual(yearsById["pacific-coast"], [1897, 1970]);
+  assert.deepEqual(yearsById.gcsf, [1873, 1965]);
+  assert.deepEqual(yearsById["kcmo-texas"], [1899, 1965]);
+  assert.deepEqual(yearsById.psf, [1886, 1965]);
 });
 
 test("ATSF comparison preserves the approved historical precision and propulsion shift", async () => {

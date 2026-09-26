@@ -1,20 +1,28 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { paintSchemeEyebrow, railroadNarrativeParagraphs, railroadRelationships, sourceReferenceFor, statisticEntriesFor, verticalScaleForColumns } from "../src/railroad-pages.js";
+import * as railroadPages from "../src/railroad-pages.js";
+
+const { paintSchemeEyebrow, railroadNarrativeParagraphs, railroadRelationships, sourceReferenceFor, statisticEntriesFor, verticalScaleForColumns } = railroadPages;
 
 test("railroad relationships resolve navigable predecessor and successor records", () => {
   const railroads = [
-    { id: "slse", slug: "slse", name: "Seattle, Lake Shore & Eastern" },
-    { id: "spokane-palouse", slug: "spokane-palouse", name: "Spokane & Palouse Railway" },
-    { id: "northern-pacific", slug: "np", name: "Northern Pacific Railway", predecessors: ["slse", "spokane-palouse"], successor: "burlington-northern" },
+    { id: "atn", slug: "atn", name: "Alabama, Tennessee & Northern Railroad" },
+    { id: "frisco", slug: "frisco", name: "St. Louis–San Francisco Railway", predecessors: ["atn"], successor: "burlington-northern" },
     { id: "burlington-northern", slug: "bn", name: "Burlington Northern" },
   ];
 
-  const relationships = railroadRelationships(railroads[2], railroads);
-  assert.deepEqual(relationships.predecessors.map(({ slug }) => slug), ["slse", "spokane-palouse"]);
+  const relationships = railroadRelationships(railroads[1], railroads);
+  assert.deepEqual(relationships.predecessors.map(({ slug }) => slug), ["atn"]);
   assert.equal(relationships.predecessorLabel, "Predecessors");
   assert.equal(relationships.successor.slug, "bn");
+});
+
+test("railroad genealogy subtitle derives its diesel-era count from the loaded collection", () => {
+  assert.equal(
+    railroadPages.genealogySubtitle?.(Array.from({ length: 17 })),
+    "17 railroads in the diesel-era lineage of today’s BNSF Railway. Select any company to open its record.",
+  );
 });
 
 test("railroad relationships support an affiliate label without changing their links", () => {

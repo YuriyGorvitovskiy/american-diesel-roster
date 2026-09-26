@@ -70,7 +70,7 @@ function layoutRailroads(railroads) {
   const maxDepth = Math.max(...railroads.map(depth));
   const positions = railroads.map((railroad) => ({
     railroad,
-    x: 36 + (maxDepth - depth(railroad)) * 250,
+    x: 30 + (maxDepth - depth(railroad)) * 360,
     y: y.get(railroad.id),
   }));
   const positionById = new Map(positions.map((position) => [position.railroad.id, position]));
@@ -109,6 +109,10 @@ export function verticalScaleForColumns(positions, heights, minimumGap = 20) {
     }
   }
   return scale;
+}
+
+export function genealogySubtitle(railroads) {
+  return `${railroads.length} railroads in the diesel-era lineage of today’s BNSF Railway. Select any company to open its record.`;
 }
 
 function fitVerticalSpacing(canvas, positions) {
@@ -166,7 +170,7 @@ export function renderBnsfGenealogy(main, railroads, onOpenRailroad) {
     <header class="section-heading">
       <p class="eyebrow">Railroad genealogy</p>
       <h2>BNSF genealogy</h2>
-      <p>Thirty railroads in the curated lineage of today’s BNSF Railway. Select any company to open its record.</p>
+      <p>${genealogySubtitle(railroads)}</p>
     </header>
   `;
   const viewport = document.createElement("div");
