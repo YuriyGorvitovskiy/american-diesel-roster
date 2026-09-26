@@ -1,1 +1,158 @@
-{"id":"frisco","slug":"frisco","name":"St. Louis–San Francisco Railway","commonName":"Frisco","reportingMarks":["SLSF"],"startYear":1876,"endYear":1980,"type":"major","predecessors":["atlantic-pacific","atn"],"successor":"burlington-northern","description":null,"mergerYear":1980,"statistics":null,"paintSchemes":["freight diesel schemes","red/white Frisco schemes","passenger diesel schemes"],"sources":[]}
+{
+  "id": "frisco",
+  "slug": "frisco",
+  "name": "St. Louis–San Francisco Railway Company",
+  "commonName": "Frisco",
+  "reportingMarks": ["SLSF"],
+  "startYear": 1876,
+  "endYear": 1980,
+  "type": "major",
+  "predecessors": ["atlantic-pacific", "atn"],
+  "successor": "burlington-northern",
+  "description": "The St. Louis–San Francisco Railway Company (SLSF), commonly known as Frisco, was a major central and southern railroad linking the Midwest with the Gulf region. Despite its name, the railroad never reached San Francisco.",
+  "history": [
+    "The St. Louis–San Francisco Railway Company (SLSF), commonly known as Frisco, served a broad central and southern network extending from the St. Louis region through the Ozarks and across Oklahoma to Texas and the Gulf Coast. Despite its name, the railroad never reached San Francisco.",
+    "Frisco entered the diesel era in November 1941 with five Baldwin VO-1000 switchers, Nos. 200–204. Large-scale dieselization began in 1947 as the railroad adopted diesel power for road and switching assignments. Steam operation ended in February 1952, when Frisco had 407 diesels and became the largest U.S. Class I railroad then fully dieselized.",
+    "Postwar modernization also reshaped passenger service, especially the Meteor and the jointly operated Texas Special, which received streamlined equipment and diesel power. Frisco ended passenger service in March 1967 and became an all-freight railroad.",
+    "During the 1960s and 1970s, Frisco continued modernizing its freight operation with newer road locomotives, improved freight equipment, and upgraded facilities suited to changing traffic patterns. On November 21, 1980, the St. Louis–San Francisco Railway merged into Burlington Northern, ending Frisco's independent operation."
+  ],
+  "mergerYear": 1980,
+  "sourceIds": [
+    "frisco-commercial-financial-chronicle-1941",
+    "frisco-icc-reorganization",
+    "sgcl-frisco-collection",
+    "tsha-st-louis-san-francisco-railway",
+    "frisco-museum-archive"
+  ],
+  "statistics": {
+    "snapshots": [
+      {
+        "year": 1941,
+        "label": "First Diesel",
+        "date": "1941",
+        "sourceIds": [
+          "frisco-commercial-financial-chronicle-1941",
+          "frisco-icc-reorganization",
+          "sgcl-frisco-collection"
+        ],
+        "metrics": {
+          "routeMiles": { "value": "~4,600", "label": "Route miles" },
+          "employees": { "value": "15,287" },
+          "locomotives": { "value": "~450 total", "note": "5 diesel; remainder predominantly steam." },
+          "rollingStock": { "value": "~18,000 cars" },
+          "capitalization": { "value": "~$240 million", "note": "ICC reorganization capitalization; railroad property valuation was ~$242.7 million." }
+        }
+      },
+      {
+        "year": 1979,
+        "label": "Last Full Year",
+        "date": "1979",
+        "sourceIds": [
+          "sgcl-frisco-collection",
+          "tsha-st-louis-san-francisco-railway",
+          "frisco-museum-archive"
+        ],
+        "metrics": {
+          "routeMiles": { "value": "~4,500", "label": "Route miles" },
+          "employees": { "value": "~8,500" },
+          "locomotives": { "value": "~430 diesels" },
+          "rollingStock": { "value": "~18,000 cars" },
+          "capitalization": { "value": "~$671 million" }
+        }
+      }
+    ]
+  },
+  "paintSchemes": [
+    {
+      "id": "zephyr-blue-silver",
+      "name": "Zephyr Blue & Silver",
+      "startYear": 1941,
+      "periodLabel": "Introduced 1941",
+      "category": "Switcher",
+      "representativeLocomotive": "Baldwin VO-1000 #200",
+      "description": "Frisco's first diesel scheme appeared on the five original VO-1000s, Nos. 200–204. It combined a Zephyr Blue body with silver/light-gray running gear, a light side band, and red FRISCO LINES lettering.",
+      "photo": {
+        "sourcePage": "http://yardlimit.railfan.net/baldwindiesels/frisco/frisco239.jpg",
+        "localPath": "/images/railroads/frisco-vo1000-200-zephyr-blue-silver-ai.png",
+        "alt": "Frisco Baldwin VO-1000 200 in Zephyr Blue and Silver paint",
+        "caption": "Baldwin VO-1000 #200 in Frisco's first diesel scheme.",
+        "credit": "Yard Limit Baldwin Diesels · AI repaint from original photograph",
+        "kind": "AI repaint from historical photograph"
+      },
+      "sourceIds": ["yardlimit-frisco-vo1000-200"]
+    },
+    {
+      "id": "black-yellow",
+      "name": "Black & Yellow",
+      "startYear": 1948,
+      "periodLabel": "Introduced late 1940s",
+      "category": "Freight",
+      "representativeLocomotive": "EMD GP7 #584",
+      "description": "This black freight scheme used yellow lettering, handrails, sill markings, and end visibility striping. It became Frisco's standard freight-diesel appearance before the mid-1960s.",
+      "photo": {
+        "sourcePage": "https://condrenrails.com/Frisco/Frisco%20Catalog/GP7s/FR092.jpg",
+        "localPath": "/images/railroads/frisco-gp7-584-black-yellow-ai.png",
+        "alt": "Frisco EMD GP7 584 in Black and Yellow paint",
+        "caption": "EMD GP7 #584 in Frisco's Black & Yellow freight scheme.",
+        "credit": "Mike Condren / CondrenRails.com · AI enhancement of original photograph",
+        "kind": "AI enhancement of historical photograph"
+      },
+      "sourceIds": ["condren-frisco-gp7-584"]
+    },
+    {
+      "id": "passenger-red-gold",
+      "name": "Passenger Red & Gold",
+      "startYear": 1948,
+      "periodLabel": "Introduced late 1940s",
+      "category": "Passenger",
+      "representativeLocomotive": "EMD E8A #2018 Ponder",
+      "description": "This red passenger scheme with gold striping and lettering was associated with Frisco's streamlined passenger service, including the Meteor and Texas Special.",
+      "photo": {
+        "sourcePage": "https://www.condrenrails.com/Frisco/Frisco%20Diesels/E-Units/SLSF2018/SLSF-2018-1-%20St-Louis-1-64.jpg",
+        "localPath": "/images/railroads/frisco-e8a-2018-passenger-red-gold-ai.png",
+        "alt": "Frisco EMD E8A 2018 Ponder in Passenger Red and Gold paint",
+        "caption": "EMD E8A #2018 Ponder in Frisco's Passenger Red & Gold scheme.",
+        "credit": "Mike Condren / CondrenRails.com · AI enhancement of original photograph",
+        "kind": "AI enhancement of historical photograph"
+      },
+      "sourceIds": ["condren-frisco-e8a-2018"]
+    },
+    {
+      "id": "dark-blue-yellow",
+      "name": "Dark Blue & Yellow",
+      "startYear": 1950,
+      "periodLabel": "Introduced early 1950s",
+      "category": "Passenger / Road",
+      "representativeLocomotive": "EMD FP7 #5051",
+      "description": "Frisco used this dark blue cab-unit scheme with a broad yellow side band and yellow nose on F and FP passenger and road units.",
+      "photo": {
+        "sourcePage": "https://www.railpictures.net/images/d2/8/8/5/2885.1433334422.jpg",
+        "remoteImageUrl": "https://www.railpictures.net/images/d2/8/8/5/2885.1433334422.jpg",
+        "alt": "Frisco EMD FP7 5051 in Dark Blue and Yellow paint",
+        "caption": "EMD FP7 #5051 in Frisco's Dark Blue & Yellow cab-unit scheme.",
+        "credit": "Roger Lalonde / RailPictures.net",
+        "kind": "Historical photograph"
+      },
+      "sourceIds": ["railpictures-frisco-fp7-5051"]
+    },
+    {
+      "id": "mandarin-orange-white",
+      "name": "Mandarin Orange & White",
+      "startYear": 1965,
+      "periodLabel": "Introduced 1965",
+      "category": "System standard",
+      "representativeLocomotive": "EMD GP7 #575",
+      "description": "Introduced in 1965, the Mandarin Orange and white scheme replaced the earlier Black & Yellow freight appearance and remained in use through the rest of Frisco's independent existence. It became the railroad's characteristic late-era scheme.",
+      "photo": {
+        "sourcePage": "https://condrenrails.com/Frisco/Frisco%20Catalog/GP7s/FR090.jpg",
+        "localPath": "/images/railroads/frisco-gp7-575-mandarin-orange-white-ai.png",
+        "alt": "Frisco EMD GP7 575 in Mandarin Orange and White paint",
+        "caption": "EMD GP7 #575 in Frisco's Mandarin Orange & White scheme.",
+        "credit": "Mike Condren / CondrenRails.com · AI enhancement of original photograph",
+        "kind": "AI enhancement of historical photograph"
+      },
+      "sourceIds": ["condren-frisco-gp7-575"]
+    }
+  ],
+  "sources": []
+}

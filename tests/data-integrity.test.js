@@ -13,7 +13,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 121);
+  assert.equal(data.sources.length, 132);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
   const et44 = data.prototypes.find(({ id }) => id === "ge-et44ac");
@@ -185,7 +185,7 @@ test("SP&S preserves its diesel-era history and 1940 versus 1968 snapshots", asy
     "early-pullman-green-yellow",
     "early-fa-freight",
     "empire-builder-passenger",
-    "intermediate-fa-freight",
+    "fa-broad-side-band",
     "1964-broad-yellow",
   ]);
   assert.deepEqual(sps.paintSchemes.map(({ representativeLocomotive }) => representativeLocomotive), [
@@ -195,7 +195,7 @@ test("SP&S preserves its diesel-era history and 1940 versus 1968 snapshots", asy
     "ALCO FA1 #857",
     "ALCO C636 · SP&S #341 / BN #4367",
   ]);
-  const faBroadSideBand = sps.paintSchemes.find(({ id }) => id === "intermediate-fa-freight");
+  const faBroadSideBand = sps.paintSchemes.find(({ id }) => id === "fa-broad-side-band");
   const broadYellow = sps.paintSchemes.find(({ id }) => id === "1964-broad-yellow");
   assert.equal(sps.paintSchemes.some(({ representativeLocomotive }) => representativeLocomotive.includes("#860") || representativeLocomotive.includes("#97")), false);
   assert.deepEqual([faBroadSideBand.startYear, faBroadSideBand.periodLabel, faBroadSideBand.category], [1964, "1964", "Experimental freight cab unit"]);
@@ -209,7 +209,8 @@ test("SP&S preserves its diesel-era history and 1940 versus 1968 snapshots", asy
   assert.equal(broadYellow.photo.localPath, "/images/railroads/sps-c636-341-bn-4367-broad-yellow-ai.png");
   assert.equal(broadYellow.photo.kind, "AI reconstruction from archival reference");
   assert.match(broadYellow.description, /C636 No\. 341.*Burlington Northern No\. 4367/);
-  assert.equal(faBroadSideBand.photo.localPath, "/images/railroads/sps-fa1-857-intermediate-fa-freight-ai.png");
+  assert.equal(faBroadSideBand.photo.localPath, "/images/railroads/sps-fa1-857-fa-broad-side-band-ai.png");
+  assert.deepEqual(faBroadSideBand.sourceIds, ["diesel-shop-sps-profile", "mrh-2025-sps-fa1-857-experimental"]);
   assert.equal(faBroadSideBand.photo.kind, "AI reconstruction from archival reference");
   assert.match(sps.paintSchemes[0].description, /RS2 No\. 60, built in 1949, represents this restrained pre-broad-yellow treatment\./);
   assert.match(sps.paintSchemes[1].description, /The first SP&S FA units arrived in May 1948\. FA1 No\. 858, built in 1949/);
@@ -346,6 +347,74 @@ test("CB&Q paint cards retain the reviewed sequence, identities, and image prove
   }
   assert.equal(schemes[2].photo.sourcePage, "https://www.american-rails.com/cbq.html");
   assert.ok(schemes[5].photo.remoteImageUrl);
+});
+
+test("Frisco preserves the supplied diesel-era history and 1941 versus 1979 snapshots", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const frisco = data.railroads.find(({ id }) => id === "frisco");
+  const [early, late] = frisco.statistics.snapshots;
+
+  assert.equal(frisco.name, "St. Louis–San Francisco Railway Company");
+  assert.equal(frisco.commonName, "Frisco");
+  assert.equal(frisco.history.length, 4);
+  assert.match(frisco.history[0], /never reached San Francisco/);
+  assert.match(frisco.history[1], /November 1941.*five Baldwin VO-1000 switchers.*200–204/);
+  assert.match(frisco.history[1], /February 1952.*407 diesels.*largest U\.S\. Class I.*fully dieselized/);
+  assert.match(frisco.history[2], /Meteor.*Texas Special.*March 1967/);
+  assert.match(frisco.history[3], /November 21, 1980.*Burlington Northern/);
+  assert.deepEqual([early.year, early.label], [1941, "First Diesel"]);
+  assert.deepEqual([late.year, late.label], [1979, "Last Full Year"]);
+  const metricKeys = ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"];
+  assert.deepEqual(metricKeys.map((key) => early.metrics[key].value), ["~4,600", "15,287", "~450 total", "~18,000 cars", "~$240 million"]);
+  assert.deepEqual(metricKeys.map((key) => late.metrics[key].value), ["~4,500", "~8,500", "~430 diesels", "~18,000 cars", "~$671 million"]);
+  assert.equal(early.metrics.locomotives.note, "5 diesel; remainder predominantly steam.");
+  assert.equal(early.metrics.capitalization.note, "ICC reorganization capitalization; railroad property valuation was ~$242.7 million.");
+  assert.deepEqual(frisco.sourceIds, [
+    "frisco-commercial-financial-chronicle-1941",
+    "frisco-icc-reorganization",
+    "sgcl-frisco-collection",
+    "tsha-st-louis-san-francisco-railway",
+    "frisco-museum-archive",
+  ]);
+});
+
+test("Frisco paint cards retain the accepted order, wording, artwork, and provenance", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const schemes = data.railroads.find(({ id }) => id === "frisco").paintSchemes;
+
+  assert.deepEqual(schemes.map(({ id }) => id), [
+    "zephyr-blue-silver", "black-yellow", "passenger-red-gold", "dark-blue-yellow", "mandarin-orange-white",
+  ]);
+  assert.deepEqual(schemes.map(({ representativeLocomotive }) => representativeLocomotive), [
+    "Baldwin VO-1000 #200", "EMD GP7 #584", "EMD E8A #2018 Ponder", "EMD FP7 #5051", "EMD GP7 #575",
+  ]);
+  assert.equal(schemes[3].category, "Passenger / Road");
+  assert.match(schemes[0].description, /silver\/light-gray running gear, a light side band/);
+  assert.match(schemes[3].description, /passenger and road units/);
+  assert.equal(schemes.some((scheme) => "paintIdentity" in scheme), false);
+  assert.deepEqual(schemes.map(({ photo }) => photo.localPath ?? null), [
+    "/images/railroads/frisco-vo1000-200-zephyr-blue-silver-ai.png",
+    "/images/railroads/frisco-gp7-584-black-yellow-ai.png",
+    "/images/railroads/frisco-e8a-2018-passenger-red-gold-ai.png",
+    null,
+    "/images/railroads/frisco-gp7-575-mandarin-orange-white-ai.png",
+  ]);
+  assert.equal(schemes[3].photo.remoteImageUrl, "https://www.railpictures.net/images/d2/8/8/5/2885.1433334422.jpg");
+  assert.equal(schemes[3].photo.credit, "Roger Lalonde / RailPictures.net");
+  assert.deepEqual(schemes.flatMap(({ sourceIds }) => sourceIds), [
+    "yardlimit-frisco-vo1000-200",
+    "condren-frisco-gp7-584",
+    "condren-frisco-e8a-2018",
+    "railpictures-frisco-fp7-5051",
+    "condren-frisco-gp7-575",
+  ]);
+  for (const scheme of schemes) {
+    assert.ok(scheme.photo.sourcePage);
+    assert.ok(scheme.photo.alt);
+    assert.ok(scheme.photo.caption);
+    assert.ok(scheme.photo.credit);
+    assert.ok(scheme.photo.kind);
+  }
 });
 
 test("NW1 provides historical context for the owned NW2 without a collection item", async () => {

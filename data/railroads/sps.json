@@ -117,7 +117,7 @@
       "sourceIds": ["streamliner-memories-sps-750-color-scheme"]
     },
     {
-      "id": "intermediate-fa-freight",
+      "id": "fa-broad-side-band",
       "name": "FA Broad Side Band",
       "startYear": 1964,
       "periodLabel": "1964",
@@ -126,13 +126,13 @@
       "description": "FA1 No. 857 represents another documented SP&S FA paint variation, with a broad yellow side band aligned with the yellow nose. This experimental freight-cab treatment is dated to 1964.",
       "photo": {
         "sourcePage": "https://www.thedieselshop.us/SP&Sprofile.HTML",
-        "localPath": "/images/railroads/sps-fa1-857-intermediate-fa-freight-ai.png",
+        "localPath": "/images/railroads/sps-fa1-857-fa-broad-side-band-ai.png",
         "alt": "SP&S ALCO FA1 857 in the green and yellow FA Broad Side Band paint variation",
         "caption": "ALCO FA1 #857 in the SP&S FA Broad Side Band paint variation.",
         "credit": "Jack Pfeifer photo · P. Denny Custer collection / The Diesel Shop · AI reconstruction supplied by user",
         "kind": "AI reconstruction from archival reference"
       },
-      "sourceIds": ["diesel-shop-sps-profile"]
+      "sourceIds": ["diesel-shop-sps-profile", "mrh-2025-sps-fa1-857-experimental"]
     },
     {
       "id": "1964-broad-yellow",
