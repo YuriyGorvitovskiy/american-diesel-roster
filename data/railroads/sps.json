@@ -1,1 +1,157 @@
-{"id":"spokane-portland-seattle","slug":"sps","name":"Spokane, Portland & Seattle","reportingMarks":["SP&S"],"startYear":1905,"endYear":1970,"type":"major","predecessors":["oregon-electric","oregon-trunk"],"successor":"burlington-northern","description":"Jointly developed by Great Northern and Northern Pacific.","statistics":null,"paintSchemes":["ALCO road switchers","ALCO road freight locomotives","passenger locomotives","orange/black schemes"],"sources":[]}
+{
+  "id": "spokane-portland-seattle",
+  "slug": "sps",
+  "name": "Spokane, Portland and Seattle Railway",
+  "catalogName": "Spokane, Portland & Seattle",
+  "reportingMarks": ["SP&S"],
+  "startYear": 1905,
+  "endYear": 1970,
+  "type": "major",
+  "predecessors": ["oregon-electric", "oregon-trunk"],
+  "predecessorLabel": "Affiliates",
+  "successor": "burlington-northern",
+  "sourceIds": [
+    "trains-sps-fallen-flags-statistics",
+    "spshs-diesel-roster",
+    "american-rails-spokane-portland-seattle",
+    "mnhs-sps-records",
+    "diesel-shop-sps-profile"
+  ],
+  "description": "Spokane, Portland and Seattle Railway was jointly owned by Great Northern Railway and Northern Pacific Railway. Built principally to give its parents access to Portland over the north bank of the Columbia River, its low-gradient route between Spokane and Portland became an important freight corridor before SP&S entered Burlington Northern on March 2, 1970.",
+  "history": [
+    "The company was founded in 1905 as the Portland & Seattle Railway and renamed the Spokane, Portland and Seattle Railway in 1908. Jointly owned by Great Northern Railway and Northern Pacific Railway, it was built primarily to give both parent systems access to Portland over the north bank of the Columbia River. Its main route connected Spokane with Portland and developed into an important low-gradient freight corridor.",
+    "SP&S also controlled or operated important affiliated lines, including the Oregon Trunk Railway and Oregon Electric Railway. These relationships extended the system south into central Oregon and through the Willamette Valley in western Oregon.",
+    "During the diesel era SP&S became particularly associated with ALCO locomotives. The roster included S-series switchers, RS-series road switchers and later C424, C425, C415 and C636 locomotives, alongside smaller numbers of Baldwin and EMD models. Its first production diesels arrived in 1940: ALCO S-2 Nos. 20–21 and Baldwin VO-1000 Nos. 30–31.",
+    "On March 2, 1970, Spokane, Portland and Seattle Railway merged with Great Northern, Northern Pacific and Chicago, Burlington & Quincy to form Burlington Northern. Its Columbia River route and Oregon lines became important parts of the new system."
+  ],
+  "statistics": {
+    "intro": "Two snapshots compare SP&S at the arrival of its first production diesels with the mature railroad shortly before the Burlington Northern merger.",
+    "snapshots": [
+      {
+        "year": 1940,
+        "label": "First Diesels",
+        "date": "1940 · equipment comparison based on 1938 totals",
+        "sourceIds": ["trains-sps-fallen-flags-statistics", "spshs-diesel-roster"],
+        "metrics": {
+          "routeMiles": { "value": "~915", "label": "Route miles", "note": "1938 comparison value used for the beginning of the diesel era." },
+          "employees": { "value": "~2,000" },
+          "locomotives": { "value": "~105", "note": "Approximate 1940 fleet scale: the 1938 comparison lists 89 steam and 14 electric locomotives; SP&S began adding production diesels in 1940." },
+          "rollingStock": { "value": "~730", "note": "Approximate total based on 627 freight cars and 100 passenger cars in the 1938 comparison." },
+          "capitalization": { "value": "~$100 million" }
+        },
+        "context": "The first production-diesel purchases were ALCO S-2 Nos. 20–21 and Baldwin VO-1000 Nos. 30–31."
+      },
+      {
+        "year": 1968,
+        "label": "Pre-BN",
+        "date": "1968 reporting year",
+        "sourceIds": ["trains-sps-fallen-flags-statistics"],
+        "metrics": {
+          "routeMiles": { "value": "922", "label": "Route miles" },
+          "employees": { "value": "~2,500" },
+          "locomotives": { "value": "112" },
+          "rollingStock": { "value": "3,411", "note": "3,363 freight cars · 48 passenger cars" },
+          "capitalization": { "value": "~$160 million" }
+        }
+      }
+    ],
+    "notes": [
+      "Values prefixed with ~ are approximate and retain the supplied precision.",
+      "The 1940 card represents the beginning of SP&S production-diesel operation; its route, locomotive and rolling-stock estimates use the nearest supplied comparative equipment totals from 1938.",
+      "Non-locomotive rolling stock combines freight and passenger cars."
+    ]
+  },
+  "paintSchemes": [
+    {
+      "id": "early-pullman-green-yellow",
+      "name": "Early Pullman Green & Yellow",
+      "startYear": 1940,
+      "periodLabel": "1940s–1950s",
+      "category": "Road switcher",
+      "representativeLocomotive": "ALCO RS2 #60",
+      "description": "The early SP&S diesel appearance used a dark Pullman green body with yellow lettering and trim, yellow sill blocks, fine yellow pinstriping, and diagonal yellow-and-green end striping. RS2 No. 60, built in 1949, represents this restrained pre-broad-yellow treatment.",
+      "photo": {
+        "sourcePage": "https://www.thedieselshop.us/SP&Sprofile.HTML",
+        "localPath": "/images/railroads/sps-rs2-60-early-pullman-green-yellow-ai.png",
+        "alt": "SP&S ALCO RS2 60 in Early Pullman Green and Yellow paint",
+        "caption": "ALCO RS2 #60 in SP&S Early Pullman Green & Yellow.",
+        "credit": "The Diesel Shop · duplicate slide, photographer unknown · AI reconstruction supplied by user",
+        "kind": "AI reconstruction from archival reference"
+      },
+      "sourceIds": ["diesel-shop-sps-profile"]
+    },
+    {
+      "id": "early-fa-freight",
+      "name": "Early FA Freight",
+      "startYear": 1948,
+      "periodLabel": "Introduced 1948",
+      "category": "Freight cab unit",
+      "representativeLocomotive": "ALCO FA1 #858",
+      "description": "The first SP&S FA units arrived in May 1948. FA1 No. 858, built in 1949, represents this early Pullman green and yellow cab-unit treatment.",
+      "photo": {
+        "sourcePage": "https://www.thedieselshop.us/SP&Sprofile.HTML",
+        "localPath": "/images/railroads/sps-fa1-858-early-fa-freight-ai.png",
+        "alt": "SP&S ALCO FA1 858 in the Early FA Freight scheme",
+        "caption": "ALCO FA1 #858 in SP&S Early FA Freight paint.",
+        "credit": "The Diesel Shop · Historic ALCO photograph, photographer unknown · AI reconstruction supplied by user",
+        "kind": "AI reconstruction from archival reference"
+      },
+      "sourceIds": ["diesel-shop-sps-profile"]
+    },
+    {
+      "id": "empire-builder-passenger",
+      "name": "Empire Builder Passenger",
+      "startYear": 1951,
+      "periodLabel": "1951",
+      "category": "Passenger",
+      "representativeLocomotive": "EMD E7A #750",
+      "description": "E7A No. 750, built in 1948, was repainted in June 1951 into Great Northern's Mid-Century Empire Builder colors while retaining SP&S identity. Though short-lived, the scheme gave SP&S its most distinctive passenger-diesel appearance.",
+      "photo": {
+        "sourcePage": "https://streamlinermemories.info/?p=15627",
+        "localPath": "/images/railroads/sps-e7a-750-1951-empire-builder-ai.png",
+        "alt": "SP&S EMD E7A 750 in its restored 1951 Mid-Century Empire Builder appearance",
+        "caption": "EMD E7A #750 in its 1951 Empire Builder appearance.",
+        "credit": "Source: Streamliner Memories",
+        "kind": "AI restoration from historical color reference"
+      },
+      "sourceIds": ["streamliner-memories-sps-750-color-scheme"]
+    },
+    {
+      "id": "fa-broad-side-band",
+      "name": "FA Broad Side Band",
+      "startYear": 1964,
+      "periodLabel": "1964",
+      "category": "Experimental freight cab unit",
+      "representativeLocomotive": "ALCO FA1 #857",
+      "description": "FA1 No. 857 represents another documented SP&S FA paint variation, with a broad yellow side band aligned with the yellow nose. This experimental freight-cab treatment is dated to 1964.",
+      "photo": {
+        "sourcePage": "https://www.thedieselshop.us/SP&Sprofile.HTML",
+        "localPath": "/images/railroads/sps-fa1-857-fa-broad-side-band-ai.png",
+        "alt": "SP&S ALCO FA1 857 in the green and yellow FA Broad Side Band paint variation",
+        "caption": "ALCO FA1 #857 in the SP&S FA Broad Side Band paint variation.",
+        "credit": "Jack Pfeifer photo · P. Denny Custer collection / The Diesel Shop · AI reconstruction supplied by user",
+        "kind": "AI reconstruction from archival reference"
+      },
+      "sourceIds": ["diesel-shop-sps-profile", "mrh-2025-sps-fa1-857-experimental"]
+    },
+    {
+      "id": "1964-broad-yellow",
+      "name": "1964 Broad Yellow",
+      "startYear": 1964,
+      "periodLabel": "1964",
+      "category": "Standard late-SP&S scheme",
+      "representativeLocomotive": "ALCO C636 · SP&S #341 / BN #4367",
+      "description": "Introduced with the new C424 locomotives in 1964, Broad Yellow became the standard late-SP&S scheme and was carried by the railroad's later Century-series power. C636 No. 341, built in November 1968, became Burlington Northern No. 4367 at the 1970 merger and continued briefly in its SP&S colors with small BN identification.",
+      "photo": {
+        "sourcePage": "https://www.thedieselshop.us/SP&Sprofile.HTML",
+        "localPath": "/images/railroads/sps-c636-341-bn-4367-broad-yellow-ai.png",
+        "alt": "Former SP&S ALCO C636 341 as Burlington Northern 4367 retaining the Broad Yellow scheme",
+        "caption": "Former SP&S C636 #341 as BN #4367, retaining Broad Yellow at Wenatchee, Washington, April 1971.",
+        "credit": "Doug Cummings photo / The Diesel Shop · AI reconstruction supplied by user",
+        "kind": "AI reconstruction from archival reference"
+      },
+      "sourceIds": ["diesel-shop-sps-profile"]
+    }
+  ],
+  "sources": []
+}
