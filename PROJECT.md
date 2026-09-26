@@ -35,10 +35,10 @@ SP&S representation is a confirmed collection gap.
 
 The BNSF genealogy is a curated, navigable set of diesel-era company records
 stored one company per file. Included railroads survived into the diesel era and
-operated diesel locomotives under their own identities, including leased or
-assigned power. Its diagram uses pale green for major systems and pale blue for
-regional railroads, with a darker matching left stripe on every card. Railroad
-detail pages share the same typography,
+operated with diesel motive power, including locomotives leased or assigned by a
+parent or affiliated railroad. Its diagram uses pale green for major systems and
+pale blue for regional railroads, with a darker matching left stripe on every
+card. Railroad detail pages share the same typography,
 navigation, and content-card treatment as locomotive and manufacturer pages.
 The genealogy preserves card separation when browser zoom changes text wrapping.
 
