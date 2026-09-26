@@ -13,7 +13,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 115);
+  assert.equal(data.sources.length, 121);
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
   const et44 = data.prototypes.find(({ id }) => id === "ge-et44ac");
@@ -159,6 +159,86 @@ test("Northern Pacific identifies the source periods in its late snapshot date",
   const late = np.statistics.snapshots[1];
 
   assert.equal(late.date, "1966 financial · 1968 equipment · late-1960s operations");
+});
+
+test("SP&S preserves its diesel-era history and 1940 versus 1968 snapshots", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const sps = data.railroads.find(({ id }) => id === "spokane-portland-seattle");
+  const [early, late] = sps.statistics.snapshots;
+  const metricKeys = ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"];
+
+  assert.equal(sps.name, "Spokane, Portland and Seattle Railway");
+  assert.equal(sps.history.length, 4);
+  assert.match(sps.history[0], /1905.*Portland & Seattle Railway.*1908/);
+  assert.match(sps.history[0], /Great Northern Railway and Northern Pacific Railway/);
+  assert.match(sps.history[1], /Oregon Trunk Railway.*Oregon Electric Railway/);
+  assert.match(sps.history[2], /ALCO.*C424.*C425.*C415.*C636/);
+  assert.match(sps.history[3], /March 2, 1970/);
+  assert.equal(sps.predecessorLabel, "Affiliates");
+  assert.deepEqual([early.year, early.label], [1940, "First Diesels"]);
+  assert.deepEqual([late.year, late.label], [1968, "Pre-BN"]);
+  assert.deepEqual(metricKeys.map((key) => early.metrics[key].value), ["~915", "~2,000", "~105", "~730", "~$100 million"]);
+  assert.deepEqual(metricKeys.map((key) => late.metrics[key].value), ["922", "~2,500", "112", "3,411", "~$160 million"]);
+  assert.match(early.metrics.locomotives.note, /89 steam.*14 electric.*production diesels in 1940/);
+  assert.equal(late.metrics.rollingStock.note, "3,363 freight cars · 48 passenger cars");
+  assert.deepEqual(sps.paintSchemes.map(({ id }) => id), [
+    "early-pullman-green-yellow",
+    "early-fa-freight",
+    "empire-builder-passenger",
+    "intermediate-fa-freight",
+    "1964-broad-yellow",
+  ]);
+  assert.deepEqual(sps.paintSchemes.map(({ representativeLocomotive }) => representativeLocomotive), [
+    "ALCO RS2 #60",
+    "ALCO FA1 #858",
+    "EMD E7A #750",
+    "ALCO FA1 #857",
+    "ALCO C636 · SP&S #341 / BN #4367",
+  ]);
+  const faBroadSideBand = sps.paintSchemes.find(({ id }) => id === "intermediate-fa-freight");
+  const broadYellow = sps.paintSchemes.find(({ id }) => id === "1964-broad-yellow");
+  assert.equal(sps.paintSchemes.some(({ representativeLocomotive }) => representativeLocomotive.includes("#860") || representativeLocomotive.includes("#97")), false);
+  assert.deepEqual([faBroadSideBand.startYear, faBroadSideBand.periodLabel, faBroadSideBand.category], [1964, "1964", "Experimental freight cab unit"]);
+  assert.deepEqual([broadYellow.startYear, broadYellow.periodLabel, broadYellow.category], [1964, "1964", "Standard late-SP&S scheme"]);
+  assert.match(broadYellow.description, /Introduced with the new C424 locomotives in 1964/);
+  assert.equal(sps.paintSchemes[0].photo.localPath, "/images/railroads/sps-rs2-60-early-pullman-green-yellow-ai.png");
+  assert.equal(sps.paintSchemes[0].photo.kind, "AI reconstruction from archival reference");
+  assert.equal(sps.paintSchemes[1].photo.localPath, "/images/railroads/sps-fa1-858-early-fa-freight-ai.png");
+  assert.equal(sps.paintSchemes[1].photo.kind, "AI reconstruction from archival reference");
+  assert.equal(sps.paintSchemes.every(({ paintIdentity }) => paintIdentity === undefined), true);
+  assert.equal(broadYellow.photo.localPath, "/images/railroads/sps-c636-341-bn-4367-broad-yellow-ai.png");
+  assert.equal(broadYellow.photo.kind, "AI reconstruction from archival reference");
+  assert.match(broadYellow.description, /C636 No\. 341.*Burlington Northern No\. 4367/);
+  assert.equal(faBroadSideBand.photo.localPath, "/images/railroads/sps-fa1-857-intermediate-fa-freight-ai.png");
+  assert.equal(faBroadSideBand.photo.kind, "AI reconstruction from archival reference");
+  assert.match(sps.paintSchemes[0].description, /RS2 No\. 60, built in 1949, represents this restrained pre-broad-yellow treatment\./);
+  assert.match(sps.paintSchemes[1].description, /The first SP&S FA units arrived in May 1948\. FA1 No\. 858, built in 1949/);
+  assert.equal(sps.paintSchemes[2].periodLabel, "1951");
+  assert.equal(sps.paintSchemes[2].startYear, 1951);
+  assert.equal(sps.paintSchemes[2].description, "E7A No. 750, built in 1948, was repainted in June 1951 into Great Northern's Mid-Century Empire Builder colors while retaining SP&S identity. Though short-lived, the scheme gave SP&S its most distinctive passenger-diesel appearance.");
+  assert.equal(sps.paintSchemes[2].photo.localPath, "/images/railroads/sps-e7a-750-1951-empire-builder-ai.png");
+  assert.equal(sps.paintSchemes[2].photo.remoteImageUrl, undefined);
+  assert.equal(sps.paintSchemes[2].photo.sourcePage, "https://streamlinermemories.info/?p=15627");
+  assert.equal(sps.paintSchemes[2].photo.kind, "AI restoration from historical color reference");
+  assert.equal(sps.paintSchemes[2].photo.caption, "EMD E7A #750 in its 1951 Empire Builder appearance.");
+  assert.equal(sps.paintSchemes[2].photo.credit, "Source: Streamliner Memories");
+  assert.deepEqual(sps.paintSchemes[2].sourceIds, ["streamliner-memories-sps-750-color-scheme"]);
+  assert.doesNotMatch(JSON.stringify(sps.paintSchemes[2]), /1969|solid-green|as-delivered/i);
+  assert.equal(faBroadSideBand.name, "FA Broad Side Band");
+  assert.match(faBroadSideBand.description, /another documented SP&S FA paint variation/);
+  assert.doesNotMatch(faBroadSideBand.description, /intermediate.*standard/i);
+  for (const scheme of sps.paintSchemes.filter(({ id }) => id !== "empire-builder-passenger")) {
+    assert.equal(scheme.photo.sourcePage, "https://www.thedieselshop.us/SP&Sprofile.HTML");
+    assert.equal(scheme.sourceIds.includes("diesel-shop-sps-profile"), true);
+    assert.ok(scheme.photo.credit.includes("The Diesel Shop"));
+  }
+  assert.deepEqual(sps.sourceIds, [
+    "trains-sps-fallen-flags-statistics",
+    "spshs-diesel-roster",
+    "american-rails-spokane-portland-seattle",
+    "mnhs-sps-records",
+    "diesel-shop-sps-profile",
+  ]);
 });
 
 test("Northern Pacific paint cards preserve the accepted order, artwork, and scheme-local provenance", async () => {

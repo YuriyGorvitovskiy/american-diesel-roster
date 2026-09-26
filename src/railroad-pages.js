@@ -9,6 +9,7 @@ function railroadYears(railroad) {
 export function railroadRelationships(railroad, railroads) {
   const byId = new Map(railroads.map((item) => [item.id, item]));
   return {
+    predecessorLabel: railroad.predecessorLabel || "Predecessors",
     predecessors: (railroad.predecessors || []).map((id) => byId.get(id)).filter(Boolean),
     successor: byId.get(railroad.successor) ?? null,
   };
@@ -316,8 +317,9 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
   }
   const relationships = document.createElement("div"); relationships.className = "railroad-detail-grid";
   const relationshipArticle = document.createElement("article");
-  relationshipArticle.innerHTML = '<p class="eyebrow">Lineage</p><h2>Relationships</h2><dl><dt>Predecessors</dt><dd class="railroad-predecessors"></dd><dt>Successor</dt><dd class="railroad-successor"></dd></dl>';
+  relationshipArticle.innerHTML = '<p class="eyebrow">Lineage</p><h2>Relationships</h2><dl><dt class="railroad-predecessor-label">Predecessors</dt><dd class="railroad-predecessors"></dd><dt>Successor</dt><dd class="railroad-successor"></dd></dl>';
   const resolved = railroadRelationships(railroad, railroads);
+  relationshipArticle.querySelector(".railroad-predecessor-label").textContent = resolved.predecessorLabel;
   appendRelationshipValue(relationshipArticle.querySelector(".railroad-predecessors"), resolved.predecessors, "None in this curated set", onOpenRailroad);
   appendRelationshipValue(relationshipArticle.querySelector(".railroad-successor"), resolved.successor ? [resolved.successor] : [], "Final company", onOpenRailroad);
   const statistics = renderStatistics(railroad, sources);
