@@ -238,6 +238,10 @@ export function paintSchemeEyebrow(scheme) {
   return [period, scheme.category].filter(Boolean).join(" · ");
 }
 
+export function paintSchemesIntroText(railroad) {
+  return railroad.paintSchemesIntro || null;
+}
+
 function renderStatistics(railroad, sources) {
   const article = document.createElement("article");
   article.className = "railroad-statistics";
@@ -330,6 +334,11 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
   relationships.append(relationshipArticle, statistics);
   const schemes = document.createElement("article"); schemes.className = "railroad-schemes";
   schemes.innerHTML = `<p class="eyebrow">Visual identity</p><h2>${railroad.preDiesel ? "Pre-diesel railroad" : "Paint schemes"}</h2>`;
+  const paintSchemesIntro = paintSchemesIntroText(railroad);
+  if (paintSchemesIntro) {
+    const intro = document.createElement("p"); intro.textContent = paintSchemesIntro;
+    schemes.append(intro);
+  }
   if (railroad.id === "santa-fe") {
     schemes.classList.add("atsf-paint-schemes");
     schemes.innerHTML = '<p class="eyebrow">Visual identity</p><h2>Paint schemes</h2><p>Santa Fe\'s diesel identity evolved from 1935 to 1995 through passenger, freight, switching, experimental, commemorative, and merger-era paint schemes. Variants are shown separately where documented rather than collapsed into a single representative scheme.</p>';
@@ -454,13 +463,10 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
       const eyebrow = document.createElement("p"); eyebrow.className = "eyebrow";
       eyebrow.textContent = paintSchemeEyebrow(scheme);
       const title = document.createElement("h3"); title.textContent = scheme.name;
-      const identity = document.createElement("p"); identity.className = "railroad-paint-identity";
-      identity.textContent = scheme.paintIdentity;
       const locomotive = document.createElement("p"); locomotive.className = "railroad-paint-locomotive";
       locomotive.textContent = scheme.representativeLocomotive;
       const description = document.createElement("p"); description.textContent = scheme.description;
       body.append(eyebrow, title);
-      if (scheme.paintIdentity) body.append(identity);
       body.append(locomotive, description);
       block.append(figure, body); schemes.append(block);
     }

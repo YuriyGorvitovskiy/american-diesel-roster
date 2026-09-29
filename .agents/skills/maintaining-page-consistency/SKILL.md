@@ -13,6 +13,7 @@ Use the existing page components as the source of truth for shared presentation.
 - In a two-snapshot historical comparison with the five common fields, use this order in both columns: **System mileage → Employees → Locomotives → Non-locomotive rolling stock → Capitalization**. Keep labels and units precise to the source: route miles and total track miles are different measures.
 - Preserve additional fields already documented for a railroad. Group them near the related common measure; do not erase or relabel them merely to make every page have identical fields.
 - Keep unknown values visible as unavailable or omit them according to the existing component. Do not derive a locomotive/car split from a combined fleet total.
+- Paint-scheme cards do not use a separate `paintIdentity` color-summary line. Keep the shared sequence as period/category, scheme name, representative locomotive, and concise factual description. Put material color details in the description only when they help identify or distinguish the scheme.
 
 ## Locomotive pages
 
