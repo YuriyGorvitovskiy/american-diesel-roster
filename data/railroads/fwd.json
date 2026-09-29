@@ -95,17 +95,17 @@
     },
     {
       "id": "greyback-f-unit",
-      "name": "Greyback F-Unit",
+      "name": "Grayback F-Unit",
       "startYear": 1950,
       "periodLabel": "Introduced 1950",
       "category": "Freight cab unit",
       "representativeLocomotive": "EMD F7A #750A",
-      "description": "FW&D received F7 sets 750–752 in August 1950. They wore the Burlington Greyback treatment with the system herald and visual identity, while their numbers and sublettering identified FW&D ownership.",
+      "description": "FW&D received F7 sets 750–752 in August 1950. They wore the Burlington Grayback treatment with the system herald and visual identity, while their numbers and sublettering identified FW&D ownership.",
       "photo": {
         "sourcePage": "https://transport.castlegraphics.com/albums/railroad/diesel/fwd/fwd_750A_F7A_ft_worth_tx_1963.jpg",
         "localPath": "/images/railroads/fwd-f7a-750a-greyback.png",
-        "alt": "Fort Worth and Denver EMD F7A 750A in Burlington Greyback paint",
-        "caption": "FW&D EMD F7A #750A in Burlington Greyback paint at Fort Worth, Texas, in 1963.",
+        "alt": "Fort Worth and Denver EMD F7A 750A in Burlington Grayback paint",
+        "caption": "FW&D EMD F7A #750A in Burlington Grayback paint at Fort Worth, Texas, in 1963.",
         "credit": "Castle Graphics · AI-assisted restoration supplied by user",
         "kind": "AI-assisted historical color restoration"
       },
