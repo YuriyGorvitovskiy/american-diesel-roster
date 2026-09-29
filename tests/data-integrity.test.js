@@ -318,11 +318,11 @@ test("FW&D preserves its corporate history and 1940 versus 1972 snapshots", asyn
   assert.match(fwd.history[2], /Texas Zephyr.*August 23, 1940.*9980A.*Silver Chief.*9980B.*Silver Warrior/);
   assert.match(fwd.history[3], /1951.*1952.*Burlington-Rock Island.*1965.*December 31, 1982/);
   assert.deepEqual([early.year, early.label], [1940, "First Diesels / Texas Zephyr"]);
-  assert.deepEqual([late.year, late.label], [1972, "Late Independent Era"]);
+  assert.deepEqual([late.year, late.label], [1972, "Late Separate Corporate Era"]);
   assert.deepEqual(Object.keys(early.metrics), metricKeys);
   assert.deepEqual(Object.keys(late.metrics), metricKeys);
   assert.deepEqual(metricKeys.map((key) => early.metrics[key].value), ["902", "1,477", "144", "1,481", "$18.11M"]);
-  assert.deepEqual(metricKeys.map((key) => late.metrics[key].value), ["1,200.79", "Not in R-1", "20", "1,520", "$22.44M"]);
+  assert.deepEqual(metricKeys.map((key) => late.metrics[key].value), ["1,200.79", "Unavailable", "20", "1,520", "$22.44M"]);
   assert.match(early.metrics.locomotives.note, /141 steam.*3 oil-electric/);
   assert.match(early.metrics.rollingStock.note, /1,415 freight.*66 passenger.*excludes 222 company-service/);
   assert.match(late.metrics.employees.note, /Schedules 561A and 561B.*not included/);

@@ -52,12 +52,12 @@
       },
       {
         "year": 1972,
-        "label": "Late Independent Era",
+        "label": "Late Separate Corporate Era",
         "date": "Year ended December 31, 1972",
         "sourceIds": ["stb-fwd-1972-r1"],
         "metrics": {
           "routeMiles": { "value": "1,200.79", "label": "Route miles", "note": "Road operated at year end; Schedule 411." },
-          "employees": { "value": "Not in R-1", "note": "Schedules 561A and 561B were filed separately on ICC wage-statistics forms and are not included in the archived R-1." },
+          "employees": { "value": "Unavailable", "note": "Schedules 561A and 561B were filed separately on ICC wage-statistics forms and are not included in the archived R-1." },
           "locomotives": { "value": "20", "note": "10 multiple-purpose road units · 10 switching units." },
           "rollingStock": { "value": "1,520", "note": "1,493 freight-train cars · 27 cabooses · no passenger-train cars · excludes 101 company-service cars." },
           "capitalization": { "value": "$22.44M", "note": "$9,243,800 capital stock · $10,790,000 funded debt · $2,404,645 equipment obligations, including $900,280 current portion." }
