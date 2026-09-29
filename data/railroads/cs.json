@@ -1,1 +1,183 @@
-{"id":"cs","slug":"cs","name":"Colorado & Southern Railway","reportingMarks":["C&S"],"startYear":1898,"endYear":1981,"type":"major-regional","predecessors":[],"successor":"burlington-northern","parentSystem":"chicago-burlington-quincy","description":"Controlled by the Burlington system from 1908 but retained a separate corporate identity until its merger into BN in 1981. It operated diesel locomotives and deserves a full paint-scheme page.","mergerYear":1981,"statistics":null,"paintSchemes":[],"sources":[]}
+{
+  "id": "cs",
+  "slug": "cs",
+  "name": "Colorado & Southern Railway",
+  "reportingMarks": ["C&S"],
+  "startYear": 1898,
+  "endYear": 1981,
+  "type": "major-regional",
+  "predecessors": [],
+  "successor": "burlington-northern",
+  "parentSystem": "chicago-burlington-quincy",
+  "description": "Colorado & Southern Railway connected Denver with Wyoming, New Mexico and its controlled Fort Worth & Denver route to Texas. Controlled by Chicago, Burlington & Quincy from 1908, C&S remained a separate corporate railroad until its merger into Burlington Northern on December 31, 1981.",
+  "history": [
+    "Colorado & Southern Railway was incorporated on December 19, 1898, and began operations on January 11, 1899, when it acquired the Union Pacific, Denver & Gulf and Denver, Leadville & Gunnison properties. The new company combined standard- and narrow-gauge routes centered on Denver.",
+    "Chicago, Burlington & Quincy acquired control of C&S in 1908, but C&S remained a separate corporate railroad. Through its control of Fort Worth & Denver, C&S provided the Burlington system's Denver–Texas connection.",
+    "The inherited narrow-gauge network was progressively abandoned. The last C&S narrow-gauge operation, the Leadville–Climax line, ended on August 25, 1943, and was converted to standard gauge. C&S had entered the diesel era in 1940 with EMD E5A 9950A and E5B 9950B for the Texas Zephyr.",
+    "C&S remained legally separate after the March 2, 1970, Burlington Northern merger. Its locomotives were progressively renumbered into the BN system during 1978–1980, and the company was finally merged into Burlington Northern on December 31, 1981."
+  ],
+  "mergerYear": 1981,
+  "sourceIds": [
+    "time-cs-804-miles-1940",
+    "icc-1940-railway-statistics",
+    "stb-cs-r1-archive",
+    "us-congress-cs-railroad-profile",
+    "american-rails-colorado-southern",
+    "utahrails-cs-history",
+    "fobnr-bn-operational-chronology",
+    "rrpicturearchives-cs-9953-black-whisker",
+    "american-rails-cs-9950a-red-whisker",
+    "rrpicturearchives-cs-703a-grayback",
+    "railpictures-cs-829-blackbird",
+    "rrpicturearchives-cs-828-chinese-red",
+    "railpictures-cs-903-cascade-green"
+  ],
+  "statistics": {
+    "intro": "Two snapshots compare C&S at the arrival of its first diesels with its final years as a separate corporate railroad.",
+    "snapshots": [
+      {
+        "year": 1940,
+        "label": "First Diesel",
+        "date": "1940",
+        "sourceIds": ["time-cs-804-miles-1940", "icc-1940-railway-statistics", "american-rails-colorado-southern"],
+        "metrics": {
+          "routeMiles": { "value": "804", "label": "Route miles" },
+          "employees": { "value": "1,805", "note": "Average number of employees reported by the ICC." },
+          "locomotives": { "value": "182", "note": "181 steam locomotives · 1 oil-electric locomotive under ICC terminology; the contemporary statistical convention counts E5A 9950A Silver Racer and E5B 9950B Silver Steed (9950A/9950B) as one locomotive." },
+          "rollingStock": { "value": "4,065", "note": "4,008 freight-train cars · 57 passenger-train cars · excludes 136 company-service cars." },
+          "capitalization": { "value": "$96.49M", "note": "$48,000,000 capital stock · $48,493,833 funded debt and equipment obligations." }
+        },
+        "context": "C&S entered the diesel era with E5A 9950A and E5B 9950B for the Texas Zephyr."
+      },
+      {
+        "year": 1979,
+        "label": "Final Separate Corporate Era",
+        "date": "Late 1970s",
+        "sourceIds": ["us-congress-cs-railroad-profile", "american-rails-colorado-southern", "stb-cs-r1-archive"],
+        "metrics": {
+          "routeMiles": { "value": "678", "label": "Route miles" },
+          "employees": { "value": "652" },
+          "locomotives": { "value": "219", "note": "85 owned and used · 134 leased from others · 22 additional units leased to others; Schedule 710." },
+          "rollingStock": { "value": "2,504", "note": "2,471 freight-train cars · 33 cabooses · 2,163 owned and used + 341 leased from others; Schedule 710." },
+          "capitalization": { "value": "$81.50M", "note": "$48.0M capital stock · $14.193M funded debt · $19.306M equipment obligations, including $2.670M due within one year; excludes $3.130M capitalized lease obligations." }
+        }
+      }
+    ],
+    "notes": [
+      "Capitalization is issued capital stock plus outstanding funded and equipment debt; it is not market capitalization or the federal profile's $83.6M net-investment measure.",
+      "Non-locomotive rolling stock combines freight and passenger equipment and excludes company-service cars where separately reported."
+    ]
+  },
+  "paintSchemesIntro": "C&S diesel power used standard Burlington-family passenger and freight schemes and, after 1970, Burlington Northern paint. These cards document C&S locomotives rather than duplicating generic CB&Q or BN examples.",
+  "paintSchemes": [
+    {
+      "id": "passenger-silver-black-whisker",
+      "name": "Passenger Silver — Black Whisker",
+      "startYear": 1940,
+      "periodLabel": "1940–c.1958",
+      "category": "Passenger",
+      "representativeLocomotive": "EMD E5A #9953",
+      "description": "Former CB&Q E5 No. 9953 transferred to C&S and wore the stainless-steel Texas Zephyr passenger scheme with black whiskers.",
+      "photo": {
+        "sourcePage": "https://s3.amazonaws.com/rrpa_photos/44188/csd9953-1.jpg",
+        "remoteImageUrl": "https://s3.amazonaws.com/rrpa_photos/44188/csd9953-1.jpg",
+        "alt": "Colorado and Southern EMD E5A 9953 in Passenger Silver with black whiskers",
+        "caption": "C&S EMD E5A #9953 in Passenger Silver — Black Whisker paint.",
+        "credit": "RRPictureArchives.NET",
+        "kind": "Historical photograph"
+      },
+      "sourceIds": ["rrpicturearchives-cs-9953-black-whisker"]
+    },
+    {
+      "id": "blackbird",
+      "name": "Blackbird",
+      "startYear": 1947,
+      "periodLabel": "late 1940s–1970s",
+      "category": "Road freight",
+      "representativeLocomotive": "EMD SD9 #829",
+      "description": "C&S SD9 No. 829 wore the black-and-gray Burlington Blackbird road-switcher scheme used on C&S diesel power.",
+      "photo": {
+        "sourcePage": "https://www.railpictures.net/images/d2/7/6/7/9767.1701777797.jpg",
+        "remoteImageUrl": "https://www.railpictures.net/images/d2/7/6/7/9767.1701777797.jpg",
+        "alt": "Colorado and Southern EMD SD9 829 in Burlington Blackbird paint",
+        "caption": "C&S EMD SD9 #829 in Burlington Blackbird paint.",
+        "credit": "RailPictures.net",
+        "kind": "Historical photograph"
+      },
+      "sourceIds": ["railpictures-cs-829-blackbird"]
+    },
+    {
+      "id": "grayback-freight",
+      "name": "Grayback — Freight",
+      "startYear": 1950,
+      "periodLabel": "1950–1968",
+      "category": "Freight cab unit",
+      "representativeLocomotive": "EMD F3A #703A",
+      "description": "C&S F3A No. 703A represents the Burlington-family Grayback freight cab-unit scheme applied to C&S F-units.",
+      "photo": {
+        "sourcePage": "https://s3.amazonaws.com/rrpa_photos/106456/S2-219A.jpg",
+        "remoteImageUrl": "https://s3.amazonaws.com/rrpa_photos/106456/S2-219A.jpg",
+        "alt": "Colorado and Southern EMD F3A 703A in Burlington Grayback freight paint",
+        "caption": "C&S EMD F3A #703A in Grayback freight paint.",
+        "credit": "RRPictureArchives.NET",
+        "kind": "Historical photograph"
+      },
+      "sourceIds": ["rrpicturearchives-cs-703a-grayback"]
+    },
+    {
+      "id": "passenger-silver-red-whisker",
+      "name": "Passenger Silver — Red Whisker",
+      "startYear": 1958,
+      "periodLabel": "c.1958–1968",
+      "category": "Passenger",
+      "representativeLocomotive": "EMD E5A #9950A \"Silver Racer\"",
+      "description": "C&S E5A No. 9950A Silver Racer wore the stainless-steel Texas Zephyr passenger scheme with red whiskers.",
+      "photo": {
+        "sourcePage": "https://www.american-rails.com/images/60923942847365u1y8206289082709.jpg",
+        "remoteImageUrl": "https://www.american-rails.com/images/60923942847365u1y8206289082709.jpg",
+        "alt": "Colorado and Southern EMD E5A 9950A Silver Racer in Passenger Silver with red whiskers",
+        "caption": "C&S EMD E5A #9950A Silver Racer in Passenger Silver — Red Whisker paint.",
+        "credit": "American-Rails.com",
+        "kind": "Historical photograph"
+      },
+      "sourceIds": ["american-rails-cs-9950a-red-whisker"]
+    },
+    {
+      "id": "chinese-red",
+      "name": "Chinese Red",
+      "startYear": 1958,
+      "periodLabel": "1958–1970s",
+      "category": "Road freight",
+      "representativeLocomotive": "EMD SD9 #828",
+      "description": "C&S SD9 No. 828 represents the classic Burlington Chinese Red freight scheme on C&S power.",
+      "photo": {
+        "sourcePage": "https://www.rrpicturearchives.net/picturefiles/4781/cbq0828.jpg",
+        "remoteImageUrl": "https://www.rrpicturearchives.net/picturefiles/4781/cbq0828.jpg",
+        "alt": "Colorado and Southern EMD SD9 828 in Burlington Chinese Red paint",
+        "caption": "C&S EMD SD9 #828 in Burlington Chinese Red paint.",
+        "credit": "RRPictureArchives.NET",
+        "kind": "Historical photograph"
+      },
+      "sourceIds": ["rrpicturearchives-cs-828-chinese-red"]
+    },
+    {
+      "id": "bn-cascade-green",
+      "name": "BN Cascade Green",
+      "startYear": 1971,
+      "periodLabel": "1971–1981",
+      "category": "Late corporate era",
+      "representativeLocomotive": "EMD SD40-2 #903",
+      "description": "C&S-owned SD40-2 No. 903 wore BN-era Cascade Green while C&S remained a separate corporate railroad through 1981.",
+      "photo": {
+        "sourcePage": "https://www.railpictures.net/images/d1/9/8/4/8984.1368238595.jpg",
+        "remoteImageUrl": "https://www.railpictures.net/images/d1/9/8/4/8984.1368238595.jpg",
+        "alt": "Colorado and Southern EMD SD40-2 903 in Burlington Northern Cascade Green paint",
+        "caption": "C&S EMD SD40-2 #903 in BN Cascade Green paint.",
+        "credit": "RailPictures.net",
+        "kind": "Historical photograph"
+      },
+      "sourceIds": ["railpictures-cs-903-cascade-green"]
+    }
+  ],
+  "sources": []
+}

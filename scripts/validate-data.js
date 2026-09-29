@@ -165,6 +165,7 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
       else if (schemeIds.has(scheme.id)) errors.push(`Duplicate ${railroad.id.toUpperCase()} paint scheme id "${scheme.id}".`);
       schemeIds.add(scheme.id);
       checkSources(scheme, "Railroad paint scheme", false);
+      if ("paintIdentity" in scheme) errors.push(`Railroad paint scheme "${scheme.id}" must not use paintIdentity.`);
       if (scheme.startYear != null) {
         if (!Number.isInteger(scheme.startYear)) errors.push(`Railroad paint scheme "${scheme.id}" has invalid startYear.`);
         else if (scheme.startYear < previousYear) errors.push(`Railroad "${railroad.id}" paint schemes are not chronological at "${scheme.id}".`);

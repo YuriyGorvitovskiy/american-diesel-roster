@@ -30,7 +30,11 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 132);
+  assert.equal(data.sources.length, 157);
+  assert.equal(
+    data.railroads.flatMap(({ paintSchemes = [] }) => paintSchemes).some((scheme) => scheme && typeof scheme === "object" && "paintIdentity" in scheme),
+    false,
+  );
   assert.equal(data.items[0].prototypeId, "emd-f3");
   assert.equal(data.orders.find(({ id }) => id === "order-cbq-e7a-9931b").deposit.amount, 0);
   const et44 = data.prototypes.find(({ id }) => id === "ge-et44ac");
@@ -299,6 +303,170 @@ test("SP&S preserves its diesel-era history and 1940 versus 1968 snapshots", asy
   ]);
 });
 
+test("FW&D preserves its corporate history and 1940 versus 1972 snapshots", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const fwd = data.railroads.find(({ id }) => id === "fwd");
+  const [early, late] = fwd.statistics.snapshots;
+  const metricKeys = ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"];
+
+  assert.equal(fwd.startYear, 1873);
+  assert.equal(fwd.parentSystem, "cs");
+  assert.equal(fwd.successor, "burlington-northern");
+  assert.equal(fwd.history.length, 4);
+  assert.match(fwd.history[0], /1873.*Fort Worth and Denver City Railway.*1881.*1888/);
+  assert.match(fwd.history[1], /Colorado and Southern Railway was organized in 1898.*acquired control of the FW&DC in 1899.*Burlington/);
+  assert.match(fwd.history[2], /Texas Zephyr.*August 23, 1940.*9980A.*Silver Chief.*9980B.*Silver Warrior/);
+  assert.match(fwd.history[3], /1951.*1952.*Burlington-Rock Island.*1965.*December 31, 1982/);
+  assert.deepEqual([early.year, early.label], [1940, "First Diesels / Texas Zephyr"]);
+  assert.deepEqual([late.year, late.label], [1972, "Late Separate Corporate Era"]);
+  assert.deepEqual(Object.keys(early.metrics), metricKeys);
+  assert.deepEqual(Object.keys(late.metrics), metricKeys);
+  assert.deepEqual(metricKeys.map((key) => early.metrics[key].value), ["902", "1,477", "144", "1,481", "$18.11M"]);
+  assert.deepEqual(metricKeys.map((key) => late.metrics[key].value), ["1,200.79", "Unavailable", "20", "1,520", "$22.44M"]);
+  assert.match(early.metrics.locomotives.note, /141 steam.*3 oil-electric/);
+  assert.match(early.metrics.rollingStock.note, /1,415 freight.*66 passenger.*excludes 222 company-service/);
+  assert.match(late.metrics.employees.note, /Schedules 561A and 561B.*not included/);
+  assert.match(late.metrics.rollingStock.note, /1,493 freight-train cars.*27 cabooses.*101 company-service/);
+  assert.match(fwd.paintSchemesIntro, /did not maintain a separate diesel-era paint program.*Burlington-system.*Burlington Northern schemes/);
+  assert.deepEqual(fwd.paintSchemes.map(({ id }) => id), [
+    "texas-zephyr-passenger-silver",
+    "greyback-f-unit",
+    "blackbird-everywhere-west",
+    "chinese-red-switcher",
+    "bn-cascade-green-fwd",
+  ]);
+  assert.deepEqual(fwd.paintSchemes.map(({ startYear }) => startYear), [1940, 1950, 1953, 1967, 1980]);
+  assert.equal(fwd.paintSchemes[1].name, "Grayback — Freight");
+  assert.deepEqual(fwd.paintSchemes.map(({ representativeLocomotive }) => representativeLocomotive), [
+    "EMC E5A #9980A Silver Chief / E5B #9980B Silver Warrior",
+    "EMD F7A #750A",
+    "EMD SD7 #855",
+    "EMD NW2 #605",
+    "EMD GP38-2 #2150",
+  ]);
+  assert.deepEqual(fwd.paintSchemes.map(({ photo }) => photo.localPath ?? null), [
+    "/images/railroads/fwd-e5a-9980a-texas-zephyr-silver.png",
+    "/images/railroads/fwd-f7a-750a-greyback.png",
+    "/images/railroads/fwd-sd7-855-blackbird.png",
+    null,
+    null,
+  ]);
+  assert.deepEqual(fwd.paintSchemes.slice(0, 3).map(({ photo }) => photo.kind), [
+    "AI-assisted historical color restoration",
+    "AI-assisted historical color restoration",
+    "AI-assisted historical color restoration",
+  ]);
+  assert.match(fwd.paintSchemes[0].photo.caption, /^FW&DC E5A Silver Chief/);
+  assert.equal(fwd.paintSchemes[3].photo.remoteImageUrl, "https://transport.castlegraphics.com/albums/railroad/diesel/fwd/fwd_605_NW2_amarillo_tx_sep30_1972.jpg");
+  assert.equal(fwd.paintSchemes[4].photo.remoteImageUrl, "https://www.railpictures.net/images/d1/4/8/3/7483.1099837380.jpg");
+  assert.match(fwd.paintSchemes[2].description, /SD7.*Everywhere West.*FW&D 855/);
+  assert.doesNotMatch([
+    fwd.paintSchemes[2].representativeLocomotive,
+    fwd.paintSchemes[2].description,
+    fwd.paintSchemes[2].photo.alt,
+    fwd.paintSchemes[2].photo.caption,
+  ].join(" "), /SD9/);
+  assert.match(fwd.paintSchemes[3].description, /unusual.*Chinese Red/i);
+  assert.match(fwd.paintSchemes[3].description, /should not be read as the normal Burlington switcher scheme/i);
+  assert.match(fwd.paintSchemes[3].description, /image shown here is a later 1972 Amarillo view of the same locomotive/i);
+  assert.match(fwd.paintSchemes[4].description, /2150–2154.*standard BN Cascade Green.*1982/);
+  assert.deepEqual(fwd.sourceIds, [
+    "tsha-fort-worth-denver-railway",
+    "tsha-burlington-system",
+    "icc-1940-railway-statistics",
+    "stb-fwd-1972-r1",
+    "classic-trains-silver-bulldogs-e5s",
+    "portal-texas-history-fwd-9980a",
+    "brhs-fwd-f7-roster",
+    "castle-graphics-fwd-750a",
+    "diesel-shop-fwd-sd7-roster",
+    "castle-graphics-fwd-855",
+    "brhslist-fwd-605-chinese-red",
+    "castle-graphics-fwd-605",
+    "railpictures-fwd-2150",
+    "diesel-shop-bn-fwd-gp38-2",
+  ]);
+});
+
+test("C&S preserves its corporate history and supplied 1940 versus late-1970s snapshots", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const cs = data.railroads.find(({ id }) => id === "cs");
+  const [early, late] = cs.statistics.snapshots;
+  const metricKeys = ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"];
+
+  assert.equal(cs.startYear, 1898);
+  assert.equal(cs.parentSystem, "chicago-burlington-quincy");
+  assert.equal(cs.successor, "burlington-northern");
+  assert.equal(cs.history.length, 4);
+  assert.match(cs.history[0], /December 19, 1898.*January 11, 1899.*Union Pacific, Denver & Gulf.*Denver, Leadville & Gunnison/);
+  assert.match(cs.history[1], /1908.*Fort Worth & Denver.*Denver–Texas/);
+  assert.match(cs.history[2], /Leadville–Climax.*August 25, 1943.*standard gauge/);
+  assert.match(cs.history[2], /E5A 9950A.*E5B 9950B/);
+  assert.match(cs.history[3], /March 2, 1970.*1978–1980.*December 31, 1981/);
+  assert.deepEqual([early.year, early.label], [1940, "First Diesel"]);
+  assert.deepEqual([late.year, late.label], [1979, "Final Separate Corporate Era"]);
+  assert.deepEqual(Object.keys(early.metrics), metricKeys);
+  assert.deepEqual(Object.keys(late.metrics), metricKeys);
+  assert.deepEqual(metricKeys.map((key) => early.metrics[key].value), ["804", "1,805", "182", "4,065", "$96.49M"]);
+  assert.deepEqual(metricKeys.map((key) => late.metrics[key].value), ["678", "652", "219", "2,504", "$81.50M"]);
+  assert.match(early.metrics.locomotives.note, /181 steam.*1 oil-electric.*9950A\/9950B/);
+  assert.match(early.metrics.rollingStock.note, /4,008 freight-train cars.*57 passenger-train cars.*excludes 136 company-service/);
+  assert.match(early.metrics.capitalization.note, /\$48,000,000 capital stock.*\$48,493,833 funded debt and equipment obligations/);
+  assert.match(late.metrics.locomotives.note, /85 owned and used.*134 leased from others.*22 additional units leased to others/);
+  assert.match(late.metrics.rollingStock.note, /2,471 freight-train cars.*33 cabooses.*2,163 owned and used.*341 leased from others/);
+  assert.match(late.metrics.capitalization.note, /\$48\.0M capital stock.*\$14\.193M funded debt.*\$19\.306M equipment obligations.*\$2\.670M due within one year/);
+  assert.match(cs.paintSchemesIntro, /Burlington-family.*Burlington Northern/i);
+  assert.deepEqual(cs.paintSchemes.map(({ id }) => id), [
+    "passenger-silver-black-whisker",
+    "blackbird",
+    "grayback-freight",
+    "passenger-silver-red-whisker",
+    "chinese-red",
+    "bn-cascade-green",
+  ]);
+  assert.deepEqual(cs.paintSchemes.map(({ representativeLocomotive }) => representativeLocomotive), [
+    "EMD E5A #9953",
+    "EMD SD9 #829",
+    "EMD F3A #703A",
+    "EMD E5A #9950A \"Silver Racer\"",
+    "EMD SD9 #828",
+    "EMD SD40-2 #903",
+  ]);
+  assert.deepEqual(cs.paintSchemes.map(({ startYear }) => startYear), [1940, 1947, 1950, 1958, 1958, 1971]);
+  assert.deepEqual(cs.paintSchemes.map(({ periodLabel }) => periodLabel), [
+    "1940–c.1958",
+    "late 1940s–1970s",
+    "1950–1968",
+    "c.1958–1968",
+    "1958–1970s",
+    "1971–1981",
+  ]);
+  assert.deepEqual(cs.paintSchemes.map(({ photo }) => photo.remoteImageUrl), [
+    "https://s3.amazonaws.com/rrpa_photos/44188/csd9953-1.jpg",
+    "https://www.railpictures.net/images/d2/7/6/7/9767.1701777797.jpg",
+    "https://s3.amazonaws.com/rrpa_photos/106456/S2-219A.jpg",
+    "https://www.american-rails.com/images/60923942847365u1y8206289082709.jpg",
+    "https://www.rrpicturearchives.net/picturefiles/4781/cbq0828.jpg",
+    "https://www.railpictures.net/images/d1/9/8/4/8984.1368238595.jpg",
+  ]);
+  assert.equal(cs.paintSchemes.every(({ photo }) => photo.localPath === undefined), true);
+  assert.deepEqual(cs.sourceIds, [
+    "time-cs-804-miles-1940",
+    "icc-1940-railway-statistics",
+    "stb-cs-r1-archive",
+    "us-congress-cs-railroad-profile",
+    "american-rails-colorado-southern",
+    "utahrails-cs-history",
+    "fobnr-bn-operational-chronology",
+    "rrpicturearchives-cs-9953-black-whisker",
+    "american-rails-cs-9950a-red-whisker",
+    "rrpicturearchives-cs-703a-grayback",
+    "railpictures-cs-829-blackbird",
+    "rrpicturearchives-cs-828-chinese-red",
+    "railpictures-cs-903-cascade-green",
+  ]);
+});
+
 test("Northern Pacific paint cards preserve the accepted order, artwork, and scheme-local provenance", async () => {
   const data = await loadDataFiles(new URL("..", import.meta.url));
   const np = data.railroads.find(({ id }) => id === "northern-pacific");
@@ -363,12 +531,7 @@ test("Great Northern paint cards preserve the accepted order, artwork, and archi
     "https://atom.pnrarchive.org/index.php/great-northern-diesel-locomotive-307a-at-minneapolis-minnesota-1969",
     "https://atom.pnrarchive.org/index.php/great-northern-diesel-locomotive-422-at-la-grange-illinois-1968",
   ]);
-  assert.deepEqual(schemes.map(({ paintIdentity }) => paintIdentity ?? null), [
-    null,
-    "Omaha Orange · Pullman Green · Imitation Gold",
-    "Simplified Omaha Orange · Pullman Green",
-    null,
-  ]);
+  assert.equal(schemes.some((scheme) => "paintIdentity" in scheme), false);
   assert.ok(schemes[2].description.includes("treated as one scheme"));
   for (const scheme of schemes) {
     assert.equal(scheme.photo.kind, "AI reconstruction from archival reference");
@@ -562,6 +725,20 @@ test("service timelines reject reversed spans and unknown nested references", as
   assert.ok(errors.some((error) => error.includes("timeline references unknown railroad")));
   assert.ok(errors.some((error) => error.includes("timeline has reversed span")));
   assert.ok(errors.filter((error) => error.includes("references unknown source")).length >= 2);
+});
+
+test("paint cards reject standalone paint identity metadata", () => {
+  const errors = validateData({
+    prototypes: [], items: [], orders: [], historicalLocomotives: [], sources: [],
+    railroads: [{
+      id: "example", predecessors: [],
+      paintSchemes: [{
+        id: "example-scheme", startYear: 1950, paintIdentity: "Red · Yellow",
+        photo: { sourcePage: "https://example.com/source", remoteImageUrl: "https://example.com/image.jpg", caption: "Example", credit: "Example" },
+      }],
+    }],
+  });
+  assert.ok(errors.includes('Railroad paint scheme "example-scheme" must not use paintIdentity.'));
 });
 
 test("ongoing timeline spans allow a null end year", () => {

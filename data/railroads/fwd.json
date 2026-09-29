@@ -1,1 +1,184 @@
-{"id":"fwd","slug":"fwd","name":"Fort Worth & Denver Railway","reportingMarks":["FW&D"],"startYear":1881,"endYear":1982,"type":"major-regional","predecessors":[],"successor":"burlington-northern","parentSystem":"cs","description":"Historically part of the C&S and Burlington family. It retained its identity long enough to operate significant diesel and passenger equipment.","mergerYear":1982,"statistics":null,"paintSchemes":["Texas Zephyr-related equipment","freight diesel schemes"],"sources":[]}
+{
+  "id": "fwd",
+  "slug": "fwd",
+  "name": "Fort Worth & Denver Railway",
+  "reportingMarks": ["FW&D"],
+  "startYear": 1873,
+  "endYear": 1982,
+  "type": "major-regional",
+  "predecessors": [],
+  "successor": "burlington-northern",
+  "parentSystem": "cs",
+  "description": "Fort Worth & Denver Railway, long known as the Denver Road, linked Fort Worth with the Texas Panhandle and the Colorado & Southern at Texline. Chartered in 1873, it became the Burlington system's principal Texas affiliate and retained its corporate identity until its merger into Burlington Northern on December 31, 1982.",
+  "history": [
+    "The company was chartered on May 26, 1873, as the Fort Worth and Denver City Railway. Construction began from Fort Worth in 1881, the Texas and Colorado railheads met in March 1888, and through Fort Worth–Denver service began on April 1, 1888.",
+    "Following the Union Pacific, Denver and Gulf receivership, the Colorado and Southern Railway was organized in 1898 and acquired control of the FW&DC in 1899. Chicago, Burlington & Quincy acquired control of the C&S in 1908, placing the Texas road within the wider Burlington system while it remained a separate corporation.",
+    "The Texas Zephyr began operation on August 23, 1940, between Dallas–Fort Worth and Denver. FW&DC's own EMC E5A No. 9980A Silver Chief and E5B No. 9980B Silver Warrior were delivered new for the train and marked the beginning of the railroad's major diesel-passenger era.",
+    "The company was renamed Fort Worth and Denver Railway in 1951. In 1952 it consolidated the other C&S Texas properties, except Burlington-Rock Island; in 1965 it received the C&S half-interest when C&S and Rock Island absorbed that jointly owned company. FW&D remained legally separate after the 1970 Burlington Northern merger and was finally merged into Burlington Northern on December 31, 1982."
+  ],
+  "mergerYear": 1982,
+  "sourceIds": [
+    "tsha-fort-worth-denver-railway",
+    "tsha-burlington-system",
+    "icc-1940-railway-statistics",
+    "stb-fwd-1972-r1",
+    "classic-trains-silver-bulldogs-e5s",
+    "portal-texas-history-fwd-9980a",
+    "brhs-fwd-f7-roster",
+    "castle-graphics-fwd-750a",
+    "diesel-shop-fwd-sd7-roster",
+    "castle-graphics-fwd-855",
+    "brhslist-fwd-605-chinese-red",
+    "castle-graphics-fwd-605",
+    "railpictures-fwd-2150",
+    "diesel-shop-bn-fwd-gp38-2"
+  ],
+  "statistics": {
+    "intro": "Two snapshots compare FW&DC at the opening of its major diesel-passenger era with FW&D late in its separate corporate life.",
+    "snapshots": [
+      {
+        "year": 1940,
+        "label": "First Diesels / Texas Zephyr",
+        "date": "1940 reporting year",
+        "sourceIds": ["icc-1940-railway-statistics", "classic-trains-silver-bulldogs-e5s"],
+        "metrics": {
+          "routeMiles": { "value": "902", "label": "Route miles", "note": "Average mileage of road operated in all services." },
+          "employees": { "value": "1,477", "note": "Average number of employees." },
+          "locomotives": { "value": "144", "note": "141 steam locomotives · 3 oil-electric locomotives." },
+          "rollingStock": { "value": "1,481", "note": "1,415 freight cars · 66 passenger-train cars · excludes 222 company-service cars." },
+          "capitalization": { "value": "$18.11M", "note": "$9,243,800 capital stock · $8,176,000 funded debt · $694,422 equipment obligations." }
+        },
+        "context": "FW&DC introduced the Texas Zephyr with its own EMC E5A 9980A and E5B 9980B."
+      },
+      {
+        "year": 1972,
+        "label": "Late Separate Corporate Era",
+        "date": "Year ended December 31, 1972",
+        "sourceIds": ["stb-fwd-1972-r1"],
+        "metrics": {
+          "routeMiles": { "value": "1,200.79", "label": "Route miles", "note": "Road operated at year end; Schedule 411." },
+          "employees": { "value": "Unavailable", "note": "Schedules 561A and 561B were filed separately on ICC wage-statistics forms and are not included in the archived R-1." },
+          "locomotives": { "value": "20", "note": "10 multiple-purpose road units · 10 switching units." },
+          "rollingStock": { "value": "1,520", "note": "1,493 freight-train cars · 27 cabooses · no passenger-train cars · excludes 101 company-service cars." },
+          "capitalization": { "value": "$22.44M", "note": "$9,243,800 capital stock · $10,790,000 funded debt · $2,404,645 equipment obligations, including $900,280 current portion." }
+        }
+      }
+    ],
+    "notes": [
+      "Capitalization is issued capital stock plus outstanding funded and equipment debt; it is not market capitalization.",
+      "Non-locomotive rolling stock combines freight and passenger equipment and excludes company-service cars."
+    ]
+  },
+  "paintSchemesIntro": "FW&D did not maintain a separate diesel-era paint program: its locomotives used Burlington-system schemes and, after 1970, Burlington Northern schemes. These cards document actual FW&D or FW&DC-owned and sublettered locomotives rather than duplicating generic CB&Q or BN examples.",
+  "paintSchemes": [
+    {
+      "id": "texas-zephyr-passenger-silver",
+      "name": "Texas Zephyr Passenger Silver",
+      "startYear": 1940,
+      "periodLabel": "Introduced 1940",
+      "category": "Passenger",
+      "representativeLocomotive": "EMC E5A #9980A Silver Chief / E5B #9980B Silver Warrior",
+      "description": "FW&DC-owned E5A No. 9980A Silver Chief and E5B No. 9980B Silver Warrior were delivered new for the Texas Zephyr. Their stainless-steel appearance and red striping carried Burlington-system passenger identity rather than a uniquely FW&DC-designed scheme.",
+      "photo": {
+        "sourcePage": "https://texashistory.unt.edu/ark:/67531/metapth1927161/",
+        "localPath": "/images/railroads/fwd-e5a-9980a-texas-zephyr-silver.png",
+        "alt": "FW&D E5A Silver Chief, delivered as 9980A and later numbered 506, with E5B Silver Warrior in Texas Zephyr passenger paint",
+        "caption": "FW&DC E5A Silver Chief and E5B Silver Warrior in Texas Zephyr service; the A unit was delivered as #9980A and later carried #506.",
+        "credit": "Museum of the American Railroad / The Portal to Texas History · AI-assisted restoration supplied by user",
+        "date": "1948-10-04",
+        "kind": "AI-assisted historical color restoration"
+      },
+      "sourceIds": [
+        "portal-texas-history-fwd-9980a",
+        "classic-trains-silver-bulldogs-e5s"
+      ]
+    },
+    {
+      "id": "greyback-f-unit",
+      "name": "Grayback — Freight",
+      "startYear": 1950,
+      "periodLabel": "Introduced 1950",
+      "category": "Freight cab unit",
+      "representativeLocomotive": "EMD F7A #750A",
+      "description": "FW&D received F7 sets 750–752 in August 1950. They wore the Burlington Grayback treatment with the system herald and visual identity, while their numbers and sublettering identified FW&D ownership.",
+      "photo": {
+        "sourcePage": "https://transport.castlegraphics.com/albums/railroad/diesel/fwd/fwd_750A_F7A_ft_worth_tx_1963.jpg",
+        "localPath": "/images/railroads/fwd-f7a-750a-greyback.png",
+        "alt": "Fort Worth and Denver EMD F7A 750A in Burlington Grayback paint",
+        "caption": "FW&D EMD F7A #750A in Burlington Grayback paint at Fort Worth, Texas, in 1963.",
+        "credit": "Castle Graphics · AI-assisted restoration supplied by user",
+        "kind": "AI-assisted historical color restoration"
+      },
+      "sourceIds": [
+        "brhs-fwd-f7-roster",
+        "castle-graphics-fwd-750a"
+      ]
+    },
+    {
+      "id": "blackbird-everywhere-west",
+      "name": "Blackbird / Everywhere West",
+      "startYear": 1953,
+      "periodLabel": "Introduced 1953",
+      "category": "Road freight",
+      "representativeLocomotive": "EMD SD7 #855",
+      "description": "FW&D SD7 No. 855 wore Burlington Blackbird black or dark-gray and gray road-freight paint, with a Burlington Route herald, the Everywhere West side slogan, and small FW&D 855 ownership lettering. The SD7 was an FW&D locomotive in a Burlington-system scheme.",
+      "photo": {
+        "sourcePage": "https://transport.castlegraphics.com/albums/railroad/diesel/fwd/fwd_855_SD9_ft_worth_tx_aug1972.jpg",
+        "localPath": "/images/railroads/fwd-sd7-855-blackbird.png",
+        "alt": "Fort Worth and Denver EMD SD7 855 in Burlington Blackbird Everywhere West paint",
+        "caption": "FW&D EMD SD7 #855 in Blackbird / Everywhere West paint at Fort Worth, Texas, in August 1972.",
+        "credit": "Castle Graphics · AI-assisted restoration supplied by user",
+        "kind": "AI-assisted historical color restoration"
+      },
+      "sourceIds": [
+        "diesel-shop-fwd-sd7-roster",
+        "castle-graphics-fwd-855"
+      ]
+    },
+    {
+      "id": "chinese-red-switcher",
+      "name": "Chinese Red Switcher",
+      "startYear": 1967,
+      "periodLabel": "Documented 1967",
+      "category": "Switcher / unusual paint",
+      "representativeLocomotive": "EMD NW2 #605",
+      "description": "FW&D NW2 No. 605 is a documented unusual Chinese Red switcher. A 1967 Wichita Falls photograph identifies it in fresh Chinese Red paint; this individual treatment should not be read as the normal Burlington switcher scheme. The image shown here is a later 1972 Amarillo view of the same locomotive.",
+      "photo": {
+        "sourcePage": "https://transport.castlegraphics.com/albums/railroad/diesel/fwd/fwd_605_NW2_amarillo_tx_sep30_1972.jpg",
+        "remoteImageUrl": "https://transport.castlegraphics.com/albums/railroad/diesel/fwd/fwd_605_NW2_amarillo_tx_sep30_1972.jpg",
+        "alt": "Fort Worth and Denver EMD NW2 605 in unusual Chinese Red paint",
+        "caption": "FW&D EMD NW2 #605 in Chinese Red paint at Amarillo, Texas, on September 30, 1972.",
+        "credit": "Castle Graphics",
+        "date": "1972-09-30",
+        "kind": "Historical photograph"
+      },
+      "sourceIds": [
+        "brhslist-fwd-605-chinese-red",
+        "castle-graphics-fwd-605"
+      ]
+    },
+    {
+      "id": "bn-cascade-green-fwd",
+      "name": "BN Cascade Green / FWD",
+      "startYear": 1980,
+      "periodLabel": "Introduced 1980",
+      "category": "Late corporate era",
+      "representativeLocomotive": "EMD GP38-2 #2150",
+      "description": "No. 2150 was one of GP38-2s 2150–2154 associated with FW&D in 1980. It carried standard BN Cascade Green identity with FW&D/FWD ownership or sublettering while the railroad remained a separate legal corporation until 1982.",
+      "photo": {
+        "sourcePage": "https://www.railpictures.net/photo/84011/",
+        "remoteImageUrl": "https://www.railpictures.net/images/d1/4/8/3/7483.1099837380.jpg",
+        "alt": "FW&D EMD GP38-2 2150 in Burlington Northern Cascade Green paint",
+        "caption": "FW&D EMD GP38-2 #2150 in BN Cascade Green paint at Pueblo, Colorado, on July 23, 1980.",
+        "credit": "Bruce D. Barrett / RailPictures.net",
+        "date": "1980-07-23",
+        "kind": "Historical photograph"
+      },
+      "sourceIds": [
+        "railpictures-fwd-2150",
+        "diesel-shop-bn-fwd-gp38-2"
+      ]
+    }
+  ],
+  "sources": []
+}

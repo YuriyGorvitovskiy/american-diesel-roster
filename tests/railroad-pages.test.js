@@ -3,7 +3,7 @@ import test from "node:test";
 
 import * as railroadPages from "../src/railroad-pages.js";
 
-const { paintSchemeEyebrow, railroadNarrativeParagraphs, railroadRelationships, sourceReferenceFor, statisticEntriesFor, verticalScaleForColumns } = railroadPages;
+const { paintSchemeEyebrow, paintSchemesIntroText, railroadNarrativeParagraphs, railroadRelationships, sourceReferenceFor, statisticEntriesFor, verticalScaleForColumns } = railroadPages;
 
 test("railroad relationships resolve navigable predecessor and successor records", () => {
   const railroads = [
@@ -142,4 +142,12 @@ test("railroad narratives support multiple historical overview paragraphs", () =
 test("paint scheme headings omit an unsupplied category", () => {
   assert.equal(paintSchemeEyebrow({ periodLabel: "1926–1941" }), "1926–1941");
   assert.equal(paintSchemeEyebrow({ periodLabel: "1941–1962", category: "Passenger" }), "1941–1962 · Passenger");
+});
+
+test("paint scheme galleries expose their optional introductory copy", () => {
+  assert.equal(
+    paintSchemesIntroText({ paintSchemesIntro: "Railroad-specific context." }),
+    "Railroad-specific context.",
+  );
+  assert.equal(paintSchemesIntroText({}), null);
 });
