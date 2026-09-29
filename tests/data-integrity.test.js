@@ -336,7 +336,7 @@ test("FW&D preserves its corporate history and 1940 versus 1972 snapshots", asyn
     "bn-cascade-green-fwd",
   ]);
   assert.deepEqual(fwd.paintSchemes.map(({ startYear }) => startYear), [1940, 1950, 1953, 1967, 1980]);
-  assert.equal(fwd.paintSchemes[1].name, "Grayback F-Unit");
+  assert.equal(fwd.paintSchemes[1].name, "Grayback — Freight");
   assert.deepEqual(fwd.paintSchemes.map(({ representativeLocomotive }) => representativeLocomotive), [
     "EMC E5A #9980A Silver Chief / E5B #9980B Silver Warrior",
     "EMD F7A #750A",
