@@ -27,8 +27,7 @@
     "icc-1964-gcsf-transport-statistics",
     "smu-atsf-e6-12-dallas-1940",
     "sfhms-atsf-diesel-roster",
-    "us-tax-court-atsf-commissioner-1961",
-    "user-supplied-gcsf-statistical-estimates"
+    "us-tax-court-atsf-commissioner-1961"
   ],
   "statistics": {
     "intro": "Two approximate snapshots compare GC&SF at the arrival of a documented series-production Santa Fe road diesel on its territory with its final complete year as a separate corporation.",
@@ -37,13 +36,13 @@
         "year": 1940,
         "label": "First Series-Production Diesel",
         "date": "1940",
-        "sourceIds": ["tsha-gulf-colorado-santa-fe", "icc-1940-gcsf-statistics", "tsl-gcsf-annual-report-index", "smu-atsf-e6-12-dallas-1940", "us-tax-court-atsf-commissioner-1961", "user-supplied-gcsf-statistical-estimates"],
+        "sourceIds": ["tsha-gulf-colorado-santa-fe", "icc-1940-gcsf-statistics", "tsl-gcsf-annual-report-index", "smu-atsf-e6-12-dallas-1940", "us-tax-court-atsf-commissioner-1961"],
         "metrics": {
           "routeMiles": { "value": "~2,125", "label": "Route miles", "note": "Estimate: 1,927 miles reported in 1933 + the 215-mile Fort Worth & Rio Grande lease − the 17-mile 1937 abandonment." },
-          "employees": { "value": "~7,000", "note": "User-supplied rounded estimate with no independently verified derivation; no carrier-specific 1940 average-employment count has been verified in the consolidated ATSF statistical return." },
+          "employees": { "value": "~7,000", "note": "Project estimate: rounded figure with no independently verified derivation; no carrier-specific 1940 average-employment count has been verified in the surviving GC&SF annual reports." },
           "locomotives": { "value": "~230", "note": "Rounded from the documented 230 locomotives owned in 1933; not a verified 1940 carrier count." },
           "rollingStock": { "value": "~600", "note": "Rounded from the documented 597 owned cars in 1933; not a verified 1940 non-locomotive revenue-equipment count." },
-          "capitalization": { "value": "~$62.0M", "note": "$15.665M capital stock + $42.310M bonds + $4.000M certificate of indebtedness; approximate total $61.975M." }
+          "capitalization": { "value": "~$62.0M", "note": "Project estimate: approximately $15.66M capital stock based on surrounding-period balance-sheet data + documented $42.310M bonds + documented $4.000M certificate of indebtedness; approximate total $61.97M." }
         },
         "context": "ATSF EMD E6 No. 12L was delivered in April 1940 and is photographically documented at Dallas around 1940."
       },
@@ -51,18 +50,18 @@
         "year": 1964,
         "label": "Final Separate Corporate Era",
         "date": "Year ended December 31, 1964",
-        "sourceIds": ["tsha-gulf-colorado-santa-fe", "icc-1964-gcsf-transport-statistics", "tsl-gcsf-annual-report-index", "sfhms-atsf-diesel-roster", "us-tax-court-atsf-commissioner-1961", "user-supplied-gcsf-statistical-estimates"],
+        "sourceIds": ["tsha-gulf-colorado-santa-fe", "icc-1964-gcsf-transport-statistics", "tsl-gcsf-annual-report-index", "sfhms-atsf-diesel-roster", "us-tax-court-atsf-commissioner-1961"],
         "metrics": {
-          "routeMiles": { "value": "~1,957", "label": "Route miles", "note": "Estimate: 1,991 miles reported in 1962 − the 34.42-mile Shawnee–Byars abandonment." },
-          "employees": { "value": "~4,000", "note": "User-supplied rounded estimate with no independently verified derivation; no carrier-specific 1964 average-employment count has been verified in the consolidated ATSF statistical return." },
-          "locomotives": { "value": "~265", "note": "User-supplied operated-equivalent estimate based on GC&SF's roughly 15% share of Santa Fe system mileage; the underlying allocation was not independently reproduced. Equipment was supplied by ATSF as required, so this is not GC&SF-owned equipment." },
-          "rollingStock": { "value": "~12,800", "note": "User-supplied operated-equivalent estimate based on GC&SF's roughly 15% share of Santa Fe system mileage; the underlying allocation was not independently reproduced. Equipment was supplied by ATSF as required, so this is not GC&SF-owned equipment." },
-          "capitalization": { "value": "~$62.3M", "note": "$15.665M capital stock + $46.659M general-income-mortgage bonds; approximate total $62.324M." }
+          "routeMiles": { "value": "~1,991", "label": "Route miles", "note": "Latest verified figure is 1,991 owned and leased miles in 1962; exact 1964 mileage has not yet been extracted." },
+          "employees": { "value": "~4,000", "note": "Project estimate: rounded figure with no independently verified derivation; no carrier-specific 1964 average-employment count has been verified in the surviving GC&SF annual reports." },
+          "locomotives": { "value": "~265", "note": "Project estimate: operated-equivalent based on GC&SF's roughly 15% share of Santa Fe system mileage; the underlying allocation was not independently reproduced. Equipment was supplied by ATSF as required, so this is not GC&SF-owned equipment." },
+          "rollingStock": { "value": "~12,800", "note": "Project estimate: operated-equivalent based on GC&SF's roughly 15% share of Santa Fe system mileage; the underlying allocation was not independently reproduced. Equipment was supplied by ATSF as required, so this is not GC&SF-owned equipment." },
+          "capitalization": { "value": "~$62.3M", "note": "Project estimate: approximately $15.66M capital stock based on surrounding-period balance-sheet data + documented $46.659M general-income-mortgage bonds; approximate total $62.32M." }
         }
       }
     ],
     "notes": [
-      "All displayed values are approximate because the ICC statistical volumes consolidated GC&SF within the ATSF-and-affiliates reporting column.",
+      "Values marked ~ are project estimates where exact carrier-specific figures have not yet been extracted from the surviving GC&SF annual reports.",
       "Capitalization is issued capital stock plus outstanding funded debt and identified obligations; it is not market capitalization.",
       "The 1964 locomotive and rolling-stock figures are operating-equivalent estimates, not separately owned GC&SF fleets."
     ]
