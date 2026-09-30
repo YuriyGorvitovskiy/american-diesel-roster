@@ -191,6 +191,7 @@ dt { color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: u
 .railroad-paint-body > p:not(.eyebrow) { line-height: 1.6; }
 .railroad-paint-locomotive { color: var(--muted); font-weight: 800; }
 .atsf-paint-schemes > p:not(.eyebrow) { max-width: 760px; line-height: 1.6; }
+#paint-schemes { scroll-margin-top: 88px; }
 .atsf-undated-heading { margin: 36px 0 0; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: .78rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
 .atsf-paint-image { display: grid; aspect-ratio: 16 / 10; place-items: center; background: #eeeae1; }
 .atsf-paint-image > span { color: var(--muted); font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }

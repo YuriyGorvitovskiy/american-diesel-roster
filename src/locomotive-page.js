@@ -1,4 +1,4 @@
-import { loadData, findDanglingReferences } from "./data.js?v=et44ach-3674-3";
+import { loadData, findDanglingReferences, localServerHelp } from "./data.js?v=gcsf-company-page-1";
 import { buildPrototypeDetail, formatPrototypeName, prototypePageHeading } from "./model.js?v=preorder-details-1";
 import { manufacturerViewForPrototype, parsePrototypeId, renderNavigation } from "./navigation.js";
 import { renderDetails } from "./details.js?v=ongoing-1";
@@ -33,7 +33,7 @@ function renderError(main) {
 
 function renderLoadError(main) {
   const error = document.createElement("p"); error.className = "load-error";
-  error.textContent = "Unable to load roster data. Start a local server from the repository root (for example: python3 -m http.server 8000) and reload this page.";
+  error.textContent = localServerHelp();
   main.replaceChildren(error);
 }
 

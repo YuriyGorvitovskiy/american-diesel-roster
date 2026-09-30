@@ -1,1 +1,74 @@
-{"id":"gcsf","slug":"gcsf","name":"Gulf, Colorado & Santa Fe Railway","reportingMarks":["GC&SF"],"startYear":1873,"endYear":1965,"type":"major-regional","predecessors":[],"successor":"santa-fe","parentSystem":"santa-fe","description":"Major Santa Fe subsidiary in Texas. Keep it distinct even where equipment was closely integrated with the Santa Fe system.","statistics":null,"paintSchemes":[],"sources":[]}
+{
+  "id": "gcsf",
+  "slug": "gcsf",
+  "name": "Gulf, Colorado & Santa Fe Railway",
+  "reportingMarks": ["GC&SF"],
+  "startYear": 1873,
+  "endYear": 1965,
+  "type": "major-regional",
+  "predecessors": [],
+  "successor": "santa-fe",
+  "parentSystem": "santa-fe",
+  "description": "Gulf, Colorado & Santa Fe Railway linked Galveston with the Texas interior and became Santa Fe's principal operating subsidiary in Texas. Controlled by the Atchison, Topeka & Santa Fe from 1886, GC&SF remained a legally separate Class I railroad until its merger into ATSF on August 1, 1965.",
+  "history": [
+    "Gulf, Colorado & Santa Fe Railway was chartered on May 28, 1873, by Galveston interests with $2,000,000 in authorized capital to build into the Texas interior without passing through Houston and ultimately toward Santa Fe, New Mexico Territory. Construction began May 1, 1875, and reached Richmond, 63 miles from Galveston, by 1879. George Sealy purchased the railroad at foreclosure on April 15, 1879, to satisfy a $250,000 deed of trust; it was reorganized under the original charter four days later. Construction resumed in 1880, and by the end of 1881 GC&SF had built 291 miles between Richmond and Fort Worth. Acquisitions and new branches followed, and the railroad was operating nearly 700 miles by the end of 1885.",
+    "In March 1886, George Sealy and Santa Fe president William B. Strong agreed that the Atchison, Topeka & Santa Fe would acquire control after GC&SF completed a 1,000-mile system, including routes from Fort Worth to Purcell, Dallas to Paris, and Cleburne to Weatherford. GC&SF connected with the Santa Fe system at Purcell on April 27, 1887, but remained a separate corporation and operating organization. The Ballinger–San Angelo extension opened in 1888, the Lometa–Eden branch followed in 1911, and Santa Fe subsequently placed several affiliated Texas and Louisiana railroads under GC&SF operation.",
+    "Santa Fe acquired the Fort Worth & Rio Grande Railway between Fort Worth and Menard in 1937 and leased it to GC&SF. Santa Fe EMD E6 No. 12L, delivered in April 1940 and photographed at Dallas around that year, provides a documented series-production road diesel operating on GC&SF territory. On December 31, 1948, most Santa Fe-controlled companies previously leased to GC&SF—including the former Fort Worth & Rio Grande and several East Texas properties—were merged into GC&SF; Gulf & Inter-State and the Pecos & Northern Texas route were exceptions.",
+    "GC&SF opened the 49-mile Sanger–Garland line in 1955, gaining another entrance into Dallas. It absorbed the Beaumont Wharf & Terminal Company and Union Passenger Depot Company of Galveston on June 30, 1957, and the Fort Worth Union Passenger Station Company on September 2, 1960. Although Santa Fe supplied equipment as required during this final era, GC&SF remained a separate corporation through 1964 and was merged into the Atchison, Topeka & Santa Fe Railway on August 1, 1965."
+  ],
+  "mergerYear": 1965,
+  "sourceIds": [
+    "tsha-gulf-colorado-santa-fe",
+    "sfhms-gcsf-charter",
+    "sfhms-early-texas-railroads",
+    "tsl-gcsf-annual-report-index",
+    "kshs-gcsf-corporate-files",
+    "icc-1940-gcsf-statistics",
+    "icc-1964-gcsf-transport-statistics",
+    "smu-atsf-e6-12-dallas-1940",
+    "sfhms-atsf-diesel-roster",
+    "us-tax-court-atsf-commissioner-1961",
+    "user-supplied-gcsf-statistical-estimates"
+  ],
+  "statistics": {
+    "intro": "Two approximate snapshots compare GC&SF at the arrival of a documented series-production Santa Fe road diesel on its territory with its final complete year as a separate corporation.",
+    "snapshots": [
+      {
+        "year": 1940,
+        "label": "First Series-Production Diesel",
+        "date": "1940",
+        "sourceIds": ["tsha-gulf-colorado-santa-fe", "icc-1940-gcsf-statistics", "tsl-gcsf-annual-report-index", "smu-atsf-e6-12-dallas-1940", "us-tax-court-atsf-commissioner-1961", "user-supplied-gcsf-statistical-estimates"],
+        "metrics": {
+          "routeMiles": { "value": "~2,125", "label": "Route miles", "note": "Estimate: 1,927 miles reported in 1933 + the 215-mile Fort Worth & Rio Grande lease − the 17-mile 1937 abandonment." },
+          "employees": { "value": "~7,000", "note": "User-supplied rounded estimate with no independently verified derivation; no carrier-specific 1940 average-employment count has been verified in the consolidated ATSF statistical return." },
+          "locomotives": { "value": "~230", "note": "Rounded from the documented 230 locomotives owned in 1933; not a verified 1940 carrier count." },
+          "rollingStock": { "value": "~600", "note": "Rounded from the documented 597 owned cars in 1933; not a verified 1940 non-locomotive revenue-equipment count." },
+          "capitalization": { "value": "~$62.0M", "note": "$15.665M capital stock + $42.310M bonds + $4.000M certificate of indebtedness; approximate total $61.975M." }
+        },
+        "context": "ATSF EMD E6 No. 12L was delivered in April 1940 and is photographically documented at Dallas around 1940."
+      },
+      {
+        "year": 1964,
+        "label": "Final Separate Corporate Era",
+        "date": "Year ended December 31, 1964",
+        "sourceIds": ["tsha-gulf-colorado-santa-fe", "icc-1964-gcsf-transport-statistics", "tsl-gcsf-annual-report-index", "sfhms-atsf-diesel-roster", "us-tax-court-atsf-commissioner-1961", "user-supplied-gcsf-statistical-estimates"],
+        "metrics": {
+          "routeMiles": { "value": "~1,957", "label": "Route miles", "note": "Estimate: 1,991 miles reported in 1962 − the 34.42-mile Shawnee–Byars abandonment." },
+          "employees": { "value": "~4,000", "note": "User-supplied rounded estimate with no independently verified derivation; no carrier-specific 1964 average-employment count has been verified in the consolidated ATSF statistical return." },
+          "locomotives": { "value": "~265", "note": "User-supplied operated-equivalent estimate based on GC&SF's roughly 15% share of Santa Fe system mileage; the underlying allocation was not independently reproduced. Equipment was supplied by ATSF as required, so this is not GC&SF-owned equipment." },
+          "rollingStock": { "value": "~12,800", "note": "User-supplied operated-equivalent estimate based on GC&SF's roughly 15% share of Santa Fe system mileage; the underlying allocation was not independently reproduced. Equipment was supplied by ATSF as required, so this is not GC&SF-owned equipment." },
+          "capitalization": { "value": "~$62.3M", "note": "$15.665M capital stock + $46.659M general-income-mortgage bonds; approximate total $62.324M." }
+        }
+      }
+    ],
+    "notes": [
+      "All displayed values are approximate because the ICC statistical volumes consolidated GC&SF within the ATSF-and-affiliates reporting column.",
+      "Capitalization is issued capital stock plus outstanding funded debt and identified obligations; it is not market capitalization.",
+      "The 1964 locomotive and rolling-stock figures are operating-equivalent estimates, not separately owned GC&SF fleets."
+    ]
+  },
+  "paintSchemesIntro": "GC&SF did not maintain a distinct diesel locomotive identity during the Santa Fe era. Diesel locomotives operating over GC&SF lines were part of the Santa Fe system fleet and carried standard Santa Fe paint schemes and lettering.",
+  "paintSchemesReference": "santa-fe",
+  "paintSchemes": [],
+  "sources": []
+}

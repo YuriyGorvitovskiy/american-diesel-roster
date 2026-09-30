@@ -1,4 +1,4 @@
-import { railroadUrl } from "./navigation.js?v=railroad-relationships-1";
+import { railroadSectionUrl, railroadUrl } from "./navigation.js?v=gcsf-paint-reference-1";
 import { useArchiveOnError } from "./image-archive.js";
 
 function railroadYears(railroad) {
@@ -242,6 +242,11 @@ export function paintSchemesIntroText(railroad) {
   return railroad.paintSchemesIntro || null;
 }
 
+export function paintSchemesReferenceFor(railroad, railroads) {
+  const target = railroads.find(({ id }) => id === railroad.paintSchemesReference);
+  return target ? { railroad: target, href: railroadSectionUrl(target.slug, "paint-schemes") } : null;
+}
+
 function renderStatistics(railroad, sources) {
   const article = document.createElement("article");
   article.className = "railroad-statistics";
@@ -332,12 +337,26 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
   appendRelationshipValue(relationshipArticle.querySelector(".railroad-successor"), resolved.successor ? [resolved.successor] : [], "Final company", onOpenRailroad);
   const statistics = renderStatistics(railroad, sources);
   relationships.append(relationshipArticle, statistics);
-  const schemes = document.createElement("article"); schemes.className = "railroad-schemes";
+  const schemes = document.createElement("article"); schemes.className = "railroad-schemes"; schemes.id = "paint-schemes";
   schemes.innerHTML = `<p class="eyebrow">Visual identity</p><h2>${railroad.preDiesel ? "Pre-diesel railroad" : "Paint schemes"}</h2>`;
   const paintSchemesIntro = paintSchemesIntroText(railroad);
   if (paintSchemesIntro) {
     const intro = document.createElement("p"); intro.textContent = paintSchemesIntro;
     schemes.append(intro);
+  }
+  const paintSchemesReference = paintSchemesReferenceFor(railroad, railroads);
+  if (paintSchemesReference) {
+    const reference = document.createElement("p");
+    reference.append("See the ");
+    const link = document.createElement("a");
+    link.href = paintSchemesReference.href;
+    link.textContent = paintSchemesReference.railroad.name;
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      onOpenRailroad(paintSchemesReference.railroad, "paint-schemes");
+    });
+    reference.append(link, " page for diesel paint schemes.");
+    schemes.append(reference);
   }
   if (railroad.id === "santa-fe") {
     schemes.classList.add("atsf-paint-schemes");
@@ -476,7 +495,7 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
       const item = document.createElement("li"); item.textContent = name; list.append(item);
     }
     schemes.append(list);
-  } else {
+  } else if (!paintSchemesReference) {
     const note = document.createElement("p"); note.className = "muted";
     note.textContent = "Paint-scheme artwork will be supplied separately.";
     schemes.append(note);

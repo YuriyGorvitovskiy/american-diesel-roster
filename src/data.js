@@ -4,8 +4,12 @@ const paths = {
   orders: "/data/orders.json?v=et44ach-3674-2",
   railroadIndex: "/data/railroads/index.json?v=bnsf-company-preview-1",
   historicalLocomotives: "/data/historical-locomotives.json?v=et44ach-3674-3",
-  sources: "/data/sources.json?v=bnsf-history-corrections-1",
+  sources: "/data/sources.json?v=gcsf-company-page-1",
 };
+
+export function localServerHelp() {
+  return "Unable to load roster data. Run npm start from the repository root and reload this page.";
+}
 
 export async function loadData() {
   const entries = await Promise.all(Object.entries(paths).map(async ([key, path]) => {
@@ -16,7 +20,7 @@ export async function loadData() {
   }));
   const data = Object.fromEntries(entries);
   const railroads = await Promise.all(data.railroadIndex.map(async (id) => {
-    const response = await fetch(`/data/railroads/${id}.json?v=bnsf-history-corrections-1`);
+    const response = await fetch(`/data/railroads/${id}.json?v=gcsf-paint-reference-1`);
     if (!response.ok) throw new Error(`/data/railroads/${id}.json: HTTP ${response.status}`);
     return response.json();
   }));

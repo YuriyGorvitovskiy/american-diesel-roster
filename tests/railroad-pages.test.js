@@ -151,3 +151,15 @@ test("paint scheme galleries expose their optional introductory copy", () => {
   );
   assert.equal(paintSchemesIntroText({}), null);
 });
+
+test("paint scheme references resolve a railroad and its section link", () => {
+  const reference = railroadPages.paintSchemesReferenceFor?.(
+    { paintSchemesReference: "santa-fe" },
+    [{ id: "santa-fe", slug: "atsf", name: "Atchison, Topeka & Santa Fe Railway" }],
+  );
+
+  assert.deepEqual(reference, {
+    railroad: { id: "santa-fe", slug: "atsf", name: "Atchison, Topeka & Santa Fe Railway" },
+    href: "/railroads/atsf#paint-schemes",
+  });
+});
