@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import {
+import * as navigation from "../src/navigation.js";
+
+const {
   locomotiveUrl,
   railroadUrl,
   navigationItems,
@@ -9,7 +11,7 @@ import {
   parsePrototypeId,
   manufacturerViewForPrototype,
   prototypesForManufacturer,
-} from "../src/navigation.js";
+} = navigation;
 
 test("unknown and missing views resolve to the separate home view", () => {
   assert.equal(normalizeView(null), "home");
@@ -45,4 +47,24 @@ test("detail URLs encode and parse stable prototype IDs", () => {
 test("railroad URLs use bookmarkable slugs", () => {
   assert.equal(railroadUrl("oregon-trunk"), "/railroads/oregon-trunk");
   assert.equal(railroadUrl("name with spaces"), "/railroads/name%20with%20spaces");
+});
+
+test("railroad section URLs preserve a bookmarkable paint-scheme target", () => {
+  assert.equal(
+    navigation.railroadSectionUrl?.("atsf", "paint-schemes"),
+    "/railroads/atsf#paint-schemes",
+  );
+});
+
+test("hash navigation scrolls the requested section into view", () => {
+  const calls = [];
+  const root = {
+    getElementById(id) {
+      assert.equal(id, "paint-schemes");
+      return { scrollIntoView: (options) => calls.push(options) };
+    },
+  };
+
+  assert.equal(navigation.scrollToHash?.("#paint-schemes", root), true);
+  assert.deepEqual(calls, [{ behavior: "smooth", block: "start" }]);
 });

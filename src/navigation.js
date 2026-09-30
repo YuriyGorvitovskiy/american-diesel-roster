@@ -23,6 +23,18 @@ export function railroadUrl(slug) {
   return `/railroads/${encodeURIComponent(slug)}`;
 }
 
+export function railroadSectionUrl(slug, sectionId) {
+  return `${railroadUrl(slug)}#${encodeURIComponent(sectionId)}`;
+}
+
+export function scrollToHash(hash, root = globalThis.document) {
+  const sectionId = decodeURIComponent(hash.replace(/^#/, ""));
+  const section = sectionId ? root?.getElementById(sectionId) : null;
+  if (!section) return false;
+  section.scrollIntoView({ behavior: "smooth", block: "start" });
+  return true;
+}
+
 export function parsePrototypeId(search) {
   return new URLSearchParams(search).get("id");
 }

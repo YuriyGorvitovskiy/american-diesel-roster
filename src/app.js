@@ -1,11 +1,11 @@
-import { loadData, findDanglingReferences } from "./data.js?v=bnsf-routes-13";
+import { loadData, findDanglingReferences, localServerHelp } from "./data.js?v=gcsf-paint-reference-1";
 import { buildRosterRows, derivePrototypeStatus } from "./model.js?v=order-thumbnails-1";
-import { normalizeView, prototypesForManufacturer, railroadUrl, renderNavigation } from "./navigation.js?v=railroad-relationships-1";
+import { normalizeView, prototypesForManufacturer, railroadSectionUrl, railroadUrl, renderNavigation, scrollToHash } from "./navigation.js?v=gcsf-paint-reference-1";
 import { renderRoster } from "./roster.js?v=order-thumbnails-1";
 import { renderTree } from "./tree.js?v=ge-tree-11";
 import { renderAlcoPrototype } from "./alco-prototype.js?v=premerge-2";
 import { renderManufacturerPrototype } from "./manufacturer-prototype.js?v=premerge-4";
-import { renderBnsfGenealogy, renderRailroadPage } from "./railroad-pages.js?v=bnsf-company-1";
+import { renderBnsfGenealogy, renderRailroadPage } from "./railroad-pages.js?v=gcsf-paint-reference-1";
 
 function heading(eyebrow, title, copy) {
   const wrapper = document.createElement("div"); wrapper.className = "section-heading";
@@ -59,15 +59,19 @@ function renderBnsf(main, data) {
     renderFooterLegend("bnsf", true);
     renderRailroadPage(main, railroad, data.railroads, showRailroad, data.sources);
   };
-  const showRailroad = (railroad) => {
-    history.pushState({}, "", railroadUrl(railroad.slug));
+  const showRailroad = (railroad, sectionId = null) => {
+    history.pushState({}, "", sectionId ? railroadSectionUrl(railroad.slug, sectionId) : railroadUrl(railroad.slug));
     renderRailroad(railroad);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (sectionId) scrollToHash(`#${sectionId}`);
+    else window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const renderCurrentLocation = () => {
     const slug = window.location.pathname.match(/^\/railroads\/([^/]+)\/?$/)?.[1];
     const selected = slug ? data.railroads.find((railroad) => railroad.slug === decodeURIComponent(slug)) : null;
-    if (selected) renderRailroad(selected);
+    if (selected) {
+      renderRailroad(selected);
+      if (window.location.hash) scrollToHash(window.location.hash);
+    }
     else renderTree();
   };
   window.addEventListener("popstate", renderCurrentLocation);
@@ -76,7 +80,7 @@ function renderBnsf(main, data) {
 
 function renderLoadError(main) {
   const error = document.createElement("p"); error.className = "load-error";
-  error.textContent = "Unable to load roster data. Start a local server from the repository root (for example: python3 -m http.server 8000) and reload this page.";
+  error.textContent = localServerHelp();
   main.replaceChildren(error);
 }
 

@@ -30,7 +30,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 157);
+  assert.equal(data.sources.length, 167);
   assert.equal(
     data.railroads.flatMap(({ paintSchemes = [] }) => paintSchemes).some((scheme) => scheme && typeof scheme === "object" && "paintIdentity" in scheme),
     false,
@@ -465,6 +465,65 @@ test("C&S preserves its corporate history and supplied 1940 versus late-1970s sn
     "rrpicturearchives-cs-828-chinese-red",
     "railpictures-cs-903-cascade-green",
   ]);
+});
+
+test("GC&SF preserves its separate corporate history and labels project estimates", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const gcsf = data.railroads.find(({ id }) => id === "gcsf");
+  const [early, late] = gcsf.statistics.snapshots;
+  const metricKeys = ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"];
+
+  assert.equal(gcsf.startYear, 1873);
+  assert.equal(gcsf.endYear, 1965);
+  assert.equal(gcsf.mergerYear, 1965);
+  assert.equal(gcsf.parentSystem, "santa-fe");
+  assert.equal(gcsf.successor, "santa-fe");
+  assert.equal(gcsf.history.length, 4);
+  assert.match(gcsf.history[0], /May 28, 1873.*May 1, 1875.*Richmond.*George Sealy.*April 15, 1879.*291 miles.*Fort Worth/);
+  assert.match(gcsf.history[1], /March 1886.*William B\. Strong.*Purcell.*April 27, 1887.*separate corporation.*Lometa–Eden/);
+  assert.match(gcsf.history[2], /Fort Worth & Rio Grande.*1937.*E6 No\. 12L.*April 1940.*December 31, 1948/);
+  assert.match(gcsf.history[3], /Sanger–Garland.*1955.*June 30, 1957.*September 2, 1960.*August 1, 1965/);
+  assert.deepEqual([early.year, early.label, early.date], [1940, "First Series-Production Diesel", "1940"]);
+  assert.deepEqual([late.year, late.label, late.date], [1964, "Final Separate Corporate Era", "Year ended December 31, 1964"]);
+  assert.deepEqual(Object.keys(early.metrics), metricKeys);
+  assert.deepEqual(Object.keys(late.metrics), metricKeys);
+  assert.deepEqual(metricKeys.map((key) => early.metrics[key].value), ["~2,125", "~7,000", "~230", "~600", "~$62.0M"]);
+  assert.deepEqual(metricKeys.map((key) => late.metrics[key].value), ["~1,991", "~4,000", "~265", "~12,800", "~$62.3M"]);
+  assert.match(early.metrics.routeMiles.note, /1,927 miles.*1933.*215-mile Fort Worth & Rio Grande lease.*17-mile 1937 abandonment/i);
+  assert.match(early.metrics.employees.note, /project estimate.*no independently verified derivation.*carrier-specific 1940 average/i);
+  assert.match(early.metrics.locomotives.note, /rounded from.*230 locomotives.*1933/i);
+  assert.match(early.metrics.rollingStock.note, /rounded from.*597 owned cars.*1933/i);
+  assert.match(early.metrics.capitalization.note, /approximately \$15\.66M capital stock based on surrounding-period balance-sheet data.*documented \$42\.310M bonds.*documented \$4\.000M certificate of indebtedness/i);
+  assert.equal(late.metrics.routeMiles.note, "Latest verified figure is 1,991 owned and leased miles in 1962; exact 1964 mileage has not yet been extracted.");
+  assert.match(late.metrics.employees.note, /project estimate.*no independently verified derivation.*carrier-specific 1964 average/i);
+  assert.match(late.metrics.locomotives.note, /project estimate.*operated-equivalent.*15% share of Santa Fe system mileage.*not independently reproduced.*supplied by ATSF as required.*not GC&SF-owned equipment/i);
+  assert.match(late.metrics.rollingStock.note, /project estimate.*operated-equivalent.*15% share of Santa Fe system mileage.*not independently reproduced.*supplied by ATSF as required.*not GC&SF-owned equipment/i);
+  assert.match(late.metrics.capitalization.note, /approximately \$15\.66M capital stock based on surrounding-period balance-sheet data.*documented \$46\.659M general-income-mortgage bonds/i);
+  assert.deepEqual(early.sourceIds, ["tsha-gulf-colorado-santa-fe", "icc-1940-gcsf-statistics", "tsl-gcsf-annual-report-index", "smu-atsf-e6-12-dallas-1940", "us-tax-court-atsf-commissioner-1961"]);
+  assert.deepEqual(late.sourceIds, ["tsha-gulf-colorado-santa-fe", "icc-1964-gcsf-transport-statistics", "tsl-gcsf-annual-report-index", "sfhms-atsf-diesel-roster", "us-tax-court-atsf-commissioner-1961"]);
+  assert.equal(
+    gcsf.statistics.notes[0],
+    "Values marked ~ are project estimates where exact carrier-specific figures have not yet been extracted from the surviving GC&SF annual reports.",
+  );
+  assert.deepEqual(gcsf.paintSchemes, []);
+  assert.equal(
+    gcsf.paintSchemesIntro,
+    "GC&SF did not maintain a distinct diesel locomotive identity during the Santa Fe era. Diesel locomotives operating over GC&SF lines were part of the Santa Fe system fleet and carried standard Santa Fe paint schemes and lettering.",
+  );
+  assert.equal(gcsf.paintSchemesReference, "santa-fe");
+  assert.deepEqual(gcsf.sourceIds, [
+    "tsha-gulf-colorado-santa-fe",
+    "sfhms-gcsf-charter",
+    "sfhms-early-texas-railroads",
+    "tsl-gcsf-annual-report-index",
+    "kshs-gcsf-corporate-files",
+    "icc-1940-gcsf-statistics",
+    "icc-1964-gcsf-transport-statistics",
+    "smu-atsf-e6-12-dallas-1940",
+    "sfhms-atsf-diesel-roster",
+    "us-tax-court-atsf-commissioner-1961",
+  ]);
+  assert.equal(data.sources.some(({ id }) => id === "user-supplied-gcsf-statistical-estimates"), false);
 });
 
 test("Northern Pacific paint cards preserve the accepted order, artwork, and scheme-local provenance", async () => {
