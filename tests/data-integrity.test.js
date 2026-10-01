@@ -30,7 +30,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 171);
+  assert.equal(data.sources.length, 172);
   assert.equal(
     data.railroads.flatMap(({ paintSchemes = [] }) => paintSchemes).some((scheme) => scheme && typeof scheme === "object" && "paintIdentity" in scheme),
     false,
@@ -929,7 +929,7 @@ test("P&SF preserves supplied operating snapshots and equipment context", async 
   assert.match(psf.history.join(" "), /August 1, 1965/);
   assert.match(psf.statistics.notes.join(" "), /owned.*operated/i);
   assert.equal(psf.paintSchemesReference, "santa-fe");
-  assert.equal(psf.sourceIds.length, 4);
+  assert.equal(psf.sourceIds.length, 5);
   assert.deepEqual(psf.predecessors, []);
   assert.match(psf.history[0], /one of the two major Santa Fe operating subsidiaries in Texas/);
   assert.match(psf.history[0], /chartered in 1886 as the Southern Kansas Railway Company of Texas/);

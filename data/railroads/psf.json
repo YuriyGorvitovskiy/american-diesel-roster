@@ -11,7 +11,7 @@
   "predecessors": [],
   "successor": "santa-fe",
   "parentSystem": "santa-fe",
-  "description": "Panhandle & Santa Fe Railway was a principal Santa Fe operating subsidiary in Texas, serving the Texas Panhandle, West Texas and adjoining territory. It remained a separate corporate operating company through the diesel era until its merger into ATSF on August 1, 1965.",
+  "description": "Panhandle & Santa Fe Railway was one of the two major Santa Fe operating subsidiaries in Texas, serving the Texas Panhandle, West Texas and adjoining territory. It remained a separate corporate operating company through the diesel era until its merger into ATSF on August 1, 1965.",
   "mergerYear": 1965,
   "statistics": {
     "intro": "Two snapshots compare P&SF in the first series-production diesel era with its final full year before absorption into Santa Fe.",
@@ -53,7 +53,8 @@
           "tsha-panhandle-santa-fe",
           "tsl-psf-annual-report-index",
           "atsf-1938-system-timetable",
-          "moodys-psf-system-data"
+          "moodys-psf-system-data",
+          "atsf-1961-system-timetable"
         ],
         "metrics": {
           "routeMiles": {
@@ -91,7 +92,8 @@
     "tsha-panhandle-santa-fe",
     "tsl-psf-annual-report-index",
     "atsf-1938-system-timetable",
-    "moodys-psf-system-data"
+    "moodys-psf-system-data",
+    "atsf-1961-system-timetable"
   ],
   "paintSchemesIntro": "Diesel locomotives operating on P&SF lines were supplied by the Santa Fe system and carried Santa Fe paint schemes. See the Santa Fe page for the shared system paint history.",
   "paintSchemesReference": "santa-fe"
