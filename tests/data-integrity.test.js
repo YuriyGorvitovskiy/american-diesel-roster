@@ -30,7 +30,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 167);
+  assert.equal(data.sources.length, 171);
   assert.equal(
     data.railroads.flatMap(({ paintSchemes = [] }) => paintSchemes).some((scheme) => scheme && typeof scheme === "object" && "paintIdentity" in scheme),
     false,
@@ -911,4 +911,32 @@ test("images require valid provenance for their storage strategy", async () => {
   assert.ok(errors.some((error) => error.includes("image credit")));
   assert.ok(errors.some((error) => error.includes("remote image requires a sourcePage")));
   assert.ok(errors.some((error) => error.includes("invalid image date")));
+});
+
+test("P&SF preserves supplied operating snapshots and equipment context", async () => {
+  const data = await loadDataFiles(new URL("..", import.meta.url));
+  const psf = data.railroads.find(({ id }) => id === "psf");
+  const keys = ["routeMiles", "employees", "locomotives", "rollingStock", "capitalization"];
+  assert.deepEqual(psf.statistics.snapshots.map(({ year, metrics }) => [year, ...keys.map((key) => metrics[key].value)]), [
+    [1941, "1,879", "≈6,200", "≈200", "≈530", "≈$18.0M"],
+    [1964, "1,888", "≈3,900", "≈256", "≈12,350", "≈$55.0M"],
+  ]);
+  for (const snapshot of psf.statistics.snapshots) {
+    assert.deepEqual(Object.keys(snapshot.metrics), keys);
+    assert.equal(snapshot.metrics.routeMiles.label, "Route miles");
+  }
+  assert.match(psf.history.join(" "), /1948/);
+  assert.match(psf.history.join(" "), /August 1, 1965/);
+  assert.match(psf.statistics.notes.join(" "), /owned.*operated/i);
+  assert.equal(psf.paintSchemesReference, "santa-fe");
+  assert.equal(psf.sourceIds.length, 4);
+  assert.deepEqual(psf.predecessors, []);
+  assert.match(psf.history[0], /one of the two major Santa Fe operating subsidiaries in Texas/);
+  assert.match(psf.history[0], /chartered in 1886 as the Southern Kansas Railway Company of Texas/);
+  assert.match(psf.history[0], /renamed Panhandle & Santa Fe Railway in 1914/);
+  assert.equal(psf.statistics.notes[0], "Route-mile figures use the nearest verified Santa Fe/P&SF mileage references available for the corresponding periods.");
+  assert.equal(psf.statistics.notes.filter((note) => note.startsWith("Values marked ≈")).length, 1);
+  for (const snapshot of psf.statistics.snapshots) {
+    assert.ok(Object.values(snapshot.metrics).every((metric) => metric.note === undefined));
+  }
 });
