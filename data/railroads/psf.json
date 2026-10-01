@@ -1,1 +1,100 @@
-{"id":"psf","slug":"psf","name":"Panhandle & Santa Fe Railway","reportingMarks":["P&SF"],"startYear":1886,"endYear":1965,"type":"major-regional","predecessors":[],"successor":"santa-fe","parentSystem":"santa-fe","description":"Major Santa Fe Texas subsidiary. Its route became an important part of Santa Fe's freight network.","mergerYear":1965,"statistics":null,"paintSchemes":[],"sources":[]}
+{
+  "id": "psf",
+  "slug": "psf",
+  "name": "Panhandle & Santa Fe Railway",
+  "reportingMarks": [
+    "P&SF"
+  ],
+  "startYear": 1886,
+  "endYear": 1965,
+  "type": "major-regional",
+  "predecessors": [],
+  "successor": "santa-fe",
+  "parentSystem": "santa-fe",
+  "description": "Panhandle & Santa Fe Railway was one of the two major Santa Fe operating subsidiaries in Texas, serving the Texas Panhandle, West Texas and adjoining territory. It remained a separate corporate operating company through the diesel era until its merger into ATSF on August 1, 1965.",
+  "mergerYear": 1965,
+  "statistics": {
+    "intro": "Two snapshots compare P&SF in the first series-production diesel era with its final full year before absorption into Santa Fe.",
+    "snapshots": [
+      {
+        "year": 1941,
+        "label": "First Series-Production Diesel Era",
+        "date": "1941",
+        "sourceIds": [
+          "tsha-panhandle-santa-fe",
+          "tsl-psf-annual-report-index",
+          "atsf-1938-system-timetable",
+          "moodys-psf-system-data"
+        ],
+        "metrics": {
+          "routeMiles": {
+            "value": "1,879",
+            "label": "Route miles"
+          },
+          "employees": {
+            "value": "≈6,200"
+          },
+          "locomotives": {
+            "value": "≈200"
+          },
+          "rollingStock": {
+            "value": "≈530"
+          },
+          "capitalization": {
+            "value": "≈$18.0M"
+          }
+        }
+      },
+      {
+        "year": 1964,
+        "label": "Final Full Year Before Absorption",
+        "date": "1964",
+        "sourceIds": [
+          "tsha-panhandle-santa-fe",
+          "tsl-psf-annual-report-index",
+          "atsf-1938-system-timetable",
+          "moodys-psf-system-data",
+          "atsf-1961-system-timetable"
+        ],
+        "metrics": {
+          "routeMiles": {
+            "value": "1,888",
+            "label": "Route miles"
+          },
+          "employees": {
+            "value": "≈3,900"
+          },
+          "locomotives": {
+            "value": "≈256"
+          },
+          "rollingStock": {
+            "value": "≈12,350"
+          },
+          "capitalization": {
+            "value": "≈$55.0M"
+          }
+        }
+      }
+    ],
+    "notes": [
+      "Route-mile figures use the nearest verified Santa Fe/P&SF mileage references available for the corresponding periods.",
+      "Values marked ≈ are working estimates supplied for this project, derived from contemporary operating scale and comparable Santa Fe-system data; they are not direct carrier-specific counts.",
+      "P&SF was a large operating railroad, but much of its equipment was supplied or owned by the Santa Fe system. Low or zero P&SF-owned-equipment figures do not describe the equipment actually operated on P&SF lines. The locomotive and non-locomotive rolling-stock values here remain the supplied estimates."
+    ]
+  },
+  "paintSchemes": [],
+  "sources": [],
+  "history": [
+    "Panhandle & Santa Fe was one of the two major Santa Fe operating subsidiaries in Texas. It was chartered in 1886 as the Southern Kansas Railway Company of Texas and renamed Panhandle & Santa Fe Railway in 1914. It operated a large network across the Texas Panhandle, West Texas and adjoining territory. Much of that network initially ran through leased subsidiaries. In 1948, most affiliated Texas properties were consolidated into P&SF, with the Kansas City, Mexico & Orient Railway Company of Texas and Rio Grande, El Paso & Santa Fe remaining exceptions.",
+    "P&SF remained a separate corporate operating company through the diesel era, using equipment supplied by the Santa Fe system. It merged into the Atchison, Topeka & Santa Fe Railway on August 1, 1965, placing its network directly in the Santa Fe branch of today's BNSF genealogy."
+  ],
+  "sourceIds": [
+    "tsha-panhandle-santa-fe",
+    "tsl-psf-annual-report-index",
+    "atsf-1938-system-timetable",
+    "moodys-psf-system-data",
+    "atsf-1961-system-timetable"
+  ],
+  "paintSchemesIntro": "Diesel locomotives operating on P&SF lines were supplied by the Santa Fe system and carried Santa Fe paint schemes. See the Santa Fe page for the shared system paint history.",
+  "paintSchemesReference": "santa-fe"
+}
