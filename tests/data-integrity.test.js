@@ -327,49 +327,12 @@ test("FW&D preserves its corporate history and 1940 versus 1972 snapshots", asyn
   assert.match(early.metrics.rollingStock.note, /1,415 freight.*66 passenger.*excludes 222 company-service/);
   assert.match(late.metrics.employees.note, /Schedules 561A and 561B.*not included/);
   assert.match(late.metrics.rollingStock.note, /1,493 freight-train cars.*27 cabooses.*101 company-service/);
-  assert.match(fwd.paintSchemesIntro, /did not maintain a separate diesel-era paint program.*Burlington-system.*Burlington Northern schemes/);
-  assert.deepEqual(fwd.paintSchemes.map(({ id }) => id), [
-    "texas-zephyr-passenger-silver",
-    "greyback-f-unit",
-    "blackbird-everywhere-west",
-    "chinese-red-switcher",
-    "bn-cascade-green-fwd",
-  ]);
-  assert.deepEqual(fwd.paintSchemes.map(({ startYear }) => startYear), [1940, 1950, 1953, 1967, 1980]);
-  assert.equal(fwd.paintSchemes[1].name, "Grayback — Freight");
-  assert.deepEqual(fwd.paintSchemes.map(({ representativeLocomotive }) => representativeLocomotive), [
-    "EMC E5A #9980A Silver Chief / E5B #9980B Silver Warrior",
-    "EMD F7A #750A",
-    "EMD SD7 #855",
-    "EMD NW2 #605",
-    "EMD GP38-2 #2150",
-  ]);
-  assert.deepEqual(fwd.paintSchemes.map(({ photo }) => photo.localPath ?? null), [
-    "/images/railroads/fwd-e5a-9980a-texas-zephyr-silver.png",
-    "/images/railroads/fwd-f7a-750a-greyback.png",
-    "/images/railroads/fwd-sd7-855-blackbird.png",
-    null,
-    null,
-  ]);
-  assert.deepEqual(fwd.paintSchemes.slice(0, 3).map(({ photo }) => photo.kind), [
-    "AI-assisted historical color restoration",
-    "AI-assisted historical color restoration",
-    "AI-assisted historical color restoration",
-  ]);
-  assert.match(fwd.paintSchemes[0].photo.caption, /^FW&DC E5A Silver Chief/);
-  assert.equal(fwd.paintSchemes[3].photo.remoteImageUrl, "https://transport.castlegraphics.com/albums/railroad/diesel/fwd/fwd_605_NW2_amarillo_tx_sep30_1972.jpg");
-  assert.equal(fwd.paintSchemes[4].photo.remoteImageUrl, "https://www.railpictures.net/images/d1/4/8/3/7483.1099837380.jpg");
-  assert.match(fwd.paintSchemes[2].description, /SD7.*Everywhere West.*FW&D 855/);
-  assert.doesNotMatch([
-    fwd.paintSchemes[2].representativeLocomotive,
-    fwd.paintSchemes[2].description,
-    fwd.paintSchemes[2].photo.alt,
-    fwd.paintSchemes[2].photo.caption,
-  ].join(" "), /SD9/);
-  assert.match(fwd.paintSchemes[3].description, /unusual.*Chinese Red/i);
-  assert.match(fwd.paintSchemes[3].description, /should not be read as the normal Burlington switcher scheme/i);
-  assert.match(fwd.paintSchemes[3].description, /image shown here is a later 1972 Amarillo view of the same locomotive/i);
-  assert.match(fwd.paintSchemes[4].description, /2150–2154.*standard BN Cascade Green.*1982/);
+  assert.match(fwd.paintSchemesIntro, /generally followed Burlington Route \/ CB&Q paint schemes/);
+  assert.match(fwd.paintSchemesIntro, /small FW&D ownership lettering or reporting marks/);
+  assert.deepEqual(fwd.paintSchemesReferences, ["chicago-burlington-quincy", "burlington-northern"]);
+  assert.match(fwd.paintSchemesIntro, /after 1970, Burlington Northern paint schemes/);
+  assert.deepEqual(fwd.paintSchemes, []);
+  assert.match(fwd.paintSchemesIntro, /SD7 No\. 855.*Burlington Route herald.*Everywhere West.*FW&D 855 ownership lettering/);
   assert.deepEqual(fwd.sourceIds, [
     "tsha-fort-worth-denver-railway",
     "tsha-burlington-system",
@@ -415,41 +378,11 @@ test("C&S preserves its corporate history and supplied 1940 versus late-1970s sn
   assert.match(late.metrics.locomotives.note, /85 owned and used.*134 leased from others.*22 additional units leased to others/);
   assert.match(late.metrics.rollingStock.note, /2,471 freight-train cars.*33 cabooses.*2,163 owned and used.*341 leased from others/);
   assert.match(late.metrics.capitalization.note, /\$48\.0M capital stock.*\$14\.193M funded debt.*\$19\.306M equipment obligations.*\$2\.670M due within one year/);
-  assert.match(cs.paintSchemesIntro, /Burlington-family.*Burlington Northern/i);
-  assert.deepEqual(cs.paintSchemes.map(({ id }) => id), [
-    "passenger-silver-black-whisker",
-    "blackbird",
-    "grayback-freight",
-    "passenger-silver-red-whisker",
-    "chinese-red",
-    "bn-cascade-green",
-  ]);
-  assert.deepEqual(cs.paintSchemes.map(({ representativeLocomotive }) => representativeLocomotive), [
-    "EMD E5A #9953",
-    "EMD SD9 #829",
-    "EMD F3A #703A",
-    "EMD E5A #9950A \"Silver Racer\"",
-    "EMD SD9 #828",
-    "EMD SD40-2 #903",
-  ]);
-  assert.deepEqual(cs.paintSchemes.map(({ startYear }) => startYear), [1940, 1947, 1950, 1958, 1958, 1971]);
-  assert.deepEqual(cs.paintSchemes.map(({ periodLabel }) => periodLabel), [
-    "1940–c.1958",
-    "late 1940s–1970s",
-    "1950–1968",
-    "c.1958–1968",
-    "1958–1970s",
-    "1971–1981",
-  ]);
-  assert.deepEqual(cs.paintSchemes.map(({ photo }) => photo.remoteImageUrl), [
-    "https://s3.amazonaws.com/rrpa_photos/44188/csd9953-1.jpg",
-    "https://www.railpictures.net/images/d2/7/6/7/9767.1701777797.jpg",
-    "https://s3.amazonaws.com/rrpa_photos/106456/S2-219A.jpg",
-    "https://www.american-rails.com/images/60923942847365u1y8206289082709.jpg",
-    "https://www.rrpicturearchives.net/picturefiles/4781/cbq0828.jpg",
-    "https://www.railpictures.net/images/d1/9/8/4/8984.1368238595.jpg",
-  ]);
-  assert.equal(cs.paintSchemes.every(({ photo }) => photo.localPath === undefined), true);
+  assert.match(cs.paintSchemesIntro, /generally followed Burlington Route \/ CB&Q paint schemes/);
+  assert.match(cs.paintSchemesIntro, /small C&S ownership lettering or reporting marks/);
+  assert.deepEqual(cs.paintSchemesReferences, ["chicago-burlington-quincy", "burlington-northern"]);
+  assert.match(cs.paintSchemesIntro, /after 1970, Burlington Northern paint schemes/);
+  assert.deepEqual(cs.paintSchemes, []);
   assert.deepEqual(cs.sourceIds, [
     "time-cs-804-miles-1940",
     "icc-1940-railway-statistics",

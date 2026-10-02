@@ -163,3 +163,19 @@ test("paint scheme references resolve a railroad and its section link", () => {
     href: "/railroads/atsf#paint-schemes",
   });
 });
+
+test("paint scheme references resolve multiple sponsor sections in order", () => {
+  const railroads = [
+    { id: "chicago-burlington-quincy", slug: "cbq" },
+    { id: "burlington-northern", slug: "bn" },
+  ];
+  assert.deepEqual(railroadPages.paintSchemesReferencesFor?.({
+    paintSchemesReferences: railroads.map(({ id }) => id),
+  }, railroads), railroads.map((railroad) => ({
+    railroad, href: `/railroads/${railroad.slug}#paint-schemes`,
+  })));
+  assert.deepEqual(railroadPages.paintSchemesReferencesFor?.({ paintSchemesReference: "burlington-northern" }, railroads), [
+    { railroad: railroads[1], href: "/railroads/bn#paint-schemes" },
+  ]);
+  assert.deepEqual(railroadPages.paintSchemesReferencesFor?.({}, railroads), []);
+});
