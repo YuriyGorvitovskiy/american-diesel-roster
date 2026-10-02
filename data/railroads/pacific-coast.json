@@ -1,1 +1,116 @@
-{"id":"pacific-coast","slug":"pacific-coast","name":"Pacific Coast Railroad Company","startYear":1897,"endYear":1970,"type":"regional","predecessors":[],"successor":"burlington-northern","description":"Part of the corporate consolidation associated with the formation of Burlington Northern. It is not Southern Pacific and remains supported despite its smaller role.","mergerYear":1970,"statistics":null,"paintSchemes":[],"sources":[]}
+{
+  "id": "pacific-coast",
+  "slug": "pacific-coast",
+  "name": "Pacific Coast Railroad Company",
+  "startYear": 1897,
+  "endYear": 1970,
+  "type": "regional",
+  "predecessors": [],
+  "successor": "burlington-northern",
+  "description": "Pacific Coast Railroad Company served Seattle and the coal, mining and lumber communities of King County, Washington. Controlled and operated by Great Northern from 1951, it retained its separate corporate identity until the March 2, 1970 Burlington Northern merger.",
+  "mergerYear": 1970,
+  "statistics": {
+    "intro": "Two snapshots compare the arrival of documented series-production Great Northern diesel power with the final full year before the Burlington Northern merger. Operating-equivalent equipment estimates are distinct from the annual report’s equipment inventory.",
+    "snapshots": [
+      {
+        "year": 1952,
+        "label": "First Series-Production Diesel",
+        "date": "circa 1952",
+        "sourceIds": [
+          "pnra-pacific-coast-history",
+          "pnra-gn-77-seattle-1952",
+          "pnra-gn-77-renton-1953",
+          "black-diamond-history-pacific-coast-acquisition-1951"
+        ],
+        "metrics": {
+          "routeMiles": {
+            "value": "~31",
+            "note": "Approximately 30.6 route miles were reported around 1950; rounded to about 31 miles. Project approximation; the 1951 acquisition report describes approximately 30 miles.",
+            "label": "Route miles"
+          },
+          "employees": {
+            "value": "~120",
+            "note": "Project estimate: approximately 31 route miles × about 4 employees per route mile ≈ 124, rounded to ~120. No direct Pacific Coast count for this snapshot has been verified."
+          },
+          "locomotives": {
+            "value": "~2",
+            "note": "Operating-equivalent project estimate, not PC-owned locomotives. GN SW1 No. 77 is directly documented in Pacific Coast service; additional GN power was supplied as required."
+          },
+          "rollingStock": {
+            "value": "~150",
+            "note": "Operating-equivalent project estimate for the small freight operation; equipment after GN control was supplied or leased rather than a distinct PC-owned operating fleet."
+          },
+          "capitalization": {
+            "value": "~$1.7M",
+            "note": "Proxy only: Great Northern paid $1.7 million for Pacific Coast in 1951. This is acquisition value, not a verified stock-plus-funded-debt capitalization figure."
+          }
+        },
+        "context": "GN SW1 No. 77 is photographically documented in Pacific Coast service at Seattle circa 1952 and Renton circa 1953."
+      },
+      {
+        "year": 1969,
+        "label": "Eve of Burlington Northern",
+        "date": "1969",
+        "sourceIds": [
+          "stb-pacific-coast-1969-annual-report",
+          "us-supreme-court-northern-lines-merger-1970"
+        ],
+        "metrics": {
+          "routeMiles": {
+            "value": "32.03",
+            "note": "1969 annual report, schedule 2202 and item 2216, printed p. 26 (PDF p. 33): 32.03 miles of road from Seattle to Black Diamond. Schedule 2601, printed p. 30, rounds average road mileage to 32. The federal merger opinion’s 32 miles of track is a separate description, not a total-track-mile measurement.",
+            "label": "Route miles"
+          },
+          "employees": {
+            "value": "40",
+            "note": "1969 annual report, schedule 2401, printed p. 28 (PDF p. 35): grand total average number of employees, 40, based on twelve middle-of-month counts."
+          },
+          "locomotives": {
+            "value": "~2",
+            "note": "Operating-equivalent fallback project estimate; motive power was leased from Great Northern. Schedule 2801, printed p. 32 (PDF p. 40), reports no locomotive inventory at year-end. Its instructions exclude units rented from others for less than one year, so this does not establish zero locomotives operated or an exact GN-supplied count."
+          },
+          "rollingStock": {
+            "value": "~100",
+            "note": "Operating-equivalent fallback project estimate; federal evidence states rolling stock was leased from Great Northern. Schedule 2801, printed pp. 32–33 (PDF pp. 40–41), reports no freight, passenger, company-service or floating equipment at year-end; one caboose present at the start of the year was retired. Rentals of less than one year are excluded, so no exact operating-equivalent fleet count is available."
+          },
+          "capitalization": {
+            "value": "$1.145M",
+            "note": "1969 annual report, schedules 690 and 670, printed p. 5B (PDF p. 11): $1,000,000 issued common stock + $145,000 funded debt outstanding = $1,145,000. Balance sheet, printed p. 5 (PDF p. 9), splits that debt into $9,850 due within one year + $135,150 due after one year; both are included. This is not acquisition value or market capitalization."
+          }
+        }
+      }
+    ],
+    "notes": [
+      "Values marked ~ are project estimates or proxies; equipment figures describe operating equivalents, not PC-owned fleets.",
+      "The 1969 report directly supplies road mileage, average employment, issued stock and outstanding funded debt. Its equipment inventory excludes short-term rentals and cannot quantify all GN-supplied power or cars.",
+      "The 1952 acquisition-value proxy and the 1969 stock-plus-funded-debt figure use different bases and are not directly comparable."
+    ]
+  },
+  "paintSchemes": [],
+  "sources": [],
+  "reportingMarks": [
+    "PC"
+  ],
+  "parentSystem": "great-northern",
+  "history": [
+    "Pacific Coast Railroad Company traces its corporate history to the 1897 reorganization following the bankruptcy of the Oregon Improvement Company. The associated Pacific Coast Company converted the Columbia & Puget Sound Railroad to standard gauge; in 1916 that railroad operation became the Pacific Coast Railroad.",
+    "Pacific Coast linked Seattle with coal, mining and lumber communities east of the city in King County, Washington. Abandonment of peripheral branches had reduced the system to roughly 30 route miles by the late 1940s, principally the Seattle–Renton–Maple Valley–Black Diamond line. This was the Washington railroad, distinct from similarly named California railroads.",
+    "Great Northern acquired control of Pacific Coast in 1951 for $1.7 million and assumed operation. Pacific Coast nevertheless remained a separate corporate entity within the Great Northern system. Its 1969 annual report records 32.03 miles of road between Seattle and Black Diamond and an average of 40 employees.",
+    "Under Great Northern control, Pacific Coast dieselized with GN locomotives rather than developing a separately owned or lettered diesel fleet. Photographs document GN EMD SW1 No. 77 at Seattle and Renton circa 1952–1953, ALCO RS2 No. 217 leading a freight at Renton circa 1954, and ALCO RS3 Nos. 228 and 230 there circa 1965. Federal merger-era material states that Pacific Coast rolling stock and motive power were leased from Great Northern. Pacific Coast disappeared as a separate corporation in the March 2, 1970 Burlington Northern merger."
+  ],
+  "paintSchemesIntro": "Pacific Coast Railroad did not develop a distinct diesel locomotive livery during the Great Northern era. Motive power was supplied or leased by Great Northern and retained Great Northern numbers, lettering and paint schemes. Period photographs document GN SW1, RS2 and RS3 locomotives working Pacific Coast trains in standard Great Northern colors. The GN RS3 roster records Nos. 228 and 230 as having worn both Empire Builder and Simplified Empire Builder schemes during their Great Northern careers; period photographs document both locomotives in Pacific Coast service.",
+  "paintSchemesReference": "great-northern",
+  "sourceIds": [
+    "pnra-pacific-coast-history",
+    "pnra-gn-77-seattle-1952",
+    "pnra-gn-77-renton-1953",
+    "pnra-gn-228-renton-1965",
+    "pnra-gn-230-renton-1965",
+    "great-northern-empire-rs3-roster",
+    "gnrhs-paint-schemes",
+    "us-supreme-court-northern-lines-merger-1970",
+    "black-diamond-history-pacific-coast-acquisition-1951",
+    "stb-pacific-coast-1969-annual-report",
+    "pnra-pacific-coast-217-renton-1954"
+  ]
+}
