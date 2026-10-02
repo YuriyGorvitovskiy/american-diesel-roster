@@ -173,7 +173,7 @@ export function validateData({ prototypes = [], items = [], orders = [], railroa
       } else if (!scheme.periodLabel?.trim()) {
         errors.push(`Railroad paint scheme "${scheme.id}" requires a periodLabel when startYear is unknown.`);
       }
-      if (railroad.id === "santa-fe") {
+      if (railroad.id === "santa-fe" || scheme.images?.length) {
         if (scheme.images?.length) {
           for (const image of scheme.images) {
             if (!["historical", "reconstruction"].includes(image.type)) errors.push(`Railroad paint scheme "${scheme.id}" has invalid image type.`);

@@ -1,1 +1,144 @@
-{"id":"atn","slug":"atn","name":"Alabama, Tennessee & Northern Railroad","reportingMarks":["AT&N"],"startYear":1897,"endYear":1971,"type":"regional","predecessors":[],"successor":"frisco","description":"Acquired into the Frisco system. Because it survived into the diesel era, its page supports future locomotive and livery artwork.","statistics":null,"paintSchemes":[],"sources":[]}
+{
+  "id": "atn",
+  "slug": "atn",
+  "name": "Alabama, Tennessee & Northern Railroad",
+  "reportingMarks": [
+    "AT&N"
+  ],
+  "startYear": 1897,
+  "endYear": 1971,
+  "type": "regional",
+  "predecessors": [],
+  "successor": "frisco",
+  "description": "Alabama, Tennessee & Northern Railroad developed from an 1897 short line into a regional railroad serving western Alabama and Mobile. Frisco acquired control in 1948, but AT&N remained a separate corporation until its 1971 merger into Frisco.",
+  "statistics": {
+    "intro": "Two snapshots compare AT&N at the arrival of its first diesel with its final full year as a separate railroad. Values marked ~ are project estimates or historical proxies.",
+    "snapshots": [
+      {
+        "year": 1941,
+        "label": "First Diesel",
+        "date": "1941 · selected figures use the 1942 reorganization record",
+        "sourceIds": [
+          "msrails-atn-history-roster",
+          "atn-1942-reorganization",
+          "dons-rail-photos-atn-diesel-roster",
+          "diesel-shop-rs1-roster"
+        ],
+        "metrics": {
+          "routeMiles": {
+            "value": "~194",
+            "label": "Route miles",
+            "note": "Approximate early-era route scale: 188 miles of main line plus 6 miles of Mobile industrial line."
+          },
+          "employees": {
+            "value": "~500",
+            "note": "Project estimate of early-era employment."
+          },
+          "locomotives": {
+            "value": "~14",
+            "note": "Project estimate of locomotives operated in the early diesel era."
+          },
+          "rollingStock": {
+            "value": "~199",
+            "note": "199 cars from the 1942 reorganization record, used as a 1941-era proxy."
+          },
+          "capitalization": {
+            "value": "~$3.575M",
+            "note": "1942 reorganization capitalization used as a 1941-era proxy."
+          }
+        },
+        "context": "First diesel: GE 45-ton No. 11, built August 1941."
+      },
+      {
+        "year": 1970,
+        "label": "Final Full Year",
+        "date": "1970",
+        "sourceIds": [
+          "stb-atn-1970-annual-report"
+        ],
+        "metrics": {
+          "routeMiles": {
+            "value": "214",
+            "label": "Route miles",
+            "note": "1970 AT&N R-1 route mileage."
+          },
+          "employees": {
+            "value": "157",
+            "note": "1970 AT&N R-1 employee count."
+          },
+          "locomotives": {
+            "value": "~12",
+            "note": "Operating-equivalent project estimate based on locomotive-unit-miles; not an owned-fleet count."
+          },
+          "rollingStock": {
+            "value": "~400",
+            "note": "Operating-equivalent project estimate based on freight-car-miles; not an owned-car count."
+          },
+          "capitalization": {
+            "value": "$1.5782M",
+            "note": "1970 AT&N R-1 capitalization."
+          }
+        }
+      }
+    ],
+    "notes": [
+      "Values marked ~ are project estimates or early-era proxies rather than exact same-year observations.",
+      "The 1941 employees and locomotive figures are project estimates. Rolling stock and capitalization use the 1942 reorganization record as a 1941-era proxy.",
+      "The 1970 locomotive and rolling-stock figures are operating equivalents based on locomotive-unit-miles and freight-car-miles, not equipment ownership."
+    ]
+  },
+  "paintSchemes": [
+    {
+      "id": "atn-black-white",
+      "name": "AT&N Black & White",
+      "startYear": 1941,
+      "periodLabel": "c. 1941–1948",
+      "category": "Diesel",
+      "representativeLocomotive": "ALCO RS-1 No. 111",
+      "description": "Black body, white roof, light sill stripe and trim, circular AT&N herald on the cab, and road number below the herald.",
+      "sourceIds": [
+        "rrpa-atn-rs1-111-1947"
+      ],
+      "images": [
+        {
+          "type": "historical",
+          "src": "https://s3.amazonaws.com/rrpa_photos/25818/aaaAT%26N%20111%20Conneaut%20OH%208-23-47%20on%20NKP%20Paul%20W%20Prescott%20Roy%20Keeley%20Coll%201735%20copy.jpg",
+          "caption": "AT&N RS-1 No. 111 · Conneaut, Ohio · 23 August 1947",
+          "description": "Original historical prototype photograph on the Nickel Plate Road.",
+          "credit": "Paul W. Prescott photo · Roy Keeley collection · contributed by Michael Palmieri / RRPictureArchives",
+          "sourceUrl": "https://s3.amazonaws.com/rrpa_photos/25818/aaaAT%26N%20111%20Conneaut%20OH%208-23-47%20on%20NKP%20Paul%20W%20Prescott%20Roy%20Keeley%20Coll%201735%20copy.jpg",
+          "sourceLabel": "RRPictureArchives",
+          "date": "1947-08-23"
+        },
+        {
+          "type": "reconstruction",
+          "src": "/images/railroads/atn-rs1-111-black-white-colorized.png",
+          "caption": "AT&N RS-1 No. 111 · AI colorization",
+          "description": "AI-rendered / colorized version based on the original historical prototype photograph; not an original color photograph.",
+          "credit": "User-supplied AI colorization",
+          "originalSourceUrl": "https://s3.amazonaws.com/rrpa_photos/25818/aaaAT%26N%20111%20Conneaut%20OH%208-23-47%20on%20NKP%20Paul%20W%20Prescott%20Roy%20Keeley%20Coll%201735%20copy.jpg",
+          "originalSourceCredit": "Paul W. Prescott photo · Roy Keeley collection",
+          "originalSourceLabel": "RRPictureArchives",
+          "kind": "AI reconstruction from archival reference"
+        }
+      ]
+    }
+  ],
+  "sources": [],
+  "parentSystem": "frisco",
+  "history": [
+    "The Carrollton Short Line Railway was chartered in July 1897 and renamed Alabama, Tennessee & Northern Railroad in 1906. Later consolidations formed the regional railroad serving western Alabama and Mobile.",
+    "Its first diesel was GE 45-ton No. 11, built in August 1941. Baldwin VO-660 No. 600 followed in May 1942, and ALCO RS-1s arrived beginning in November 1944.",
+    "Frisco acquired control in 1948. AT&N remained a separate corporate entity through its final full year in 1970 and merged into Frisco in 1971."
+  ],
+  "sourceIds": [
+    "msrails-atn-history-roster",
+    "atn-1942-reorganization",
+    "stb-atn-1970-annual-report",
+    "dons-rail-photos-atn-diesel-roster",
+    "diesel-shop-rs1-roster",
+    "rrpa-atn-rs1-111-1947"
+  ],
+  "paintSchemesIntro": "After Frisco acquired control in 1948, AT&N locomotives generally followed standard Frisco paint schemes, sometimes with small AT&N sublettering.",
+  "paintSchemesReference": "frisco"
+}
