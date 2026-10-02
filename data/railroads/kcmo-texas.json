@@ -1,1 +1,108 @@
-{"id":"kcmo-texas","slug":"kcmo-texas","name":"Kansas City, Mexico & Orient Railway of Texas","startYear":1899,"endYear":1965,"type":"regional","predecessors":[],"successor":"santa-fe","parentSystem":"santa-fe","description":"Texas component of the Orient system. It had a distinct legal and operating history and remains separate from the parent Orient railroad.","mergerYear":1965,"statistics":null,"paintSchemes":[],"sources":[]}
+{
+  "id": "kcmo-texas",
+  "slug": "kcmo-texas",
+  "name": "Kansas City, Mexico & Orient Railway of Texas",
+  "startYear": 1899,
+  "endYear": 1965,
+  "type": "regional",
+  "predecessors": [],
+  "successor": "santa-fe",
+  "parentSystem": "santa-fe",
+  "description": "The former Orient route remained a substantial 603-mile railroad across West Texas after Santa Fe acquired control in 1928. Panhandle & Santa Fe operated the property with Santa Fe personnel and equipment, while Kansas City, Mexico & Orient Railway Company of Texas remained the corporate owner and lessor until its August 1, 1965 merger into ATSF. It had no separate diesel fleet.",
+  "mergerYear": 1965,
+  "statistics": {
+    "intro": "Two snapshots describe the resources serving the 603-mile former Orient operating territory, not equipment legally owned by KCM&O of Texas or audited corporate employee counts. Values marked ~ are project estimates supplied for this comparison.",
+    "snapshots": [
+      {
+        "year": 1951,
+        "label": "Early Documented Diesel Operation",
+        "sourceIds": [
+          "tsha-kcmo-texas",
+          "eldorado-success-1951-diesel",
+          "san-angelo-railway-history",
+          "fraser-chronicle-kcmo-strike-1928",
+          "us-supreme-court-kcmo-valuation-1929"
+        ],
+        "metrics": {
+          "routeMiles": {
+            "value": "603 mi",
+            "label": "Route miles"
+          },
+          "employees": {
+            "value": "~900"
+          },
+          "locomotives": {
+            "value": "~35",
+            "note": "Mixed steam/diesel operating requirement during transition; Santa Fe-supplied power."
+          },
+          "rollingStock": {
+            "value": "~1,700"
+          },
+          "capitalization": {
+            "value": "~$9M"
+          }
+        },
+        "context": "The January 25, 1951 Eldorado Success documents diesel operation from San Angelo toward Eldorado. Local histories place the Orient–Santa Fe steam-to-diesel transition in the 1950s; this is an early diesel snapshot, not a claim of complete dieselization or the first diesel ever used."
+      },
+      {
+        "year": 1964,
+        "label": "Final Full Year",
+        "sourceIds": [
+          "tsha-kcmo-texas",
+          "san-angelo-railway-history",
+          "smu-atsf-2867-presidio-1961",
+          "fraser-chronicle-kcmo-strike-1928",
+          "us-supreme-court-kcmo-valuation-1929"
+        ],
+        "metrics": {
+          "routeMiles": {
+            "value": "603 mi",
+            "label": "Route miles"
+          },
+          "employees": {
+            "value": "~550"
+          },
+          "locomotives": {
+            "value": "~30",
+            "note": "Diesel operating requirement / equivalent fleet supplied by Santa Fe."
+          },
+          "rollingStock": {
+            "value": "~1,700"
+          },
+          "capitalization": {
+            "value": "~$9M"
+          }
+        },
+        "context": "1964 was the final complete year before the August 1, 1965 merger. Dieselization, declining passenger service and reduced servicing infrastructure lowered staffing needs. San Angelo’s former 17-stall roundhouse was demolished in 1962. Santa Fe GP7 No. 2867 was photographed at Presidio in 1961, directly documenting diesel road power on former Orient territory."
+      }
+    ],
+    "notes": [
+      "Employees: a 1928 contemporary report described a threatened strike involving 600 KCM&O employees across the U.S. system; this was not a total-workforce census. Texas held a large majority of U.S. mileage, and local history reports more than 200 Santa Fe workers at San Angelo during WWII. ~900 includes train crews, maintenance-of-way, station, shop, signal and clerical staff across 603 miles; ~550 reflects dieselization, declining passenger service and reduced servicing infrastructure. These are order-of-magnitude operating estimates, not audited KCM&O corporate counts.",
+      "Locomotives: ~35 in 1951 and ~30 in 1964 estimate Santa Fe power serving the territory, not a KCM&O-owned fleet. The supplied system-density allocation, reduced substantially for secondary, light-density operations, remains unverified. San Angelo’s former 17-stall roundhouse is a scale check, not a fleet census.",
+      "Non-locomotive rolling stock: ~1,700 in each year is an operating-fleet equivalent from Santa Fe freight, passenger and company-service car totals, adjusted downward for lighter traffic. This allocation remains unverified; it represents neither KCM&O ownership nor cars simultaneously on the line.",
+      "Capitalization: ~$9M is a comparative property-value proxy derived from the verified acquisition-era ICC valuation, not contemporaneous 1951/1964 accounting capitalization. The Supreme Court publication cites a Texas property valuation of $6,854,522 including expenditures for additions before the 1930 extensions. Simple mileage scaling from ~465 to ~603 miles gives ~$6.85M × 603 / 465 ≈ $8.9M, rounded to ~$9M for both snapshots. This common comparison baseline does not establish unchanged property value between 1951 and 1964 or verified capital stock plus funded debt."
+    ]
+  },
+  "paintSchemes": [],
+  "sources": [],
+  "reportingMarks": [
+    "KCM&O"
+  ],
+  "history": [
+    "The Texas component of the Orient system was renamed Kansas City, Mexico & Orient Railway Company of Texas in 1905. Its route linked the Red River, Sweetwater, San Angelo and Alpine. Santa Fe acquired the Orient on October 19, 1928; after completing the Presidio and Sonora extensions in 1930, it leased the Texas property to Panhandle & Santa Fe for operation effective January 1, 1931.",
+    "In 1930, approximately 72 miles from Paisano to Presidio and 65 miles from San Angelo to Sonora were added. The mature Texas system comprised approximately 603 route miles. KCM&O of Texas survived as a separate legal owner and lessor through the diesel era, merging into the Atchison, Topeka & Santa Fe Railway on August 1, 1965."
+  ],
+  "sourceIds": [
+    "tsha-kcmo-texas",
+    "tsha-panhandle-santa-fe",
+    "tsl-kcmo-texas-annual-report-index",
+    "eldorado-success-1951-diesel",
+    "sfhms-atsf-gp7-roster",
+    "smu-atsf-2867-presidio-1961",
+    "san-angelo-railway-history",
+    "fraser-chronicle-kcmo-strike-1928",
+    "us-supreme-court-kcmo-valuation-1929"
+  ],
+  "paintSchemesIntro": "KCM&O of Texas did not maintain a separate diesel-era paint identity after Santa Fe acquired the Orient. Panhandle & Santa Fe operated the property with Santa Fe locomotives and equipment, which carried standard Santa Fe paint schemes. See the Santa Fe page for the shared system paint history.",
+  "paintSchemesReference": "santa-fe"
+}
