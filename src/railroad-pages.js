@@ -247,6 +247,11 @@ export function paintSchemesReferenceFor(railroad, railroads) {
   return target ? { railroad: target, href: railroadSectionUrl(target.slug, "paint-schemes") } : null;
 }
 
+export function paintSchemesReferencesFor(railroad, railroads) {
+  const ids = railroad.paintSchemesReferences ?? [railroad.paintSchemesReference];
+  return ids.map((id) => paintSchemesReferenceFor({ paintSchemesReference: id }, railroads)).filter(Boolean);
+}
+
 function renderStatistics(railroad, sources) {
   const article = document.createElement("article");
   article.className = "railroad-statistics";
@@ -344,18 +349,22 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
     const intro = document.createElement("p"); intro.textContent = paintSchemesIntro;
     schemes.append(intro);
   }
-  const paintSchemesReference = paintSchemesReferenceFor(railroad, railroads);
-  if (paintSchemesReference) {
+  const paintSchemesReferences = paintSchemesReferencesFor(railroad, railroads);
+  if (paintSchemesReferences.length) {
     const reference = document.createElement("p");
     reference.append("See the ");
-    const link = document.createElement("a");
-    link.href = paintSchemesReference.href;
-    link.textContent = paintSchemesReference.railroad.name;
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-      onOpenRailroad(paintSchemesReference.railroad, "paint-schemes");
+    paintSchemesReferences.forEach((target, index) => {
+      if (index) reference.append(index === paintSchemesReferences.length - 1 ? " and " : ", ");
+      const link = document.createElement("a");
+      link.href = target.href;
+      link.textContent = target.railroad.name;
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        onOpenRailroad(target.railroad, "paint-schemes");
+      });
+      reference.append(link);
     });
-    reference.append(link, " page for diesel paint schemes.");
+    reference.append(paintSchemesReferences.length === 1 ? " page for diesel paint schemes." : " pages for diesel paint schemes.");
     schemes.append(reference);
   }
   if (railroad.id === "santa-fe") {
@@ -495,7 +504,7 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
       const item = document.createElement("li"); item.textContent = name; list.append(item);
     }
     schemes.append(list);
-  } else if (!paintSchemesReference) {
+  } else if (!paintSchemesReferences.length) {
     const note = document.createElement("p"); note.className = "muted";
     note.textContent = "Paint-scheme artwork will be supplied separately.";
     schemes.append(note);
