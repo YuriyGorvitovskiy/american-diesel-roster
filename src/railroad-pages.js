@@ -45,7 +45,11 @@ function layoutRailroads(railroads) {
   const depthMemo = new Map();
   const depth = (railroad) => {
     if (depthMemo.has(railroad.id)) return depthMemo.get(railroad.id);
-    const value = railroad.successor ? depth(byId.get(railroad.successor)) + 1 : 0;
+    // Affiliates stay beside their controlling system in the genealogy, even
+    // when their legal successor is a different company.
+    const parent = byId.get(railroad.parentSystem);
+    const graphSuccessor = parent?.predecessors?.includes(railroad.id) ? parent : byId.get(railroad.successor);
+    const value = graphSuccessor ? depth(graphSuccessor) + 1 : 0;
     depthMemo.set(railroad.id, value);
     return value;
   };
@@ -345,13 +349,17 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
   const schemes = document.createElement("article"); schemes.className = "railroad-schemes"; schemes.id = "paint-schemes";
   schemes.innerHTML = `<p class="eyebrow">Visual identity</p><h2>${railroad.preDiesel ? "Pre-diesel railroad" : "Paint schemes"}</h2>`;
   const paintSchemesIntro = paintSchemesIntroText(railroad);
+  let intro;
+  let schemeReference;
   if (paintSchemesIntro) {
-    const intro = document.createElement("p"); intro.textContent = paintSchemesIntro;
+    intro = document.createElement("p"); intro.textContent = paintSchemesIntro;
     schemes.append(intro);
   }
   const paintSchemesReferences = paintSchemesReferencesFor(railroad, railroads);
   if (paintSchemesReferences.length) {
-    const reference = document.createElement("p");
+    const reference = railroad.paintSchemesReferenceInline && intro ? intro : document.createElement("p");
+    if (reference === intro) reference.append(" ");
+    schemeReference = reference;
     reference.append("See the ");
     paintSchemesReferences.forEach((target, index) => {
       if (index) reference.append(index === paintSchemesReferences.length - 1 ? " and " : ", ");
@@ -367,9 +375,13 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
     reference.append(paintSchemesReferences.length === 1 ? " page for diesel paint schemes." : " pages for diesel paint schemes.");
     schemes.append(reference);
   }
-  if (railroad.id === "santa-fe") {
+  if (railroad.id === "atn") {
+    intro?.remove();
+    schemeReference?.remove();
+  }
+  if (railroad.id === "santa-fe" || railroad.paintSchemes?.some((scheme) => scheme.images?.length)) {
     schemes.classList.add("atsf-paint-schemes");
-    schemes.innerHTML = '<p class="eyebrow">Visual identity</p><h2>Paint schemes</h2><p>Santa Fe\'s diesel identity evolved from 1935 to 1995 through passenger, freight, switching, experimental, commemorative, and merger-era paint schemes. Variants are shown separately where documented rather than collapsed into a single representative scheme.</p>';
+    if (railroad.id === "santa-fe") schemes.innerHTML = '<p class="eyebrow">Visual identity</p><h2>Paint schemes</h2><p>Santa Fe\'s diesel identity evolved from 1935 to 1995 through passenger, freight, switching, experimental, commemorative, and merger-era paint schemes. Variants are shown separately where documented rather than collapsed into a single representative scheme.</p>';
     const list = document.createElement("div"); list.className = "atsf-paint-list";
     const sorted = [...railroad.paintSchemes].sort((a, b) => (a.startYear ?? Infinity) - (b.startYear ?? Infinity));
     let undatedHeadingAdded = false;
@@ -399,7 +411,7 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
           } else frame.append(photo);
           const caption = document.createElement("figcaption");
           const kind = document.createElement("span"); kind.className = "image-kind";
-          kind.textContent = asset.type === "historical" ? "Historical photograph" : "Historical color reconstruction";
+          kind.textContent = asset.type === "historical" ? "Historical photograph" : (asset.kind || "Historical color reconstruction");
           const title = document.createElement("strong"); title.textContent = asset.caption;
           const description = document.createElement("span"); description.textContent = asset.description;
           const credit = document.createElement("small");
@@ -445,9 +457,23 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
       body.append(period, name);
       if (scheme.paintCode) body.append(code);
       body.append(prototype, description);
-      card.append(image, body); list.append(card);
+      if (railroad.id === "atn") {
+        const heading = document.createElement("div"); heading.className = "railroad-paint-body";
+        heading.append(period, name, prototype);
+        card.append(heading, image, body);
+      } else card.append(image, body);
+      list.append(card);
     }
     schemes.append(list);
+    if (railroad.id === "atn") {
+      const heading = document.createElement("h3"); heading.textContent = "Frisco era";
+      schemes.append(heading);
+      if (intro) schemes.append(intro);
+      if (schemeReference) {
+        if (intro) { intro.append(" ", ...schemeReference.childNodes); }
+        else schemes.append(schemeReference);
+      }
+    }
   } else if (railroad.preDiesel) {
     const note = document.createElement("p"); note.className = "muted";
     note.textContent = "No diesel-livery gallery is planned unless later research supplies relevant motor equipment.";

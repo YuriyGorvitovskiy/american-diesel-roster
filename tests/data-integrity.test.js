@@ -30,7 +30,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 191);
+  assert.equal(data.sources.length, 208);
   assert.equal(
     data.railroads.flatMap(({ paintSchemes = [] }) => paintSchemes).some((scheme) => scheme && typeof scheme === "object" && "paintIdentity" in scheme),
     false,
@@ -872,4 +872,34 @@ test("P&SF preserves supplied operating snapshots and equipment context", async 
   for (const snapshot of psf.statistics.snapshots) {
     assert.ok(Object.values(snapshot.metrics).every((metric) => metric.note === undefined));
   }
+});
+
+test("Oregon affiliates preserve operational statistics and shared paint references", async () => {
+  const { railroads } = await loadDataFiles(new URL("..", import.meta.url));
+  const ot = railroads.find(({ id }) => id === "oregon-trunk");
+  const oe = railroads.find(({ id }) => id === "oregon-electric");
+  assert.equal(ot.successor, "burlington-northern");
+  assert.equal(ot.parentSystem, "spokane-portland-seattle");
+  assert.deepEqual(ot.statistics.snapshots.map(({ year, metrics }) => [year, metrics.routeMiles.value]), [[1948, "151.93"], [1969, "151.93"]]);
+  assert.equal(ot.sourceIds.includes("great-northern-1941-annual-report"), true);
+  assert.equal(oe.statistics.snapshots[1].metrics.routeMiles.value, "~186");
+  assert.equal(oe.statistics.snapshots[1].metrics.capitalization.value, "$2.53M");
+  for (const railroad of [ot, oe]) {
+    assert.deepEqual(railroad.paintSchemes, []);
+    assert.equal(railroad.paintSchemesReference, "spokane-portland-seattle");
+    assert.equal(railroad.paintSchemesReferenceInline, true);
+  }
+});
+
+test("AT&N has one scheme with the original prototype before its AI colorization", async () => {
+  const { railroads } = await loadDataFiles(new URL("..", import.meta.url));
+  const atn = railroads.find(({ id }) => id === "atn");
+  assert.equal(atn.paintSchemesReference, "frisco");
+  assert.equal(atn.paintSchemes.length, 1);
+  const scheme = atn.paintSchemes[0];
+  assert.equal(scheme.name, "AT&N Black & White");
+  assert.equal(scheme.periodLabel, "c. 1941–1948");
+  assert.deepEqual(scheme.images.map(({ type }) => type), ["historical", "reconstruction"]);
+  assert.equal(scheme.images[1].originalSourceUrl, scheme.images[0].sourceUrl);
+  assert.equal(scheme.images[1].kind, "AI reconstruction from archival reference");
 });

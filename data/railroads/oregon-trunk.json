@@ -1,1 +1,113 @@
-{"id":"oregon-trunk","slug":"oregon-trunk","name":"Oregon Trunk Railway","reportingMarks":["OT"],"startYear":1909,"endYear":1970,"type":"regional","predecessors":[],"successor":"spokane-portland-seattle","parentSystem":"spokane-portland-seattle","description":"Important SP&S-system route in Oregon.","statistics":null,"paintSchemes":[],"sources":[]}
+{
+  "id": "oregon-trunk",
+  "slug": "oregon-trunk",
+  "name": "Oregon Trunk Railway",
+  "reportingMarks": [
+    "OT"
+  ],
+  "startYear": 1909,
+  "endYear": 1970,
+  "type": "regional",
+  "predecessors": [],
+  "successor": "burlington-northern",
+  "parentSystem": "spokane-portland-seattle",
+  "description": "Oregon Trunk Railway was an SP&S-system railroad serving central Oregon. Diesel operation began around 1948 with SP&S/Great Northern-supplied locomotives; its operations entered Burlington Northern in 1970.",
+  "statistics": {
+    "intro": "Two snapshots compare early diesel operation with the final full year before Burlington Northern. Approximate figures are project estimates or operating equivalents.",
+    "snapshots": [
+      {
+        "year": 1948,
+        "label": "Early Diesel Operation",
+        "date": "1948",
+        "sourceIds": [
+          "spshs-locomotive-history",
+          "stb-oregon-trunk-1970-annual-report",
+          "oregon-news-1910-oregon-trunk-capital-stock",
+          "great-northern-1941-annual-report"
+        ],
+        "metrics": {
+          "routeMiles": {
+            "value": "151.93",
+            "label": "Route miles"
+          },
+          "employees": {
+            "value": "~300",
+            "note": "Project estimate; not a verified same-year employment count."
+          },
+          "locomotives": {
+            "value": "~14",
+            "label": "Locomotives operated",
+            "note": "Project operating-equivalent estimate; includes supplied motive power, not an Oregon Trunk-owned fleet total."
+          },
+          "rollingStock": {
+            "value": "~350",
+            "label": "Non-locomotive rolling stock operated",
+            "note": "Project operating-equivalent estimate; not an Oregon Trunk-owned car total."
+          },
+          "capitalization": {
+            "value": "~$20M",
+            "note": "Approximate capital-stock basis; excludes substantial intercompany debt/advances to SP&S."
+          }
+        }
+      },
+      {
+        "year": 1969,
+        "label": "Final Full Year before BN",
+        "date": "1969",
+        "sourceIds": [
+          "spshs-locomotive-history",
+          "stb-oregon-trunk-1970-annual-report",
+          "oregon-news-1910-oregon-trunk-capital-stock",
+          "great-northern-1941-annual-report"
+        ],
+        "metrics": {
+          "routeMiles": {
+            "value": "151.93",
+            "label": "Route miles"
+          },
+          "employees": {
+            "value": "~230",
+            "note": "Project estimate; not a verified same-year employment count."
+          },
+          "locomotives": {
+            "value": "~20",
+            "label": "Locomotives operated",
+            "note": "Project operating-equivalent estimate; includes supplied motive power, not an Oregon Trunk-owned fleet total."
+          },
+          "rollingStock": {
+            "value": "~500",
+            "label": "Non-locomotive rolling stock operated",
+            "note": "Project operating-equivalent estimate; not an Oregon Trunk-owned car total."
+          },
+          "capitalization": {
+            "value": "~$20M",
+            "note": "Approximate capital-stock basis; excludes substantial intercompany debt/advances to SP&S."
+          }
+        }
+      }
+    ],
+    "notes": [
+      "Values marked ~ are project estimates / operating equivalents, not necessarily Oregon Trunk-owned equipment.",
+      "1947 traffic was about 4.4 freight trains per day averaging 61 cars, supporting the operating-equivalent equipment estimates.",
+      "Capitalization uses the approximately $20 million capital-stock basis and excludes substantial intercompany debt/advances to SP&S. It is not total capitalization including debt or market capitalization."
+    ]
+  },
+  "paintSchemes": [],
+  "sources": [],
+  "history": [
+    "Diesel operation on Oregon Trunk began around 1948. By January 1, 1950, Spokane, Portland and Seattle Railway supplied all Oregon Trunk motive power. Equipment operated over the line was not necessarily owned by Oregon Trunk.",
+    "In 1947, traffic averaged about 4.4 freight trains per day with an average of 61 cars per train. This traffic scale supports the project’s operating-equivalent equipment estimates; the estimates are not reported owned-fleet totals.",
+    "1969 was the final full operating year before Oregon Trunk ceased separate railroad-employer status on March 3, 1970, as operations came under Burlington Northern control. Burlington Northern is its operational successor; the Oregon Trunk corporate entity continued afterward as a BN subsidiary."
+  ],
+  "sourceIds": [
+    "spshs-locomotive-history",
+    "stb-oregon-trunk-1970-annual-report",
+    "oregon-news-1910-oregon-trunk-capital-stock",
+    "great-northern-1941-annual-report",
+    "rrb-oe-ot-employer-status-1970",
+    "oregon-supreme-court-bn-tax-1981"
+  ],
+  "paintSchemesIntro": "Oregon Trunk did not maintain a distinct diesel locomotive paint scheme. Diesel motive power was supplied by Spokane, Portland and Seattle Railway and retained SP&S paint, lettering and numbers.",
+  "paintSchemesReference": "spokane-portland-seattle",
+  "paintSchemesReferenceInline": true
+}

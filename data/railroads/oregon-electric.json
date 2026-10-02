@@ -1,1 +1,109 @@
-{"id":"oregon-electric","slug":"oregon-electric","name":"Oregon Electric Railway","reportingMarks":["OE"],"startYear":1906,"endYear":1970,"type":"regional","predecessors":[],"successor":"spokane-portland-seattle","parentSystem":"spokane-portland-seattle","description":"SP&S-system regional and electric railroad. Keep it as its own clickable railroad page.","statistics":null,"paintSchemes":[],"sources":[]}
+{
+  "id": "oregon-electric",
+  "slug": "oregon-electric",
+  "name": "Oregon Electric Railway",
+  "reportingMarks": [
+    "OE"
+  ],
+  "startYear": 1906,
+  "endYear": 1970,
+  "type": "regional",
+  "predecessors": [],
+  "successor": "spokane-portland-seattle",
+  "parentSystem": "spokane-portland-seattle",
+  "description": "Oregon Electric Railway began as a Willamette Valley electric interurban and became an SP&S-system freight railroad, converting to diesel operation in 1945. Its operations came under Burlington Northern control in 1970, while its corporate entity continued as a BN subsidiary.",
+  "statistics": {
+    "intro": "Two snapshots compare the arrival of series-production diesels with the eve of Burlington Northern. Values marked ~ are project estimates; late-period equipment figures represent operation, not ownership.",
+    "snapshots": [
+      {
+        "year": 1945,
+        "label": "First Series-Production Diesel",
+        "date": "1945",
+        "sourceIds": [
+          "great-northern-1945-annual-report",
+          "oerhs-transfer-fall-2012",
+          "diesel-shop-rs1-roster"
+        ],
+        "metrics": {
+          "routeMiles": {
+            "value": "202.02",
+            "label": "Route miles",
+            "note": "GN 1945 annual report: 202.02 miles of road operated."
+          },
+          "employees": {
+            "value": "~350",
+            "note": "Project estimate: 202 route miles × ~1.75 employees per mile ≈ 354, rounded."
+          },
+          "locomotives": {
+            "value": "4+",
+            "note": "Four OE ALCO RS-1s, Nos. 52–55, with possible additional SP&S power; + indicates an open-ended operated count."
+          },
+          "rollingStock": {
+            "value": "~50",
+            "note": "Circa-1940 roster: 25 freight cars + 14 work cars + 5 cabooses + 3 motor freight cars = 47, rounded; historical comparison, not an exact 1945 count."
+          },
+          "capitalization": {
+            "value": "~$3.6M",
+            "note": "Project estimate: ~$2.53M capital stock + ~$1.075M estimated bonds, rounded."
+          }
+        }
+      },
+      {
+        "year": 1969,
+        "label": "Eve of Burlington Northern",
+        "date": "1969 · mileage and capitalization comparison from the 1970 R-1",
+        "sourceIds": [
+          "stb-oregon-electric-1970-annual-report"
+        ],
+        "metrics": {
+          "routeMiles": {
+            "value": "~186",
+            "label": "Route miles",
+            "note": "Oregon Electric Railway Company 1970 R-1, Schedule 531 (printed p. 508; PDF p. 109), directly reports average mileage of road operated as 186. This is the nearest documented late-period figure used for the 1969 snapshot, not a separately verified 1969 total."
+          },
+          "employees": {
+            "value": "~150",
+            "note": "Project estimate; no usable average-employee count was found in the 1970 R-1. Schedule 561C reports compensation applicable to prior years, not average employment."
+          },
+          "locomotives": {
+            "value": "~5",
+            "note": "Operating-equivalent project estimate of SP&S-supplied motive power, not an OE-owned fleet total."
+          },
+          "rollingStock": {
+            "value": "~200",
+            "note": "Operating-equivalent project estimate including SP&S-supplied equipment, not an OE-owned car total."
+          },
+          "capitalization": {
+            "value": "$2.53M",
+            "note": "1970 comparison: Schedule 228 (printed p. 245; PDF p. 58) reports $2,530,000 issued stock ($1,950,000 common + $200,000 preferred + $380,000 deferred). Schedule 218 (printed pp. 234–237) reports no funded debt. Schedule 200L (printed p. 201; PDF p. 14) also shows $2,530,000 stock at March 1 and year-end 1970. This is stock plus funded debt, not total equity, authorized stock or a verified 1969 balance-sheet total."
+          }
+        }
+      }
+    ],
+    "notes": [
+      "All values marked ~ are project estimates or historical proxies, not exact same-year observations.",
+      "The 1969 locomotive and rolling-stock figures are operating equivalents. SP&S supplied equipment; lack of separate OE ownership does not imply zero equipment operated.",
+      "Capitalization uses capital stock plus funded debt, not market capitalization or total shareholders’ equity. The late snapshot uses the directly reported 1970 stock and no funded debt; the report covers March 1–December 31, 1970. Mileage likewise uses the 1970 year-end comparison; employment remains a project estimate."
+    ]
+  },
+  "paintSchemes": [],
+  "sources": [],
+  "history": [
+    "Founded in 1906, Oregon Electric linked Portland, Salem, Eugene, Corvallis/Albany and Forest Grove as an electric interurban in Oregon’s Willamette Valley. It came under Hill/SP&S control; passenger service ended in 1933 as freight became dominant.",
+    "Electric freight operation ended in 1945, when OE received four ALCO RS-1s, Nos. 52–55. These locomotives transferred to the SP&S roster in 1951; OE remained a separate corporate railroad using SP&S motive power and equipment.",
+    "OE ceased separate railroad-employer status on March 3, 1970, when its operations came under Burlington Northern control. The Oregon Electric corporate entity continued afterward as a BN-system subsidiary."
+  ],
+  "sourceIds": [
+    "great-northern-1945-annual-report",
+    "oerhs-transfer-fall-2012",
+    "diesel-shop-rs1-roster",
+    "stb-oregon-electric-1970-annual-report",
+    "rrb-oe-ot-employer-status-1970",
+    "sps-railfan-paint-schemes",
+    "pnra-oe-52-1945",
+    "diesel-shop-sps-profile"
+  ],
+  "paintSchemesIntro": "Oregon Electric's four ALCO RS-1s Nos. 52–55, delivered in 1945, used the contemporary SP&S G-1 green-and-yellow road-switcher scheme with OREGON ELECTRIC lettering. After their 1951 transfer to SP&S, motive power used on Oregon Electric followed SP&S paint practice.",
+  "paintSchemesReference": "spokane-portland-seattle",
+  "paintSchemesReferenceInline": true
+}
