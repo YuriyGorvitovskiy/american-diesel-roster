@@ -98,6 +98,12 @@
         "credit": "William S. Kuba Collection — Lake States Railway Historical Association Archive",
         "kind": "AI reconstruction from archival reference"
       },
+      "referencePhoto": {
+        "remoteImageUrl": "https://photos.smugmug.com/William-S-Kuba-Collection/CBQ-Diesel-Locomotives-Switchers/i-6jSqsCr/0/MW7FszrmkNZDFqmq9phHkp7B7kKSqGw3Kc9KnTMGd/M/2013.010.CBQ.D.9103--bill%20kuba%20116%20neg--CB%26Q--GE%20diesel%20switcher%20locomotive%209103%20in%20yard--Clinton%20IA--1941%200130-M.jpg",
+        "sourcePage": "https://www.lakestatesarchive.org/William-S-Kuba-Collection/CBQ-Diesel-Locomotives-Switchers/i-6jSqsCr/A",
+        "caption": "CB&Q 9103 · original reference",
+        "credit": "William S. Kuba Collection — Lake States Railway Historical Association Archive"
+      },
       "sourceIds": ["lake-states-kuba-cbq-9103"]
     },
     {
@@ -115,6 +121,12 @@
         "caption": "CB&Q GP7 218 in Blackbird",
         "credit": "Railfan44 — The Last Decade of CB&Q on the Racetrack",
         "kind": "AI reconstruction from archival reference"
+      },
+      "referencePhoto": {
+        "remoteImageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhgAvk06SCMfZrGx0J7lGr0bGL4THuULQhTqCP9_cHzVOAlKxi7AbHYI813dCtT2yauSMyQRZTjsqVco2EW19SvYPKeewa97zbdQlOeF9vemXRRA2wL3jvD2DH6N53gyST2KFLYFSJR0nY/s640/XCBQ218-660715WestmontGP7+1951-1.JPG",
+        "sourcePage": "http://railfan44.blogspot.com/2013/07/the-last-decade-of-cb-on-racetrack.html",
+        "caption": "CB&Q GP7 218 · original reference",
+        "credit": "Railfan44 — The Last Decade of CB&Q on the Racetrack"
       },
       "sourceIds": ["railfan44-cbq-gp7-218-blackbird"]
     },
@@ -150,6 +162,12 @@
         "caption": "CB&Q E5 9911A Silver Pilot in Passenger Silver — Black Whisker",
         "credit": "Wikimedia Commons — EMD E5 at IRM",
         "kind": "AI reconstruction from archival reference"
+      },
+      "referencePhoto": {
+        "remoteImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fc/EMD_E5_at_IRM.jpg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:EMD_E5_at_IRM.jpg",
+        "caption": "CB&Q E5 9911A “Silver Pilot” · original reference",
+        "credit": "Slambo / Wikimedia Commons · CC BY-SA 3.0"
       },
       "sourceIds": ["wikimedia-emd-e5-at-irm", "irm-cbq-9911a-silver-pilot"]
     },

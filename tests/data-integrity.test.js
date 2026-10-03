@@ -30,7 +30,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 208);
+  assert.equal(data.sources.length, 212);
   assert.equal(
     data.railroads.flatMap(({ paintSchemes = [] }) => paintSchemes).some((scheme) => scheme && typeof scheme === "object" && "paintIdentity" in scheme),
     false,
@@ -476,8 +476,8 @@ test("Northern Pacific paint cards preserve the accepted order, artwork, and sch
   ]);
   assert.deepEqual(schemes.map(({ photo }) => photo.localPath), [
     "/images/railroads/np-3309-black-yellow-restored.png",
-    "/images/railroads/np-6500a-1947-streamliner-reconstruction.png",
-    "/images/railroads/np-6506a-loewy-passenger-reconstruction.png",
+    "/images/railroads/np-6500a-1947-streamliner-curved-band-v2.png",
+    "/images/railroads/np-6506a-loewy-passenger-single-white-band.png",
     "/images/railroads/np-820-experimental-simplified-restored.png",
   ]);
   assert.deepEqual(schemes.flatMap(({ sourceIds }) => sourceIds), paintSourceIds);
@@ -607,7 +607,7 @@ test("Frisco paint cards retain the accepted order, wording, artwork, and proven
   assert.deepEqual(schemes.map(({ photo }) => photo.localPath ?? null), [
     "/images/railroads/frisco-vo1000-200-zephyr-blue-silver-ai.png",
     "/images/railroads/frisco-gp7-584-black-yellow-ai.png",
-    "/images/railroads/frisco-e8a-2018-passenger-red-gold-ai.png",
+    "/images/railroads/frisco-e8a-2018-passenger-red-gold-ai-insignia.png",
     null,
     "/images/railroads/frisco-gp7-575-mandarin-orange-white-ai.png",
   ]);

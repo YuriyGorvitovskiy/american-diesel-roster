@@ -347,6 +347,15 @@
       "description": "Santa Fe briefly experimented with a simplified all-blue freight FT scheme in the early 1950s. The body was finished in solid dark blue, with a yellow vertical nose band, yellow cigar-band nose herald, and yellow side lettering, creating a bold transitional look between the earlier Cat Whisker and later Blue/Yellow freight treatments.",
       "images": [
         {
+          "type": "historical",
+          "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLz9vXUJudl_9OxWT-f0OWMcbCpb3VGE_fawbW-PO6qCxVbR_X3RoZtzXFskaXssv5jyGR-MiaVoCExz1ww7Sj4eRL11VjJce1wyIQu1F3XEzsJajoft7t6QUGxZ5wdHGIqV2YIXyoKKz0Sug0w5qQY8KhdFV99MdqtTKzBflsFMurbVMFo-U280T_Jg/s825/SF-FT-170-All-Blue-Summit-May-1951-Chard-color.png",
+          "caption": "EMD FT #170 · original reference",
+          "description": "Original historical reference photograph.",
+          "credit": "Chard Walker · Summit · May 1951",
+          "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLz9vXUJudl_9OxWT-f0OWMcbCpb3VGE_fawbW-PO6qCxVbR_X3RoZtzXFskaXssv5jyGR-MiaVoCExz1ww7Sj4eRL11VjJce1wyIQu1F3XEzsJajoft7t6QUGxZ5wdHGIqV2YIXyoKKz0Sug0w5qQY8KhdFV99MdqtTKzBflsFMurbVMFo-U280T_Jg/s825/SF-FT-170-All-Blue-Summit-May-1951-Chard-color.png",
+          "sourceLabel": "View original"
+        },
+        {
           "type": "reconstruction",
           "src": "/images/railroads/atsf-ft-170-solid-blue-experimental-reconstruction.png",
           "caption": "ATSF FT No. 170 — Solid Blue Experimental",
@@ -400,6 +409,15 @@
       "prototypeLabel": "Prototype",
       "description": "Santa Fe's Cat Whisker, No Vermilion Trim scheme was the final simplified form of the early freight F-unit Cat Whisker family. It retained the blue-and-cream body, black roof and pilot, and signature whiskered nose emblem, but removed the vermilion trim entirely, creating a cleaner transitional appearance just before later freight paint schemes took over.",
       "images": [
+        {
+          "type": "historical",
+          "src": "https://old.atsfrr.org/resources/funits/gfx/p11f1.jpg",
+          "caption": "FTA 405 (ex-143C) · original reference",
+          "description": "Original historical reference photograph.",
+          "credit": "Original period black-and-white photograph",
+          "sourceUrl": "https://old.atsfrr.org/resources/funits/gfx/p11f1.jpg",
+          "sourceLabel": "View original"
+        },
         {
           "type": "reconstruction",
           "src": "/images/railroads/atsf-fta-405-cat-whisker-no-vermilion-reconstruction.png?v=2",
