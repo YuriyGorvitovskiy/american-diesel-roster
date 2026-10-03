@@ -78,6 +78,12 @@
         "credit": "The Diesel Shop · duplicate slide, photographer unknown · AI reconstruction supplied by user",
         "kind": "AI reconstruction from archival reference"
       },
+      "referencePhoto": {
+        "remoteImageUrl": "https://www.thedieselshop.us/SPS-60.jpg",
+        "sourcePage": "https://www.thedieselshop.us/SP&Sprofile.HTML",
+        "caption": "ALCO RS2 #60 · original reference",
+        "credit": "The Diesel Shop · duplicate slide, photographer unknown"
+      },
       "sourceIds": ["diesel-shop-sps-profile"]
     },
     {
@@ -95,6 +101,12 @@
         "caption": "ALCO FA1 #858 in SP&S Early FA Freight paint.",
         "credit": "The Diesel Shop · Historic ALCO photograph, photographer unknown · AI reconstruction supplied by user",
         "kind": "AI reconstruction from archival reference"
+      },
+      "referencePhoto": {
+        "remoteImageUrl": "https://www.thedieselshop.us/SP&S-858.png",
+        "sourcePage": "https://www.thedieselshop.us/SP&Sprofile.HTML",
+        "caption": "ALCO FA1 #858 · original reference",
+        "credit": "The Diesel Shop · Historic ALCO photograph, photographer unknown"
       },
       "sourceIds": ["diesel-shop-sps-profile"]
     },
@@ -114,6 +126,13 @@
         "credit": "Source: Streamliner Memories",
         "kind": "AI restoration from historical color reference"
       },
+      "referencePhoto": {
+        "remoteImageUrl": "https://streamlinermemories.info/GN/SP&S750EBcolors.jpg",
+        "sourcePage": "https://streamlinermemories.info/?p=15627",
+        "caption": "EMD E7A #750 · original reference",
+        "credit": "Source: Streamliner Memories",
+        "kind": "Historical color reference"
+      },
       "sourceIds": ["streamliner-memories-sps-750-color-scheme"]
     },
     {
@@ -132,6 +151,12 @@
         "credit": "Jack Pfeifer photo · P. Denny Custer collection / The Diesel Shop · AI reconstruction supplied by user",
         "kind": "AI reconstruction from archival reference"
       },
+      "referencePhoto": {
+        "remoteImageUrl": "https://www.thedieselshop.us/SPS-857a.jpg",
+        "sourcePage": "https://www.thedieselshop.us/SP&Sprofile.HTML",
+        "caption": "ALCO FA1 #857 · original reference",
+        "credit": "Jack Pfeifer photo · P. Denny Custer collection / The Diesel Shop"
+      },
       "sourceIds": ["diesel-shop-sps-profile", "mrh-2025-sps-fa1-857-experimental"]
     },
     {
@@ -149,6 +174,12 @@
         "caption": "Former SP&S C636 #341 as BN #4367, retaining Broad Yellow at Wenatchee, Washington, April 1971.",
         "credit": "Doug Cummings photo / The Diesel Shop · AI reconstruction supplied by user",
         "kind": "AI reconstruction from archival reference"
+      },
+      "referencePhoto": {
+        "remoteImageUrl": "https://www.thedieselshop.us/SPS-4367.jpg",
+        "sourcePage": "https://www.thedieselshop.us/SP&Sprofile.HTML",
+        "caption": "ALCO C636 · SP&S #341 / BN #4367 · original reference",
+        "credit": "Doug Cummings photo / The Diesel Shop"
       },
       "sourceIds": ["diesel-shop-sps-profile"]
     }

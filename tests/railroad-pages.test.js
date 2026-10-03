@@ -179,3 +179,30 @@ test("paint scheme references resolve multiple sponsor sections in order", () =>
   ]);
   assert.deepEqual(railroadPages.paintSchemesReferencesFor?.({}, railroads), []);
 });
+
+test("paint-scheme media keeps the original beside the AI version without changing either record", () => {
+  const original = { remoteImageUrl: "https://archive.example/original.jpg", sourcePage: "https://archive.example/item", caption: "Original No. 239", credit: "Photographer", date: "1964-03-28" };
+  const photo = { localPath: "/images/repaint.png", sourcePage: original.sourcePage, caption: "AI repaint No. 200", credit: "AI repaint", kind: "AI repaint from historical photograph" };
+  const scheme = { referencePhoto: original, photo };
+  const before = structuredClone(scheme);
+  const assets = railroadPages.paintSchemeImages?.(scheme);
+  assert.deepEqual(assets?.map(({ type, src, caption }) => ({ type, src, caption })), [
+    { type: "historical", src: original.remoteImageUrl, caption: original.caption },
+    { type: "reconstruction", src: photo.localPath, caption: photo.caption },
+  ]);
+  assert.equal(assets[0].sourceUrl, original.sourcePage);
+  assert.equal(assets[0].credit, original.credit);
+  assert.equal(assets[0].date, original.date);
+  assert.equal(assets[1].kind, photo.kind);
+  assert.deepEqual(scheme, before);
+});
+
+test("paint-scheme media preserves standalone original photos and existing ATSF image arrays", () => {
+  const photo = { remoteImageUrl: "https://archive.example/original.jpg", sourcePage: "https://archive.example/item", caption: "Original", credit: "Photographer" };
+  assert.deepEqual(railroadPages.paintSchemeImages?.({ photo })?.map(({ type, src }) => ({ type, src })), [
+    { type: "historical", src: photo.remoteImageUrl },
+  ]);
+  const images = [{ type: "historical", src: photo.remoteImageUrl }, { type: "reconstruction", src: "/images/ai.png" }];
+  assert.deepEqual(railroadPages.paintSchemeImages?.({ images }), images);
+  assert.deepEqual(railroadPages.paintSchemeImages?.({ image: { kind: "pending" } }), []);
+});

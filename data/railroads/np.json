@@ -74,6 +74,12 @@
         "credit": "Cody White Collection / RRPictureArchives.NET · restored historical photograph",
         "kind": "AI-assisted restoration of historical photograph"
       },
+      "referencePhoto": {
+        "remoteImageUrl": "https://rrpicturearchives.net/picturefiles/121309/NP%203309%20Cicero%203-27-70.jpg",
+        "sourcePage": "https://rrpicturearchives.net/showPicture.aspx?id=2135507357",
+        "caption": "GE U33C #3309 · original reference",
+        "credit": "Cody White Collection / RRPictureArchives.NET"
+      },
       "sourceIds": ["rrpicturearchives-np-3309-black-yellow"]
     },
     {
@@ -85,12 +91,18 @@
       "representativeLocomotive": "EMD F3A #6500A",
       "description": "Northern Pacific introduced its first postwar streamlined passenger diesel appearance in 1947 with the new F3 fleet. The scheme combined a dark green upper body with a lighter green side band, separated and accented by yellow-gold striping and lettering. The flowing Main Street of the Northwest script and Northern Pacific Monad completed the railroad's new streamlined passenger identity. Enthusiasts later applied several nicknames to this appearance, but this project uses the contemporary descriptive name Streamliner scheme.",
       "photo": {
-        "sourcePage": "https://www.atom.pnrarchive.org/index.php/northern-pacific-diesel-locomotive-number-6500-at-east-auburn-washington-in-1949",
-        "localPath": "/images/railroads/np-6500a-1947-streamliner-reconstruction.png",
+        "sourcePage": "https://atom.pnrarchive.org/index.php/northern-pacific-diesel-locomotive-number-6500-at-east-auburn-washington-in-1949",
+        "localPath": "/images/railroads/np-6500a-1947-streamliner-curved-band-v2.png",
         "alt": "Northern Pacific F3A 6500A in the 1947 Streamliner passenger scheme",
         "caption": "F3A #6500A in Northern Pacific's original postwar Streamliner passenger scheme.",
         "credit": "Pacific Northwest Railroad Archive · American Diesel Roster historical color reconstruction",
         "kind": "Historical color reconstruction from archival photograph"
+      },
+      "referencePhoto": {
+        "remoteImageUrl": "https://atom.pnrarchive.org/uploads/r/pacific-northwest-railroad-archive-burien-wa-3/5/6/a/56ab055e389c8dc3ab746149329a3d64d5c64c8c03440365a7d8dc02b2d0c7fe/JMF03-02162.0.jpg",
+        "sourcePage": "https://atom.pnrarchive.org/index.php/northern-pacific-diesel-locomotive-number-6500-at-east-auburn-washington-in-1949",
+        "caption": "EMD F3A #6500A · original reference",
+        "credit": "Pacific Northwest Railroad Archive"
       },
       "sourceIds": ["pnra-np-6500a-streamliner"]
     },
@@ -104,11 +116,17 @@
       "description": "Introduced in 1953, Northern Pacific's Raymond Loewy-designed passenger scheme modernized the earlier Streamliner appearance while retaining the railroad's characteristic two-tone green identity. The most visible change was the use of crisp white separation striping and trim in place of the earlier yellow-gold treatment, producing a cleaner and more contemporary passenger image. Archival documentation identifies F3A No. 6506A as the first locomotive to receive the new Loewy paint design.",
       "photo": {
         "sourcePage": "https://arc.lib.montana.edu/mor/rvndb/rvn_railroad_search.php?limit=10&page=5510&rvn_railroad=Northern+Pacific+Railway",
-        "localPath": "/images/railroads/np-6506a-loewy-passenger-reconstruction.png",
+        "localPath": "/images/railroads/np-6506a-loewy-passenger-single-white-band.png",
         "alt": "Northern Pacific F3A 6506A in Raymond Loewy's passenger paint scheme",
         "caption": "F3A #6506A in the 1953 Loewy Passenger scheme.",
         "credit": "Ron V. Nixon Collection / Museum of the Rockies · American Diesel Roster historical color reconstruction",
         "kind": "Historical color reconstruction from archival photograph"
+      },
+      "referencePhoto": {
+        "remoteImageUrl": "https://arc.lib.montana.edu/mor/rvndb/rvn-jpgs/rvn18384.jpg",
+        "sourcePage": "https://arc.lib.montana.edu/mor/rvndb/rvn_railroad_search.php?limit=10&page=5510&rvn_railroad=Northern+Pacific+Railway",
+        "caption": "EMD F3A #6506A · original reference",
+        "credit": "Ron V. Nixon Collection / Museum of the Rockies"
       },
       "sourceIds": ["mor-np-6506a-loewy"]
     },
@@ -127,6 +145,12 @@
         "caption": "Former NP F9A #7005A, renumbered BN #820, retaining Northern Pacific's Experimental Simplified scheme.",
         "credit": "Pacific Northwest Railroad Archive · restored historical photograph",
         "kind": "AI-assisted restoration of historical photograph"
+      },
+      "referencePhoto": {
+        "remoteImageUrl": "https://atom.pnrarchive.org/uploads/r/pacific-northwest-railroad-archive-burien-wa-3/4/5/f/45fb9422ecaafec54beebbb3ab8e563d8adc80393ce37b2e7f1f1ee273a8aeac/JMF17-10953.1.jpg",
+        "sourcePage": "https://atom.pnrarchive.org/index.php/burlington-northern-diesel-locomotive-820-at-spokane-washington-in-1970-2",
+        "caption": "EMD F9A #7005A / BN #820 · original reference",
+        "credit": "Pacific Northwest Railroad Archive"
       },
       "sourceIds": ["pnra-np-820-experimental-simplified", "railpictures-np-7005a-1960"]
     }

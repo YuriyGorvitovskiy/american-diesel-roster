@@ -72,7 +72,14 @@
         "caption": "EMC NC #5101 in Great Northern's early Basic Black scheme.",
         "credit": "User-supplied generated / restored image",
         "kind": "AI reconstruction from archival reference"
-      }
+      },
+      "referencePhoto": {
+        "remoteImageUrl": "https://atom.pnrarchive.org/uploads/r/pacific-northwest-railroad-archive-burien-wa-3/7/d/c/7dca3695cf3c029d6eaf8078d66f72bdf65fc8abdccb81f767eee36991231f62/Adams_GN_-_074_R.jpg",
+        "sourcePage": "https://atom.pnrarchive.org/index.php/great-northern-diesel-locomotive-5101-in-1938",
+        "caption": "EMC NC #5101 · original reference",
+        "credit": "Casey Adams Collection / Pacific Northwest Railroad Archive"
+      },
+      "sourceIds": ["pnra-gn-basic-black-reference"]
     },
     {
       "id": "empire-builder",
@@ -87,7 +94,14 @@
         "caption": "F7A #309A in the classic Empire Builder scheme.",
         "credit": "User-supplied generated / restored image",
         "kind": "AI reconstruction from archival reference"
-      }
+      },
+      "referencePhoto": {
+        "remoteImageUrl": "https://atom.pnrarchive.org/uploads/r/pacific-northwest-railroad-archive-burien-wa-3/f/7/2/f72cfa78327c753a91d367e5dc8d878fd3661c8cdcb7edbdb550ae47967c9a36/WWAGD-52-166.jpg",
+        "sourcePage": "https://atom.pnrarchive.org/index.php/great-northern-diesel-locomotive-309a-at-minneapolis-minnesota-1969",
+        "caption": "F7A #309A · original reference",
+        "credit": "Pacific Northwest Railroad Archive"
+      },
+      "sourceIds": ["pnra-gn-empire-builder-reference"]
     },
     {
       "id": "simplified-empire-builder",
@@ -102,7 +116,14 @@
         "caption": "F7A #307A in the Simplified Empire Builder scheme.",
         "credit": "User-supplied generated / restored image",
         "kind": "AI reconstruction from archival reference"
-      }
+      },
+      "referencePhoto": {
+        "remoteImageUrl": "https://atom.pnrarchive.org/uploads/r/pacific-northwest-railroad-archive-burien-wa-3/a/e/2/ae2a537da83e65d55a3e567cbc280fd249a4c7c8b4ed502f4cf0ab53401279da/WWAGD-52-161.jpg",
+        "sourcePage": "https://atom.pnrarchive.org/index.php/great-northern-diesel-locomotive-307a-at-minneapolis-minnesota-1969",
+        "caption": "F7A #307A · original reference",
+        "credit": "Pacific Northwest Railroad Archive"
+      },
+      "sourceIds": ["pnra-gn-simplified-empire-builder-reference"]
     },
     {
       "id": "big-sky-blue",
@@ -117,7 +138,14 @@
         "caption": "SD45 #422 in Great Northern's Big Sky Blue scheme.",
         "credit": "User-supplied generated / restored image",
         "kind": "AI reconstruction from archival reference"
-      }
+      },
+      "referencePhoto": {
+        "remoteImageUrl": "https://atom.pnrarchive.org/uploads/r/pacific-northwest-railroad-archive-burien-wa-3/2/5/d/25d6b3555cc5238cca1db3f1b9d17d7a8831830a6f3c5d17e28d3a696467f1ca/WWAGD-52-292.jpg",
+        "sourcePage": "https://atom.pnrarchive.org/index.php/great-northern-diesel-locomotive-422-at-la-grange-illinois-1968",
+        "caption": "SD45 #422 · original reference",
+        "credit": "Owen Leander / Pacific Northwest Railroad Archive"
+      },
+      "sourceIds": ["pnra-gn-big-sky-blue-reference"]
     }
   ],
   "sources": []

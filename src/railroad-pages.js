@@ -1,6 +1,24 @@
 import { railroadSectionUrl, railroadUrl } from "./navigation.js?v=gcsf-paint-reference-1";
 import { useArchiveOnError } from "./image-archive.js";
 
+// Normalize the two existing paint-photo formats without duplicating domain records.
+export function paintSchemeImages(scheme) {
+  if (scheme.images?.length) return scheme.images;
+  return [scheme.referencePhoto, scheme.photo].filter(Boolean).map((photo) => ({
+    type: /AI|reconstruction/i.test(photo.kind || "") ? "reconstruction" : "historical",
+    src: photo.localPath || photo.remoteImageUrl,
+    alt: photo.alt,
+    caption: photo.caption,
+    description: photo.description,
+    credit: photo.credit,
+    kind: photo.kind,
+    date: photo.date,
+    note: photo.note,
+    sourceUrl: photo.sourcePage,
+    sourceLabel: photo.sourceLabel || "View original",
+  }));
+}
+
 function railroadYears(railroad) {
   if (railroad.startYear == null && railroad.endYear == null) return "Dates unknown";
   return `${railroad.startYear ?? "?"}–${railroad.endYear ?? "present"}`;
@@ -379,7 +397,7 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
     intro?.remove();
     schemeReference?.remove();
   }
-  if (railroad.id === "santa-fe" || railroad.paintSchemes?.some((scheme) => scheme.images?.length)) {
+  if (railroad.id === "santa-fe" || railroad.paintSchemes?.some((scheme) => typeof scheme === "object" && (scheme.images?.length || scheme.photo))) {
     schemes.classList.add("atsf-paint-schemes");
     if (railroad.id === "santa-fe") schemes.innerHTML = '<p class="eyebrow">Visual identity</p><h2>Paint schemes</h2><p>Santa Fe\'s diesel identity evolved from 1935 to 1995 through passenger, freight, switching, experimental, commemorative, and merger-era paint schemes. Variants are shown separately where documented rather than collapsed into a single representative scheme.</p>';
     const list = document.createElement("div"); list.className = "atsf-paint-list";
@@ -391,15 +409,16 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
         heading.textContent = "Documented variants without a supplied start year";
         list.append(heading); undatedHeadingAdded = true;
       }
-      const card = document.createElement("section"); card.className = "railroad-paint-history";
+      const card = document.createElement("section"); card.className = "railroad-paint-history atsf-paint-history-multi";
+      const assets = paintSchemeImages(scheme);
       let image;
-      if (scheme.images?.length) {
+      if (assets.length) {
         image = document.createElement("div"); image.className = "atsf-paint-media";
-        if (scheme.images.length > 1) { image.classList.add("atsf-paint-media-multi"); card.classList.add("atsf-paint-history-multi"); }
-        for (const asset of scheme.images) {
+        if (assets.length > 1) image.classList.add("atsf-paint-media-multi");
+        for (const asset of assets) {
           const figure = document.createElement("figure"); figure.className = "railroad-paint-photo atsf-paint-figure";
           const frame = document.createElement("div"); frame.className = "atsf-paint-frame";
-          const photo = document.createElement("img"); photo.src = asset.src; photo.alt = asset.caption; photo.loading = "lazy";
+          const photo = document.createElement("img"); photo.src = asset.src; photo.alt = asset.alt || asset.caption; photo.loading = "lazy";
           if (asset.type === "historical" && asset.sourceUrl) {
             const link = document.createElement("a"); link.href = asset.sourceUrl; link.target = "_blank"; link.rel = "noopener noreferrer";
             link.append(photo); frame.append(link);
@@ -411,7 +430,7 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
           } else frame.append(photo);
           const caption = document.createElement("figcaption");
           const kind = document.createElement("span"); kind.className = "image-kind";
-          kind.textContent = asset.type === "historical" ? "Historical photograph" : (asset.kind || "Historical color reconstruction");
+          kind.textContent = asset.kind || (asset.type === "historical" ? "Historical photograph" : "AI historical reconstruction");
           const title = document.createElement("strong"); title.textContent = asset.caption;
           const description = document.createElement("span"); description.textContent = asset.description;
           const credit = document.createElement("small");
@@ -420,7 +439,16 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
             creditLink.target = "_blank"; creditLink.rel = "noopener noreferrer";
             creditLink.textContent = asset.credit; credit.append(creditLink);
           } else credit.textContent = asset.credit;
-          caption.append(kind, title, description, credit);
+          caption.append(kind, title);
+          if (asset.description) caption.append(description);
+          caption.append(credit);
+          if (asset.date) {
+            const date = document.createElement("small");
+            date.textContent = /^\d{4}-\d{2}-\d{2}$/.test(asset.date)
+              ? new Intl.DateTimeFormat("en-US", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${asset.date}T00:00:00Z`))
+              : asset.date;
+            caption.append(date);
+          }
           if (asset.note) {
             const note = document.createElement("small"); note.textContent = asset.note; caption.append(note);
           }
@@ -445,7 +473,7 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
         const pending = document.createElement("span"); pending.textContent = "Image pending"; image.append(pending);
       }
       const body = document.createElement("div"); body.className = "railroad-paint-body";
-      const period = document.createElement("p"); period.className = "eyebrow"; period.textContent = `${scheme.periodLabel} · ${scheme.category}`;
+      const period = document.createElement("p"); period.className = "eyebrow"; period.textContent = paintSchemeEyebrow(scheme);
       const name = document.createElement("h3"); name.textContent = scheme.name;
       const code = document.createElement("p"); code.className = "atsf-paint-code";
       if (scheme.paintCode) code.textContent = `ATSF paint code · ${scheme.paintCode}`;
@@ -454,14 +482,12 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
         ? `${scheme.prototypeLabel} · ${scheme.representativeLocomotive}`
         : scheme.representativeLocomotive || "Prototype reference not supplied";
       const description = document.createElement("p"); description.textContent = scheme.description;
-      body.append(period, name);
-      if (scheme.paintCode) body.append(code);
-      body.append(prototype, description);
-      if (railroad.id === "atn") {
-        const heading = document.createElement("div"); heading.className = "railroad-paint-body";
-        heading.append(period, name, prototype);
-        card.append(heading, image, body);
-      } else card.append(image, body);
+      const heading = document.createElement("header"); heading.className = "railroad-paint-body";
+      heading.append(period, name);
+      if (scheme.paintCode) heading.append(code);
+      heading.append(prototype);
+      body.append(description);
+      card.append(heading, image, body);
       list.append(card);
     }
     schemes.append(list);
@@ -478,52 +504,6 @@ export function renderRailroadPage(main, railroad, railroads, onOpenRailroad, so
     const note = document.createElement("p"); note.className = "muted";
     note.textContent = "No diesel-livery gallery is planned unless later research supplies relevant motor equipment.";
     schemes.append(note);
-  } else if (railroad.paintSchemes?.some((scheme) => typeof scheme === "object")) {
-    for (const scheme of railroad.paintSchemes) {
-      if (typeof scheme !== "object") continue;
-      const block = document.createElement("section"); block.className = "railroad-paint-history";
-      const figure = document.createElement("figure"); figure.className = "railroad-paint-photo";
-      if ((scheme.photo?.localPath || scheme.photo?.remoteImageUrl) && scheme.photo?.sourcePage) {
-        const link = document.createElement("a"); link.href = scheme.photo.sourcePage;
-        link.target = "_blank"; link.rel = "noopener noreferrer";
-        const image = document.createElement("img"); image.src = scheme.photo.localPath || scheme.photo.remoteImageUrl;
-        image.alt = scheme.photo.alt || scheme.photo.caption; image.loading = "lazy";
-        link.append(image); figure.append(link);
-        const fallback = document.createElement("a"); fallback.className = "railroad-paint-fallback";
-        fallback.href = scheme.photo.sourcePage; fallback.target = "_blank";
-        fallback.rel = "noopener noreferrer"; fallback.textContent = "View original photograph →";
-        fallback.hidden = true;
-        image.addEventListener("error", scheme.photo.localPath
-          ? () => { link.hidden = true; fallback.hidden = false; }
-          : useArchiveOnError(image, () => { link.hidden = true; fallback.hidden = false; }));
-        figure.append(fallback);
-        const caption = document.createElement("figcaption");
-        const kind = document.createElement("span"); kind.className = "image-kind";
-        kind.textContent = scheme.photo.kind || "Historical photograph";
-        const captionText = document.createElement("span"); captionText.textContent = scheme.photo.caption;
-        const credit = document.createElement("small");
-        const photoDate = /^\d{4}-\d{2}-\d{2}$/.test(scheme.photo.date ?? "")
-          ? new Intl.DateTimeFormat("en-US", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })
-            .format(new Date(`${scheme.photo.date}T00:00:00Z`))
-          : null;
-        credit.textContent = [scheme.photo.credit, photoDate].filter(Boolean).join(" · ");
-        const source = document.createElement("a"); source.className = "image-source-link";
-        source.href = scheme.photo.sourcePage; source.target = "_blank";
-        source.rel = "noopener noreferrer"; source.textContent = "View original";
-        caption.append(kind, captionText, credit, source);
-        figure.append(caption);
-      }
-      const body = document.createElement("div"); body.className = "railroad-paint-body";
-      const eyebrow = document.createElement("p"); eyebrow.className = "eyebrow";
-      eyebrow.textContent = paintSchemeEyebrow(scheme);
-      const title = document.createElement("h3"); title.textContent = scheme.name;
-      const locomotive = document.createElement("p"); locomotive.className = "railroad-paint-locomotive";
-      locomotive.textContent = scheme.representativeLocomotive;
-      const description = document.createElement("p"); description.textContent = scheme.description;
-      body.append(eyebrow, title);
-      body.append(locomotive, description);
-      block.append(figure, body); schemes.append(block);
-    }
   } else if (railroad.paintSchemes?.length) {
     const list = document.createElement("ul");
     for (const name of railroad.paintSchemes) {

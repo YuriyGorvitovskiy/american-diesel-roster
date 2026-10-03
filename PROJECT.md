@@ -191,6 +191,16 @@ Red. Grayback's pictured FW&D 751A is identified as a Burlington subsidiary,
 not as CB&Q proper. The silver passenger exemplars are E5 9911A “Silver Pilot”
 and E8A 9946B.
 
+Paint-scheme cards show unchanged archival references beside their AI versions,
+with the original on the left and the AI version on the right. A standalone
+image uses the full card width. The period, scheme name, and representative
+locomotive appear above the images; the description appears below them. Each image retains its own identity, source,
+credit, and kind label so readers can assess both restored detail and AI
+alterations. A repaint reference showing a different road number or paint
+scheme must say so explicitly. A historical color illustration is labeled as
+a color reference rather than a photograph. When the exact reference is not
+recorded, retain the AI image alone until its reference is recovered.
+
 Dead remote image links are normal maintenance and should be replaced when
 necessary without discarding the provenance record. Personal WebArchive copies
 may be kept outside Git for archival reference, but they are not repository
