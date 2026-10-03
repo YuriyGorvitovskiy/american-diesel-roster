@@ -30,7 +30,7 @@ test("seed data has valid identifiers and references", async () => {
   assert.equal(data.railroads.find(({ id }) => id === "great-northern").slug, "gn");
   assert.deepEqual(data.railroads.find(({ id }) => id === "bnsf").predecessors, ["burlington-northern", "santa-fe"]);
   assert.equal(data.historicalLocomotives.length, 7);
-  assert.equal(data.sources.length, 212);
+  assert.equal(data.sources.length, 218);
   assert.equal(
     data.railroads.flatMap(({ paintSchemes = [] }) => paintSchemes).some((scheme) => scheme && typeof scheme === "object" && "paintIdentity" in scheme),
     false,
