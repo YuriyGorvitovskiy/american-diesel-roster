@@ -165,20 +165,35 @@
       "paintCode": "BNT",
       "category": "Switcher",
       "representativeLocomotive": "HH600 #2301",
-      "description": "Santa Fe's HH600 switchers introduced the railroad's earliest plain black switcher appearance. ATSF 2301 was delivered in 1937 in a solid black scheme with no trim, no herald, and no side lettering — a stark pre-Zebra look that was soon modified in service.",
+      "description": "Santa Fe's HH600 switchers introduced the railroad's earliest plain black switcher appearance in 1937. Initially delivered without a railroad name or herald, they received initials shortly afterward while retaining the untrimmed black scheme. The AI repaint illustrates that early service appearance with AT&SF initials and road number 2301, using a 2014 preservation photograph with the window boards removed.",
       "prototypeLabel": "Prototype",
-      "historicalNote": "The earliest delivered appearance was plain black with no name and no herald; initials were added soon after delivery, and heralds came later. This entry depicts the original delivered state.",
+      "historicalNote": "Basic Black includes the initials added shortly after delivery; a square herald followed later. The illustration retains the locomotive's road number, but its exact early lettering size and placement have not been verified from a period photograph.",
       "images": [
         {
+          "type": "historical",
+          "kind": "Original photograph — preserved Zebra paint",
+          "src": "https://live.staticflickr.com/2921/14323000782_b9d3d8dc57_b.jpg",
+          "caption": "ATSF HH600 No. 2301 — Temple, Texas, May 14, 2014",
+          "description": "Unchanged preservation photograph showing later Zebra paint and boarded cab windows.",
+          "credit": "Rick Horne / Flickr · May 14, 2014",
+          "sourceUrl": "https://www.flickr.com/photos/37908073%40N04/14323000782/",
+          "sourceLabel": "Rick Horne — original photograph"
+        },
+        {
           "type": "reconstruction",
-          "src": "/images/railroads/atsf-hh600-2301-basic-black-reconstruction.png",
-          "caption": "ATSF HH600 No. 2301 — Basic Black, 1937",
-          "description": "Historical reconstruction of the locomotive's earliest delivered appearance in solid black with no trim, no herald, and no ATSF side lettering.",
-          "credit": "American Diesel Roster historical reconstruction",
-          "note": "Reconstruction based on documented ATSF roster paint data and early delivery notes.",
-          "sourceUrl": null,
-          "sourceLabel": null
+          "kind": "AI repaint — Basic Black illustration",
+          "src": "/images/railroads/atsf-hh600-2301-basic-black-initials-repaint.png",
+          "caption": "ATSF HH600 No. 2301 — Basic Black illustration",
+          "description": "AI repaint illustrating early Basic Black service paint with AT&SF initials and number 2301; window boards removed and glazing reconstructed.",
+          "credit": "AI repaint by American Diesel Roster; original photograph by Rick Horne",
+          "note": "Based on a modern preservation photograph; the scene and reconstructed glazing are not a period record. Exact early lettering and number placement are illustrative.",
+          "sourceUrl": "https://www.flickr.com/photos/37908073%40N04/14323000782/",
+          "sourceLabel": "Original photograph — Rick Horne"
         }
+      ],
+      "sourceIds": [
+        "flickr-rick-horne-atsf-2301-2014",
+        "sfrhms-taylor-paint-timeline"
       ]
     },
     {
@@ -213,20 +228,34 @@
       "periodLabel": "1939–c.1947",
       "paintCode": "BST",
       "category": "Switcher",
-      "representativeLocomotive": "HH1000 #2310",
+      "representativeLocomotive": "HH1000 #2312 — AI scheme illustration",
       "prototypeLabel": "Prototype",
-      "description": "Santa Fe's Black with Silver Trim switcher scheme marked an early step beyond the railroad's first plain black diesel appearance. Applied to early switchers such as HH1000 No. 2310, it combined a black body with a silver side stripe, ATSF herald, and side lettering, forming an important pre-Zebra stage in Santa Fe's switcher paint evolution.",
+      "description": "Black bodies with silver side trim, railroad lettering, and a Santa Fe herald marked an early step beyond plain-black switcher paint. The AI repaint uses a 1960s photograph of HH1000 No. 2312 in later Bookend paint to illustrate this earlier scheme; it does not document No. 2312 wearing this particular livery.",
       "images": [
         {
+          "type": "historical",
+          "kind": "Original photograph — later Bookend livery",
+          "src": "https://www.american-rails.com/images/727913623712423uy2785279698189899778.jpg",
+          "caption": "ATSF HH1000 No. 2312 — later Blue / Yellow Bookend paint",
+          "description": "Original photograph of No. 2312 at First Street Yard, Los Angeles, during the 1960s. It shows a later livery than the AI scheme illustration.",
+          "credit": "American-Rails.com collection",
+          "sourceUrl": "https://www.american-rails.com/hh.html",
+          "sourceLabel": "American-Rails.com — ALCO HH series"
+        },
+        {
           "type": "reconstruction",
-          "src": "/images/railroads/atsf-hh1000-2310-black-silver-trim-reconstruction.png",
-          "caption": "ATSF HH1000 No. 2310 — Black with Silver Trim",
-          "description": "Historical reconstruction of Santa Fe's early black-and-silver-trim switcher scheme with side stripe, herald, and ATSF lettering.",
-          "credit": "American Diesel Roster historical reconstruction",
-          "note": "Reconstruction based on documented ATSF roster paint data and early switcher scheme references.",
-          "sourceUrl": null,
-          "sourceLabel": null
+          "kind": "AI repaint — scheme illustration",
+          "src": "/images/railroads/atsf-hh1000-2312-black-silver-trim-repaint.png",
+          "caption": "ATSF HH1000 No. 2312 — Black with Silver Trim illustration",
+          "description": "AI repaint of the later Bookend photograph to illustrate Black with Silver Trim.",
+          "credit": "AI repaint by American Diesel Roster; original photograph from American-Rails.com collection",
+          "note": "Illustrative repaint; the source photograph shows later paint.",
+          "sourceUrl": "https://www.american-rails.com/hh.html",
+          "sourceLabel": "Original photograph — American-Rails.com"
         }
+      ],
+      "sourceIds": [
+        "american-rails-atsf-hh1000-2312-reference"
       ]
     },
     {
@@ -271,20 +300,34 @@
       "periodLabel": "c.1945–1948",
       "paintCode": "BOZ",
       "category": "Switcher",
-      "representativeLocomotive": "HH1000 #2319",
+      "representativeLocomotive": "HH1000 #2312 — AI scheme illustration",
       "prototypeLabel": "Prototype",
-      "description": "Santa Fe's Black / Orange Zebra scheme was an early switcher safety-and-visibility variant that introduced diagonal orange end striping to the railroad's black switcher fleet. Applied to locomotives such as HH1000 No. 2319, it combined a black body, orange Zebra striping, silver trim, and ATSF herald/lettering, forming a short-lived but visually distinctive step in Santa Fe's switcher paint evolution before later silver-striped Zebra variants became standard.",
+      "description": "The early Black / Orange Zebra scheme added orange diagonal end and sill striping to black switcher bodies, with silver trim and railroad markings. The AI repaint uses a 1960s photograph of HH1000 No. 2312 in later Bookend paint to illustrate this earlier scheme; it does not document No. 2312 wearing this particular livery.",
       "images": [
         {
+          "type": "historical",
+          "kind": "Original photograph — later Bookend livery",
+          "src": "https://www.american-rails.com/images/727913623712423uy2785279698189899778.jpg",
+          "caption": "ATSF HH1000 No. 2312 — later Blue / Yellow Bookend paint",
+          "description": "Original photograph of No. 2312 at First Street Yard, Los Angeles, during the 1960s. It shows a later livery than the AI scheme illustration.",
+          "credit": "American-Rails.com collection",
+          "sourceUrl": "https://www.american-rails.com/hh.html",
+          "sourceLabel": "American-Rails.com — ALCO HH series"
+        },
+        {
           "type": "reconstruction",
-          "src": "/images/railroads/atsf-hh1000-2319-black-orange-zebra-reconstruction.png",
-          "caption": "ATSF HH1000 No. 2319 — Black / Orange Zebra",
-          "description": "Historical reconstruction of Santa Fe's early black-and-orange Zebra switcher scheme with orange diagonal striping, silver trim, herald, and ATSF lettering.",
-          "credit": "American Diesel Roster historical reconstruction",
-          "note": "Reconstruction based on documented ATSF roster paint data and early switcher scheme references.",
-          "sourceUrl": null,
-          "sourceLabel": null
+          "kind": "AI repaint — scheme illustration",
+          "src": "/images/railroads/atsf-hh1000-2312-black-orange-zebra-muted.png",
+          "caption": "ATSF HH1000 No. 2312 — Black / Orange Zebra illustration",
+          "description": "AI repaint of the later Bookend photograph to illustrate Black / Orange Zebra.",
+          "credit": "AI repaint by American Diesel Roster; original photograph from American-Rails.com collection",
+          "note": "Illustrative repaint; the source photograph shows later paint.",
+          "sourceUrl": "https://www.american-rails.com/hh.html",
+          "sourceLabel": "Original photograph — American-Rails.com"
         }
+      ],
+      "sourceIds": [
+        "american-rails-atsf-hh1000-2312-reference"
       ]
     },
     {
@@ -294,20 +337,34 @@
       "periodLabel": "1947–1951",
       "paintCode": "BCVT2",
       "category": "Freight cab",
-      "representativeLocomotive": "FT #153",
+      "representativeLocomotive": "FTA 405 (ex-143C) — AI scheme illustration",
       "prototypeLabel": "Prototype",
-      "description": "Santa Fe's Cat Whisker, Partial Vermilion Trim scheme was a modified freight F-unit variation introduced after the earlier full-vermilion Cat Whisker style. It retained the blue-and-cream body, black roof and pilot, and signature whiskered nose herald, but reduced the vermilion trim so that it appeared only on the front section forward of the cab door.",
+      "description": "The partial-vermilion Cat Whisker variant retained blue-and-cream paint, the black roof and pilot, and the whiskered nose herald, while limiting vermilion separating trim to the nose forward of the cab doors. This AI illustration reuses the No Vermilion Trim card's No. 405 artwork. The shared archival reference shows FT No. 100 in an earlier paint variant; it does not document No. 405 wearing this scheme.",
       "images": [
         {
+          "type": "historical",
+          "src": "https://old.atsfrr.org/resources/funits/gfx/p11f1.jpg",
+          "caption": "ATSF FT No. 100 — Nelson, Arizona, January 1941",
+          "description": "Unchanged photograph of the newly delivered 100LA/101LA set; it shows a different road number and earlier paint variant than the AI illustration.",
+          "credit": "Santa Fe Railway Historical & Modeling Society collection",
+          "sourceUrl": "https://old.atsfrr.org/resources/funits/ftp6.htm",
+          "sourceLabel": "SFRHMS — original photograph and caption",
+          "kind": "Original photograph — FT No. 100, delivery livery"
+        },
+        {
           "type": "reconstruction",
-          "src": "/images/railroads/atsf-ft-153-cat-whisker-partial-vermilion-reconstruction.png?v=2",
-          "caption": "ATSF FT No. 153 — Cat Whisker, Partial Vermilion Trim",
-          "description": "Historical reconstruction of Santa Fe's modified Cat Whisker freight scheme with vermilion trim limited to the front section forward of the cab door.",
-          "credit": "American Diesel Roster historical reconstruction",
-          "note": "Reconstruction based on documented ATSF paint-variant references for the modified Cat Whisker scheme.",
-          "sourceUrl": null,
-          "sourceLabel": null
+          "kind": "AI repaint — partial vermilion illustration",
+          "src": "/images/railroads/atsf-fta-405-cat-whisker-partial-vermilion-repaint.png",
+          "caption": "ATSF FTA No. 405 — Cat Whisker, Partial Vermilion Trim illustration",
+          "description": "AI repaint of the existing No Vermilion Trim reconstruction, adding vermilion nose trim forward of the cab doors.",
+          "credit": "American Diesel Roster AI repaint; archival reference from Santa Fe Railway Historical & Modeling Society",
+          "note": "Scheme illustration; the original photograph depicts FT No. 100 in an earlier paint variant, while the AI artwork depicts No. 405.",
+          "sourceUrl": "https://old.atsfrr.org/resources/funits/ftp6.htm",
+          "sourceLabel": "SFRHMS — original reference"
         }
+      ],
+      "sourceIds": [
+        "sfrhms-ft-100-nelson-1941"
       ]
     },
     {
@@ -405,18 +462,19 @@
       "periodLabel": "1951–c.1953",
       "paintCode": "BCNT",
       "category": "Freight cab",
-      "representativeLocomotive": "FTA 405 (ex-143C)",
+      "representativeLocomotive": "FTA 405 (ex-143C) — AI scheme illustration",
       "prototypeLabel": "Prototype",
-      "description": "Santa Fe's Cat Whisker, No Vermilion Trim scheme was the final simplified form of the early freight F-unit Cat Whisker family. It retained the blue-and-cream body, black roof and pilot, and signature whiskered nose emblem, but removed the vermilion trim entirely, creating a cleaner transitional appearance just before later freight paint schemes took over.",
+      "description": "Santa Fe's Cat Whisker, No Vermilion Trim scheme was the final simplified form of the early freight F-unit Cat Whisker family. It retained the blue-and-cream body, black roof and pilot, and signature whiskered nose emblem, but removed the vermilion trim entirely, creating a cleaner transitional appearance just before later freight paint schemes took over. The AI illustration depicts No. 405; its archival reference shows FT No. 100 in an earlier paint variant.",
       "images": [
         {
           "type": "historical",
           "src": "https://old.atsfrr.org/resources/funits/gfx/p11f1.jpg",
-          "caption": "FTA 405 (ex-143C) · original reference",
-          "description": "Original historical reference photograph.",
-          "credit": "Original period black-and-white photograph",
-          "sourceUrl": "https://old.atsfrr.org/resources/funits/gfx/p11f1.jpg",
-          "sourceLabel": "View original"
+          "caption": "ATSF FT No. 100 — Nelson, Arizona, January 1941",
+          "description": "Unchanged photograph of the newly delivered 100LA/101LA set; it shows a different road number and earlier paint variant than the AI illustration.",
+          "credit": "Santa Fe Railway Historical & Modeling Society collection",
+          "sourceUrl": "https://old.atsfrr.org/resources/funits/ftp6.htm",
+          "sourceLabel": "SFRHMS — original photograph and caption",
+          "kind": "Original photograph — FT No. 100, delivery livery"
         },
         {
           "type": "reconstruction",
@@ -424,13 +482,16 @@
           "caption": "ATSF FTA No. 405 — Cat Whisker, No Vermilion Trim",
           "description": "Historical reconstruction of Santa Fe's simplified Cat Whisker freight scheme with the vermilion trim removed completely.",
           "credit": "American Diesel Roster historical reconstruction",
-          "note": "Reconstruction based on documented ATSF paint-variant references and a period black-and-white photograph.",
-          "sourceUrl": null,
-          "sourceLabel": null,
+          "note": "Scheme illustration; the original photograph depicts FT No. 100 in an earlier paint variant, while the AI artwork depicts No. 405.",
+          "sourceUrl": "https://old.atsfrr.org/resources/funits/ftp6.htm",
+          "sourceLabel": "SFRHMS — original reference",
           "originalSourceUrl": "https://old.atsfrr.org/resources/funits/gfx/p11f1.jpg",
-          "originalSourceLabel": "View original",
-          "originalSourceCredit": "Original period black-and-white photograph"
+          "originalSourceLabel": "SFRHMS — original reference",
+          "originalSourceCredit": "Santa Fe Railway Historical & Modeling Society collection"
         }
+      ],
+      "sourceIds": [
+        "sfrhms-ft-100-nelson-1941"
       ]
     },
     {
@@ -440,20 +501,35 @@
       "periodLabel": "c.1955–1960",
       "paintCode": "BSAWZ",
       "category": "Road switcher",
-      "representativeLocomotive": "RSD7 #607",
+      "representativeLocomotive": "RSD7 #609",
       "prototypeLabel": "Prototype",
-      "description": "Santa Fe's Blue with Silver / Aluminum / White Zebra scheme extended the railroad's Zebra-striping idea onto larger blue-bodied road locomotives. Applied to units such as RSD7 No. 607, it combined a dark blue body with bright silver/aluminum/white end striping, side trim, and bold Santa Fe lettering, creating one of the railroad's most distinctive late-1950s diesel appearances.",
+      "description": "Santa Fe's Blue with Silver / Aluminum / White Zebra scheme combined dark blue bodies with silver/aluminum/white end striping and side trim. RSD7 No. 609 is documented in this scheme in June 1959. The AI repaint below illustrates that earlier livery using a 1967 photograph of the same engine in its later blue-and-yellow Bookend paint.",
       "images": [
         {
+          "type": "historical",
+          "src": "https://www.railpictures.net/images/d2/5/3/3/5533.1426721356.jpg",
+          "caption": "ATSF RSD7 No. 609 — Blue / Yellow Pinstripe / Bookend",
+          "description": "Santa Fe RSD7 No. 609 at Raton, New Mexico, July 27, 1967, wearing blue with yellow ends, thin yellow side striping, and large Santa Fe lettering.",
+          "credit": "Bill Marvel / RailPictures.net",
+          "sourceUrl": "https://www.railpictures.net/photo/523627/",
+          "sourceLabel": "RailPictures.net — Bill Marvel, July 27, 1967",
+          "kind": "Original photograph — later Bookend livery"
+        },
+        {
           "type": "reconstruction",
-          "src": "/images/railroads/atsf-rsd7-607-blue-silver-white-zebra-reconstruction.png?v=2",
-          "caption": "ATSF RSD7 No. 607 — Blue with Silver / Aluminum / White Zebra",
-          "description": "Historical reconstruction of Santa Fe's blue-bodied Zebra variant with silver/aluminum/white end striping and side trim.",
-          "credit": "American Diesel Roster historical reconstruction",
-          "note": "Reconstruction based on documented ATSF roster paint data and Zebra-family scheme references.",
-          "sourceUrl": null,
-          "sourceLabel": null
+          "kind": "AI repaint — earlier Zebra livery",
+          "src": "/images/railroads/atsf-rsd7-609-blue-silver-zebra-repaint.png",
+          "caption": "ATSF RSD7 No. 609 — Blue with Silver / Aluminum / White Zebra",
+          "description": "AI repaint of the July 27, 1967 Bookend photograph to illustrate the earlier Zebra livery documented for No. 609 in June 1959.",
+          "credit": "AI repaint by American Diesel Roster; original photograph by Bill Marvel / RailPictures.net",
+          "note": "Illustrative repaint; the original photograph shows a different, later livery. AI-rendered paint details may differ from the historical scheme.",
+          "sourceUrl": "https://www.railpictures.net/photo/523627/",
+          "sourceLabel": "Original photograph — Bill Marvel, July 27, 1967"
         }
+      ],
+      "sourceIds": [
+        "railpictures-atsf-rsd7-609-bookend",
+        "atsf-rsd7-reference-roster"
       ]
     },
     {
@@ -463,20 +539,22 @@
       "periodLabel": "1960s–early 1970s",
       "paintCode": "BYT2 where applicable",
       "category": "Road-switcher",
-      "representativeLocomotive": "GP20 #1107",
+      "representativeLocomotive": "RSD7 #609",
       "prototypeLabel": "Prototype",
-      "description": "Santa Fe's Blue / Yellow Pinstripe, or “Bookend,” scheme gave road-switchers a dark blue body, yellow end panels, thin yellow side striping, and large side lettering. The design emphasized the locomotive's rectangular form and became one of Santa Fe's defining road-switcher identities before later yellow-wrapped bonnet repaints appeared.",
+      "description": "Santa Fe's Blue / Yellow Pinstripe, or “Bookend,” scheme gave road-switchers a dark blue body, yellow end panels, thin yellow side striping, and large side lettering. The original photograph shows RSD7 No. 609 at Raton, New Mexico, on July 27, 1967, wearing this scheme.",
       "images": [
         {
-          "type": "reconstruction",
-          "src": "/images/railroads/atsf-gp20-1107-blue-yellow-bookend-reconstruction.png",
-          "caption": "ATSF GP20 No. 1107 — Blue / Yellow Pinstripe / Bookend",
-          "description": "Historical reconstruction of Santa Fe's blue-and-yellow Bookend road-switcher scheme with yellow ends, thin side striping, and large side lettering.",
-          "credit": "American Diesel Roster historical reconstruction",
-          "note": "Reconstruction created to show the Bookend scheme clearly in a representative 3/4 view.",
-          "sourceUrl": null,
-          "sourceLabel": null
+          "type": "historical",
+          "src": "https://www.railpictures.net/images/d2/5/3/3/5533.1426721356.jpg",
+          "caption": "ATSF RSD7 No. 609 — Blue / Yellow Pinstripe / Bookend",
+          "description": "Santa Fe RSD7 No. 609 at Raton, New Mexico, July 27, 1967, wearing blue with yellow ends, thin yellow side striping, and large Santa Fe lettering.",
+          "credit": "Bill Marvel / RailPictures.net",
+          "sourceUrl": "https://www.railpictures.net/photo/523627/",
+          "sourceLabel": "RailPictures.net — Bill Marvel, July 27, 1967"
         }
+      ],
+      "sourceIds": [
+        "railpictures-atsf-rsd7-609-bookend"
       ]
     },
     {
